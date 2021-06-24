@@ -1,5 +1,6 @@
 <script context="module">
 	import Head from '$lib/templates/Head.svelte';
+	import Container from '$lib/templates/Container.svelte';
 	import Button from '$lib/atoms/Button.svelte';
 
 	/**
@@ -27,7 +28,9 @@
 
 <Head title="Davide Ciulla" />
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<Container>
+	<h1>Welcome to SvelteKit</h1>
+	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-<Button variant="secondary" />
+	<Button variant="primary" />
+</Container>
