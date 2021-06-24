@@ -1,8 +1,14 @@
-<div>
+<script lang="ts">
+	let className: string = '';
+	export { className as class };
+</script>
+
+<div class={`${className}`}>
 	<slot />
 </div>
 
 <style lang="scss">
+	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
 
 	div {
@@ -13,5 +19,11 @@
 			width: 80%;
 			max-width: 1160px;
 		}
+	}
+
+	.section {
+		display: grid;
+		grid-template-columns: min-content 1fr;
+		gap: 32px;
 	}
 </style>
