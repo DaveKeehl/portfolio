@@ -7,17 +7,15 @@
 	export let variant: Variant = 'primary';
 	export let size: Size = 'small';
 	export let state: State = 'default';
-	export let icon: string = '';
 	export let direction: Direction = 'normal';
 	export let disabled: boolean = false;
-	export let text: String = 'Default button text';
 </script>
 
 <button
 	class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
 	{disabled}
 >
-	{text}
+	<slot />
 </button>
 
 <style lang="scss">
@@ -66,6 +64,10 @@
 			}
 
 			&.button__state {
+				&--default {
+					box-shadow: 0 8px 32px $turquoise-200-a20;
+				}
+
 				&--success {
 					background: $success;
 				}
