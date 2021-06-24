@@ -1,36 +1,32 @@
-<script context="module">
+<script lang="ts">
 	import Head from '$lib/templates/Head.svelte';
+	import Hero from '$lib/molecules/Hero.svelte';
+	import About from '$lib/molecules/About.svelte';
 	import Container from '$lib/templates/Container.svelte';
-	import Button from '$lib/atoms/Button.svelte';
+	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
 
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-
-	// export async function load({ page, fetch, session, context }) {
-	// 	const url = `/blog/${page.params.slug}.json`;
-	// 	const res = await fetch(url);
-
-	// 	if (res.ok) {
-	// 		return {
-	// 			props: {
-	// 				article: await res.json()
-	// 			}
-	// 		};
-	// 	}
-
-	// 	return {
-	// 		status: res.status,
-	// 		error: new Error(`Could not load ${url}`)
-	// 	};
-	// }
+	const ids: number[] = [1, 2, 3, 4];
 </script>
 
 <Head title="Davide Ciulla" />
 
-<Container>
-	<h1>Welcome to SvelteKit</h1>
-	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<Hero />
 
-	<Button variant="primary" />
-</Container>
+{#each ids as id}
+	<div class={`${id === 1 && 'gradient-bg'}`}>
+		<Container class="section">
+			<SectionNumber number={id} />
+			<div>
+				<About />
+			</div>
+		</Container>
+	</div>
+{/each}
+
+<style lang="scss">
+	@import '../styles/colors.scss';
+
+	.gradient-bg {
+		background: linear-gradient(to bottom, $black, transparentize($black, 1));
+	}
+</style>
