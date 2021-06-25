@@ -14,4 +14,4 @@
 	In my free time I love playing videogames (Nintendo fanboy right here!), reading comic books, playing
 	the guitar and listening to interesting podcasts about design, tech and space.
 </p>
-<Button />
+<Button>Look at my resume</Button>
