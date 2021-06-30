@@ -5,6 +5,7 @@
 	import Container from '$lib/templates/Container.svelte';
 	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
 	import Layout from '$lib/templates/Layout.svelte';
+	import ProjectCard from '$lib/organisms/ProjectCard.svelte';
 
 	const ids: number[] = [1, 2, 3, 4];
 </script>
@@ -14,18 +15,29 @@
 
 	<Hero />
 
-	{#each ids as id}
-		<div class={`${id === 1 && 'gradient-bg'}`}>
-			<Container class="section">
-				<SectionNumber number={id} />
-				<div>
-					{#if id === 1}
-						<About />
-					{:else if id === 2}{:else if id === 3}{:else if id === 4}{/if}
-				</div>
-			</Container>
+	<div class="gradient-bg">
+		<Container class="section">
+			<SectionNumber number={1} />
+			<div>
+				<About />
+			</div>
+		</Container>
+	</div>
+
+	<Container class="section">
+		<SectionNumber number={2} />
+		<div>
+			<ProjectCard
+				imagePath=""
+				imageAlt=""
+				excerpt=""
+				title=""
+				technologies={[]}
+				primaryButton={{ text: '', link: 'https://www.google.com', external: true }}
+				secondaryButton={{ text: '', link: 'https://www.google.com', external: true }}
+			/>
 		</div>
-	{/each}
+	</Container>
 </Layout>
 
 <style lang="scss">
