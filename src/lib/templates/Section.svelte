@@ -23,6 +23,6 @@
 
 	.section__about {
 		padding-top: 8rem;
-		background: linear-gradient(to bottom, $black, transparentize($black, 1));
+		background: linear-gradient(to bottom, $black 0%, $black 30%, transparentize($black, 1));
 	}
 </style>
