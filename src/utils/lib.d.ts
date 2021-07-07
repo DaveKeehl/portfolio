@@ -1,9 +1,8 @@
 export interface IButton {
-	id: string;
 	text: string;
 	link: string;
 	external: boolean;
-	type: string;
+	type?: string;
 }
 
 export interface ISocial {
@@ -50,6 +49,7 @@ export interface IProject {
 export interface IArticle {
 	id: string;
 	title: string;
+	slug: string;
 	category: string;
 	cover: {
 		url: string;
