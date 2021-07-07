@@ -9,7 +9,7 @@
 	export let secondaryButton: IButton;
 </script>
 
-<div class={direction === 'vertical' && 'vertical'}>
+<div class={direction}>
 	<Button variant="primary">
 		<a
 			href={primaryButton.link}
@@ -36,13 +36,18 @@
 	div {
 		display: flex;
 		flex-direction: column;
+		gap: 1rem;
 
-		@media (sizes-xs) {
+		&.horizontal {
 			flex-direction: row;
 		}
-	}
 
-	.vertical {
-		flex-direction: column;
+		&.vertical {
+			flex-direction: column;
+		}
+
+		/* @media (sizes-xs) {
+			flex-direction: row;
+		} */
 	}
 </style>
