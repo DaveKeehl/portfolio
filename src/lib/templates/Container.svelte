@@ -23,7 +23,11 @@
 
 	.section__layout {
 		display: grid;
-		grid-template-columns: min-content 1fr;
+		grid-template-columns: 1fr;
 		gap: 32px;
+
+		@media (min-width: $sizes-sm) {
+			grid-template-columns: min-content 1fr;
+		}
 	}
 </style>
