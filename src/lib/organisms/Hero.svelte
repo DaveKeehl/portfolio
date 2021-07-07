@@ -13,16 +13,19 @@
 		<p class="greetings p2--medium">{greetings}</p>
 		<h1 class="h1--bold">{valueProposition}</h1>
 		<p class="introduction p3--regular">{introduction}</p>
-		<Button href={button.link} external={button.external}>{button}</Button>
+		<Button href={button.link} external={button.external}>{button.text}</Button>
 	</Container>
+	<img src="/saly.png" alt="" />
 </section>
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
+	@import '../../styles/breakpoints.scss';
 
 	section {
-		padding-top: 15rem;
-		padding-bottom: 20rem;
+		padding-top: 12rem;
+		padding-bottom: 18rem;
+		position: relative;
 	}
 
 	h1 {
@@ -36,5 +39,25 @@
 
 	.introduction {
 		margin-bottom: 3.5rem;
+		width: 100%;
+
+		@media (min-width: $sizes-md) {
+			width: 80%;
+		}
+
+		@media (min-width: $sizes-lg) {
+			width: 60%;
+		}
+	}
+
+	img {
+		position: absolute;
+		bottom: 0;
+		right: 15%;
+		display: none;
+
+		@media (min-width: $sizes-lg) {
+			display: block;
+		}
 	}
 </style>
