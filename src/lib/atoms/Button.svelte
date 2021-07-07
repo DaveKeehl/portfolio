@@ -4,19 +4,25 @@
 	type State = 'default' | 'success' | 'warning' | 'error';
 	type Direction = 'normal' | 'reverse';
 
+	export let href: string;
+	export let external: boolean;
+
 	export let variant: Variant = 'primary';
 	export let size: Size = 'small';
 	export let state: State = 'default';
+
 	export let direction: Direction = 'normal';
 	export let disabled: boolean = false;
 </script>
 
-<button
+<a
+	{href}
+	rel={external && 'noopener noreferrer'}
 	class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
 	{disabled}
 >
 	<slot />
-</button>
+</a>
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
@@ -26,6 +32,7 @@
 		flex-direction: row;
 		padding: 14px 24px;
 		border-radius: 8px;
+		width: fit-content;
 		transition: color 0.2s, background 0.2s;
 	}
 
