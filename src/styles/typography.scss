@@ -95,6 +95,10 @@ $p3-font-size: 1.25rem;
 $p4-font-size: 1.125rem;
 $p5-font-size: 1rem;
 
+p {
+	color: $blue-100;
+}
+
 p,
 a {
 	&.p1 {
