@@ -18,7 +18,14 @@ export const getHomepage = `
 				greetings
 				valueProposition
 				introduction
-				button
+				button {
+					text
+					link
+					external
+					type
+					size
+					iconPosition
+				}
 			}
 			about {
 				title
@@ -56,6 +63,7 @@ export const getHomepage = `
 			articles {
 				id
 				title
+				slug
 				category
 				cover {
 					url
