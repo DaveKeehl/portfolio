@@ -1,49 +1,43 @@
-<script lang="ts">
-	import Head from '$lib/templates/Head.svelte';
-	import Hero from '$lib/molecules/Hero.svelte';
-	import About from '$lib/molecules/About.svelte';
-	import Container from '$lib/templates/Container.svelte';
-	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
-	import Layout from '$lib/templates/Layout.svelte';
-	import ProjectCard from '$lib/organisms/ProjectCard.svelte';
+<script context="module" lang="ts">
+	import { getHomepage } from '$utils/queries';
 
-	const ids: number[] = [1, 2, 3, 4];
+	export async function load({ fetch }) {
+		const url = `https://api-eu-central-1.graphcms.com/v2/ckpi8048a1k5f01w3groi7vak/master`;
+		const res = await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				query: getHomepage
+			})
+		});
+
+		if (res.ok) {
+			return {
+				props: {
+					data: (await res.json()).data.homepage
+				}
+			};
+		}
+
+		return {
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
+		};
+	}
 </script>
 
-<Layout>
-	<Head title="Davide Ciulla" />
+<script lang="ts">
+	import Home from '$lib/pages/Home.svelte';
+	import Layout from '$lib/templates/Layout.svelte';
 
-	<Hero />
+	import type { IHomepage } from '$utils/lib';
 
-	<div class="gradient-bg">
-		<Container class="section">
-			<SectionNumber number={1} />
-			<div>
-				<About />
-			</div>
-		</Container>
-	</div>
+	export let data: IHomepage;
+	const { header, footer } = data;
+</script>
 
-	<Container class="section">
-		<SectionNumber number={2} />
-		<div>
-			<ProjectCard
-				imagePath=""
-				imageAlt=""
-				excerpt=""
-				title=""
-				technologies={[]}
-				primaryButton={{ text: '', link: 'https://www.google.com', external: true }}
-				secondaryButton={{ text: '', link: 'https://www.google.com', external: true }}
-			/>
-		</div>
-	</Container>
+<Layout {header} {footer}>
+	<Home {data} />
 </Layout>
-
-<style lang="scss">
-	@import '../styles/colors.scss';
-
-	.gradient-bg {
-		background: linear-gradient(to bottom, $black, transparentize($black, 1));
-	}
-</style>

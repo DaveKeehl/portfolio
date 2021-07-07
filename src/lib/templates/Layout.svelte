@@ -1,20 +1,24 @@
-<script>
+<script lang="ts">
 	// import '@fontsource/poppins.css';
 	// import '@fontsource/inter.css';
 
 	import Container from '$lib/templates/Container.svelte';
-	import Header from '$lib/molecules/Header.svelte';
-	import Footer from '$lib/molecules/Footer.svelte';
+	import Header from '$lib/organisms/Header.svelte';
+	import Footer from '$lib/organisms/Footer.svelte';
+	import type { IHeader, IFooter } from '$utils/lib';
+
+	export let header: IHeader;
+	export let footer: IFooter;
 </script>
 
 <Container>
-	<Header />
+	<Header {header} />
 </Container>
 
 <slot />
 
 <Container>
-	<Footer />
+	<Footer {footer} />
 </Container>
 
 <style lang="scss" global>
@@ -30,6 +34,20 @@
 		background: $blue-300;
 		color: $white;
 		font-family: 'Inter';
+	}
+
+	section.section {
+		margin-bottom: 16rem;
+
+		h2 {
+			&.margin-bottom-large {
+				margin-bottom: 6rem;
+			}
+
+			&.margin-bottom-small {
+				margin-bottom: 2.5rem;
+			}
+		}
 	}
 
 	a {

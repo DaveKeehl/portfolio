@@ -1,0 +1,30 @@
+<script lang="ts">
+	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
+	import ProjectCard from '$lib/molecules/ProjectCard.svelte';
+	import Container from '$lib/templates/Container.svelte';
+	import type { IProject } from '$utils/lib';
+
+	export let title: string;
+	export let projects: IProject[];
+</script>
+
+<section class="section" id="projects">
+	<Container class="section__layout">
+		<SectionNumber number={2} />
+		<div>
+			<h2 class="margin-bottom-large">{title}</h2>
+			<div class="projects">
+				{#each projects as project}
+					<ProjectCard {project} />
+				{/each}
+			</div>
+		</div>
+	</Container>
+</section>
+
+<style>
+	.projects {
+		display: grid;
+		gap: 3.5rem;
+	}
+</style>

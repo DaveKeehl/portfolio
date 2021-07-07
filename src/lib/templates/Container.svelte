@@ -21,7 +21,7 @@
 		}
 	}
 
-	.section {
+	.section__layout {
 		display: grid;
 		grid-template-columns: min-content 1fr;
 		gap: 32px;
