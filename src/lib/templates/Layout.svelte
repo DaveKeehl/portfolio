@@ -23,6 +23,7 @@
 
 <style lang="scss" global>
 	@import '../../styles/colors.scss';
+	@import '../../styles/typography.scss';
 
 	* {
 		margin: 0;
@@ -61,14 +62,5 @@
 		&:hover {
 			cursor: pointer;
 		}
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-family: 'Poppins';
 	}
 </style>
