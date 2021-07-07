@@ -1,0 +1,28 @@
+<script lang="ts">
+	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
+	import Container from '$lib/templates/Container.svelte';
+
+	let className: string = '';
+	export { className as class };
+	export let id: string = '';
+	export let number: number;
+	export let isAbout: boolean = false;
+</script>
+
+<section class={`section ${className} ${isAbout && 'section__about'}`} {id}>
+	<Container class="section__layout">
+		<SectionNumber {number} />
+		<div>
+			<slot />
+		</div>
+	</Container>
+</section>
+
+<style lang="scss">
+	@import '../../styles/colors.scss';
+
+	.section__about {
+		padding-top: 8rem;
+		background: linear-gradient(to bottom, $black, transparentize($black, 1));
+	}
+</style>
