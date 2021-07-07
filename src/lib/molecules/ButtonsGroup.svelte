@@ -10,23 +10,11 @@
 </script>
 
 <div class={direction}>
-	<Button variant="primary">
-		<a
-			href={primaryButton.link}
-			rel={primaryButton.external && 'noopener noreferrer'}
-			target={primaryButton.external && '_blank'}
-		>
-			{primaryButton.text}
-		</a>
+	<Button variant="primary" href={primaryButton.link} external={primaryButton.external}>
+		{primaryButton.text}
 	</Button>
-	<Button variant="secondary">
-		<a
-			href={secondaryButton.link}
-			rel={secondaryButton.external && 'noopener noreferrer'}
-			target={secondaryButton.external && '_blank'}
-		>
-			{secondaryButton.text}
-		</a>
+	<Button variant="secondary" href={secondaryButton.link} external={secondaryButton.external}>
+		{secondaryButton.text}
 	</Button>
 </div>
 
@@ -39,7 +27,11 @@
 		gap: 1rem;
 
 		&.horizontal {
-			flex-direction: row;
+			flex-direction: column;
+
+			@media (min-width: $sizes-sm) {
+				flex-direction: row;
+			}
 		}
 
 		&.vertical {
