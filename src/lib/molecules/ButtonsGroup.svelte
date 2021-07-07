@@ -5,27 +5,27 @@
 	type Direction = 'horizontal' | 'vertical';
 
 	export let direction: Direction = 'horizontal';
-	export let primary: IButton;
-	export let secondary: IButton;
+	export let primaryButton: IButton;
+	export let secondaryButton: IButton;
 </script>
 
 <div class={direction === 'vertical' && 'vertical'}>
 	<Button variant="primary">
 		<a
-			href={primary.link}
-			rel={primary.external && 'noopener noreferrer'}
-			target={primary.external && '_blank'}
+			href={primaryButton.link}
+			rel={primaryButton.external && 'noopener noreferrer'}
+			target={primaryButton.external && '_blank'}
 		>
-			{primary.text}
+			{primaryButton.text}
 		</a>
 	</Button>
 	<Button variant="secondary">
 		<a
-			href={secondary.link}
-			rel={secondary.external && 'noopener noreferrer'}
-			target={secondary.external && '_blank'}
+			href={secondaryButton.link}
+			rel={secondaryButton.external && 'noopener noreferrer'}
+			target={secondaryButton.external && '_blank'}
 		>
-			{secondary.text}
+			{secondaryButton.text}
 		</a>
 	</Button>
 </div>
