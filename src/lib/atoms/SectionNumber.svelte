@@ -15,6 +15,12 @@
 		border: 2px solid $white;
 		width: fit-content;
 		height: fit-content;
-		padding: 8px 14px;
+		padding: 8px 16px;
+	}
+
+	p {
+		font-size: 24px;
+		font-weight: 700;
+		color: $white;
 	}
 </style>
