@@ -3,16 +3,22 @@
 
 	export let article: IArticle;
 	const { title, category, cover, excerpt } = article;
+
+	const cleanCategory = (category: string): string => {
+		return category.replace(/[_-]/g, ' ');
+	};
 </script>
 
 <div>
 	<img src={cover.url} alt={''} />
-	<h5>{category}</h5>
+	<h5>{cleanCategory(category)}</h5>
 	<h3>{title}</h3>
-	<p>{excerpt}</p>
+	<p class="p5--regular">{excerpt}</p>
 </div>
 
-<style>
+<style lang="scss">
+	@import '../../styles/colors.scss';
+
 	div {
 		display: flex;
 		flex-direction: column;
@@ -23,6 +29,10 @@
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
 		margin-bottom: 1.5rem;
+	}
+
+	h5 {
+		color: $blue-100;
 	}
 
 	h3 {

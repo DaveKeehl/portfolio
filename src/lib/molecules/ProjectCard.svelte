@@ -25,7 +25,7 @@
 				<p>{technology}</p>
 			{/each}
 		</div>
-		<p class="project__content__description">{description}</p>
+		<p class="project__content__description p5--regular">{description}</p>
 		<ButtonsGroup
 			primaryButton={getPrimaryButton(buttons)}
 			secondaryButton={getSecondaryButton(buttons)}

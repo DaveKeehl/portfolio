@@ -1,22 +1,18 @@
 <script lang="ts">
-	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
-	import Container from '$lib/templates/Container.svelte';
+	import Section from '$lib/templates/Section.svelte';
 	import type { IContact } from '$utils/lib';
 
 	export let contact: IContact;
 	const { title, text, email } = contact;
 </script>
 
-<section class="section" id="contact">
-	<Container class="section__layout">
-		<SectionNumber number={4} />
-		<div>
-			<h2 class="margin-bottom-small">{title}</h2>
-			<p>{text}</p>
-			<a href={`mailto:${email}`}>{email}</a>
-		</div>
-	</Container>
-</section>
+<Section number={4} id="contact">
+	<div>
+		<h2 class="margin-bottom-small">{title}</h2>
+		<p class="p4--regular">{text}</p>
+		<a class="p4--semibold" href={`mailto:${email}`}>{email}</a>
+	</div>
+</Section>
 
 <style>
 	a {
