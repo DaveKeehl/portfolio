@@ -1,8 +1,6 @@
 <script lang="ts">
 	// import '@fontsource/poppins.css';
 	// import '@fontsource/inter.css';
-
-	import Container from '$lib/templates/Container.svelte';
 	import Header from '$lib/organisms/Header.svelte';
 	import Footer from '$lib/organisms/Footer.svelte';
 	import type { IHeader, IFooter } from '$utils/lib';
@@ -11,15 +9,9 @@
 	export let footer: IFooter;
 </script>
 
-<Container>
-	<Header {header} />
-</Container>
-
+<Header {header} />
 <slot />
-
-<Container>
-	<Footer {footer} />
-</Container>
+<Footer {footer} />
 
 <style lang="scss" global>
 	@import '../../styles/colors.scss';
