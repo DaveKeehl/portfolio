@@ -30,9 +30,12 @@
 			<h2>{title}</h2>
 		</a>
 		<div class="technologies">
-			{#each technologies as technology}
-				<p>{mapping[technology]}</p>
-			{/each}
+			<p>></p>
+			<div>
+				{#each technologies as technology}
+					<p>{mapping[technology]}</p>
+				{/each}
+			</div>
 		</div>
 		<p class="description p5--regular">{description}</p>
 		<ButtonsGroup
@@ -139,17 +142,31 @@
 	}
 
 	.technologies {
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		/* gap: 0.875rem; */
+		/* gap: 1rem; */
 		background: $black-a60;
 		backdrop-filter: blur(40px);
 		width: fit-content;
 		padding: 0.375rem 1rem;
 		border-radius: 0.25rem;
 		margin-bottom: 2.25rem;
-		font-size: 0.875rem;
 
-		p:not(:last-child) {
-			margin-right: 1rem;
+		div {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		p {
+			font-family: 'Fira Code', monospace;
+			font-size: 0.875rem;
+			letter-spacing: 2%;
+			line-height: 1.5rem;
+
+			&:not(:last-child) {
+				margin-right: 1rem;
+			}
 		}
 	}
 
