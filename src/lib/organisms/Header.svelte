@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Container from '$lib/templates/Container.svelte';
 	import type { IHeader } from '$utils/lib';
 
 	export let header: IHeader;
@@ -6,29 +7,33 @@
 </script>
 
 <header>
-	<a href="https://davideciulla.com">
-		<img src={logo.url} alt="logo" />
-	</a>
-
-	<nav>
-		{#each navigation as item}
-			<a href={`localhost:3000/#${item}`} class="p5--regular">{item.toUpperCase()}</a>
-		{/each}
-	</nav>
-
-	<div>
-		{#each socials as social}
-			<a href={social.url} target="_blank" rel="noopener noreferrer">
-				<img src={social.image.url} alt={social.name} />
+	<Container>
+		<div class="wrapper">
+			<a href="https://davideciulla.com">
+				<img src={logo.url} alt="logo" />
 			</a>
-		{/each}
-	</div>
+
+			<nav>
+				{#each navigation as item}
+					<a href={`localhost:3000/#${item}`} class="p5--regular">{item.toUpperCase()}</a>
+				{/each}
+			</nav>
+
+			<div>
+				{#each socials as social}
+					<a href={social.url} target="_blank" rel="noopener noreferrer">
+						<img src={social.image.url} alt={social.name} />
+					</a>
+				{/each}
+			</div>
+		</div>
+	</Container>
 </header>
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
 
-	header {
+	.wrapper {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
