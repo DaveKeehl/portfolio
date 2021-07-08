@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Head from '$lib/templates/Head.svelte';
+	import SEO from '$lib/templates/SEO.svelte';
 	import Hero from '$lib/organisms/Hero.svelte';
 	import About from '$lib/organisms/About.svelte';
 	import Projects from '$lib/organisms/Projects.svelte';
@@ -11,8 +11,7 @@
 	const { hero, about, projectSectionTitle, projects, blogSectionTitle, articles, contact } = data;
 </script>
 
-<Head title="Davide Ciulla" />
-
+<SEO title="Davide Ciulla | UI/UX Designer & Front-End Web Developer" />
 <Hero {hero} />
 <About {about} />
 <Projects title={projectSectionTitle} {projects} />
