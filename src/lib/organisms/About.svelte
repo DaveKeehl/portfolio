@@ -17,6 +17,7 @@
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
+	@import '../../styles/breakpoints.scss';
 
 	p {
 		white-space: break-spaces;
@@ -24,6 +25,12 @@
 	}
 
 	div {
-		width: 70%;
+		@media (min-width: $sizes-md) {
+			width: 80%;
+		}
+
+		@media (min-width: $sizes-lg) {
+			width: 70%;
+		}
 	}
 </style>
