@@ -14,8 +14,8 @@
 		<div>
 			<h2 class="margin-bottom-large">{title}</h2>
 			<div class="projects">
-				{#each projects as project}
-					<ProjectCard {project} />
+				{#each projects as project, i}
+					<ProjectCard {project} reversed={i % 2 !== 0} />
 				{/each}
 			</div>
 		</div>
