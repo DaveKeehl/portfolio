@@ -110,6 +110,14 @@
 			height: 100%;
 			aspect-ratio: 16 / 10;
 			object-fit: cover;
+
+			@media (min-width: $sizes-md) {
+				aspect-ratio: 16 / 12;
+			}
+
+			@media (min-width: $sizes-lg) {
+				aspect-ratio: 16 / 10;
+			}
 		}
 	}
 
