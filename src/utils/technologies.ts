@@ -1,16 +1,18 @@
 export const mapping = {
-	GraphCMS: 'GraphCMS',
-	GitHub: 'GitHub',
-	React: 'React',
-	Svelte: 'Svelte',
-	styled_components: 'styled-components',
-	HTML: 'HTML',
+	ChartJS: 'Chart.js',
 	CSS: 'CSS',
+	Figma_API: 'Figma API',
+	GitHub: 'GitHub',
+	GraphCMS: 'GraphCMS',
+	HTML: 'HTML',
 	JavaScript: 'JavaScript',
-	TypeScript: 'TypeScript',
+	Jest: 'Jest',
+	NextJS: 'Next.js',
+	NodeJS: 'NodeJS',
+	React: 'React',
 	Sass: 'Sass',
 	Storybook: 'Storybook',
-	Jest: 'Jest',
-	Figma_API: 'Figma API',
-	NodeJS: 'NodeJS'
+	styled_components: 'styled-components',
+	Svelte: 'Svelte',
+	TypeScript: 'TypeScript'
 };
