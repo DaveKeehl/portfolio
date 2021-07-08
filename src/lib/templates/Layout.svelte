@@ -24,43 +24,5 @@
 <style lang="scss" global>
 	@import '../../styles/colors.scss';
 	@import '../../styles/typography.scss';
-
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	body {
-		background: $blue-300;
-		color: $white;
-		font-family: 'Inter';
-	}
-
-	section.section {
-		margin-bottom: 16rem;
-
-		h2 {
-			&.margin-bottom-large {
-				margin-bottom: 6rem;
-			}
-
-			&.margin-bottom-small {
-				margin-bottom: 2.5rem;
-			}
-		}
-	}
-
-	a {
-		color: $turquoise-200;
-		text-decoration: none;
-	}
-
-	button {
-		border: 0;
-
-		&:hover {
-			cursor: pointer;
-		}
-	}
+	@import '../../styles/global.scss';
 </style>
