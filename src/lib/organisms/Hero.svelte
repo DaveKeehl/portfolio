@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dev } from '$app/env';
 	import Button from '$lib/atoms/Button.svelte';
 	import Container from '$lib/templates/Container.svelte';
 
@@ -13,7 +14,9 @@
 		<p class="greetings p2--medium">{greetings}</p>
 		<h1 class="h1--bold">{valueProposition}</h1>
 		<p class="introduction p3--regular">{introduction}</p>
-		<Button href={button.link} external={button.external}>{button.text}</Button>
+		<Button href={dev ? 'localhost:3000#projects' : button.link} external={button.external}>
+			{button.text}
+		</Button>
 	</Container>
 	<img src="/saly.png" alt="" />
 </section>
