@@ -1,0 +1,24 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<g filter="url(#filter0_d)">
+<path d="M135.099 145.217C194.271 145.217 233.197 180.305 251.875 250.481C270.405 320.732 309.328 355.858 368.646 355.858C427.968 355.858 466.894 320.732 485.423 250.481C467.393 343.942 428.468 390.672 368.646 390.672C308.829 390.672 269.905 343.941 251.875 250.481C222.75 157.021 183.824 110.291 135.099 110.291C86.3734 110.291 47.4479 157.021 18.3223 250.481C37.0009 180.305 75.9264 145.216 135.099 145.217Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="10.179" stroke-miterlimit="3" stroke-linecap="square"/>
+<path d="M18.3223 251.09L485.423 246.824L485.423 255.357L18.3223 251.09Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="12.1905"/>
+<path d="M485.425 230.89C496.234 230.89 505.006 239.667 505.006 250.48C505.006 261.294 496.234 270.07 485.425 270.07C474.616 270.07 465.844 261.294 465.844 250.48C465.844 239.667 474.616 230.89 485.425 230.89Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="12.1905"/>
+<path d="M18.3239 240.686C23.7283 240.686 28.1145 245.074 28.1145 250.481C28.1145 255.888 23.7283 260.276 18.3239 260.276C12.9195 260.276 8.53333 255.888 8.53333 250.481C8.53333 245.074 12.9195 240.686 18.3239 240.686Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="12.1905"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" x="-128.684" y="-23.4834" width="769.369" height="556.811" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="64.3422"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0588235 0 0 0 0 0.886275 0 0 0 0 0.917647 0 0 0 0.28 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<clipPath id="clip0">
+<path d="M0 112C0 50.1441 50.1441 0 112 0H400C461.856 0 512 50.1441 512 112V400C512 461.856 461.856 512 400 512H112C50.1441 512 0 461.856 0 400V112Z" fill="white"/>
+</clipPath>
+</defs>
+</svg>
