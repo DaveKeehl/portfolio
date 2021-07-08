@@ -12,7 +12,12 @@
 body {
 	background: $blue-300;
 	color: $white;
+	font-size: 16px;
 	font-family: 'Inter';
+	// font-feature-settings: 'kern';
+	text-rendering: optimizeLegibility;
+	// -webkit-font-smoothing: antialiased;
+	scroll-behavior: smooth;
 	cursor: url(/cursor.svg), default;
 }
 
