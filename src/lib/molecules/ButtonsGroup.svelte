@@ -22,9 +22,18 @@
 	@import '../../styles/breakpoints.scss';
 
 	div {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: 1fr;
 		gap: 1rem;
+
+		@media (min-width: $sizes-xs) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@media (min-width: $sizes-sm) {
+			display: flex;
+			flex-direction: row;
+		}
 
 		&.horizontal {
 			flex-direction: column;
