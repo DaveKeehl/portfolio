@@ -47,13 +47,18 @@
 	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
 
-	h2 {
-		transform: translateY(-50%);
-		color: $white;
+	a {
+		display: block;
+		width: fit-content;
 
-		@media (min-width: $sizes-md) {
-			transform: none;
-			margin-bottom: 1rem;
+		h2 {
+			transform: translateY(-50%);
+			color: $white;
+
+			@media (min-width: $sizes-md) {
+				transform: none;
+				margin-bottom: 1rem;
+			}
 		}
 	}
 
