@@ -1,6 +1,4 @@
 <script lang="ts">
-	// import '@fontsource/poppins.css';
-	// import '@fontsource/inter.css';
 	import Header from '$lib/organisms/Header.svelte';
 	import Footer from '$lib/organisms/Footer.svelte';
 	import type { IHeader, IFooter } from '$utils/lib';
