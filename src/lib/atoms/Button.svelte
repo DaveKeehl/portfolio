@@ -4,8 +4,8 @@
 	type State = 'default' | 'success' | 'warning' | 'error';
 	type Direction = 'normal' | 'reverse';
 
-	export let href: string;
-	export let external: boolean;
+	export let href: string = '';
+	export let external: boolean = false;
 
 	export let variant: Variant = 'primary';
 	export let size: Size = 'small';
@@ -19,6 +19,7 @@
 	{href}
 	rel={external && 'noopener noreferrer'}
 	class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
+	target={external ? '_blank' : ''}
 	{disabled}
 >
 	<slot />
@@ -26,14 +27,20 @@
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
+	@import '../../styles/breakpoints.scss';
 
 	.button {
 		display: flex;
+		justify-content: center;
 		flex-direction: row;
 		padding: 14px 24px;
 		border-radius: 8px;
-		width: fit-content;
+		width: 100%;
 		transition: color 0.2s, background 0.2s;
+
+		@media (min-width: $sizes-sm) {
+			width: fit-content;
+		}
 	}
 
 	.button__direction {
