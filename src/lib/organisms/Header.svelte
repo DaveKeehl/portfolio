@@ -23,7 +23,7 @@
 				{/each}
 			</nav>
 
-			<div>
+			<div class="socials">
 				{#each socials as social}
 					<a href={social.url} target="_blank" rel="noopener noreferrer">
 						<img src={social.image.url} alt={social.name} />
@@ -53,8 +53,16 @@
 		}
 	}
 
-	div {
+	.socials {
 		display: flex;
 		gap: 1rem;
+
+		a {
+			transition: opacity 0.2s;
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
 	}
 </style>
