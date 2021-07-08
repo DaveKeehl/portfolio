@@ -18,5 +18,6 @@
 	a {
 		display: block;
 		margin-top: 1.5rem;
+		width: fit-content;
 	}
 </style>
