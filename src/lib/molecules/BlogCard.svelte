@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { dev } from '$app/env';
+	import { getPrefix } from '$utils/functions';
 	import type { IArticle } from '$utils/lib';
 
 	export let article: IArticle;
@@ -7,14 +9,16 @@
 	const cleanCategory = (category: string): string => {
 		return category.replace(/[_-]/g, ' ');
 	};
+
+	const prefix: string = getPrefix(dev);
 </script>
 
 <div>
-	<a href={`https://davideciulla.com/blog/${slug}`} class="cover">
+	<a href={`${prefix}/blog/${slug}`} class="cover">
 		<img src={cover.url} alt={''} />
 	</a>
 	<h5>{cleanCategory(category)}</h5>
-	<a href={`https://davideciulla.com/blog/${slug}`}>
+	<a href={`${prefix}/blog/${slug}`}>
 		<h3>{title}</h3>
 	</a>
 	<p class="p5--regular">{excerpt}</p>
@@ -41,6 +45,8 @@
 			width: 100%;
 			aspect-ratio: 16 / 9;
 			object-fit: cover;
+			transform: scale(1);
+			will-change: transform;
 			transition: transform 0.2s;
 		}
 	}

@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { dev } from '$app/env';
+	import { getPrefix } from '$utils/functions';
+	import { mapping } from '$utils/technologies';
 	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
 	import type { IButton, IProject } from '$utils/lib';
-	import { mapping } from '$utils/technologies';
 
 	export let project: IProject;
 	const { title, slug, description, image, technologies, buttons } = project;
@@ -15,6 +17,8 @@
 	const getSecondaryButton = (buttons: IButton[]): IButton => {
 		return buttons.find((button) => button.type === 'Secondary');
 	};
+
+	const prefix: string = getPrefix(dev);
 </script>
 
 <div class={`project ${reversed ? 'reversed' : ''}`}>
@@ -22,7 +26,7 @@
 		<img src={image.url} alt={''} />
 	</div>
 	<div class="content">
-		<a href={`https://davideciulla.com/projects/${slug}`}>
+		<a href={`${prefix}/projects/${slug}`}>
 			<h2>{title}</h2>
 		</a>
 		<div class="technologies">
@@ -35,7 +39,7 @@
 			primaryButton={getPrimaryButton(buttons)}
 			secondaryButton={{
 				text: getSecondaryButton(buttons).text,
-				link: `https://davideciulla.com/blog/${slug}`,
+				link: `${prefix}/blog/${slug}`,
 				external: false
 			}}
 			direction="horizontal"

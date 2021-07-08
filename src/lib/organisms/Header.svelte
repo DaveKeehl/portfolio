@@ -1,21 +1,25 @@
 <script lang="ts">
+	import { dev } from '$app/env';
+	import { getPrefix, website } from '$utils/functions';
 	import Container from '$lib/templates/Container.svelte';
 	import type { IHeader } from '$utils/lib';
 
 	export let header: IHeader;
 	const { logo, navigation, socials } = header;
+
+	const prefix: string = getPrefix(dev);
 </script>
 
 <header>
 	<Container>
 		<div class="wrapper">
-			<a href="https://davideciulla.com">
+			<a href={website}>
 				<img src={logo.url} alt="logo" />
 			</a>
 
 			<nav>
 				{#each navigation as item}
-					<a href={`localhost:3000/#${item}`} class="p5--regular">{item.toUpperCase()}</a>
+					<a href={`${prefix}#${item}`} class="p5--regular">{item.toUpperCase()}</a>
 				{/each}
 			</nav>
 

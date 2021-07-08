@@ -2,11 +2,14 @@
 	import { dev } from '$app/env';
 	import Button from '$lib/atoms/Button.svelte';
 	import Container from '$lib/templates/Container.svelte';
+	import { getPrefix } from '$utils/functions';
 
 	import type { IHero } from '$utils/lib';
 
 	export let hero: IHero;
 	const { greetings, valueProposition, introduction, button } = hero;
+
+	const prefix: string = getPrefix(dev);
 </script>
 
 <section>
@@ -14,7 +17,7 @@
 		<p class="greetings p2--medium">{greetings}</p>
 		<h1 class="h1--bold">{valueProposition}</h1>
 		<p class="introduction p3--regular">{introduction}</p>
-		<Button href={dev ? 'localhost:3000#projects' : button.link} external={button.external}>
+		<Button href={`${prefix}#projects`} external={button.external}>
 			{button.text}
 		</Button>
 	</Container>
