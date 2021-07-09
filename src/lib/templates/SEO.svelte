@@ -1,7 +1,6 @@
 <script lang="ts">
-	export let title: string = 'Davide Ciulla - UI/UX Designer and Front-End Web Developer';
-	export let description: string =
-		'Hi, my name is Davide Ciulla and I am a UI/UX Designer and Front-End Web Developer based in Ticino (Switzerland)';
+	export let title: string;
+	export let description: string;
 </script>
 
 <svelte:head>

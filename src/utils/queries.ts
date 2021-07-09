@@ -1,6 +1,8 @@
 export const getHomepage = `
 	query getHomepage {
 		homepage (where: {id: "ckpix9y6029nn0a49iuokathu"}) {
+			pageTitle
+			pageDescription
 			header {
 				logo {
           alt

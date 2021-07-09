@@ -8,10 +8,20 @@
 	import type { IHomepage } from '$utils/lib';
 
 	export let data: IHomepage;
-	const { hero, about, projectSectionTitle, projects, blogSectionTitle, articles, contact } = data;
+	const {
+		pageTitle,
+		pageDescription,
+		hero,
+		about,
+		projectSectionTitle,
+		projects,
+		blogSectionTitle,
+		articles,
+		contact
+	} = data;
 </script>
 
-<SEO title="Davide Ciulla | UI/UX Designer & Front-End Web Developer" />
+<SEO title={pageTitle} description={pageDescription} />
 <Hero {hero} />
 <About {about} />
 <Projects title={projectSectionTitle} {projects} />

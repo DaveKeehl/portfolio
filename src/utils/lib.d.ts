@@ -81,6 +81,8 @@ export interface IFooter {
 }
 
 export interface IHomepage {
+	pageTitle: string;
+	pageDescription: string;
 	header: IHeader;
 	hero: IHero;
 	about: IAbout;
