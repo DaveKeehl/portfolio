@@ -3,6 +3,7 @@ export const getHomepage = `
 		homepage (where: {id: "ckpix9y6029nn0a49iuokathu"}) {
 			header {
 				logo {
+          alt
 					url
 				}
 				navigation
@@ -10,6 +11,7 @@ export const getHomepage = `
 					name
 					url
 					image {
+            alt
 						url
 					}
 				}
@@ -25,6 +27,10 @@ export const getHomepage = `
 					type
 					size
 					iconPosition
+				}
+				image {
+					url
+					alt
 				}
 			}
 			about {
@@ -47,6 +53,7 @@ export const getHomepage = `
 				description
 				image {
 					url
+          alt
 				}
 				technologies
 				buttons {
@@ -66,6 +73,7 @@ export const getHomepage = `
 				slug
 				category
 				cover {
+          alt
 					url
 				}
 				excerpt

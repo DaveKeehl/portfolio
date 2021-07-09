@@ -10,12 +10,14 @@ export interface ISocial {
 	url: string;
 	image: {
 		url: string;
+		alt: string;
 	};
 }
 
 export interface IHeader {
 	logo: {
 		url: string;
+		alt: string;
 	};
 	navigation: string[];
 	socials: ISocial[];
@@ -26,6 +28,10 @@ export interface IHero {
 	valueProposition: string;
 	introduction: string;
 	button: IButton;
+	image: {
+		url: string;
+		alt: string;
+	};
 }
 
 export interface IAbout {
@@ -41,6 +47,7 @@ export interface IProject {
 	description: string;
 	image: {
 		url: string;
+		alt: string;
 	};
 	technologies: string[];
 	buttons: IButton[];
@@ -53,6 +60,7 @@ export interface IArticle {
 	category: string;
 	cover: {
 		url: string;
+		alt: string;
 	};
 	excerpt: string;
 	content: {
