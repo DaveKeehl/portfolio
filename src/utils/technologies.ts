@@ -14,5 +14,6 @@ export const mapping = {
 	Storybook: 'Storybook',
 	styled_components: 'styled-components',
 	Svelte: 'Svelte',
+	SvelteKit: 'SvelteKit',
 	TypeScript: 'TypeScript'
 };

@@ -48,7 +48,7 @@ export const getHomepage = `
 				}
 			}
 			projectSectionTitle
-			projects {
+			projects (where: {featured : true}) {
 				id
 				title
 				slug
