@@ -17,7 +17,7 @@
 	<a href={`${prefix}/blog/${slug}`} class="cover">
 		<img src={cover.url} alt={cover.alt} />
 	</a>
-	<h5 class="h5--SEMIBOLD">{cleanCategory(category)}</h5>
+	<h5 class="h5--SEMIBOLD">#{cleanCategory(category)}</h5>
 	<a href={`${prefix}/blog/${slug}`}>
 		<h3>{title}</h3>
 	</a>
