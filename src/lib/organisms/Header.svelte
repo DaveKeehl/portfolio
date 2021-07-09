@@ -13,7 +13,7 @@
 <header>
 	<Container>
 		<div class="wrapper">
-			<a href={website}>
+			<a href={prefix}>
 				<img src={logo.url} alt={logo.alt} />
 			</a>
 
