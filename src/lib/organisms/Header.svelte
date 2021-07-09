@@ -36,6 +36,7 @@
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
+	@import '../../styles/breakpoints.scss';
 
 	.wrapper {
 		display: flex;
@@ -63,6 +64,15 @@
 			&:hover {
 				opacity: 0.8;
 			}
+		}
+	}
+
+	nav,
+	.socials {
+		display: none;
+
+		@media (min-width: $sizes-sm) {
+			display: flex;
 		}
 	}
 </style>
