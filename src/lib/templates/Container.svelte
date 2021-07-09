@@ -24,7 +24,7 @@
 	.section__layout {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 32px;
+		gap: 2rem;
 
 		@media (min-width: $sizes-sm) {
 			grid-template-columns: min-content 1fr;
