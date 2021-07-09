@@ -1,3 +1,5 @@
+@import './breakpoints.scss';
+
 * {
 	margin: 0;
 	padding: 0;
@@ -22,15 +24,27 @@ body {
 }
 
 section.section {
-	margin-bottom: 16rem;
+	margin-bottom: 10rem;
+
+	@media (min-width: $sizes-sm) {
+		margin-bottom: 16rem;
+	}
 
 	h2 {
 		&.margin-bottom-large {
-			margin-bottom: 6rem;
+			margin-bottom: 5rem;
+
+			@media (min-width: $sizes-sm) {
+				margin-bottom: 6rem;
+			}
 		}
 
 		&.margin-bottom-small {
-			margin-bottom: 2.5rem;
+			margin-bottom: 2rem;
+
+			@media (min-width: $sizes-sm) {
+				margin-bottom: 2.5rem;
+			}
 		}
 	}
 }
