@@ -56,6 +56,11 @@ footer a {
 a {
 	color: $turquoise-200;
 	text-decoration: none;
+	transition: color 0.2s;
+
+	&:hover {
+		color: $turquoise-100;
+	}
 }
 
 button {
