@@ -17,6 +17,8 @@
 	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
 
+	$white-space: 5rem;
+
 	footer {
 		padding-bottom: 80px;
 
@@ -24,8 +26,6 @@
 			position: relative;
 			margin-top: 204px;
 			padding-top: 40px;
-
-			$white-space: 5rem;
 
 			@media (min-width: $sizes-sm) {
 				padding-left: $white-space;
