@@ -61,6 +61,8 @@
 		bottom: 0;
 		right: 15%;
 		display: none;
+		width: 560px;
+		aspect-ratio: 1 / 1;
 
 		@media (min-width: $sizes-lg) {
 			display: block;
