@@ -34,7 +34,7 @@
 		position: relative;
 
 		@media (min-width: $sizes-sm) {
-			padding-top: 12rem;
+			padding-top: 20rem;
 			padding-bottom: 18rem;
 		}
 	}
