@@ -23,7 +23,7 @@
 
 <div class={`project ${reversed ? 'reversed' : ''}`}>
 	<div class="image">
-		<img src={image.url} alt={''} />
+		<img src={image.url} alt={image.alt} />
 	</div>
 	<div class="content">
 		<a href={`${prefix}/projects/${slug}`}>

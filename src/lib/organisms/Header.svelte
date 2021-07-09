@@ -14,7 +14,7 @@
 	<Container>
 		<div class="wrapper">
 			<a href={website}>
-				<img src={logo.url} alt="logo" />
+				<img src={logo.url} alt={logo.alt} />
 			</a>
 
 			<nav>
@@ -26,7 +26,7 @@
 			<div class="socials">
 				{#each socials as social}
 					<a href={social.url} target="_blank" rel="noopener noreferrer">
-						<img src={social.image.url} alt={social.name} />
+						<img src={social.image.url} alt={social.image.alt} />
 					</a>
 				{/each}
 			</div>
