@@ -7,7 +7,7 @@
 	import type { IHero } from '$utils/lib';
 
 	export let hero: IHero;
-	const { greetings, valueProposition, introduction, button } = hero;
+	const { greetings, valueProposition, introduction, button, image } = hero;
 
 	const prefix: string = getPrefix(dev);
 </script>
@@ -21,7 +21,7 @@
 			{button.text}
 		</Button>
 	</Container>
-	<img src="/saly.png" alt="" />
+	<img src={image.url} alt={image.alt} />
 </section>
 
 <style lang="scss">
