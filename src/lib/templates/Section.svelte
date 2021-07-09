@@ -9,7 +9,7 @@
 	export let isAbout: boolean = false;
 </script>
 
-<section class={`section ${className} ${isAbout && 'section__about'}`} {id}>
+<section class={`section ${className} ${isAbout ? 'section__about' : ''}`} {id}>
 	<Container class="section__layout">
 		<SectionNumber {number} />
 		<div>
