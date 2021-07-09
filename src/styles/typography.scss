@@ -180,8 +180,7 @@ a {
 			text-transform: uppercase;
 		}
 
-		&--SEMIBOLD,
-		&--SEMIBOLD * {
+		&--SEMIBOLD {
 			font-size: $p5-font-size;
 			font-weight: 600;
 		}
