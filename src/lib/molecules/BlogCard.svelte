@@ -56,7 +56,7 @@
 	}
 
 	h5 {
-		color: $blue-100;
+		color: $blue-200;
 	}
 
 	h3 {
