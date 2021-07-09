@@ -180,6 +180,11 @@ a {
 			text-transform: uppercase;
 		}
 
+		&--medium {
+			font-size: $p5-font-size;
+			font-weight: 500;
+		}
+
 		&--SEMIBOLD {
 			font-size: $p5-font-size;
 			font-weight: 600;
