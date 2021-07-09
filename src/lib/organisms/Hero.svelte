@@ -29,9 +29,14 @@
 	@import '../../styles/breakpoints.scss';
 
 	section {
-		padding-top: 12rem;
-		padding-bottom: 18rem;
+		padding-top: 10rem;
+		padding-bottom: 14rem;
 		position: relative;
+
+		@media (min-width: $sizes-sm) {
+			padding-top: 12rem;
+			padding-bottom: 18rem;
+		}
 	}
 
 	h1 {
