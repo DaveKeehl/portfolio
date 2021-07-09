@@ -10,16 +10,16 @@
 	@import '../../styles/colors.scss';
 
 	div {
-		display: flex;
-		border-radius: 8px;
+		display: grid;
+		place-items: center;
+		border-radius: 0.5rem;
 		border: 2px solid $white;
-		width: fit-content;
-		height: fit-content;
-		padding: 8px 16px;
+		width: 45px;
+		height: 45px;
 	}
 
 	p {
-		font-size: 24px;
+		font-size: 1.5rem;
 		font-weight: 700;
 		color: $white;
 	}
