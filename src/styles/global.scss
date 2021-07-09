@@ -6,8 +6,8 @@
 	box-sizing: border-box;
 
 	&::selection {
-		background: $turquoise-200;
-		color: $blue-300;
+		background: transparentize($turquoise-200, 0.6);
+		// color: $blue-300;
 	}
 }
 
