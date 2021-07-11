@@ -38,7 +38,7 @@
 			}}
 			secondaryButton={{
 				text: 'Go to case study',
-				link: `${prefix}/blog/${slug}`,
+				link: `${prefix}/project/${slug}`,
 				external: false
 			}}
 			direction="horizontal"
