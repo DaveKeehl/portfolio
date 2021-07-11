@@ -3,11 +3,12 @@
 	import type { IFooter } from '$utils/lib';
 
 	export let footer: IFooter;
+	export let homepage: boolean = false;
 </script>
 
 <footer>
 	<Container>
-		<div>
+		<div class:homepage>
 			{@html footer.text.html}
 		</div>
 	</Container>
@@ -27,10 +28,6 @@
 			margin-top: 204px;
 			padding-top: 40px;
 
-			@media (min-width: $sizes-sm) {
-				padding-left: $white-space;
-			}
-
 			&::before {
 				content: '';
 				position: absolute;
@@ -39,9 +36,17 @@
 				width: 50px;
 				height: 1px;
 				background: $blue-200;
+			}
 
+			&.homepage {
 				@media (min-width: $sizes-sm) {
-					left: $white-space;
+					padding-left: $white-space;
+				}
+
+				&::before {
+					@media (min-width: $sizes-sm) {
+						left: $white-space;
+					}
 				}
 			}
 		}

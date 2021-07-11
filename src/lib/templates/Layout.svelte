@@ -5,11 +5,12 @@
 
 	export let header: IHeader;
 	export let footer: IFooter;
+	export let homepage: boolean = false;
 </script>
 
 <Header {header} />
 <slot />
-<Footer {footer} />
+<Footer {footer} {homepage} />
 
 <style lang="scss" global>
 	@import '../../styles/colors.scss';
