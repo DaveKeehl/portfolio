@@ -13,7 +13,7 @@
 
 <Container>
 	<article>
-		<ArticleTop {title} {category} image={cover} />
+		<ArticleTop {title} {category} {cover} />
 
 		<section>
 			{@html content.html}
