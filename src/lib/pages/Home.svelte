@@ -5,7 +5,7 @@
 	import Projects from '$lib/organisms/Projects.svelte';
 	import Articles from '$lib/organisms/Articles.svelte';
 	import Contact from '$lib/organisms/Contact.svelte';
-	import type { IHomepage, IProject } from '$utils/lib';
+	import type { IArticle, IHomepage, IProject } from '$utils/lib';
 
 	export let homepage: IHomepage;
 	const {
@@ -15,15 +15,15 @@
 		about,
 		projectSectionTitle,
 		blogSectionTitle,
-		articles,
 		contact
 	} = homepage;
 	export let projects: IProject[];
+	export let articles: IArticle[];
 </script>
 
 <SEO title={pageTitle} description={pageDescription} />
 <Hero {hero} />
 <About {about} />
 <Projects title={projectSectionTitle} {projects} />
-<Articles title={blogSectionTitle} {articles} />
+<Articles title={blogSectionTitle} {articles} {projects} />
 <Contact {contact} />
