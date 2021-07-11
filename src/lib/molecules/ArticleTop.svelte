@@ -1,0 +1,64 @@
+<script lang="ts">
+	import Container from '$lib/templates/Container.svelte';
+	import type { IImage } from '$utils/lib';
+
+	export let title: string;
+	export let category: string;
+	export let image: IImage;
+</script>
+
+<h1 class="h1--bold title">{title}</h1>
+<h3 class="h3--semibold">{category}</h3>
+
+<div class="image">
+	<Container>
+		<img src={image.url} alt={image.alt} />
+	</Container>
+</div>
+
+<style lang="scss">
+	@import '../../styles/colors.scss';
+	@import '../../styles/breakpoints.scss';
+
+	.title {
+		margin-top: 14rem;
+		text-align: center;
+	}
+
+	h3 {
+		color: $blue-100;
+		margin: 1rem 0 4.5rem 0;
+	}
+
+	.image {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		width: 100vw;
+		margin-bottom: 7.5rem;
+
+		@media (min-width: $sizes-md) {
+			margin-bottom: 10rem;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			height: 50rem;
+			width: 100%;
+			background: linear-gradient(to bottom, $black, transparentize($black, 1));
+			z-index: -1;
+		}
+
+		img {
+			width: clamp(60%, 500px, 100%);
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+			aspect-ratio: 16 / 10;
+			box-shadow: 0 0 7rem 0.625rem $turquoise-100-a10;
+		}
+	}
+</style>
