@@ -5,20 +5,20 @@
 	import Projects from '$lib/organisms/Projects.svelte';
 	import Articles from '$lib/organisms/Articles.svelte';
 	import Contact from '$lib/organisms/Contact.svelte';
-	import type { IHomepage } from '$utils/lib';
+	import type { IHomepage, IProject } from '$utils/lib';
 
-	export let data: IHomepage;
+	export let homepage: IHomepage;
 	const {
 		pageTitle,
 		pageDescription,
 		hero,
 		about,
 		projectSectionTitle,
-		projects,
 		blogSectionTitle,
 		articles,
 		contact
-	} = data;
+	} = homepage;
+	export let projects: IProject[];
 </script>
 
 <SEO title={pageTitle} description={pageDescription} />
