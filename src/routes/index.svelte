@@ -13,11 +13,12 @@
 		});
 
 		if (res.ok) {
-			const { homepage, projects, header, footer } = (await res.json()).data;
+			const { homepage, projects, articles, header, footer } = (await res.json()).data;
 			return {
 				props: {
 					homepage,
 					projects,
+					articles,
 					header,
 					footer
 				}
@@ -35,14 +36,15 @@
 	import Home from '$lib/pages/Home.svelte';
 	import Layout from '$lib/templates/Layout.svelte';
 
-	import type { IHeader, IHomepage, IFooter, IProject } from '$utils/lib';
+	import type { IHeader, IHomepage, IFooter, IProject, IArticle } from '$utils/lib';
 
 	export let homepage: IHomepage;
 	export let projects: IProject[];
+	export let articles: IArticle[];
 	export let header: IHeader;
 	export let footer: IFooter;
 </script>
 
 <Layout {header} {footer} homepage={true}>
-	<Home {homepage} {projects} />
+	<Home {homepage} {projects} {articles} />
 </Layout>
