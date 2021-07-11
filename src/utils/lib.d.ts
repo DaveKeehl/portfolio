@@ -5,6 +5,11 @@ export interface IButton {
 	type?: string;
 }
 
+export interface IImage {
+	url: string;
+	alt: string;
+}
+
 export interface ISocial {
 	name: string;
 	url: string;
