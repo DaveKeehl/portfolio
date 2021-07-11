@@ -2,24 +2,24 @@ export const url = 'https://api-eu-central-1.graphcms.com/v2/ckpi8048a1k5f01w3gr
 
 export const getHomepage = `
 	query getHomepage {
-		homepage (where: {id: "ckpix9y6029nn0a49iuokathu"}) {
-			pageTitle
-			pageDescription
-			header {
-				logo {
-          alt
+		header(where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
+			logo {
+				alt
+				url
+			}
+			navigation
+			socials {
+				name
+				url
+				image {
+					alt
 					url
-				}
-				navigation
-				socials {
-					name
-					url
-					image {
-            alt
-						url
-					}
 				}
 			}
+		}
+		homepage(where: {id: "ckpix9y6029nn0a49iuokathu"}) {
+			pageTitle
+			pageDescription
 			hero {
 				greetings
 				valueProposition
@@ -50,20 +50,6 @@ export const getHomepage = `
 				}
 			}
 			projectSectionTitle
-			projects (where: {featured : true}) {
-				id
-				title
-				slug
-        liveUrl
-        repositoryUrl
-        visitButtonText
-				description
-				image {
-					url
-          alt
-				}
-				technologies
-			}
 			blogSectionTitle
 			articles {
 				id
@@ -71,7 +57,7 @@ export const getHomepage = `
 				slug
 				category
 				cover {
-          alt
+					alt
 					url
 				}
 				excerpt
@@ -84,18 +70,32 @@ export const getHomepage = `
 				text
 				email
 			}
-			footer {
-				text {
-					html
-				}
+		}
+		projects(where: {featured: true}) {
+			id
+			title
+			slug
+			liveUrl
+			repositoryUrl
+			visitButtonText
+			description
+			image {
+				url
+				alt
+			}
+			technologies
+		}
+		footer(where: {id: "ckpixr1wo2aff0b04e3kvml4s"}) {
+			text {
+				html
 			}
 		}
 	}
 `;
 
 export const getProjectById = `
-	query getProjectBySlug ($slug: String!) {
-		header (where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
+	query getProjectBySlug($slug: String!) {
+		header(where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
 			logo {
 				alt
 				url
@@ -110,13 +110,10 @@ export const getProjectById = `
 				}
 			}
 		}
-		project (where: {slug: $slug}) {
+		project(where: {slug: $slug}) {
 			id
 			title
 			description
-			liveUrl
-			repositoryUrl
-			visitButtonText
 			image {
 				alt
 				url
@@ -134,7 +131,7 @@ export const getProjectById = `
 				}
 			}
 		}
-		footer (where: {id: "ckpixr1wo2aff0b04e3kvml4s"}) {
+		footer(where: {id: "ckpixr1wo2aff0b04e3kvml4s"}) {
 			text {
 				html
 			}

@@ -103,13 +103,10 @@ export interface IFooter {
 export interface IHomepage {
 	pageTitle: string;
 	pageDescription: string;
-	header: IHeader;
 	hero: IHero;
 	about: IAbout;
 	projectSectionTitle: string;
-	projects: IProject[];
 	blogSectionTitle: string;
 	articles: IArticle[];
 	contact: IContact;
-	footer: IFooter;
 }
