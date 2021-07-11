@@ -48,6 +48,7 @@
 						<p class="p1--bold">{role.join(', ')}</p>
 					</div>
 				</div>
+
 				<div class="introduction">
 					<h2 class="h2--bold">In a nutshell.</h2>
 					<p class="p3--regular">{description}</p>
