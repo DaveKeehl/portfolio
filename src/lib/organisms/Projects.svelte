@@ -6,6 +6,8 @@
 
 	export let title: string;
 	export let projects: IProject[];
+
+	const featuredProjects = projects.filter((project) => project.featured);
 </script>
 
 <section class="section" id="projects">
@@ -14,7 +16,7 @@
 		<div>
 			<h2 class="margin-bottom-large">{title}</h2>
 			<div class="projects">
-				{#each projects as project, i}
+				{#each featuredProjects as project, i}
 					<ProjectCard {project} reversed={i % 2 !== 0} />
 				{/each}
 			</div>
