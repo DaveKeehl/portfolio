@@ -13,17 +13,11 @@ export interface IImage {
 export interface ISocial {
 	name: string;
 	url: string;
-	image: {
-		url: string;
-		alt: string;
-	};
+	image: IImage;
 }
 
 export interface IHeader {
-	logo: {
-		url: string;
-		alt: string;
-	};
+	logo: IImage;
 	navigation: string[];
 	socials: ISocial[];
 }
@@ -33,10 +27,7 @@ export interface IHero {
 	valueProposition: string;
 	introduction: string;
 	button: IButton;
-	image: {
-		url: string;
-		alt: string;
-	};
+	image: IImage;
 }
 
 export interface IAbout {
@@ -53,17 +44,16 @@ export interface IProjectSection {
 }
 
 export interface IProject {
+	createdAt?: string;
 	title: string;
 	slug: string;
 	featured?: boolean;
 	liveUrl: string;
 	repositoryUrl: string;
 	visitButtonText: string;
+	excerpt: string;
 	description: string;
-	image: {
-		url: string;
-		alt: string;
-	};
+	cover: IImage;
 	technologies: string[];
 	industry?: string;
 	year?: number;
@@ -74,14 +64,12 @@ export interface IProject {
 }
 
 export interface IArticle {
+	createdAt?: string;
 	id: string;
 	title: string;
 	slug: string;
 	category: string;
-	cover: {
-		url: string;
-		alt: string;
-	};
+	cover: IImage;
 	excerpt: string;
 	content: {
 		html: string;
@@ -107,6 +95,5 @@ export interface IHomepage {
 	about: IAbout;
 	projectSectionTitle: string;
 	blogSectionTitle: string;
-	articles: IArticle[];
 	contact: IContact;
 }
