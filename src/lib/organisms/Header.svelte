@@ -10,9 +10,6 @@
 
 	const prefix: string = getPrefix(dev);
 
-	let offset = 0;
-	let tolerance = 0;
-
 	let visible: boolean = true;
 	let y = 0;
 	let lastY = 0;
@@ -21,19 +18,21 @@
 		const dy = lastY - y;
 		lastY = y;
 
-		if (y < offset) return false;
-		if (Math.abs(dy) <= tolerance) return visible;
+		const OFFSET = 0;
+		const TOLERANCE = 0;
+
+		if (y < OFFSET) return false;
+		if (Math.abs(dy) <= TOLERANCE) return visible;
 		if (dy < 0) return false;
 		return true;
 	};
 
 	$: visible = checkVisibility(y);
-	$: console.log(visible);
 </script>
 
 <svelte:window bind:scrollY={y} />
 
-<header class={!visible ? 'hidden' : ''}>
+<header class:hidden={!visible}>
 	<Container>
 		{#if visible}
 			<div class="wrapper" transition:fly={{ y: -20, duration: 500 }}>
