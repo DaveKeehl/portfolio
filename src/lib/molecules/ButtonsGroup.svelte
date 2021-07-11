@@ -46,9 +46,5 @@
 		&.vertical {
 			flex-direction: column;
 		}
-
-		/* @media (sizes-xs) {
-			flex-direction: row;
-		} */
 	}
 </style>
