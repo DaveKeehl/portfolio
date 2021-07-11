@@ -115,9 +115,11 @@ export const getProjectBySlug = `
 			}
 		}
 		project(where: {slug: $slug}) {
-			id
 			title
 			description
+			visitButtonText
+			liveUrl
+			repositoryUrl
 			cover {
 				alt
 				url
