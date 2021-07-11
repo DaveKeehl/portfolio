@@ -11,7 +11,7 @@
 		liveUrl,
 		repositoryUrl,
 		visitButtonText,
-		image,
+		cover,
 		industry,
 		year,
 		productType,
@@ -26,7 +26,7 @@
 
 <Container>
 	<article>
-		<ArticleTop {title} category="Case Study" {image} />
+		<ArticleTop {title} category="Case Study" {cover} />
 
 		<div class="wrapper">
 			<section>
