@@ -4,11 +4,12 @@
 
 	export let footer: IFooter;
 	export let homepage: boolean = false;
+	export let article: boolean = false;
 </script>
 
 <footer>
 	<Container>
-		<div class:homepage>
+		<div class:homepage class:article>
 			{@html footer.text.html}
 		</div>
 	</Container>
@@ -18,7 +19,7 @@
 	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
 
-	$white-space: 5rem;
+	$homepage-white-space: 5rem;
 
 	footer {
 		padding-bottom: 80px;
@@ -40,13 +41,23 @@
 
 			&.homepage {
 				@media (min-width: $sizes-sm) {
-					padding-left: $white-space;
+					padding-left: $homepage-white-space;
 				}
 
 				&::before {
 					@media (min-width: $sizes-sm) {
-						left: $white-space;
+						left: $homepage-white-space;
 					}
+				}
+			}
+
+			&.article {
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+
+				@media (min-width: $sizes-md) {
+					width: 70%;
 				}
 			}
 		}
