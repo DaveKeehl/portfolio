@@ -6,7 +6,7 @@
 	import type { IProject } from '$utils/lib';
 
 	export let project: IProject;
-	const { title, slug, liveUrl, visitButtonText, description, image, technologies } = project;
+	const { title, slug, liveUrl, visitButtonText, excerpt, cover, technologies } = project;
 
 	export let reversed: boolean = false;
 
@@ -15,7 +15,7 @@
 
 <div class:reversed class="project">
 	<div class="image">
-		<img src={image.url} alt={image.alt} />
+		<img src={cover.url} alt={cover.alt} />
 	</div>
 	<div class="content">
 		<a href={`${prefix}/projects/${slug}`}>
@@ -29,7 +29,7 @@
 				{/each}
 			</div>
 		</div>
-		<p class="description p5--regular">{description}</p>
+		<p class="excerpt p5--regular">{excerpt}</p>
 		<ButtonsGroup
 			primaryButton={{
 				text: visitButtonText,
@@ -166,7 +166,7 @@
 		}
 	}
 
-	.description {
+	.excerpt {
 		margin-bottom: 2.25rem;
 	}
 
