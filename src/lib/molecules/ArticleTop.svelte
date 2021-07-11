@@ -4,7 +4,7 @@
 
 	export let title: string;
 	export let category: string;
-	export let image: IImage;
+	export let cover: IImage;
 </script>
 
 <h1 class="h1--bold title">{title}</h1>
@@ -12,7 +12,7 @@
 
 <div class="image">
 	<Container>
-		<img src={image.url} alt={image.alt} />
+		<img src={cover.url} alt={cover.alt} />
 	</Container>
 </div>
 
