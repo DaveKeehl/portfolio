@@ -1,5 +1,5 @@
 <script context="module">
-	import { url, getProjectById } from '$utils/queries';
+	import { url, getProjectBySlug } from '$utils/queries';
 
 	export async function load({ page, fetch }) {
 		const res = await fetch(url, {
@@ -8,7 +8,7 @@
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				query: getProjectById,
+				query: getProjectBySlug,
 				variables: {
 					slug: page.params.slug
 				}
