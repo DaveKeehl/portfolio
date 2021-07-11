@@ -6,11 +6,12 @@
 	export let header: IHeader;
 	export let footer: IFooter;
 	export let homepage: boolean = false;
+	export let article: boolean = false;
 </script>
 
 <Header {header} />
 <slot />
-<Footer {footer} {homepage} />
+<Footer {footer} {homepage} {article} />
 
 <style lang="scss" global>
 	@import '../../styles/colors.scss';
