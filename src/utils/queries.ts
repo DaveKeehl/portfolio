@@ -51,35 +51,39 @@ export const getHomepage = `
 			}
 			projectSectionTitle
 			blogSectionTitle
-			articles {
-				id
-				title
-				slug
-				category
-				cover {
-					alt
-					url
-				}
-				excerpt
-				content {
-					html
-				}
-			}
 			contact {
 				title
 				text
 				email
 			}
 		}
-		projects(where: {featured: true}) {
+		articles {
+			createdAt
 			id
 			title
 			slug
+			category
+			cover {
+				alt
+				url
+			}
+			excerpt
+			content {
+				html
+			}
+		}
+		projects {
+			createdAt
+			id
+			title
+			slug
+			featured
 			liveUrl
 			repositoryUrl
 			visitButtonText
+			excerpt
 			description
-			image {
+			cover {
 				url
 				alt
 			}
@@ -93,7 +97,7 @@ export const getHomepage = `
 	}
 `;
 
-export const getProjectById = `
+export const getProjectBySlug = `
 	query getProjectBySlug($slug: String!) {
 		header(where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
 			logo {
@@ -114,7 +118,7 @@ export const getProjectById = `
 			id
 			title
 			description
-			image {
+			cover {
 				alt
 				url
 			}
@@ -129,6 +133,43 @@ export const getProjectById = `
 				content {
 					html
 				}
+			}
+		}
+		footer(where: {id: "ckpixr1wo2aff0b04e3kvml4s"}) {
+			text {
+				html
+			}
+		}
+	}
+`;
+
+export const getArticleBySlug = `
+	query getArticleBySlug($slug: String!) {
+		header(where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
+			logo {
+				alt
+				url
+			}
+			navigation
+			socials {
+				name
+				url
+				image {
+					alt
+					url
+				}
+			}
+		}
+		article(where: {slug: $slug}) {
+			title
+			category
+			cover {
+				url
+				alt
+			}
+			excerpt
+			content {
+				html
 			}
 		}
 		footer(where: {id: "ckpixr1wo2aff0b04e3kvml4s"}) {
