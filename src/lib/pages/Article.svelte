@@ -36,5 +36,9 @@
 		@media (min-width: $sizes-md) {
 			width: 70%;
 		}
+
+		& > :global(h2) {
+			margin-bottom: 2rem;
+		}
 	}
 </style>
