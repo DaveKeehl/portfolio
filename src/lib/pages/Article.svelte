@@ -31,14 +31,41 @@
 	}
 
 	section {
+		display: flex;
+		flex-direction: column;
 		width: 100%;
 
 		@media (min-width: $sizes-md) {
 			width: 70%;
 		}
 
+		& > :global(p) {
+			margin-bottom: 1rem;
+		}
+
 		& > :global(h2) {
 			margin-bottom: 2rem;
+		}
+
+		& > :global(h2:not(:first-child)) {
+			margin-top: 5rem;
+		}
+
+		& > :global(img) {
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+			margin-top: 5rem;
+			align-self: center;
+
+			@media (min-width: $sizes-md) {
+				width: initial;
+			}
+		}
+
+		& > :global(.caption) {
+			text-align: center;
+			margin-top: 1rem;
 		}
 	}
 </style>
