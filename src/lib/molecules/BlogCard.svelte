@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { dev } from '$app/env';
 	import { getPrefix } from '$utils/functions';
-	import type { IArticle } from '$utils/lib';
+	import type { IImage } from '$utils/lib';
 
-	export let article: IArticle;
-	const { title, slug, category, cover, excerpt } = article;
+	export let title: string;
+	export let slug: string;
+	export let resourceType: string;
+	export let excerpt: string;
+	export let cover: IImage;
+	export let category: string;
 
 	const cleanCategory = (category: string): string => {
 		return category.replace(/[_-]/g, ' ');
@@ -14,7 +18,7 @@
 </script>
 
 <div>
-	<a href={`${prefix}/blog/${slug}`} class="cover">
+	<a href={`${prefix}/${resourceType}/${slug}`} class="cover">
 		<img src={cover.url} alt={cover.alt} />
 	</a>
 	<h5 class="h5--SEMIBOLD">#{cleanCategory(category)}</h5>
