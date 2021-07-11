@@ -40,17 +40,32 @@ export interface IAbout {
 	button: IButton;
 }
 
+export interface IProjectSection {
+	title: string;
+	content: {
+		html: string;
+	};
+}
+
 export interface IProject {
-	id: string;
 	title: string;
 	slug: string;
+	featured?: boolean;
+	liveUrl: string;
+	repositoryUrl: string;
+	visitButtonText: string;
 	description: string;
 	image: {
 		url: string;
 		alt: string;
 	};
 	technologies: string[];
-	buttons: IButton[];
+	industry?: string;
+	year?: number;
+	productType?: string;
+	role?: string[];
+	components?: number;
+	projectSections?: IProjectSection[];
 }
 
 export interface IArticle {
