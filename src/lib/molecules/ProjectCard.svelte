@@ -3,25 +3,17 @@
 	import { getPrefix } from '$utils/functions';
 	import { mapping } from '$utils/technologies';
 	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
-	import type { IButton, IProject } from '$utils/lib';
+	import type { IProject } from '$utils/lib';
 
 	export let project: IProject;
-	const { title, slug, description, image, technologies, buttons } = project;
+	const { title, slug, liveUrl, visitButtonText, description, image, technologies } = project;
 
 	export let reversed: boolean = false;
-
-	const getPrimaryButton = (buttons: IButton[]): IButton => {
-		return buttons.find((button) => button.type === 'Primary');
-	};
-
-	const getSecondaryButton = (buttons: IButton[]): IButton => {
-		return buttons.find((button) => button.type === 'Secondary');
-	};
 
 	const prefix: string = getPrefix(dev);
 </script>
 
-<div class={`project ${reversed ? 'reversed' : ''}`}>
+<div class:reversed class="project">
 	<div class="image">
 		<img src={image.url} alt={image.alt} />
 	</div>
@@ -39,9 +31,13 @@
 		</div>
 		<p class="description p5--regular">{description}</p>
 		<ButtonsGroup
-			primaryButton={getPrimaryButton(buttons)}
+			primaryButton={{
+				text: visitButtonText,
+				link: liveUrl,
+				external: true
+			}}
 			secondaryButton={{
-				text: getSecondaryButton(buttons).text,
+				text: 'Go to case study',
 				link: `${prefix}/blog/${slug}`,
 				external: false
 			}}
