@@ -74,17 +74,28 @@
 		left: 0;
 		width: 100%;
 		z-index: 10;
-		background: linear-gradient(
-			to bottom,
-			$blue-300,
-			transparentize($blue-300, 0.2) 30%,
-			transparentize($blue-300, 1)
-		);
 		opacity: 1;
 		transition: opacity 0.5s;
 
 		&.hidden {
 			opacity: 0;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 12rem;
+			background: linear-gradient(
+				to bottom,
+				$blue-300,
+				transparentize($blue-300, 0.2) 30%,
+				transparentize($blue-300, 1)
+			);
+			z-index: -1;
+			pointer-events: none;
 		}
 	}
 
@@ -92,7 +103,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 2rem 0 8rem;
+		padding-top: 2rem;
 		color: $white;
 	}
 
