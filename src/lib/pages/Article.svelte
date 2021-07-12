@@ -22,6 +22,7 @@
 </Container>
 
 <style lang="scss">
+	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
 
 	article {
@@ -43,11 +44,26 @@
 			margin-bottom: 1rem;
 		}
 
-		& > :global(h2) {
+		& > :global(h1) {
+			border-bottom: 1px solid $turquoise-100-a20;
+			padding-bottom: 1rem;
+		}
+
+		& > :global(h1),
+		:global(h2),
+		:global(h3),
+		:global(h4),
+		:global(h5),
+		:global(h6) {
 			margin-bottom: 2rem;
 		}
 
-		& > :global(h2:not(:first-child)) {
+		& > :global(h1:not(:first-child)),
+		:global(h2:not(:first-child)),
+		:global(h3:not(:first-child)),
+		:global(h4:not(:first-child)),
+		:global(h5:not(:first-child)),
+		:global(h6:not(:first-child)) {
 			margin-top: 5rem;
 		}
 
@@ -63,7 +79,7 @@
 			}
 		}
 
-		& > :global(.caption) {
+		& > :global(img ~ .caption) {
 			text-align: center;
 			margin-top: 1rem;
 		}
