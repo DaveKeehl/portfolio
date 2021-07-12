@@ -4,7 +4,7 @@
 	type State = 'default' | 'success' | 'warning' | 'error';
 	type Direction = 'normal' | 'reverse';
 
-	export let href: string = '';
+	export let href: string = undefined;
 	export let external: boolean = false;
 
 	export let variant: Variant = 'primary';
@@ -15,15 +15,26 @@
 	export let disabled: boolean = false;
 </script>
 
-<a
-	{href}
-	rel={external && 'noopener noreferrer'}
-	class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
-	target={external ? '_blank' : ''}
-	{disabled}
->
-	<slot />
-</a>
+{#if href === undefined}
+	<button
+		class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
+		{disabled}
+		on:click
+	>
+		<slot />
+	</button>
+{:else}
+	<a
+		{href}
+		rel={external && 'noopener noreferrer'}
+		class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
+		target={external ? '_blank' : ''}
+		{disabled}
+		on:click
+	>
+		<slot />
+	</a>
+{/if}
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
