@@ -17,7 +17,7 @@
 		productType,
 		role,
 		description,
-		components,
+		metrics,
 		projectSections
 	} = project;
 </script>
@@ -69,18 +69,12 @@
 			</section>
 
 			<div class="metrics">
-				<div>
-					<h1 class="h1--bold">{components}</h1>
-					<p class="p4--SEMIBOLD">COMPONENTS</p>
-				</div>
-				<div>
-					<h1 class="h1--bold">{components}</h1>
-					<p class="p4--SEMIBOLD">COMPONENTS</p>
-				</div>
-				<div>
-					<h1 class="h1--bold">{components}</h1>
-					<p class="p4--SEMIBOLD">COMPONENTS</p>
-				</div>
+				{#each metrics as metric}
+					<div>
+						<h1 class="h1--bold">{metric.value}</h1>
+						<p class="p4--SEMIBOLD">{metric.name}</p>
+					</div>
+				{/each}
 			</div>
 
 			<div class="content">
@@ -116,7 +110,7 @@
 		flex-direction: column;
 		gap: 2rem;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			display: grid;
 			grid-template-columns: repeat(12, 1fr);
 		}
@@ -138,7 +132,7 @@
 		gap: 2.5rem;
 		margin-bottom: 6rem;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			margin-bottom: 0;
 		}
 
@@ -164,15 +158,18 @@
 	.metrics {
 		$border-width: 1px;
 		display: flex;
-		flex-direction: column;
-		gap: 2rem;
+		flex-wrap: wrap;
+		gap: 3rem;
 		justify-content: space-around;
 		border-top: $border-width solid $turquoise-100-a10;
 		border-bottom: $border-width solid $turquoise-100-a10;
 		padding: 2rem 0;
 
-		@media (min-width: $sizes-sm) {
-			flex-direction: row;
+		@media (min-width: $mobile-xl) {
+			gap: 4rem;
+		}
+
+		@media (min-width: $laptop-l) {
 			gap: 0;
 		}
 
