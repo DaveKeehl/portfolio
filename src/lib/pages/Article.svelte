@@ -35,7 +35,7 @@
 		flex-direction: column;
 		width: 100%;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			width: 70%;
 		}
 
@@ -58,7 +58,7 @@
 			margin-top: 5rem;
 			align-self: center;
 
-			@media (min-width: $sizes-md) {
+			@media (min-width: $tablet-l) {
 				width: initial;
 			}
 		}

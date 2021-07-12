@@ -15,7 +15,7 @@
 		width: 90%;
 		margin: 0 auto;
 
-		@media (min-width: $sizes-xs) {
+		@media (min-width: $mobile-xl) {
 			width: 80%;
 			max-width: 1160px;
 		}
@@ -26,7 +26,7 @@
 		grid-template-columns: 1fr;
 		gap: 2rem;
 
-		@media (min-width: $sizes-sm) {
+		@media (min-width: $tablet) {
 			grid-template-columns: min-content 1fr;
 		}
 	}

@@ -38,7 +38,7 @@
 		width: 100%;
 		transition: color 0.2s, background 0.2s;
 
-		@media (min-width: $sizes-sm) {
+		@media (min-width: $tablet) {
 			width: fit-content;
 		}
 	}

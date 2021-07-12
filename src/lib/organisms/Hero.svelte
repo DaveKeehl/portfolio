@@ -33,7 +33,7 @@
 		padding-bottom: 14rem;
 		position: relative;
 
-		@media (min-width: $sizes-sm) {
+		@media (min-width: $tablet) {
 			padding-top: 20rem;
 			padding-bottom: 18rem;
 		}
@@ -52,11 +52,11 @@
 		margin-bottom: 3.5rem;
 		width: 100%;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			width: 80%;
 		}
 
-		@media (min-width: $sizes-lg) {
+		@media (min-width: $laptop-m) {
 			width: 60%;
 		}
 	}
@@ -69,7 +69,7 @@
 		width: 560px;
 		aspect-ratio: 1 / 1;
 
-		@media (min-width: $sizes-lg) {
+		@media (min-width: $laptop-m) {
 			display: block;
 		}
 	}

@@ -58,7 +58,7 @@
 			transform: translateY(-50%);
 			color: $white;
 
-			@media (min-width: $sizes-md) {
+			@media (min-width: $tablet-l) {
 				transform: none;
 				margin-bottom: 1rem;
 			}
@@ -68,7 +68,7 @@
 	.project {
 		display: block;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			display: grid;
 			grid-template-columns: repeat(6, 1fr);
 			grid-template-rows: 1fr;
@@ -82,7 +82,7 @@
 		grid-row: 1 / 3;
 		position: relative;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			grid-row: 1 / 2;
 		}
 
@@ -99,7 +99,7 @@
 			width: 100%;
 			height: 100%;
 
-			@media (min-width: $sizes-md) {
+			@media (min-width: $tablet-l) {
 				background: linear-gradient(
 					to right,
 					transparentize($blue-300, 1),
@@ -114,11 +114,11 @@
 			aspect-ratio: 16 / 10;
 			object-fit: cover;
 
-			@media (min-width: $sizes-md) {
+			@media (min-width: $tablet-l) {
 				aspect-ratio: 16 / 12;
 			}
 
-			@media (min-width: $sizes-lg) {
+			@media (min-width: $laptop-m) {
 				aspect-ratio: 16 / 10;
 			}
 		}
@@ -127,12 +127,12 @@
 	.content {
 		z-index: 5;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			grid-row: 1 / 2;
 			grid-column: 3 / -1;
 		}
 
-		@media (min-width: $sizes-lg) {
+		@media (min-width: $laptop-m) {
 			grid-column: 4 / -1;
 		}
 	}
@@ -175,7 +175,7 @@
 			grid-column: 3 / -1;
 
 			&::before {
-				@media (min-width: $sizes-md) {
+				@media (min-width: $tablet-l) {
 					background: linear-gradient(
 						to left,
 						transparentize($blue-300, 1),
@@ -188,7 +188,7 @@
 		.content {
 			grid-column: 1 / 5;
 
-			@media (min-width: $sizes-lg) {
+			@media (min-width: $laptop-m) {
 				grid-column: 1 / 4;
 			}
 		}

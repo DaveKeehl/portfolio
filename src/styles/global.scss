@@ -26,7 +26,7 @@ body {
 section.section {
 	margin-bottom: 10rem;
 
-	@media (min-width: $sizes-sm) {
+	@media (min-width: $tablet) {
 		margin-bottom: 16rem;
 	}
 
@@ -34,7 +34,7 @@ section.section {
 		&.margin-bottom-large {
 			margin-bottom: 5rem;
 
-			@media (min-width: $sizes-sm) {
+			@media (min-width: $tablet) {
 				margin-bottom: 6rem;
 			}
 		}
@@ -42,7 +42,7 @@ section.section {
 		&.margin-bottom-small {
 			margin-bottom: 2rem;
 
-			@media (min-width: $sizes-sm) {
+			@media (min-width: $tablet) {
 				margin-bottom: 2.5rem;
 			}
 		}

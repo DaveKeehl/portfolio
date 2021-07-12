@@ -26,11 +26,11 @@
 		grid-template-columns: 1fr;
 		gap: 1rem;
 
-		@media (min-width: $sizes-xs) {
+		@media (min-width: $mobile-xl) {
 			grid-template-columns: 1fr 1fr;
 		}
 
-		@media (min-width: $sizes-sm) {
+		@media (min-width: $tablet) {
 			display: flex;
 			flex-direction: row;
 		}
@@ -38,7 +38,7 @@
 		&.horizontal {
 			flex-direction: column;
 
-			@media (min-width: $sizes-sm) {
+			@media (min-width: $tablet) {
 				flex-direction: row;
 			}
 		}

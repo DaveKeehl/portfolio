@@ -25,11 +25,11 @@
 	}
 
 	div {
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			width: 80%;
 		}
 
-		@media (min-width: $sizes-lg) {
+		@media (min-width: $laptop-m) {
 			width: 70%;
 		}
 	}

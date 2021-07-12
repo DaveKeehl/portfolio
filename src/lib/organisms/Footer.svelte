@@ -40,12 +40,12 @@
 			}
 
 			&.homepage {
-				@media (min-width: $sizes-sm) {
+				@media (min-width: $tablet) {
 					padding-left: $homepage-white-space;
 				}
 
 				&::before {
-					@media (min-width: $sizes-sm) {
+					@media (min-width: $tablet) {
 						left: $homepage-white-space;
 					}
 				}
@@ -56,7 +56,7 @@
 				margin-left: auto;
 				margin-right: auto;
 
-				@media (min-width: $sizes-md) {
+				@media (min-width: $tablet-l) {
 					width: 70%;
 				}
 			}

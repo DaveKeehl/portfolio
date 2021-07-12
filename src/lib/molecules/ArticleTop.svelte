@@ -37,7 +37,7 @@
 		width: 100vw;
 		margin-bottom: 7.5rem;
 
-		@media (min-width: $sizes-md) {
+		@media (min-width: $tablet-l) {
 			margin-bottom: 10rem;
 		}
 

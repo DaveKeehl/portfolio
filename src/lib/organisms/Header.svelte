@@ -113,7 +113,7 @@
 	.socials {
 		display: none;
 
-		@media (min-width: $sizes-sm) {
+		@media (min-width: $tablet) {
 			display: flex;
 		}
 
@@ -129,7 +129,7 @@
 	.menu-toggle {
 		display: block;
 
-		@media (min-width: $sizes-sm) {
+		@media (min-width: $tablet) {
 			display: none;
 		}
 
