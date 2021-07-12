@@ -22,7 +22,7 @@
 		<img src={cover.url} alt={cover.alt} />
 	</a>
 	<h5 class="h5--SEMIBOLD">#{cleanCategory(category)}</h5>
-	<a href={`${prefix}/blog/${slug}`}>
+	<a href={`${prefix}/${resourceType}/${slug}`}>
 		<h3>{title}</h3>
 	</a>
 	<p class="p5--regular">{excerpt}</p>
