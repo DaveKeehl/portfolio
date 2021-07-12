@@ -2,8 +2,7 @@
 	import Button from '$lib/atoms/Button.svelte';
 	import BlogCard from '$lib/molecules/BlogCard.svelte';
 	import Section from '$lib/templates/Section.svelte';
-	import type { IArticle, IImage, IArticleCard, IProject } from '$utils/lib';
-	import { hasContext } from 'svelte';
+	import type { IArticle, IArticleCard, IProject } from '$utils/lib';
 
 	export let title: string;
 	export let articles: IArticle[];
@@ -100,14 +99,7 @@
 
 		<div class="articles">
 			{#each visibleCards as card}
-				<BlogCard
-					title={card.title}
-					slug={card.slug}
-					excerpt={card.excerpt}
-					cover={card.cover}
-					resourceType={card.resourceType}
-					category={card.category}
-				/>
+				<BlogCard {...card} />
 			{/each}
 		</div>
 		{#if cursor <= cards.length && remainingCards.some((card) => {

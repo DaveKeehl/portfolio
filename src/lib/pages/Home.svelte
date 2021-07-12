@@ -8,6 +8,9 @@
 	import type { IArticle, IHomepage, IProject } from '$utils/lib';
 
 	export let homepage: IHomepage;
+	export let projects: IProject[];
+	export let articles: IArticle[];
+
 	const {
 		pageTitle,
 		pageDescription,
@@ -17,8 +20,6 @@
 		blogSectionTitle,
 		contact
 	} = homepage;
-	export let projects: IProject[];
-	export let articles: IArticle[];
 </script>
 
 <SEO title={pageTitle} description={pageDescription} />

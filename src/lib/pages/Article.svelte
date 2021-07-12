@@ -14,7 +14,6 @@
 <Container>
 	<article>
 		<ArticleTop {title} {category} {cover} />
-
 		<section>
 			{@html content.html}
 		</section>

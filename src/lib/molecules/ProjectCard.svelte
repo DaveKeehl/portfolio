@@ -17,10 +17,12 @@
 	<div class="image">
 		<img src={cover.url} alt={cover.alt} />
 	</div>
+
 	<div class="content">
 		<a href={`${prefix}/projects/${slug}`}>
 			<h2>{title}</h2>
 		</a>
+
 		<div class="technologies">
 			<p>></p>
 			<div>
@@ -29,7 +31,9 @@
 				{/each}
 			</div>
 		</div>
+
 		<p class="excerpt p5--regular">{excerpt}</p>
+
 		<ButtonsGroup
 			primaryButton={{
 				text: visitButtonText,
