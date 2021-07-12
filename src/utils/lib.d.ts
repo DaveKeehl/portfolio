@@ -68,6 +68,16 @@ export interface IProject {
 	projectSections?: IProjectSection[];
 }
 
+interface IArticleCard {
+	createdAt: string;
+	title: string;
+	slug: string;
+	excerpt: string;
+	cover: IImage;
+	resourceType: 'project' | 'blog';
+	category: string;
+}
+
 export interface IArticle {
 	createdAt?: string;
 	id: string;
