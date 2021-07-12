@@ -129,7 +129,7 @@ export const getProjectBySlug = `
 			year
 			productType
 			role
-			components
+			metrics
 			projectSections {
 				title
 				content {

@@ -43,6 +43,11 @@ export interface IProjectSection {
 	};
 }
 
+export interface IMetric {
+	name: string;
+	value: number;
+}
+
 export interface IProject {
 	createdAt?: string;
 	title: string;
@@ -59,7 +64,7 @@ export interface IProject {
 	year?: number;
 	productType?: string;
 	role?: string[];
-	components?: number;
+	metrics?: IMetric[];
 	projectSections?: IProjectSection[];
 }
 
