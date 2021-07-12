@@ -16,11 +16,14 @@ $white: hsl(212, 31%, 95%);
 $black: hsl(212, 90%, 8%);
 $black-a60: transparentize($black, 0.4);
 
+// Error
 $error: hsl(352, 88%, 49%);
 $error-bg: hsla(352, 97%, 59%, 0.1);
 
+// Warning
 $warning: hsl(52, 88%, 49%);
 $warning-bg: hsla(52, 97%, 59%, 0.1);
 
+// Success
 $success: hsl(122, 88%, 49%);
 $success-bg: hsla(122, 97%, 59%, 0.1);
