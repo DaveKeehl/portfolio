@@ -80,12 +80,6 @@
 		}
 		selectedCategories = selectedCategories;
 	};
-
-	// $: console.log(cursor);
-	// $: console.log(cards);
-	// $: console.log(visibleCards);
-	// $: console.log(remainingCards);
-	// $: console.log([...selectedCategories]);
 </script>
 
 <Section number={3} id="blog">
@@ -146,8 +140,8 @@
 		margin-bottom: 4rem;
 
 		p {
-			background: $black-a60;
-			color: $white;
+			background: $turquoise-100-a10;
+			color: $turquoise-200;
 			padding: 8px 20px;
 			border-radius: 24px;
 			transition: color 0.2s, box-shadow 0.1s;
@@ -158,7 +152,7 @@
 
 			&:hover {
 				cursor: pointer;
-				box-shadow: 0 0 0 2px $turquoise-200-a20;
+				color: $turquoise-100;
 			}
 
 			&.selected {
