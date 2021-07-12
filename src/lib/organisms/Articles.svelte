@@ -1,38 +1,22 @@
 <script lang="ts">
+	import Button from '$lib/atoms/Button.svelte';
 	import BlogCard from '$lib/molecules/BlogCard.svelte';
 	import Section from '$lib/templates/Section.svelte';
-	import type { IArticle, IImage, IProject } from '$utils/lib';
+	import type { IArticle, IImage, IArticleCard, IProject } from '$utils/lib';
+	import { hasContext } from 'svelte';
 
 	export let title: string;
 	export let articles: IArticle[];
 	export let projects: IProject[];
 
-	/**
-	 *
-	 * @param d1: string
-	 * @param d2: string
-	 *
-	 * @returns number
-	 */
-	const compareDates = (e1: ICard, e2: ICard): number => {
+	const compareDates = (e1: IArticleCard, e2: IArticleCard): number => {
 		const d1 = new Date(e1.createdAt);
 		const d2 = new Date(e2.createdAt);
-
 		return d1 < d2 ? 1 : 0;
 	};
 
-	interface ICard {
-		createdAt: string;
-		title: string;
-		slug: string;
-		excerpt: string;
-		cover: IImage;
-		resourceType: 'project' | 'blog';
-		category: string;
-	}
-
-	const getCardsList = (articles: IArticle[], projects: IProject[]): ICard[] => {
-		let list: ICard[] = [];
+	const getCardsList = (articles: IArticle[], projects: IProject[]): IArticleCard[] => {
+		let list: IArticleCard[] = [];
 
 		articles.forEach((article) => {
 			list.push({
@@ -45,7 +29,6 @@
 				category: article.category
 			});
 		});
-
 		projects.forEach((project) => {
 			list.push({
 				createdAt: project.createdAt,
@@ -59,18 +42,70 @@
 		});
 
 		list.sort(compareDates);
-
 		return list;
 	};
 
-	const cards: ICard[] = getCardsList(articles, projects);
+	const CHUNK: number = 2;
+	let cursor: number = CHUNK;
+
+	const cards: IArticleCard[] = getCardsList(articles, projects);
+	$: categories = [...new Set(cards.map((card) => card.category))];
+	let selectedCategories: Set<string> = new Set();
+
+	$: visibleCards = cards
+		.filter((card) => {
+			if (selectedCategories.size === 0) {
+				return true;
+			}
+			return selectedCategories.has(card.category);
+		})
+		.slice(0, cursor);
+
+	$: remainingCards = cards
+		.filter((card) => {
+			if (selectedCategories.size === 0) {
+				return true;
+			}
+			return selectedCategories.has(card.category);
+		})
+		.slice(cursor);
+
+	const showMoreCards = () => (cursor += CHUNK);
+
+	const toggleCategory = (category: string) => {
+		if (selectedCategories.has(category)) {
+			selectedCategories.delete(category);
+		} else {
+			selectedCategories.add(category);
+		}
+		selectedCategories = selectedCategories;
+	};
+
+	// $: console.log(cursor);
+	// $: console.log(cards);
+	// $: console.log(visibleCards);
+	// $: console.log(remainingCards);
+	// $: console.log([...selectedCategories]);
 </script>
 
 <Section number={3} id="blog">
 	<div>
-		<h2 class="margin-bottom-large">{title}</h2>
+		<h2 class="margin-bottom-small">{title}</h2>
+
+		<div class="categories">
+			{#each categories as category}
+				<p
+					class:selected={selectedCategories.has(category)}
+					class="p5--semibold"
+					on:click={() => toggleCategory(category)}
+				>
+					{category}
+				</p>
+			{/each}
+		</div>
+
 		<div class="articles">
-			{#each cards as card}
+			{#each visibleCards as card}
 				<BlogCard
 					title={card.title}
 					slug={card.slug}
@@ -81,14 +116,61 @@
 				/>
 			{/each}
 		</div>
+		{#if cursor <= cards.length && remainingCards.some((card) => {
+				if (selectedCategories.size === 0) {
+					return true;
+				}
+				return selectedCategories.has(card.category);
+			})}
+			<div class="button-wrapper">
+				<Button on:click={showMoreCards}>Load more posts</Button>
+			</div>
+		{/if}
 	</div>
 </Section>
 
-<style>
+<style lang="scss">
+	@import '../../styles/colors.scss';
+
 	.articles {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 		column-gap: 1.25rem;
 		row-gap: 3.5rem;
+	}
+
+	.categories {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-bottom: 4rem;
+
+		p {
+			background: $black-a60;
+			color: $white;
+			padding: 8px 20px;
+			border-radius: 24px;
+			transition: color 0.2s, box-shadow 0.1s;
+
+			&::selection {
+				background: none;
+			}
+
+			&:hover {
+				cursor: pointer;
+				box-shadow: 0 0 0 2px $turquoise-200-a20;
+			}
+
+			&.selected {
+				color: $turquoise-200;
+				box-shadow: 0 0 0 2px $turquoise-200;
+			}
+		}
+	}
+
+	.button-wrapper {
+		display: grid;
+		place-items: center;
+		margin-top: 5rem;
 	}
 </style>
