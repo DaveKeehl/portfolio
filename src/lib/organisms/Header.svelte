@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import { dev } from '$app/env';
 	import { getPrefix } from '$utils/functions';
+	import Navbar from '$lib/molecules/Navbar.svelte';
 	import Container from '$lib/templates/Container.svelte';
+	import { open } from '$stores/menu';
 	import type { IHeader } from '$utils/lib';
 
 	export let header: IHeader;
@@ -28,6 +30,8 @@
 	};
 
 	$: visible = checkVisibility(y);
+
+	$: console.log($open);
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -40,11 +44,7 @@
 					<img src={logo.url} alt={logo.alt} />
 				</a>
 
-				<nav>
-					{#each navigation as item}
-						<a href={`${prefix}#${item}`} class="p5--medium">{item.toUpperCase()}</a>
-					{/each}
-				</nav>
+				<Navbar {navigation} mobile={false} />
 
 				<div class="socials">
 					{#each socials as social}
@@ -54,11 +54,16 @@
 					{/each}
 				</div>
 
-				<img
-					src="/menu.svg"
-					alt="Burger menu icon to toggle mobile menu visibility"
-					class="menu-toggle"
-				/>
+				<div class="mobile">
+					<img
+						src="/menu.svg"
+						alt="Burger menu icon to toggle mobile menu visibility"
+						class="menu-toggle"
+						on:click={() => open.update((prev) => !prev)}
+					/>
+					<Navbar {navigation} mobile={true} />
+					<div class="bg" class:visible={$open} on:click={() => open.set(false)} />
+				</div>
 			</div>
 		{/if}
 	</Container>
@@ -107,20 +112,11 @@
 		color: $white;
 	}
 
-	nav a {
-		color: $white;
-
-		&:not(:last-child) {
-			margin-right: 1.5rem;
-		}
-	}
-
 	.socials {
 		display: flex;
 		gap: 1rem;
 	}
 
-	nav,
 	.socials {
 		display: none;
 
@@ -137,15 +133,31 @@
 		}
 	}
 
-	.menu-toggle {
+	.mobile {
 		display: block;
 
 		@media (min-width: $tablet) {
 			display: none;
 		}
 
-		&:hover {
-			cursor: pointer;
+		img {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		.bg {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: tomato;
+			display: none;
+
+			&.visible {
+				display: block;
+			}
 		}
 	}
 </style>
