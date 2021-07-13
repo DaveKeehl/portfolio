@@ -11,7 +11,7 @@ interface IReturnAction {
 	destroy(): void;
 }
 
-export const revealOnScroll = (node: HTMLElement, options: IOptions = {}): IReturnAction => {
+export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction => {
 	const {
 		debug = false,
 		ref = '',
@@ -21,22 +21,28 @@ export const revealOnScroll = (node: HTMLElement, options: IOptions = {}): IRetu
 		delay = 0
 	} = options;
 
+	const DISABLE_DEBUG = true;
+
 	const y: number = node.getBoundingClientRect().y;
 	const offsetTop: number = node.offsetTop;
 
-	if (debug && ref !== '') {
-		console.log(`--- ${ref} ---`);
-		console.log(`y: ${y}`);
-		console.log(`offsetTop: ${offsetTop}`);
-		console.log(`window.innerHeight: ${window.innerHeight}`);
-		console.log(`window.scrollY: ${window.scrollY}`);
+	if (!DISABLE_DEBUG) {
+		if (debug && ref !== '') {
+			console.log(`--- ${ref} ---`);
+			console.log(`y: ${y}`);
+			console.log(`offsetTop: ${offsetTop}`);
+			console.log(`window.innerHeight: ${window.innerHeight}`);
+			console.log(`window.scrollY: ${window.scrollY}`);
+		}
 	}
 
 	// Element is above the initial fold => Use css animation to reveal
 	// (No need to scroll to reveal)
 	if (offsetTop < window.innerHeight) {
-		if (debug && ref !== '') {
-			console.log(`{${ref}} is above the initial fold`);
+		if (!DISABLE_DEBUG) {
+			if (debug && ref !== '') {
+				console.log(`{${ref}} is above the initial fold`);
+			}
 		}
 		node.classList.add('reveal');
 		node.style.animationDelay = `${delay / 1000}s`;
