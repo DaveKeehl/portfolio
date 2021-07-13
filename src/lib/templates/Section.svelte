@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
 	import Container from '$lib/templates/Container.svelte';
+	import { revealOnScroll } from '$actions/revealOnScroll';
 
 	let className: string = '';
 	export { className as class };

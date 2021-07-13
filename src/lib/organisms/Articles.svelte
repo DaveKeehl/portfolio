@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import Button from '$lib/atoms/Button.svelte';
 	import BlogCard from '$lib/molecules/BlogCard.svelte';
 	import Section from '$lib/templates/Section.svelte';
+	import { revealOnScroll } from '$actions/revealOnScroll';
 	import type { IArticle, IArticleCard, IProject } from '$utils/lib';
 
 	export let title: string;
@@ -82,7 +84,7 @@
 </script>
 
 <Section number={3} id="blog">
-	<div>
+	<div use:revealOnScroll={{ delay: 200 }}>
 		<h2 class="margin-bottom-small">{title}</h2>
 
 		<div class="categories">
@@ -108,7 +110,7 @@
 				}
 				return selectedCategories.has(card.category);
 			})}
-			<div class="button-wrapper">
+			<div class="button-wrapper" transition:fade={{ duration: 100 }}>
 				<Button on:click={showMoreCards}>Load more posts</Button>
 			</div>
 		{/if}

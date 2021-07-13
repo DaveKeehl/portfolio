@@ -9,6 +9,7 @@
 	export let excerpt: string;
 	export let cover: IImage;
 	export let category: string;
+	export let createdAt: string;
 
 	const cleanCategory = (category: string): string => {
 		return category.replace(/[_-]/g, ' ');

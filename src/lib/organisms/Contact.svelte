@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Section from '$lib/templates/Section.svelte';
+	import { revealOnScroll } from '$actions/revealOnScroll';
 	import type { IContact } from '$utils/lib';
 
 	export let contact: IContact;
@@ -7,7 +8,7 @@
 </script>
 
 <Section number={4} id="contact">
-	<div>
+	<div use:revealOnScroll={{ delay: 200 }}>
 		<h2 class="margin-bottom-small">{title}</h2>
 		<p class="p4--regular">{text}</p>
 		<a class="p4--semibold" href={`mailto:${email}`}>{email}</a>

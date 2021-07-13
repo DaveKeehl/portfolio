@@ -3,7 +3,7 @@
 	import Button from '$lib/atoms/Button.svelte';
 	import Container from '$lib/templates/Container.svelte';
 	import { getPrefix } from '$utils/functions';
-
+	import { revealOnScroll } from '$actions/revealOnScroll';
 	import type { IHero } from '$utils/lib';
 
 	export let hero: IHero;
@@ -14,14 +14,16 @@
 
 <section>
 	<Container>
-		<p class="greetings p2--medium">{greetings}</p>
-		<h1 class="h1--bold">{valueProposition}</h1>
-		<p class="introduction p3--regular">{introduction}</p>
-		<Button href={`${prefix}#projects`} external={button.external}>
-			{button.text}
-		</Button>
+		<p class="greetings p2--medium reveal">{greetings}</p>
+		<h1 class="h1--bold reveal">{valueProposition}</h1>
+		<p class="introduction p3--regular reveal">{introduction}</p>
+		<div class="button" use:revealOnScroll={{ debug: true, ref: 'hero-button' }}>
+			<Button href={`${prefix}#projects`} external={button.external}>
+				{button.text}
+			</Button>
+		</div>
 	</Container>
-	<img src={image.url} alt={image.alt} />
+	<img src={image.url} alt={image.alt} class="reveal" />
 </section>
 
 <style lang="scss">
@@ -39,18 +41,20 @@
 		}
 	}
 
+	.greetings {
+		color: $turquoise-200;
+	}
+
 	h1 {
 		margin-top: 0.875rem;
 		margin-bottom: 2.5rem;
-	}
-
-	.greetings {
-		color: $turquoise-200;
+		animation-delay: 0.2s;
 	}
 
 	.introduction {
 		margin-bottom: 3.5rem;
 		width: 100%;
+		animation-delay: 0.4s;
 
 		@media (min-width: $tablet-l) {
 			width: 80%;
@@ -61,6 +65,10 @@
 		}
 	}
 
+	.button {
+		animation-delay: 0.6s;
+	}
+
 	img {
 		position: absolute;
 		bottom: 0;
@@ -68,6 +76,7 @@
 		display: none;
 		width: 560px;
 		aspect-ratio: 1 / 1;
+		animation-delay: 0.8s;
 
 		@media (min-width: $laptop-m) {
 			display: block;
