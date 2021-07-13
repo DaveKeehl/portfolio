@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Container from '$lib/templates/Container.svelte';
-	import { revealOnScroll } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/revealOnScroll';
 	import type { IFooter } from '$utils/lib';
 
 	export let footer: IFooter;

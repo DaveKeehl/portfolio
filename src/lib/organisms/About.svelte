@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/atoms/Button.svelte';
 	import Section from '$lib/templates/Section.svelte';
-	import { revealOnScroll } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/revealOnScroll';
 	import type { IAbout } from '$utils/lib';
 
 	export let about: IAbout;
@@ -10,14 +10,11 @@
 
 <Section number={1} id="about" isAbout={true}>
 	<div>
-		<h2
-			class="h2--bold margin-bottom-small"
-			use:revealOnScroll={{ debug: true, ref: 'about', delay: 200 }}
-		>
+		<h2 class="h2--bold margin-bottom-small" use:reveal={{ debug: true, ref: 'about', delay: 200 }}>
 			{title}
 		</h2>
-		<p class="p4--regular" use:revealOnScroll={{ offset: -20 }}>{text}</p>
-		<div use:revealOnScroll={{ offset: -80 }}>
+		<p class="p4--regular" use:reveal={{ offset: -20 }}>{text}</p>
+		<div use:reveal={{ offset: -80 }}>
 			<Button href={button.link} external={button.external}>{button.text}</Button>
 		</div>
 	</div>

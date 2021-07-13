@@ -2,7 +2,7 @@
 	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
 	import ProjectCard from '$lib/molecules/ProjectCard.svelte';
 	import Container from '$lib/templates/Container.svelte';
-	import { revealOnScroll } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/revealOnScroll';
 	import type { IProject } from '$utils/lib';
 
 	export let title: string;
@@ -15,7 +15,7 @@
 	<Container class="section__layout">
 		<SectionNumber number={2} />
 		<div class="wrapper">
-			<h2 class="margin-bottom-large" use:revealOnScroll={{ delay: 200 }}>{title}</h2>
+			<h2 class="margin-bottom-large" use:reveal={{ delay: 200 }}>{title}</h2>
 			<div class="projects">
 				{#each featuredProjects as project, i}
 					<ProjectCard {project} reversed={i % 2 !== 0} />

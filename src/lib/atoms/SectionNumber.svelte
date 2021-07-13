@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { revealOnScroll } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/revealOnScroll';
 
 	export let number: number;
 </script>
 
-<div use:revealOnScroll>
+<div use:reveal>
 	<p>{number}</p>
 </div>
 

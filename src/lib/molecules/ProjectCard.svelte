@@ -3,7 +3,7 @@
 	import { getPrefix } from '$utils/functions';
 	import { mapping } from '$utils/technologies';
 	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
-	import { revealOnScroll } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/revealOnScroll';
 	import type { IProject } from '$utils/lib';
 
 	export let project: IProject;
@@ -14,7 +14,7 @@
 	const prefix: string = getPrefix(dev);
 </script>
 
-<div class:reversed class="project" use:revealOnScroll>
+<div class:reversed class="project" use:reveal>
 	<div class="image">
 		<img src={cover.url} alt={cover.alt} />
 	</div>
