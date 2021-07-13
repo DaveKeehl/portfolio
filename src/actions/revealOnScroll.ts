@@ -43,26 +43,14 @@ export const revealOnScroll = (node: HTMLElement, options: IOptions = {}): IRetu
 		return;
 	}
 
-	// Element has not been seen yet => Hide at page load
-	if (window.scrollY > offset) {
-		if (debug && ref !== '') {
-			console.log(`$${ref} has not been seen yet`);
-		}
-		node.classList.add('not-visible');
-		window.addEventListener('scroll', handleScroll);
+	node.classList.add('not-visible');
+	window.addEventListener('scroll', handleScroll);
 
-		return {
-			destroy() {
-				window.removeEventListener('scroll', handleScroll);
-			}
-		};
-	}
-	// Element has already been seen => Don't hide at page load
-	else {
-		if (debug && ref !== '') {
-			console.log(`$${ref} has already been seen`);
+	return {
+		destroy() {
+			window.removeEventListener('scroll', handleScroll);
 		}
-	}
+	};
 
 	function handleScroll() {
 		if (window.scrollY > y - threshold + offset) {
