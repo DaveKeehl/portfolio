@@ -3,8 +3,9 @@
 	import Button from '$lib/atoms/Button.svelte';
 	import Container from '$lib/templates/Container.svelte';
 	import { getPrefix } from '$utils/functions';
-	import { revealOnScroll } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/revealOnScroll';
 	import type { IHero } from '$utils/lib';
+	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
 
 	export let hero: IHero;
 	const { greetings, valueProposition, introduction, button, image } = hero;
@@ -17,10 +18,15 @@
 		<p class="greetings p2--medium reveal">{greetings}</p>
 		<h1 class="h1--bold reveal">{valueProposition}</h1>
 		<p class="introduction p3--regular reveal">{introduction}</p>
-		<div class="button" use:revealOnScroll={{ debug: true, ref: 'hero-button' }}>
-			<Button href={`${prefix}#projects`} external={button.external}>
+		<div class="button" use:reveal={{ debug: true, ref: 'hero-button' }}>
+			<ButtonsGroup
+				direction="horizontal"
+				primaryButton={{ text: button.text, link: `${prefix}#projects`, external: button.external }}
+				secondaryButton={{ text: 'Get in touch', link: `${prefix}#contact`, external: false }}
+			/>
+			<!-- <Button href={`${prefix}#projects`} external={button.external}>
 				{button.text}
-			</Button>
+			</Button> -->
 		</div>
 	</Container>
 	<img src={image.url} alt={image.alt} class="reveal" />
@@ -31,8 +37,8 @@
 	@import '../../styles/breakpoints.scss';
 
 	section {
-		padding-top: 10rem;
-		padding-bottom: 14rem;
+		padding-top: 14rem;
+		padding-bottom: 12rem;
 		position: relative;
 
 		@media (min-width: $tablet) {
