@@ -22,7 +22,11 @@
 			<ButtonsGroup
 				direction="horizontal"
 				primaryButton={{ text: button.text, link: `${prefix}#projects`, external: button.external }}
-				secondaryButton={{ text: 'Get in touch', link: `${prefix}#contact`, external: false }}
+				secondaryButton={{
+					text: 'Get in touch with me',
+					link: `${prefix}#contact`,
+					external: false
+				}}
 			/>
 			<!-- <Button href={`${prefix}#projects`} external={button.external}>
 				{button.text}
@@ -41,7 +45,7 @@
 		padding-bottom: 12rem;
 		position: relative;
 
-		@media (min-width: $tablet) {
+		@media (min-width: $tablet-l) {
 			padding-top: 20rem;
 			padding-bottom: 18rem;
 		}
