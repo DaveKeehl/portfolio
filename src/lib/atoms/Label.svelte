@@ -10,11 +10,13 @@
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
+
 	p {
 		background: $turquoise-100-a10;
 		color: $turquoise-200;
-		padding: 8px 20px;
-		border-radius: 24px;
+		padding: 0.5rem 1.25rem;
+		border-radius: 1.5rem;
+		box-shadow: 0 0 0 2px transparent;
 		transition: color 0.2s, box-shadow 0.1s;
 
 		&::selection {
@@ -29,6 +31,11 @@
 		&.selected {
 			color: $turquoise-200;
 			box-shadow: 0 0 0 2px $turquoise-200;
+
+			&:hover {
+				color: $turquoise-100;
+				box-shadow: 0 0 0 2px $turquoise-100;
+			}
 		}
 	}
 </style>
