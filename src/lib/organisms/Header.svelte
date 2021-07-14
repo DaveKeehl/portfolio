@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 	import { dev } from '$app/env';
 	import { getPrefix } from '$utils/functions';
 	import Navbar from '$lib/molecules/Navbar.svelte';
 	import Container from '$lib/templates/Container.svelte';
 	import { open } from '$stores/menu';
 	import type { IHeader } from '$utils/lib';
+	import Socials from '$lib/molecules/Socials.svelte';
 
 	export let header: IHeader;
 	const { logo, navigation, socials } = header;
@@ -36,6 +38,16 @@
 
 <svelte:window bind:scrollY={y} />
 
+<svelte:head>
+	{#if $open}
+		<style>
+			body {
+				overflow: hidden;
+			}
+		</style>
+	{/if}
+</svelte:head>
+
 <header class:hidden={!visible}>
 	<Container>
 		{#if visible}
@@ -46,23 +58,31 @@
 
 				<Navbar {navigation} mobile={false} />
 
-				<div class="socials">
-					{#each socials as social}
-						<a href={social.url} target="_blank" rel="noopener noreferrer">
-							<img src={social.image.url} alt={social.image.alt} />
-						</a>
-					{/each}
-				</div>
+				<Socials {socials} mobile={false} />
 
 				<div class="mobile">
 					<img
-						src="/menu.svg"
+						src="/icons/menu.svg"
 						alt="Burger menu icon to toggle mobile menu visibility"
 						class="menu-toggle"
-						on:click={() => open.update((prev) => !prev)}
+						on:click={() => open.set(true)}
 					/>
-					<Navbar {navigation} mobile={true} />
-					<div class="bg" class:visible={$open} on:click={() => open.set(false)} />
+					{#if $open}
+						<div class="menu" transition:fly={{ x: 200 }}>
+							<img
+								src="/icons/close.svg"
+								alt="Close mobile icon"
+								on:click={() => open.set(false)}
+							/>
+							<Navbar {navigation} mobile={true} />
+							<Socials {socials} mobile={true} />
+						</div>
+						<div
+							class="bg"
+							on:click={() => open.set(false)}
+							transition:fade={{ duration: 300, easing: cubicInOut }}
+						/>
+					{/if}
 				</div>
 			</div>
 		{/if}
@@ -112,31 +132,10 @@
 		color: $white;
 	}
 
-	.socials {
-		display: flex;
-		gap: 1rem;
-	}
-
-	.socials {
-		display: none;
-
-		@media (min-width: $tablet) {
-			display: flex;
-		}
-
-		a {
-			transition: opacity 0.2s;
-
-			&:hover {
-				opacity: 0.8;
-			}
-		}
-	}
-
 	.mobile {
 		display: block;
 
-		@media (min-width: $tablet) {
+		@media (min-width: $tablet-l) {
 			display: none;
 		}
 
@@ -146,17 +145,37 @@
 			}
 		}
 
+		.menu {
+			position: fixed;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 2rem;
+			top: 0;
+			right: 0;
+			z-index: 20;
+			background: $white;
+			height: 100vh;
+			width: 70vw;
+			padding: 2rem;
+
+			img {
+				width: 3rem;
+				transform: translate3d(-10px, -10px, 0);
+			}
+		}
+
 		.bg {
 			position: fixed;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: tomato;
-			display: none;
+			background: $black-a60;
 
-			&.visible {
-				display: block;
+			&:hover {
+				cursor: pointer;
 			}
 		}
 	}
