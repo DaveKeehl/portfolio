@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import Button from '$lib/atoms/Button.svelte';
+	import Label from '$lib/atoms/Label.svelte';
 	import BlogCard from '$lib/molecules/BlogCard.svelte';
 	import Section from '$lib/templates/Section.svelte';
 	import { reveal } from '$actions/revealOnScroll';
@@ -89,13 +90,7 @@
 
 		<div class="categories">
 			{#each categories as category}
-				<p
-					class:selected={selectedCategories.has(category)}
-					class="p5--semibold"
-					on:click={() => toggleCategory(category)}
-				>
-					{category}
-				</p>
+				<Label selected={selectedCategories.has(category)} {category} {toggleCategory} />
 			{/each}
 		</div>
 
@@ -132,28 +127,6 @@
 		flex-wrap: wrap;
 		gap: 0.75rem;
 		margin-bottom: 4rem;
-
-		p {
-			background: $turquoise-100-a10;
-			color: $turquoise-200;
-			padding: 8px 20px;
-			border-radius: 24px;
-			transition: color 0.2s, box-shadow 0.1s;
-
-			&::selection {
-				background: none;
-			}
-
-			&:hover {
-				cursor: pointer;
-				color: $turquoise-100;
-			}
-
-			&.selected {
-				color: $turquoise-200;
-				box-shadow: 0 0 0 2px $turquoise-200;
-			}
-		}
 	}
 
 	.button-wrapper {
