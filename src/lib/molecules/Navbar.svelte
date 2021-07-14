@@ -21,7 +21,7 @@
 	nav {
 		display: none;
 
-		@media (min-width: $tablet) {
+		@media (min-width: $tablet-l) {
 			display: flex;
 		}
 
@@ -39,7 +39,17 @@
 		}
 
 		&.mobile {
-			@media (min-width: $tablet) {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+
+			a {
+				font-size: 20px;
+				font-weight: 700;
+				color: $black;
+			}
+
+			@media (min-width: $tablet-l) {
 				display: none;
 			}
 		}
