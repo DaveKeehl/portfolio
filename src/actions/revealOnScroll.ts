@@ -19,7 +19,7 @@ const THRESHOLD = 700;
 const OFFSET = 0;
 const DELAY = 0;
 
-const printOptions = (options) => {
+const printOptions = (options: IOptions) => {
 	const { debug = DEBUG } = options;
 
 	if (!DISABLE_DEBUG && debug) {
@@ -49,6 +49,7 @@ const revealAboveInitialFold = (node: HTMLElement, options: IOptions) => {
 			console.log(`{${ref}} is above the initial fold`);
 		}
 	}
+
 	node.classList.add('reveal');
 	node.style.animationDelay = `${delay / 1000}s`;
 };
