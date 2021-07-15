@@ -1,7 +1,7 @@
 interface IOptions {
 	debug?: boolean;
 	ref?: string;
-	fadeDuration?: number;
+	duration?: number;
 	threshold?: number;
 	offset?: number;
 	delay?: number;
@@ -11,20 +11,24 @@ interface IReturnAction {
 	destroy(): void;
 }
 
-export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction => {
-	const {
-		debug = false,
-		ref = '',
-		fadeDuration = 800,
-		threshold = 700,
-		offset = 0,
-		delay = 0
-	} = options;
+const DISABLE_DEBUG = false;
+const DEBUG = false;
+const REF = '';
+const DURATION = 800;
+const THRESHOLD = 700;
+const OFFSET = 0;
+const DELAY = 0;
 
-	const DISABLE_DEBUG = true;
+const printOptions = (options) => {
+	const { debug = DEBUG } = options;
 
-	const y: number = node.getBoundingClientRect().y;
-	const offsetTop: number = node.offsetTop;
+	if (!DISABLE_DEBUG && debug) {
+		console.log(options);
+	}
+};
+
+const printValues = (options: IOptions, y: number, offsetTop: number) => {
+	const { debug = DEBUG, ref = REF } = options;
 
 	if (!DISABLE_DEBUG) {
 		if (debug && ref !== '') {
@@ -35,19 +39,28 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 			console.log(`window.scrollY: ${window.scrollY}`);
 		}
 	}
+};
 
-	// Element is above the initial fold => Use css animation to reveal
-	// (No need to scroll to reveal)
-	if (offsetTop < window.innerHeight) {
-		if (!DISABLE_DEBUG) {
-			if (debug && ref !== '') {
-				console.log(`{${ref}} is above the initial fold`);
-			}
+const revealAboveInitialFold = (node: HTMLElement, options: IOptions) => {
+	const { debug = DEBUG, ref = REF, delay = DELAY } = options;
+
+	if (!DISABLE_DEBUG) {
+		if (debug && ref !== '') {
+			console.log(`{${ref}} is above the initial fold`);
 		}
-		node.classList.add('reveal');
-		node.style.animationDelay = `${delay / 1000}s`;
-		return;
 	}
+	node.classList.add('reveal');
+	node.style.animationDelay = `${delay / 1000}s`;
+};
+
+const revealOnScroll = (
+	node: HTMLElement,
+	options: IOptions,
+	y: number,
+	threshold: number,
+	offset: number
+) => {
+	const { duration = DURATION, delay = DELAY } = options;
 
 	node.classList.add('not-visible');
 	window.addEventListener('scroll', handleScroll);
@@ -60,9 +73,26 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 
 	function handleScroll() {
 		if (window.scrollY > y - threshold + offset) {
-			node.style.transition = `all ${fadeDuration / 1000}s ${delay / 1000}s`;
+			node.style.transition = `all ${duration / 1000}s ${delay / 1000}s`;
 			node.classList.remove('not-visible');
 			window.removeEventListener('scroll', handleScroll);
 		}
 	}
+};
+
+export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction | void => {
+	const { threshold = THRESHOLD, offset = OFFSET } = options;
+
+	printOptions(options);
+
+	const y: number = node.getBoundingClientRect().y;
+	const offsetTop: number = node.offsetTop;
+
+	printValues(options, y, offsetTop);
+
+	if (offsetTop < window.innerHeight) {
+		return revealAboveInitialFold(node, options);
+	}
+
+	return revealOnScroll(node, options, y, threshold, offset);
 };
