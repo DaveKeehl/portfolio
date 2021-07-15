@@ -10,7 +10,7 @@
 
 <nav class:mobile>
 	{#each navigation as item}
-		<a href={`${prefix}#${item}`} class="p5--medium">{item.toUpperCase()}</a>
+		<a href={`${prefix}#${item}`} class="p5--medium">{item}</a>
 	{/each}
 </nav>
 
@@ -27,6 +27,7 @@
 
 		a {
 			color: $white;
+			text-transform: uppercase;
 			transition: opacity 0.2s;
 
 			&:hover {
@@ -44,9 +45,10 @@
 			gap: 1rem;
 
 			a {
-				font-size: 20px;
+				font-size: 24px;
 				font-weight: 700;
 				color: $black;
+				text-transform: initial;
 			}
 
 			@media (min-width: $tablet-l) {
