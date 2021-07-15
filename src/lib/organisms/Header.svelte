@@ -32,8 +32,6 @@
 	};
 
 	$: visible = checkVisibility(y);
-
-	$: console.log($open);
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -74,8 +72,10 @@
 								alt="Close mobile icon"
 								on:click={() => open.set(false)}
 							/>
-							<Navbar {navigation} mobile={true} />
-							<Socials {socials} mobile={true} />
+							<div>
+								<Navbar {navigation} mobile={true} />
+								<Socials {socials} mobile={true} />
+							</div>
 						</div>
 						<div
 							class="bg"
@@ -158,11 +158,18 @@
 			background: $white;
 			height: 100vh;
 			width: 70vw;
-			padding: 2rem;
+			padding: 1.5rem 2rem;
 
 			img {
 				width: 3rem;
 				transform: translate3d(-10px, -10px, 0);
+			}
+
+			div {
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
+				width: 100%;
 			}
 		}
 
