@@ -35,10 +35,14 @@
 
 		&.mobile {
 			display: flex;
-			filter: invert(1);
-			border-top: 1px solid;
+			border-top: 1px solid $blue-100;
 			width: 100%;
 			padding-top: 1rem;
+
+			a {
+				filter: invert(1);
+				text-transform: initial;
+			}
 
 			@media (min-width: $tablet-l) {
 				display: none;
