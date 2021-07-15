@@ -10,7 +10,7 @@
 
 <Section number={1} id="about" isAbout={true}>
 	<div>
-		<h2 class="h2--bold margin-bottom-small" use:reveal={{ debug: true, ref: 'about', delay: 200 }}>
+		<h2 class="h2--bold margin-bottom-small" use:reveal={{ delay: 200 }}>
 			{title}
 		</h2>
 		<p class="p4--regular" use:reveal={{ offset: -20 }}>{text}</p>
