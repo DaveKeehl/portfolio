@@ -15,10 +15,10 @@
 
 <section>
 	<Container>
-		<p class="greetings p2--medium reveal">{greetings}</p>
-		<h1 class="h1--bold reveal">{valueProposition}</h1>
-		<p class="introduction p3--regular reveal">{introduction}</p>
-		<div class="button" use:reveal={{ debug: true, ref: 'hero-button' }}>
+		<p class="greetings p2--medium" use:reveal>{greetings}</p>
+		<h1 class="h1--bold" use:reveal={{ delay: 100 }}>{valueProposition}</h1>
+		<p class="introduction p3--regular" use:reveal={{ delay: 200 }}>{introduction}</p>
+		<div class="button" use:reveal={{ delay: 300 }}>
 			<ButtonsGroup
 				direction="horizontal"
 				primaryButton={{ text: button.text, link: `${prefix}#projects`, external: button.external }}
@@ -33,7 +33,7 @@
 			</Button> -->
 		</div>
 	</Container>
-	<img src={image.url} alt={image.alt} class="reveal" />
+	<img src={image.url} alt={image.alt} use:reveal={{ delay: 400 }} />
 </section>
 
 <style lang="scss">
