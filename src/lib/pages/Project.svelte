@@ -4,6 +4,7 @@
 	import Container from '$lib/templates/Container.svelte';
 	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
 	import SEO from '$lib/templates/SEO.svelte';
+	import { reveal } from '$actions/revealOnScroll';
 
 	export let project: IProject;
 	const {
@@ -30,7 +31,7 @@
 
 		<div class="wrapper">
 			<section>
-				<div class="information">
+				<div class="information" use:reveal>
 					<div>
 						<h4 class="h4--semibold">Industry</h4>
 						<p class="p1--bold">{industry}</p>
@@ -49,7 +50,7 @@
 					</div>
 				</div>
 
-				<div class="introduction">
+				<div class="introduction" use:reveal={{ delay: 200 }}>
 					<h2 class="h2--bold">In a nutshell.</h2>
 					<p class="p3--regular">{description}</p>
 					<ButtonsGroup
@@ -68,7 +69,7 @@
 				</div>
 			</section>
 
-			<div class="metrics">
+			<div class="metrics" use:reveal>
 				{#each metrics as metric}
 					<div>
 						<h1 class="h1--bold">{metric.value}</h1>
@@ -80,8 +81,8 @@
 			<div class="content">
 				{#each projectSections as section}
 					<section>
-						<h2 class="h2--semibold">{section.title}</h2>
-						<p class="p3--regular">{@html section.content.html}</p>
+						<h2 class="h2--semibold" use:reveal>{section.title}</h2>
+						<p class="p3--regular" use:reveal={{ delay: 200 }}>{@html section.content.html}</p>
 					</section>
 				{/each}
 			</div>

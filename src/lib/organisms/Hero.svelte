@@ -19,7 +19,7 @@
 		<h1 class="h1--bold" use:reveal={{ delay: 100 }}>{valueProposition}</h1>
 		<p class="introduction p3--regular" use:reveal={{ delay: 200 }}>{introduction}</p>
 		<div class="button" use:reveal={{ delay: 300 }}>
-			<ButtonsGroup
+			<!-- <ButtonsGroup
 				direction="horizontal"
 				primaryButton={{ text: button.text, link: `${prefix}#projects`, external: button.external }}
 				secondaryButton={{
@@ -27,10 +27,10 @@
 					link: `${prefix}#contact`,
 					external: false
 				}}
-			/>
-			<!-- <Button href={`${prefix}#projects`} external={button.external}>
+			/> -->
+			<Button href={`${prefix}#projects`} external={button.external}>
 				{button.text}
-			</Button> -->
+			</Button>
 		</div>
 	</Container>
 	<img src={image.url} alt={image.alt} use:reveal={{ delay: 400 }} />

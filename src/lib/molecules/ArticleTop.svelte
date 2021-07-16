@@ -1,18 +1,21 @@
 <script lang="ts">
 	import Container from '$lib/templates/Container.svelte';
 	import type { IImage } from '$utils/lib';
+	import { reveal } from '$actions/revealOnScroll';
 
 	export let title: string;
 	export let category: string;
 	export let cover: IImage;
 </script>
 
-<h1 class="h1--bold title">{title}</h1>
-<h3 class="h3--semibold">{category}</h3>
+<h1 class="h1--bold title" use:reveal>{title}</h1>
+<h3 class="h3--semibold" use:reveal={{ delay: 200 }}>{category}</h3>
 
 <div class="image">
 	<Container>
-		<img src={cover.url} alt={cover.alt} />
+		<div use:reveal={{ delay: 400 }}>
+			<img src={cover.url} alt={cover.alt} />
+		</div>
 	</Container>
 </div>
 
