@@ -19,11 +19,11 @@
 </script>
 
 <div>
-	<a href={`${prefix}/${resourceType}/${slug}`} class="cover">
+	<a href={`/${resourceType}/${slug}`} class="cover">
 		<img src={cover.url} alt={cover.alt} />
 	</a>
 	<h5 class="h5--SEMIBOLD">#{cleanCategory(category)}</h5>
-	<a href={`${prefix}/${resourceType}/${slug}`}>
+	<a href={`/${resourceType}/${slug}`}>
 		<h3>{title}</h3>
 	</a>
 	<p class="p5--regular">{excerpt}</p>
