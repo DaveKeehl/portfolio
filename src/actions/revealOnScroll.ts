@@ -61,7 +61,7 @@ const revealOnScroll = (
 	threshold: number,
 	offset: number
 ) => {
-	const { duration = DURATION, delay = DELAY } = options;
+	const { debug = DEBUG, ref = REF, duration = DURATION, delay = DELAY } = options;
 
 	node.classList.add('not-visible');
 	window.addEventListener('scroll', handleScroll);
@@ -73,6 +73,11 @@ const revealOnScroll = (
 	};
 
 	function handleScroll() {
+		if (!DISABLE_DEBUG) {
+			if (debug && ref !== '') {
+				console.log('Scrolling');
+			}
+		}
 		if (window.scrollY > y - threshold + offset) {
 			node.style.transition = `all ${duration / 1000}s ${delay / 1000}s`;
 			node.classList.remove('not-visible');
