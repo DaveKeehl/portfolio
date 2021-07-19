@@ -4,7 +4,7 @@
 	import Label from '$atoms/Label.svelte';
 	import BlogCard from '$molecules/BlogCard.svelte';
 	import Section from '$templates/Section.svelte';
-	import { reveal } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/reveal-intersection-observer';
 	import type { IArticle, IArticleCard, IProject } from '$utils/lib';
 
 	export let title: string;
@@ -85,16 +85,16 @@
 </script>
 
 <Section number={3} id="blog">
-	<div use:reveal={{ delay: 200 }}>
-		<h2 class="margin-bottom-small">{title}</h2>
+	<div>
+		<h2 class="margin-bottom-small" use:reveal={{ delay: 200 }}>{title}</h2>
 
-		<div class="categories">
+		<div class="categories" use:reveal={{ delay: 300 }}>
 			{#each categories as category}
 				<Label selected={selectedCategories.has(category)} {category} {toggleCategory} />
 			{/each}
 		</div>
 
-		<div class="articles">
+		<div class="articles" use:reveal={{ debug: true, ref: 'articles' }}>
 			{#each visibleCards as card}
 				<BlogCard {...card} />
 			{/each}
@@ -105,7 +105,11 @@
 				}
 				return selectedCategories.has(card.category);
 			})}
-			<div class="button-wrapper" transition:fade={{ duration: 100 }}>
+			<div
+				class="button-wrapper"
+				transition:fade={{ duration: 100 }}
+				use:reveal={{ threshold: 1.0 }}
+			>
 				<Button on:click={showMoreCards}>Load more posts</Button>
 			</div>
 		{/if}

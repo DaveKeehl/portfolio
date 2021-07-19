@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { reveal } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/reveal-intersection-observer';
 	import type { IProject } from '$utils/lib';
 	import SectionNumber from '$atoms/SectionNumber.svelte';
 	import ProjectCard from '$molecules/ProjectCard.svelte';

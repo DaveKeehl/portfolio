@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ArticleTop from '$molecules/ArticleTop.svelte';
 	import Container from '$templates/Container.svelte';
-	import { reveal } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/reveal-intersection-observer';
 	import SEO from '$templates/SEO.svelte';
 	import type { IArticle } from '$utils/lib';
 
@@ -14,7 +14,7 @@
 <Container>
 	<article>
 		<ArticleTop {title} {category} {cover} />
-		<section use:reveal>
+		<section use:reveal={{ debug: true, ref: 'content' }}>
 			{@html content.html}
 		</section>
 	</article>

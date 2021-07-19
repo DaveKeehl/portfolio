@@ -1,14 +1,14 @@
 <script lang="ts">
 	import Container from '$templates/Container.svelte';
 	import type { IImage } from '$utils/lib';
-	import { reveal } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/reveal-intersection-observer';
 
 	export let title: string;
 	export let category: string;
 	export let cover: IImage;
 </script>
 
-<h1 class="h1--bold title" use:reveal>{title}</h1>
+<h1 class="h1--bold title" use:reveal={{ debug: false, ref: 'title' }}>{title}</h1>
 <h3 class="h3--semibold" use:reveal={{ delay: 200 }}>{category}</h3>
 
 <div class="image">

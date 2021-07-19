@@ -4,7 +4,7 @@
 	import Container from '$templates/Container.svelte';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import SEO from '$templates/SEO.svelte';
-	import { reveal } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/reveal-intersection-observer';
 
 	export let project: IProject;
 	const {
@@ -69,7 +69,7 @@
 				</div>
 			</section>
 
-			<div class="metrics" use:reveal>
+			<div class="metrics" use:reveal={{ debug: true, ref: 'metrics' }}>
 				{#each metrics as metric}
 					<div>
 						<h1 class="h1--bold">{metric.value}</h1>

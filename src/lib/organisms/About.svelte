@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '$atoms/Button.svelte';
 	import Section from '$templates/Section.svelte';
-	import { reveal } from '$actions/revealOnScroll';
+	import { reveal } from '$actions/reveal-intersection-observer';
 	import type { IAbout } from '$utils/lib';
 
 	export let about: IAbout;
@@ -13,8 +13,8 @@
 		<h2 class="h2--bold margin-bottom-small" use:reveal={{ delay: 200 }}>
 			{title}
 		</h2>
-		<p class="p4--regular" use:reveal={{ offset: -20 }}>{text}</p>
-		<div use:reveal={{ offset: -250 }}>
+		<p class="p4--regular" use:reveal>{text}</p>
+		<div use:reveal>
 			<Button href={button.link} external={button.external}>{button.text}</Button>
 		</div>
 	</div>
