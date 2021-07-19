@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { IProject } from '$utils/lib';
-	import ArticleTop from '$lib/molecules/ArticleTop.svelte';
-	import Container from '$lib/templates/Container.svelte';
-	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
-	import SEO from '$lib/templates/SEO.svelte';
+	import ArticleTop from '$molecules/ArticleTop.svelte';
+	import Container from '$templates/Container.svelte';
+	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
+	import SEO from '$templates/SEO.svelte';
 	import { reveal } from '$actions/revealOnScroll';
 
 	export let project: IProject;

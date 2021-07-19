@@ -2,7 +2,7 @@
 	import { dev } from '$app/env';
 	import { getPrefix } from '$utils/functions';
 	import { mapping } from '$utils/technologies';
-	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
+	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import { reveal } from '$actions/revealOnScroll';
 	import type { IProject } from '$utils/lib';
 

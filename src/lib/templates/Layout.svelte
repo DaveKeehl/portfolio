@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Header from '$lib/organisms/Header.svelte';
-	import Footer from '$lib/organisms/Footer.svelte';
+	import Header from '$organisms/Header.svelte';
+	import Footer from '$organisms/Footer.svelte';
 	import type { IHeader, IFooter } from '$utils/lib';
 
 	export let header: IHeader;

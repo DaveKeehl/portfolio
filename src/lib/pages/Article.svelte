@@ -1,8 +1,8 @@
 <script lang="ts">
-	import ArticleTop from '$lib/molecules/ArticleTop.svelte';
-	import Container from '$lib/templates/Container.svelte';
+	import ArticleTop from '$molecules/ArticleTop.svelte';
+	import Container from '$templates/Container.svelte';
 	import { reveal } from '$actions/revealOnScroll';
-	import SEO from '$lib/templates/SEO.svelte';
+	import SEO from '$templates/SEO.svelte';
 	import type { IArticle } from '$utils/lib';
 
 	export let article: IArticle;

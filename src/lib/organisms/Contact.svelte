@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Section from '$lib/templates/Section.svelte';
+	import Section from '$templates/Section.svelte';
 	import { reveal } from '$actions/revealOnScroll';
 	import type { IContact } from '$utils/lib';
 

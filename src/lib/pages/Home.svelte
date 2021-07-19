@@ -1,10 +1,10 @@
 <script lang="ts">
-	import SEO from '$lib/templates/SEO.svelte';
-	import Hero from '$lib/organisms/Hero.svelte';
-	import About from '$lib/organisms/About.svelte';
-	import Projects from '$lib/organisms/Projects.svelte';
-	import Articles from '$lib/organisms/Articles.svelte';
-	import Contact from '$lib/organisms/Contact.svelte';
+	import SEO from '$templates/SEO.svelte';
+	import Hero from '$organisms/Hero.svelte';
+	import About from '$organisms/About.svelte';
+	import Projects from '$organisms/Projects.svelte';
+	import Articles from '$organisms/Articles.svelte';
+	import Contact from '$organisms/Contact.svelte';
 	import type { IArticle, IHomepage, IProject } from '$utils/lib';
 
 	export let homepage: IHomepage;

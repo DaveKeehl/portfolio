@@ -3,11 +3,11 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { dev } from '$app/env';
 	import { getPrefix } from '$utils/functions';
-	import Navbar from '$lib/molecules/Navbar.svelte';
-	import Container from '$lib/templates/Container.svelte';
-	import { open } from '$stores/menu';
 	import type { IHeader } from '$utils/lib';
-	import Socials from '$lib/molecules/Socials.svelte';
+	import { open } from '$stores/menu';
+	import Navbar from '$molecules/Navbar.svelte';
+	import Container from '$templates/Container.svelte';
+	import Socials from '$molecules/Socials.svelte';
 
 	export let header: IHeader;
 	const { logo, navigation, socials } = header;

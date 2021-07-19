@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import Button from '$lib/atoms/Button.svelte';
-	import Label from '$lib/atoms/Label.svelte';
-	import BlogCard from '$lib/molecules/BlogCard.svelte';
-	import Section from '$lib/templates/Section.svelte';
+	import Button from '$atoms/Button.svelte';
+	import Label from '$atoms/Label.svelte';
+	import BlogCard from '$molecules/BlogCard.svelte';
+	import Section from '$templates/Section.svelte';
 	import { reveal } from '$actions/revealOnScroll';
 	import type { IArticle, IArticleCard, IProject } from '$utils/lib';
 

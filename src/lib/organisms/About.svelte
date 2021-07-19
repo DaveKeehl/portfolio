@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Button from '$lib/atoms/Button.svelte';
-	import Section from '$lib/templates/Section.svelte';
+	import Button from '$atoms/Button.svelte';
+	import Section from '$templates/Section.svelte';
 	import { reveal } from '$actions/revealOnScroll';
 	import type { IAbout } from '$utils/lib';
 

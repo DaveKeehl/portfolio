@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { dev } from '$app/env';
-	import Button from '$lib/atoms/Button.svelte';
-	import Container from '$lib/templates/Container.svelte';
-	import { getPrefix } from '$utils/functions';
+	import Button from '$atoms/Button.svelte';
+	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
+	import Container from '$templates/Container.svelte';
 	import { reveal } from '$actions/revealOnScroll';
+	import { getPrefix } from '$utils/functions';
 	import type { IHero } from '$utils/lib';
-	import ButtonsGroup from '$lib/molecules/ButtonsGroup.svelte';
 
 	export let hero: IHero;
 	const { greetings, valueProposition, introduction, button, image } = hero;

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import SectionNumber from '$lib/atoms/SectionNumber.svelte';
-	import ProjectCard from '$lib/molecules/ProjectCard.svelte';
-	import Container from '$lib/templates/Container.svelte';
 	import { reveal } from '$actions/revealOnScroll';
 	import type { IProject } from '$utils/lib';
+	import SectionNumber from '$atoms/SectionNumber.svelte';
+	import ProjectCard from '$molecules/ProjectCard.svelte';
+	import Container from '$templates/Container.svelte';
 
 	export let title: string;
 	export let projects: IProject[];

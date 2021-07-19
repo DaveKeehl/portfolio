@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Container from '$lib/templates/Container.svelte';
+	import Container from '$templates/Container.svelte';
 	import type { IImage } from '$utils/lib';
 	import { reveal } from '$actions/revealOnScroll';
 
