@@ -24,6 +24,11 @@
 		"checkJs": true,
 		"paths": {
 			"$lib/*": ["src/lib/*"],
+			"$atoms/*": ["src/lib/atoms/*"],
+			"$molecules/*": ["src/lib/molecules/*"],
+			"$organisms/*": ["src/lib/organisms/*"],
+			"$templates/*": ["src/lib/templates/*"],
+			"$pages/*": ["src/lib/pages/*"],
 			"$utils/*": ["src/utils/*"],
 			"$actions/*": ["src/actions/*"],
 			"$stores/*": ["src/stores/*"]
