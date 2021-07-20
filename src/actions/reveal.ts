@@ -61,17 +61,20 @@ const getCssProperties = (transition: Transitions, options: IOptions): string =>
 	}
 	if (transition === 'blur') {
 		return `
-			filter: blur(8px);
+			opacity: 0;
+			filter: blur(16px);
 		`;
 	}
 	if (transition === 'scale') {
 		return `
+			opacity: 0;
 			transform: scale(0);
 		`;
 	}
 	if (transition === 'slide') {
 		return `
-			transform: transformX(-100%) scale(0);
+			opacity: 0;
+			transform: translateX(${x}px);
 		`;
 	}
 };
@@ -99,24 +102,30 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 	let createdStyle: boolean;
 	const unsubscribe = created.subscribe((value) => (createdStyle = value));
 
-	let style: HTMLElement;
-
 	if (!createdStyle) {
-		style = document.createElement('style');
+		const style = document.createElement('style');
 		style.setAttribute('type', 'text/css');
 		style.setAttribute('data-action', 'reveal');
+		style.innerHTML = `
+			.fly--hidden {
+				${getCssProperties('fly', options)}
+			}
+			.fade--hidden {
+				${getCssProperties('fade', options)}
+			}
+			.blur--hidden {
+				${getCssProperties('blur', options)}
+			}
+			.scale--hidden {
+				${getCssProperties('scale', options)}
+			}
+			.slide--hidden {
+				${getCssProperties('slide', options)}
+			}
+		`;
 		const head = document.querySelector('head');
 		head.appendChild(style);
 		created.set(true);
-	}
-
-	if (style && createdStyle) {
-		const prev = style.innerHTML;
-		style.innerHTML = prev.concat(`		
-			.${transition}--hidden {
-				${getCssProperties(transition, options)}
-			}
-		`);
 	}
 
 	node.classList.add(`${transition}--hidden`);
