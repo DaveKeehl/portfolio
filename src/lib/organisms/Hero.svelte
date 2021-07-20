@@ -3,7 +3,7 @@
 	import Button from '$atoms/Button.svelte';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import Container from '$templates/Container.svelte';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 	import { getPrefix } from '$utils/functions';
 	import type { IHero } from '$utils/lib';
 

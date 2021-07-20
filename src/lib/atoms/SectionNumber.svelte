@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 
 	export let number: number;
 </script>
 
-<div use:reveal={{ threshold: 0.9 }}>
+<div use:reveal>
 	<p>{number}</p>
 </div>
 

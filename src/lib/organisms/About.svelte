@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '$atoms/Button.svelte';
 	import Section from '$templates/Section.svelte';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 	import type { IAbout } from '$utils/lib';
 
 	export let about: IAbout;
@@ -14,7 +14,7 @@
 			{title}
 		</h2>
 		<p class="p4--regular" use:reveal>{text}</p>
-		<div use:reveal>
+		<div use:reveal={{ offset: 50 }}>
 			<Button href={button.link} external={button.external}>{button.text}</Button>
 		</div>
 	</div>

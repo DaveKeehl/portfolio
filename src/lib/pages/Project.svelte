@@ -4,7 +4,7 @@
 	import Container from '$templates/Container.svelte';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import SEO from '$templates/SEO.svelte';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 
 	export let project: IProject;
 	const {

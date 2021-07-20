@@ -3,7 +3,7 @@
 	import { getPrefix } from '$utils/functions';
 	import { mapping } from '$utils/technologies';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 	import type { IProject } from '$utils/lib';
 
 	export let project: IProject;

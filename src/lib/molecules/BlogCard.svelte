@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { dev } from '$app/env';
+	import { reveal } from '$actions/reveal';
 	import { getPrefix } from '$utils/functions';
 	import type { IImage } from '$utils/lib';
 
@@ -11,6 +12,9 @@
 	export let category: string;
 	export let createdAt: string;
 
+	export let CHUNK: number;
+	export let idx: number;
+
 	const cleanCategory = (category: string): string => {
 		return category.replace(/[_-]/g, ' ');
 	};
@@ -18,7 +22,13 @@
 	const prefix: string = getPrefix(dev);
 </script>
 
-<div>
+<div
+	use:reveal={{
+		delay: idx % 2 ? 200 : 0,
+		offset: idx >= CHUNK ? 2000 : 200,
+		duration: idx >= CHUNK ? 500 : 800
+	}}
+>
 	<a href={`/${resourceType}/${slug}`} class="cover">
 		<img src={cover.url} alt={cover.alt} />
 	</a>

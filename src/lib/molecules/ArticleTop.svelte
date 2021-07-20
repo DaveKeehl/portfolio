@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Container from '$templates/Container.svelte';
 	import type { IImage } from '$utils/lib';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 
 	export let title: string;
 	export let category: string;

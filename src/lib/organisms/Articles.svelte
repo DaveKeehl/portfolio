@@ -4,7 +4,7 @@
 	import Label from '$atoms/Label.svelte';
 	import BlogCard from '$molecules/BlogCard.svelte';
 	import Section from '$templates/Section.svelte';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 	import type { IArticle, IArticleCard, IProject } from '$utils/lib';
 
 	export let title: string;
@@ -86,17 +86,17 @@
 
 <Section number={3} id="blog">
 	<div>
-		<h2 class="margin-bottom-small" use:reveal={{ delay: 200 }}>{title}</h2>
+		<h2 class="margin-bottom-small" use:reveal>{title}</h2>
 
-		<div class="categories" use:reveal={{ delay: 300 }}>
+		<div class="categories" use:reveal={{ delay: 200 }}>
 			{#each categories as category}
 				<Label selected={selectedCategories.has(category)} {category} {toggleCategory} />
 			{/each}
 		</div>
 
-		<div class="articles" use:reveal={{ debug: true, ref: 'articles' }}>
-			{#each visibleCards as card}
-				<BlogCard {...card} />
+		<div class="articles">
+			{#each visibleCards as card, idx}
+				<BlogCard {...card} {idx} {CHUNK} />
 			{/each}
 		</div>
 		{#if cursor <= cards.length && remainingCards.some((card) => {
@@ -105,11 +105,7 @@
 				}
 				return selectedCategories.has(card.category);
 			})}
-			<div
-				class="button-wrapper"
-				transition:fade={{ duration: 100 }}
-				use:reveal={{ threshold: 1.0 }}
-			>
+			<div class="button-wrapper" transition:fade={{ duration: 100 }} use:reveal={{ offset: 20 }}>
 				<Button on:click={showMoreCards}>Load more posts</Button>
 			</div>
 		{/if}

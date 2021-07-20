@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Container from '$templates/Container.svelte';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 	import type { IFooter } from '$utils/lib';
 
 	export let footer: IFooter;
@@ -8,7 +8,7 @@
 	export let article: boolean = false;
 </script>
 
-<footer>
+<footer use:reveal>
 	<Container>
 		<div class:homepage class:article>
 			{@html footer.text.html}

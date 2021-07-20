@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SectionNumber from '$atoms/SectionNumber.svelte';
 	import Container from '$templates/Container.svelte';
-	import { reveal } from '$actions/reveal-intersection-observer';
+	import { reveal } from '$actions/reveal';
 
 	let className: string = '';
 	export { className as class };
