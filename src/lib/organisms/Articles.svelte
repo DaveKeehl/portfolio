@@ -86,9 +86,9 @@
 
 <Section number={3} id="blog">
 	<div>
-		<h2 class="margin-bottom-small" use:reveal>{title}</h2>
+		<h2 class="margin-bottom-small" use:reveal={{ delay: 200 }}>{title}</h2>
 
-		<div class="categories" use:reveal={{ delay: 200 }}>
+		<div class="categories" use:reveal={{ delay: 300 }}>
 			{#each categories as category}
 				<Label selected={selectedCategories.has(category)} {category} {toggleCategory} />
 			{/each}
