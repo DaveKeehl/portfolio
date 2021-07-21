@@ -14,12 +14,26 @@ interface IOptions {
 	opacity?: number;
 }
 
+type ObserverRoot = HTMLElement | null | undefined;
+
+interface ObserverOptions {
+	root: ObserverRoot;
+	rootMargin: string;
+	threshold: number;
+}
+
+interface IConfig {
+	disableDebug: boolean;
+	observer: ObserverOptions;
+}
+
 interface IReturnAction {
 	update?: (options?: IOptions) => void;
 	destroy?: () => void;
 }
 
 type Transitions = 'fly' | 'fade' | 'blur' | 'scale' | 'slide';
+
 type Easing =
 	| 'ease'
 	| 'linear'
@@ -30,20 +44,62 @@ type Easing =
 
 const created = writable(false);
 
-const DISABLE_DEBUG = false;
-const DEBUG = false;
-const REF = '';
-const THRESHOLD = 0.6;
-const OFFSET = 0;
-const TRANSITION: Transitions = 'fly';
-const DELAY = 0;
-const DURATION = 800;
-const EASING: Easing = 'ease';
-const X = -20;
-const Y = -20;
+const init: IOptions = {
+	debug: false,
+	ref: '',
+	threshold: 0.6,
+	offset: 0,
+	transition: 'fly',
+	delay: 0,
+	duration: 800,
+	easing: 'ease',
+	x: -20,
+	y: -20
+};
+
+let config: IConfig = {
+	disableDebug: false,
+	observer: {
+		root: null,
+		rootMargin: `0px 0px ${init.offset}px 0px`,
+		threshold: init.threshold
+	}
+};
+
+export const setDisableDebug = (debug: boolean): void => {
+	config.disableDebug = debug;
+};
+
+export const setObserverConfig = (intersectionObserverConfig: ObserverOptions): void => {
+	config.observer = intersectionObserverConfig;
+};
+
+export const setObserverRoot = (root: ObserverRoot): void => {
+	config.observer.root = root;
+};
+
+export const setObserverRootMargin = (rootMargin: string): void => {
+	config.observer.rootMargin = rootMargin;
+};
+
+export const setObserverThreshold = (threshold: number): void => {
+	if (threshold >= 0 && threshold <= 1) {
+		config.observer.threshold = threshold;
+	} else {
+		console.error('Threshold must be between 0 and 1');
+	}
+};
+
+export const setConfig = (userConfig: IConfig): void => {
+	config = userConfig;
+};
+
+const printRef = (ref: string): void => {
+	console.log(`--- ${ref} ---`);
+};
 
 const getCssProperties = (transition: Transitions, options: IOptions): string => {
-	const { x = X, y = Y } = options;
+	const { x = init.x, y = init.y } = options;
 
 	if (transition === 'fly') {
 		return `
@@ -78,26 +134,30 @@ const getCssProperties = (transition: Transitions, options: IOptions): string =>
 
 export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction | void => {
 	const {
-		debug = DEBUG,
-		ref = REF,
-		threshold = THRESHOLD,
-		offset = OFFSET,
-		transition = TRANSITION,
-		delay = DELAY,
-		duration = DURATION,
-		easing = EASING,
-		x = X,
-		y = Y
+		debug = init.debug,
+		ref = init.ref,
+		threshold = init.threshold,
+		offset = init.offset,
+		transition = init.transition,
+		delay = init.delay,
+		duration = init.duration,
+		easing = init.easing,
+		x = init.x,
+		y = init.y
 	} = options;
-
-	const config = {
-		root: null,
-		rootMargin: `0px 0px ${offset}px 0px`,
-		threshold: threshold
-	};
 
 	let createdStyle: boolean;
 	const unsubscribe = created.subscribe((value) => (createdStyle = value));
+
+	if (!config.disableDebug) {
+		if (debug && ref !== '') {
+			console.log(`DISABLE_DEBUG: ${config.disableDebug}`);
+			printRef(ref);
+			console.log(options);
+			printRef(ref);
+			console.log(config);
+		}
+	}
 
 	if (!createdStyle) {
 		const style = document.createElement('style');
@@ -130,13 +190,13 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 
 	const observer = new IntersectionObserver(
 		(entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-			if (!DISABLE_DEBUG) {
+			if (!config.disableDebug) {
 				if (debug && ref !== '') {
 					const entry = entries[0];
 					const entryTarget = entry.target;
 
 					if (entryTarget === node) {
-						console.log(`--- ${ref} ---`);
+						printRef(ref);
 						console.log(entry);
 					}
 				}
@@ -155,7 +215,7 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 				}
 			});
 		},
-		config
+		config.observer
 	);
 
 	observer.observe(node);
