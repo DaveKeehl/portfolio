@@ -137,13 +137,10 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		debug = init.debug,
 		ref = init.ref,
 		threshold = init.threshold,
-		offset = init.offset,
 		transition = init.transition,
 		delay = init.delay,
 		duration = init.duration,
-		easing = init.easing,
-		x = init.x,
-		y = init.y
+		easing = init.easing
 	} = options;
 
 	let createdStyle: boolean;
