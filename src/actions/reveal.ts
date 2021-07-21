@@ -39,19 +39,16 @@ const TRANSITION: Transitions = 'fly';
 const DELAY = 0;
 const DURATION = 800;
 const EASING: Easing = 'ease';
-const X = 0;
+const X = -20;
 const Y = -20;
-const OPACITY = 1;
 
 const getCssProperties = (transition: Transitions, options: IOptions): string => {
 	const { x = X, y = Y } = options;
 
-	console.log(transition);
-
 	if (transition === 'fly') {
 		return `
 			opacity: 0;
-			transform: translateX(${x}px) translateY(${y}px);
+			transform: translateY(${y}px);
 		`;
 	}
 	if (transition === 'fade') {
