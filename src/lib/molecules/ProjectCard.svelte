@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="content">
-		<a href={`/projects/${slug}`}>
+		<a href={`/project/${slug}`}>
 			<h2>{title}</h2>
 		</a>
 
