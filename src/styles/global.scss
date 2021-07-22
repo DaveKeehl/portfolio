@@ -11,6 +11,10 @@
 	}
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	background: $blue-300;
 	color: $white;
