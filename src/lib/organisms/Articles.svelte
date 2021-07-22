@@ -105,7 +105,11 @@
 				}
 				return selectedCategories.has(card.category);
 			})}
-			<div class="button-wrapper" transition:fade={{ duration: 100 }} use:reveal={{ offset: 20 }}>
+			<div
+				class="button-wrapper"
+				transition:fade={{ duration: 100 }}
+				use:reveal={{ offset: { bottom: 20 } }}
+			>
 				<Button on:click={showMoreCards}>Load more posts</Button>
 			</div>
 		{/if}

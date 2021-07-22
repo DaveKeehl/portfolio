@@ -4,7 +4,7 @@
 	export let number: number;
 </script>
 
-<div use:reveal={{ offset: 400 }}>
+<div use:reveal={{ offset: { bottom: 400 } }}>
 	<p>{number}</p>
 </div>
 

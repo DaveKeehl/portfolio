@@ -8,7 +8,7 @@
 </script>
 
 <Section number={4} id="contact">
-	<div use:reveal={{ delay: 200, offset: -30 }}>
+	<div use:reveal={{ delay: 200, offset: { bottom: -30 } }}>
 		<h2 class="margin-bottom-small">{title}</h2>
 		<p class="p4--regular">{text}</p>
 		<a class="p4--semibold" href={`mailto:${email}`}>{email}</a>

@@ -25,7 +25,7 @@
 <div
 	use:reveal={{
 		delay: idx % 2 ? 200 : 0,
-		offset: idx >= CHUNK ? 2000 : 200,
+		offset: { bottom: idx >= CHUNK ? 2000 : 200 },
 		duration: idx >= CHUNK ? 500 : 800
 	}}
 >

@@ -14,7 +14,7 @@
 			{title}
 		</h2>
 		<p class="p4--regular" use:reveal>{text}</p>
-		<div use:reveal={{ offset: 50 }}>
+		<div use:reveal={{ offset: { bottom: 50 } }}>
 			<Button href={button.link} external={button.external}>{button.text}</Button>
 		</div>
 	</div>
