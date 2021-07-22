@@ -4,7 +4,10 @@ interface IOptions {
 	debug?: boolean;
 	ref?: string;
 	threshold?: number;
-	offset?: number;
+	offset?: {
+		top?: number;
+		bottom?: number;
+	};
 	transition?: Transitions;
 	delay?: number;
 	duration?: number;
@@ -48,7 +51,10 @@ const init: IOptions = {
 	debug: false,
 	ref: '',
 	threshold: 0.6,
-	offset: 0,
+	offset: {
+		top: 0,
+		bottom: 0
+	},
 	transition: 'fly',
 	delay: 0,
 	duration: 800,
@@ -61,7 +67,7 @@ let config: IConfig = {
 	disableDebug: false,
 	observer: {
 		root: null,
-		rootMargin: `0px 0px ${init.offset}px 0px`,
+		rootMargin: `${init.offset.top}px 0px ${init.offset.bottom}px 0px`,
 		threshold: init.threshold
 	}
 };
