@@ -78,19 +78,6 @@ let config: IConfig = {
 // STORES
 
 const createdStyleTag = writable(false);
-const observedNodes = writable(0);
-
-// GLOBAL VARIABLES
-
-let observedNodesCount: number;
-const unsubscribeObservedNodes = observedNodes.subscribe((value) => (observedNodesCount = value));
-
-let justMounted = true;
-
-const canReveal = observedNodesCount > 0 || justMounted || !config.once;
-
-// if (observedNodesCount === 0 && !justMounted && config.once) unsubscribeObservedNodes();
-if (!canReveal) unsubscribeObservedNodes();
 
 // HELPER FUNCTIONS
 
@@ -158,6 +145,10 @@ export const setObserverThreshold = (threshold: number): void => {
 	}
 };
 
+export const setOnce = (once: boolean): void => {
+	config.once = once;
+};
+
 export const setConfig = (userConfig: IConfig): void => {
 	config = userConfig;
 };
@@ -176,8 +167,6 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 	let styleTagExists: boolean;
 	const unsubscribeStyleTag = createdStyleTag.subscribe((value) => (styleTagExists = value));
 
-	if (justMounted) justMounted = false;
-
 	if (!config.disableDebug) {
 		if (debug && ref !== '') {
 			console.log(`DISABLE_DEBUG: ${config.disableDebug}`);
@@ -193,31 +182,29 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		style.setAttribute('type', 'text/css');
 		style.setAttribute('data-action', 'reveal');
 		style.innerHTML = `
-			.fly--hidden {
-				${getCssProperties('fly', options)}
-			}
-			.fade--hidden {
-				${getCssProperties('fade', options)}
-			}
-			.blur--hidden {
-				${getCssProperties('blur', options)}
-			}
-			.scale--hidden {
-				${getCssProperties('scale', options)}
-			}
-			.slide--hidden {
-				${getCssProperties('slide', options)}
-			}
+		.fly--hidden {
+			${getCssProperties('fly', options)}
+		}
+		.fade--hidden {
+			${getCssProperties('fade', options)}
+		}
+		.blur--hidden {
+			${getCssProperties('blur', options)}
+		}
+		.scale--hidden {
+			${getCssProperties('scale', options)}
+		}
+		.slide--hidden {
+			${getCssProperties('slide', options)}
+		}
 		`;
 		const head = document.querySelector('head');
 		head.appendChild(style);
 		createdStyleTag.set(true);
 	}
 
-	if (canReveal) {
-		node.classList.add(`${transition}--hidden`);
-		node.style.transition = `all ${duration / 1000}s ${delay / 1000}s ${easing}`;
-	}
+	node.classList.add(`${transition}--hidden`);
+	node.style.transition = `all ${duration / 1000}s ${delay / 1000}s ${easing}`;
 
 	const observer = new IntersectionObserver(
 		(entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -235,24 +222,15 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 
 			entries.forEach((entry) => {
 				if (entry.intersectionRatio >= threshold) {
-					if (canReveal) {
-						node.classList.remove(`${transition}--hidden`);
-					}
-
-					if (observedNodes) {
-						observer.unobserve(node);
-						observedNodes.update((prev) => prev - 1);
-					}
+					node.classList.remove(`${transition}--hidden`);
+					observer.unobserve(node);
 				}
 			});
 		},
 		config.observer
 	);
 
-	if (observedNodes) {
-		observer.observe(node);
-		observedNodes.update((prev) => prev + 1);
-	}
+	observer.observe(node);
 
 	return {
 		destroy() {
