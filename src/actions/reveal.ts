@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store';
 
+// TYPES AND INTERFACES
+
 interface IOptions {
 	debug?: boolean;
 	ref?: string;
@@ -14,7 +16,6 @@ interface IOptions {
 	easing?: Easing;
 	x?: number;
 	y?: number;
-	once?: boolean;
 }
 
 type ObserverRoot = HTMLElement | null | undefined;
@@ -27,6 +28,7 @@ interface ObserverOptions {
 
 interface IConfig {
 	disableDebug: boolean;
+	once: boolean;
 	observer: ObserverOptions;
 }
 
@@ -45,7 +47,7 @@ type Easing =
 	| 'ease-in-out'
 	| ['cubic-bezier', number, number, number, number];
 
-const created = writable(false);
+// SETTINGS
 
 const init: IOptions = {
 	debug: false,
@@ -65,6 +67,7 @@ const init: IOptions = {
 
 let config: IConfig = {
 	disableDebug: false,
+	once: false,
 	observer: {
 		root: null,
 		rootMargin: `${init.offset.top}px 0px ${init.offset.bottom}px 0px`,
@@ -72,33 +75,24 @@ let config: IConfig = {
 	}
 };
 
-export const setDisableDebug = (debug: boolean): void => {
-	config.disableDebug = debug;
-};
+// STORES
 
-export const setObserverConfig = (intersectionObserverConfig: ObserverOptions): void => {
-	config.observer = intersectionObserverConfig;
-};
+const createdStyleTag = writable(false);
+const observedNodes = writable(0);
 
-export const setObserverRoot = (root: ObserverRoot): void => {
-	config.observer.root = root;
-};
+// GLOBAL VARIABLES
 
-export const setObserverRootMargin = (rootMargin: string): void => {
-	config.observer.rootMargin = rootMargin;
-};
+let observedNodesCount: number;
+const unsubscribeObservedNodes = observedNodes.subscribe((value) => (observedNodesCount = value));
 
-export const setObserverThreshold = (threshold: number): void => {
-	if (threshold >= 0 && threshold <= 1) {
-		config.observer.threshold = threshold;
-	} else {
-		console.error('Threshold must be between 0 and 1');
-	}
-};
+let justMounted = true;
 
-export const setConfig = (userConfig: IConfig): void => {
-	config = userConfig;
-};
+const canReveal = observedNodesCount > 0 || justMounted || !config.once;
+
+// if (observedNodesCount === 0 && !justMounted && config.once) unsubscribeObservedNodes();
+if (!canReveal) unsubscribeObservedNodes();
+
+// HELPER FUNCTIONS
 
 const printRef = (ref: string): void => {
 	console.log(`--- ${ref} ---`);
@@ -138,6 +132,36 @@ const getCssProperties = (transition: Transitions, options: IOptions): string =>
 	}
 };
 
+// FUNCTIONS AVAILABLE TO USER
+
+export const setDisableDebug = (debug: boolean): void => {
+	config.disableDebug = debug;
+};
+
+export const setObserverConfig = (intersectionObserverConfig: ObserverOptions): void => {
+	config.observer = intersectionObserverConfig;
+};
+
+export const setObserverRoot = (root: ObserverRoot): void => {
+	config.observer.root = root;
+};
+
+export const setObserverRootMargin = (rootMargin: string): void => {
+	config.observer.rootMargin = rootMargin;
+};
+
+export const setObserverThreshold = (threshold: number): void => {
+	if (threshold >= 0 && threshold <= 1) {
+		config.observer.threshold = threshold;
+	} else {
+		console.error('Threshold must be between 0 and 1');
+	}
+};
+
+export const setConfig = (userConfig: IConfig): void => {
+	config = userConfig;
+};
+
 export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction | void => {
 	const {
 		debug = init.debug,
@@ -149,8 +173,10 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		easing = init.easing
 	} = options;
 
-	let createdStyle: boolean;
-	const unsubscribe = created.subscribe((value) => (createdStyle = value));
+	let styleTagExists: boolean;
+	const unsubscribeStyleTag = createdStyleTag.subscribe((value) => (styleTagExists = value));
+
+	if (justMounted) justMounted = false;
 
 	if (!config.disableDebug) {
 		if (debug && ref !== '') {
@@ -162,7 +188,7 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		}
 	}
 
-	if (!createdStyle) {
+	if (!styleTagExists) {
 		const style = document.createElement('style');
 		style.setAttribute('type', 'text/css');
 		style.setAttribute('data-action', 'reveal');
@@ -185,11 +211,13 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		`;
 		const head = document.querySelector('head');
 		head.appendChild(style);
-		created.set(true);
+		createdStyleTag.set(true);
 	}
 
-	node.classList.add(`${transition}--hidden`);
-	node.style.transition = `all ${duration / 1000}s ${delay / 1000}s ${easing}`;
+	if (canReveal) {
+		node.classList.add(`${transition}--hidden`);
+		node.style.transition = `all ${duration / 1000}s ${delay / 1000}s ${easing}`;
+	}
 
 	const observer = new IntersectionObserver(
 		(entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -207,19 +235,28 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 
 			entries.forEach((entry) => {
 				if (entry.intersectionRatio >= threshold) {
-					node.classList.remove(`${transition}--hidden`);
-					observer.unobserve(node);
+					if (canReveal) {
+						node.classList.remove(`${transition}--hidden`);
+					}
+
+					if (observedNodes) {
+						observer.unobserve(node);
+						observedNodes.update((prev) => prev - 1);
+					}
 				}
 			});
 		},
 		config.observer
 	);
 
-	observer.observe(node);
+	if (observedNodes) {
+		observer.observe(node);
+		observedNodes.update((prev) => prev + 1);
+	}
 
 	return {
 		destroy() {
-			unsubscribe();
+			unsubscribeStyleTag();
 		}
 	};
 };
