@@ -10,7 +10,7 @@
 
 <nav class:mobile>
 	{#each navigation as item}
-		<a href={`${prefix}#${item}`} class="p5--medium">{item}</a>
+		<a href={`${prefix}#${item.toLowerCase()}`} class="p5--medium">{item}</a>
 	{/each}
 </nav>
 
