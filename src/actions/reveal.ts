@@ -14,7 +14,7 @@ interface IOptions {
 	easing?: Easing;
 	x?: number;
 	y?: number;
-	opacity?: number;
+	once?: boolean;
 }
 
 type ObserverRoot = HTMLElement | null | undefined;
@@ -209,12 +209,6 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 				if (entry.intersectionRatio >= threshold) {
 					node.classList.remove(`${transition}--hidden`);
 					observer.unobserve(node);
-
-					return {
-						destroy() {
-							unsubscribe();
-						}
-					};
 				}
 			});
 		},
@@ -222,4 +216,10 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 	);
 
 	observer.observe(node);
+
+	return {
+		destroy() {
+			unsubscribe();
+		}
+	};
 };
