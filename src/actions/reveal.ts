@@ -80,7 +80,8 @@ let config: IConfig = {
 // STORES
 
 const createdStyleTag = writable(false);
-const reloadStore = writable<boolean | null>(null);
+const reloadStore = writable(false);
+const createdScriptTag = writable(false);
 
 // HELPER FUNCTIONS
 
@@ -184,7 +185,8 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 	let reloaded: boolean;
 	const unsubscribeReloaded = reloadStore.subscribe((value) => (reloaded = value));
 
-	// Checking if page has just been reloaded
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignoreq
 	const navigationType = window.performance.getEntriesByType('navigation')[0].type;
 	if (navigationType === 'reload') reloadStore.set(true);
 
@@ -200,19 +202,19 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		style.setAttribute('data-action', 'reveal');
 		style.innerHTML = `
 		.fly--hidden {
-			${getCssProperties('fly', options)}
+			${getCssProperties('fly', options).trim()}
 		}
 		.fade--hidden {
-			${getCssProperties('fade', options)}
+			${getCssProperties('fade', options).trim()}
 		}
 		.blur--hidden {
-			${getCssProperties('blur', options)}
+			${getCssProperties('blur', options).trim()}
 		}
 		.scale--hidden {
-			${getCssProperties('scale', options)}
+			${getCssProperties('scale', options).trim()}
 		}
 		.slide--hidden {
-			${getCssProperties('slide', options)}
+			${getCssProperties('slide', options).trim()}
 		}
 		`;
 		const head = document.querySelector('head');
@@ -220,8 +222,28 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		createdStyleTag.set(true);
 	}
 
-	node.classList.add(`${transition}--hidden`);
-	node.style.transition = `all ${duration / 1000}s ${delay / 1000}s ${easing}`;
+	let scriptTagExists: boolean;
+	const unsubscribeScriptTag = createdScriptTag.subscribe((value) => (scriptTagExists = value));
+
+	if (!scriptTagExists) {
+		const script = document.createElement('script');
+		script.setAttribute('type', 'text/javascript');
+		script.setAttribute('data-action', 'reveal');
+		script.innerHTML = `
+		const node = document.querySelector('${node.tagName.toLowerCase()}.${node.className
+			.split(' ')
+			.join('.')}');
+		console.log(node)
+		node.classList.add('${transition}--hidden');
+		node.style.transition = 'all ${duration / 1000}s ${delay / 1000}s ${easing}';
+		`;
+		const head = document.querySelector('head');
+		head.appendChild(script);
+		createdScriptTag.set(true);
+	}
+
+	// node.classList.add(`${transition}--hidden`);
+	// node.style.transition = `all ${duration / 1000}s ${delay / 1000}s ${easing}`;
 
 	const observer = new IntersectionObserver(
 		(entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -253,6 +275,7 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		destroy() {
 			unsubscribeStyleTag();
 			unsubscribeReloaded();
+			unsubscribeScriptTag();
 		}
 	};
 };
