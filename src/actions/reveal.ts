@@ -168,13 +168,24 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		easing = init.easing
 	} = options;
 
+	// Logging initial options and configurations info
+	if (!config.disableDebug) {
+		if (debug && ref !== '') {
+			console.log(`DISABLE_DEBUG: ${config.disableDebug}`);
+			console.log(`ONCE: ${config.once}`);
+			printRef(ref);
+			console.log(node);
+			console.log(options);
+			printRef(ref);
+			console.log(config);
+		}
+	}
+
 	let reloaded: boolean;
 	const unsubscribeReloaded = reloadStore.subscribe((value) => (reloaded = value));
 
-	const performance = window.performance;
-	const entries = performance.getEntriesByType('navigation');
-	const navigationType = entries[0].type;
-
+	// Checking if page has just been reloaded
+	const navigationType = window.performance.getEntriesByType('navigation')[0].type;
 	if (navigationType === 'reload') reloadStore.set(true);
 
 	if (disable || (config.once && reloaded)) return;
@@ -182,16 +193,7 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 	let styleTagExists: boolean;
 	const unsubscribeStyleTag = createdStyleTag.subscribe((value) => (styleTagExists = value));
 
-	if (!config.disableDebug) {
-		if (debug && ref !== '') {
-			console.log(`DISABLE_DEBUG: ${config.disableDebug}`);
-			printRef(ref);
-			console.log(options);
-			printRef(ref);
-			console.log(config);
-		}
-	}
-
+	// Creating stylesheet
 	if (!styleTagExists) {
 		const style = document.createElement('style');
 		style.setAttribute('type', 'text/css');
