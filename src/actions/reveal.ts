@@ -80,6 +80,7 @@ let config: IConfig = {
 // STORES
 
 const createdStyleTag = writable(false);
+const reloadStore = writable<boolean | null>(null);
 
 // HELPER FUNCTIONS
 
@@ -167,7 +168,16 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		easing = init.easing
 	} = options;
 
-	if (disable) return;
+	let reloaded: boolean;
+	const unsubscribeReloaded = reloadStore.subscribe((value) => (reloaded = value));
+
+	const performance = window.performance;
+	const entries = performance.getEntriesByType('navigation');
+	const navigationType = entries[0].type;
+
+	if (navigationType === 'reload') reloadStore.set(true);
+
+	if (disable || (config.once && reloaded)) return;
 
 	let styleTagExists: boolean;
 	const unsubscribeStyleTag = createdStyleTag.subscribe((value) => (styleTagExists = value));
@@ -240,6 +250,7 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 	return {
 		destroy() {
 			unsubscribeStyleTag();
+			unsubscribeReloaded();
 		}
 	};
 };
