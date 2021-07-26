@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 // TYPES AND INTERFACES
 
 interface IOptions {
+	disable?: boolean;
 	debug?: boolean;
 	ref?: string;
 	threshold?: number;
@@ -50,6 +51,7 @@ type Easing =
 // SETTINGS
 
 const init: IOptions = {
+	disable: false,
 	debug: false,
 	ref: '',
 	threshold: 0.6,
@@ -155,6 +157,7 @@ export const setConfig = (userConfig: IConfig): void => {
 
 export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction | void => {
 	const {
+		disable = init.disable,
 		debug = init.debug,
 		ref = init.ref,
 		threshold = init.threshold,
@@ -163,6 +166,8 @@ export const reveal = (node: HTMLElement, options: IOptions = {}): IReturnAction
 		duration = init.duration,
 		easing = init.easing
 	} = options;
+
+	if (disable) return;
 
 	let styleTagExists: boolean;
 	const unsubscribeStyleTag = createdStyleTag.subscribe((value) => (styleTagExists = value));
