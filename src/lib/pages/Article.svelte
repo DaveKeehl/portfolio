@@ -9,7 +9,7 @@
 	const { title, category, cover, excerpt, content } = article;
 </script>
 
-<SEO title={`${title} | Davide Ciulla`} description={excerpt} />
+<SEO title={`${title} | Davide Ciulla`} description={excerpt} image={cover.url} />
 
 <Container>
 	<article>

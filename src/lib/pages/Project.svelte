@@ -23,7 +23,7 @@
 	} = project;
 </script>
 
-<SEO title={`${title} | Davide Ciulla`} {description} />
+<SEO title={`${title} | Davide Ciulla`} {description} image={cover.url} />
 
 <Container>
 	<article>
