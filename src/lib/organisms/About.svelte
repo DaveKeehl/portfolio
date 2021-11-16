@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '$atoms/Button.svelte';
 	import Section from '$templates/Section.svelte';
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 	import type { IAbout } from '$utils/lib';
 
 	export let about: IAbout;

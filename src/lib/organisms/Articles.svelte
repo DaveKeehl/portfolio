@@ -4,7 +4,7 @@
 	import Label from '$atoms/Label.svelte';
 	import BlogCard from '$molecules/BlogCard.svelte';
 	import Section from '$templates/Section.svelte';
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 	import type { IArticle, IArticleCard, IProject } from '$utils/lib';
 
 	export let title: string;

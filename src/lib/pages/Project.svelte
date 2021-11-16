@@ -4,7 +4,7 @@
 	import Container from '$templates/Container.svelte';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import SEO from '$templates/SEO.svelte';
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 
 	export let project: IProject;
 	const {

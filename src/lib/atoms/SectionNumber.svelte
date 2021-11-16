@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 
 	export let number: number;
 </script>

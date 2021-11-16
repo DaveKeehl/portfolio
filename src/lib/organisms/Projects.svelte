@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 	import type { IProject } from '$utils/lib';
 	import SectionNumber from '$atoms/SectionNumber.svelte';
 	import ProjectCard from '$molecules/ProjectCard.svelte';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { dev } from '$app/env';
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 	import { getPrefix } from '$utils/functions';
 	import type { IImage } from '$utils/lib';
 
@@ -25,7 +25,7 @@
 <div
 	use:reveal={{
 		delay: idx % 2 ? 200 : 0,
-		offset: { bottom: idx >= CHUNK ? 2000 : 200 },
+		marginBottom:  idx >= CHUNK ? 2000 : 200 ,
 		duration: idx >= CHUNK ? 500 : 800
 	}}
 >

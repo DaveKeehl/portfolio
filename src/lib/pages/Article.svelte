@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ArticleTop from '$molecules/ArticleTop.svelte';
 	import Container from '$templates/Container.svelte';
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 	import SEO from '$templates/SEO.svelte';
 	import type { IArticle } from '$utils/lib';
 

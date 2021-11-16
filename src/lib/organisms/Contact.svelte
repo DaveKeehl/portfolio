@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Section from '$templates/Section.svelte';
-	import { reveal } from '$actions/reveal';
+	import { reveal } from 'svelte-reveal';
 	import type { IContact } from '$utils/lib';
 
 	export let contact: IContact;
