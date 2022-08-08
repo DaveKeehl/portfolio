@@ -2,9 +2,11 @@
 	import { reveal } from 'svelte-reveal';
 
 	export let number: number;
+
+	// const options = { offset: { bottom: 400 } }
 </script>
 
-<div use:reveal={{ offset: { bottom: 400 } }}>
+<div use:reveal={{ marginBottom: 400 }}>
 	<p>{number}</p>
 </div>
 

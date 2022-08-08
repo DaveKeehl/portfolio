@@ -10,7 +10,6 @@
 	export let excerpt: string;
 	export let cover: IImage;
 	export let category: string;
-	export let createdAt: string;
 
 	export let CHUNK: number;
 	export let idx: number;
@@ -25,7 +24,7 @@
 <div
 	use:reveal={{
 		delay: idx % 2 ? 200 : 0,
-		marginBottom:  idx >= CHUNK ? 2000 : 200 ,
+		marginBottom: idx >= CHUNK ? 2000 : 200,
 		duration: idx >= CHUNK ? 500 : 800
 	}}
 >

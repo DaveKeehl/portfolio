@@ -70,7 +70,7 @@
 			</section>
 
 			<div class="metrics" use:reveal={{ debug: true, ref: 'metrics' }}>
-				{#each metrics as metric}
+				{#each metrics || [] as metric}
 					<div>
 						<h1 class="h1--bold">{metric.value}</h1>
 						<p class="p4--SEMIBOLD">{metric.name}</p>
@@ -79,7 +79,7 @@
 			</div>
 
 			<div class="content">
-				{#each projectSections as section}
+				{#each projectSections || [] as section}
 					<section>
 						<h2 class="h2--semibold" use:reveal>{section.title}</h2>
 						<p class="p3--regular" use:reveal={{ delay: 200 }}>{@html section.content.html}</p>

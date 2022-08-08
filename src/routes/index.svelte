@@ -1,7 +1,8 @@
 <script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
 	import { url, getHomepage } from '$utils/queries';
 
-	export async function load({ fetch }) {
+	export const load: Load = async ({ fetch }) => {
 		const res = await fetch(url, {
 			method: 'POST',
 			headers: {
@@ -29,10 +30,11 @@
 			status: res.status,
 			error: new Error(`Could not load ${url}`)
 		};
-	}
+	};
 </script>
 
 <script lang="ts">
+	import { afterUpdate } from 'svelte';
 	import Home from '$lib/pages/Home.svelte';
 	import Layout from '$lib/templates/Layout.svelte';
 	import type { IHeader, IHomepage, IFooter, IProject, IArticle } from '$utils/lib';
@@ -42,8 +44,16 @@
 	export let articles: IArticle[];
 	export let header: IHeader;
 	export let footer: IFooter;
+
+	let show = false;
+
+	afterUpdate(() => {
+		show = true;
+	});
 </script>
 
-<Layout {header} {footer} homepage={true}>
-	<Home {homepage} {projects} {articles} />
-</Layout>
+{#if show}
+	<Layout {header} {footer} homepage={true}>
+		<Home {homepage} {projects} {articles} />
+	</Layout>
+{/if}

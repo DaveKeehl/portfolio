@@ -1,15 +1,17 @@
-<script context="module">
-	export function load({ error, status }) {
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
+
+	export const load: Load = ({ error, status }) => {
 		return {
 			props: {
-				title: `${status}: ${error.message}`
+				title: `${status}: ${error?.message}`
 			}
 		};
-	}
+	};
 </script>
 
-<script>
-	export let title;
+<script lang="ts">
+	export let title: string;
 </script>
 
 <h1>{title}</h1>

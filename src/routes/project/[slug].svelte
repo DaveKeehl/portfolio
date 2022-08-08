@@ -1,7 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
 	import { url, getProjectBySlug } from '$utils/queries';
 
-	export async function load({ page, fetch }) {
+	export const load: Load = async ({ fetch, params }) => {
 		const res = await fetch(url, {
 			method: 'POST',
 			headers: {
@@ -10,7 +11,7 @@
 			body: JSON.stringify({
 				query: getProjectBySlug,
 				variables: {
-					slug: page.params.slug
+					slug: params.slug
 				}
 			})
 		});
@@ -30,7 +31,7 @@
 			status: res.status,
 			error: new Error(`Could not load ${url}`)
 		};
-	}
+	};
 </script>
 
 <script lang="ts">

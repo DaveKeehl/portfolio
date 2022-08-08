@@ -49,10 +49,10 @@ export interface IMetric {
 }
 
 export interface IProject {
-	createdAt?: string;
+	createdAt: string;
 	title: string;
 	slug: string;
-	featured?: boolean;
+	featured: boolean;
 	liveUrl: string;
 	repositoryUrl: string;
 	visitButtonText: string;
@@ -60,10 +60,10 @@ export interface IProject {
 	description: string;
 	cover: IImage;
 	technologies: string[];
-	industry?: string;
-	year?: number;
-	productType?: string;
-	role?: string[];
+	industry: string;
+	year: number;
+	productType: string;
+	role: string[];
 	metrics?: IMetric[];
 	projectSections?: IProjectSection[];
 }
@@ -79,7 +79,7 @@ interface IArticleCard {
 }
 
 export interface IArticle {
-	createdAt?: string;
+	createdAt: string;
 	id: string;
 	title: string;
 	slug: string;

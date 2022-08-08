@@ -1,4 +1,4 @@
-export const mapping = {
+export const mapping: { [key: string]: string } = {
 	ChartJS: 'Chart.js',
 	CSS: 'CSS',
 	Figma_API: 'Figma API',

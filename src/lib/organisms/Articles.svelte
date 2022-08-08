@@ -108,7 +108,7 @@
 			<div
 				class="button-wrapper"
 				transition:fade={{ duration: 100 }}
-				use:reveal={{ offset: { bottom: 20 } }}
+				use:reveal={{ marginBottom: 20 }}
 			>
 				<Button on:click={showMoreCards}>Load more posts</Button>
 			</div>

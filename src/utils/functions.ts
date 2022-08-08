@@ -1,8 +1,5 @@
-const port = 3000;
+const port = 5173;
 export const localhost = `http://localhost:${port}`;
 export const website = 'https://davideciulla.com';
 
-// const STILL_PLAYING = true
-
-export const getPrefix = (dev: boolean, STILL_PLAYING = true): string =>
-	dev || STILL_PLAYING ? localhost : website;
+export const getPrefix = (dev: boolean): string => (dev ? localhost : website);

@@ -4,7 +4,7 @@
 	type State = 'default' | 'success' | 'warning' | 'error';
 	type Direction = 'normal' | 'reverse';
 
-	export let href: string = undefined;
+	export let href: string | undefined = undefined;
 	export let external: boolean = false;
 
 	export let variant: Variant = 'primary';
@@ -26,7 +26,7 @@
 {:else}
 	<a
 		{href}
-		rel={external && 'noopener noreferrer'}
+		rel={external ? 'noopener noreferrer' : ''}
 		class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
 		target={external ? '_blank' : ''}
 		{disabled}
