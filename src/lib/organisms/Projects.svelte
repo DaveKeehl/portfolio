@@ -26,6 +26,10 @@
 </section>
 
 <style>
+	section {
+		padding-top: 2rem;
+	}
+
 	.projects {
 		display: grid;
 		gap: 3.5rem;

@@ -17,8 +17,6 @@
 	const cleanCategory = (category: string): string => {
 		return category.replace(/[_-]/g, ' ');
 	};
-
-	const prefix: string = getPrefix(dev);
 </script>
 
 <div

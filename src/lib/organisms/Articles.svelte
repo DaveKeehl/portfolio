@@ -119,6 +119,10 @@
 <style lang="scss">
 	@import '../../styles/colors.scss';
 
+	:global(section#blog) {
+		padding-top: 2rem;
+	}
+
 	.articles {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
