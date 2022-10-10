@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import { dev } from '$app/env';
+	import { dev } from '$app/environment';
 	import { getPrefix } from '$utils/functions';
 	import type { IHeader } from '$utils/lib';
 	import { open } from '$stores/menu';

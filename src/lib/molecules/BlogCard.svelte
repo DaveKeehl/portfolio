@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { dev } from '$app/env';
+	import { dev } from '$app/environment';
 	import { reveal } from 'svelte-reveal';
 	import { getPrefix } from '$utils/functions';
 	import type { IImage } from '$utils/lib';
