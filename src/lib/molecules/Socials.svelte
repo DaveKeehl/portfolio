@@ -1,14 +1,19 @@
 <script lang="ts">
 	import type { ISocial } from '$utils/lib';
 
-	export let socials: ISocial[];
+	export let socials: {
+		_id: string;
+		icon: string;
+		title: string;
+		url: string;
+	}[];
 	export let mobile: boolean;
 </script>
 
 <div class:mobile>
 	{#each socials as social}
 		<a href={social.url} target="_blank" rel="noopener noreferrer">
-			<img src={social.image.url} alt={social.image.alt} />
+			<img src={social.icon} alt={social.title} />
 		</a>
 	{/each}
 </div>

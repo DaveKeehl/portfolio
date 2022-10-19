@@ -1,39 +1,37 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
-	import Button from '$atoms/Button.svelte';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import Container from '$templates/Container.svelte';
 	import { reveal } from 'svelte-reveal';
 	import { getPrefix } from '$utils/functions';
 	import type { IHero } from '$utils/lib';
+	import Button from '$atoms/Button.svelte';
 
 	export let hero: IHero;
-	const { greetings, valueProposition, introduction, button, image } = hero;
-
-	const prefix: string = getPrefix(dev);
+	const { heading, greetings, buttons, description } = hero;
 </script>
 
 <section>
 	<Container>
 		<p class="greetings p2--medium" use:reveal>{greetings}</p>
-		<h1 class="h1--bold" use:reveal={{ delay: 100 }}>{valueProposition}</h1>
-		<p class="introduction p3--regular" use:reveal={{ delay: 200 }}>{introduction}</p>
+		<h1 class="h1--bold" use:reveal={{ delay: 100 }}>{heading}</h1>
+		<p class="introduction p3--regular" use:reveal={{ delay: 200 }}>
+			{description}
+		</p>
 		<div class="button" use:reveal={{ delay: 300 }}>
-			<!-- <ButtonsGroup
-				direction="horizontal"
-				primaryButton={{ text: button.text, link: `${prefix}#projects`, external: button.external }}
-				secondaryButton={{
-					text: 'Get in touch with me',
-					link: `${prefix}#contact`,
+			<ButtonsGroup
+				primary={{
+					text: buttons.primary,
+					href: `${getPrefix()}#projects`,
 					external: false
 				}}
-			/> -->
-			<Button href={`${prefix}#projects`} external={button.external}>
-				{button.text}
-			</Button>
+				secondary={{
+					text: buttons.secondary,
+					href: `${getPrefix()}#contact`,
+					external: false
+				}}
+			/>
 		</div>
 	</Container>
-	<img src={image.url} alt={image.alt} use:reveal={{ delay: 400 }} />
 </section>
 
 <style lang="scss">

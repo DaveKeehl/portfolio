@@ -1,26 +1,17 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { url, getHomepage } from '$utils/queries';
+import { client } from '$utils/sanity';
 
-export const load: PageLoad = async ({ fetch }) => {
-	const res = await fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			query: getHomepage
-		})
-	});
+export const load: PageLoad = async () => {
+	const data = await client.fetch(getHomepage);
 
-	if (res.ok) {
-		const { homepage, projects, articles, header, footer } = (await res.json()).data;
+	if (data) {
+		const { homepage, siteSettings } = data;
+
 		return {
 			homepage,
-			projects,
-			articles,
-			header,
-			footer
+			siteSettings
 		};
 	}
 

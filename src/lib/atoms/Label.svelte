@@ -1,11 +1,11 @@
 <script lang="ts">
 	export let selected: boolean = false;
-	export let category: string;
+	export let label: string;
 	export let toggleCategory: (category: string) => void;
 </script>
 
-<p class:selected class="p5--semibold" on:click={() => toggleCategory(category)}>
-	{category}
+<p class:selected class="p5--semibold" on:click={() => toggleCategory(label)}>
+	{label}
 </p>
 
 <style lang="scss">

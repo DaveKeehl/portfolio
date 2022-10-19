@@ -2,15 +2,20 @@
 	import { dev } from '$app/environment';
 	import { getPrefix } from '$utils/functions';
 
-	export let navigation: string[];
+	export let sections: {
+		_id: string;
+		name: string;
+	}[];
 	export let mobile: boolean;
 
 	const prefix: string = getPrefix(dev);
 </script>
 
 <nav class:mobile>
-	{#each navigation as item}
-		<a href={`${prefix}#${item.toLowerCase()}`} class="p5--medium">{item}</a>
+	{#each sections as section}
+		<a href={`${prefix}#${section.name.toLowerCase()}`} class="p5--medium"
+			>{section.name}</a
+		>
 	{/each}
 </nav>
 

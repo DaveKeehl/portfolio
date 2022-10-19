@@ -1,20 +1,19 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import { dev } from '$app/environment';
+
 	import { getPrefix } from '$utils/functions';
 	import type { IHeader } from '$utils/lib';
 	import { open } from '$stores/menu';
+
 	import Navbar from '$molecules/Navbar.svelte';
 	import Container from '$templates/Container.svelte';
 	import Socials from '$molecules/Socials.svelte';
 
 	export let header: IHeader;
-	const { logo, navigation, socials } = header;
+	const { logo, sections, socials } = header;
 
-	const prefix: string = getPrefix(dev);
-
-	let visible: boolean = true;
+	let visible = true;
 	let y = 0;
 	let lastY = 0;
 
@@ -25,9 +24,8 @@
 		const OFFSET = 0;
 		const TOLERANCE = 0;
 
-		if (y < OFFSET) return false;
+		if (y < OFFSET || dy < 0) return false;
 		if (Math.abs(dy) <= TOLERANCE) return visible;
-		if (dy < 0) return false;
 		return true;
 	};
 
@@ -50,11 +48,11 @@
 	<Container>
 		{#if visible}
 			<div class="wrapper" transition:fly={{ y: -20, duration: 500 }}>
-				<a href={prefix}>
-					<img src={logo.url} alt={logo.alt} />
+				<a href={getPrefix()}>
+					<img src={logo} alt="" />
 				</a>
 
-				<Navbar {navigation} mobile={false} />
+				<Navbar {sections} mobile={false} />
 
 				<Socials {socials} mobile={false} />
 
@@ -73,7 +71,7 @@
 								on:click={() => open.set(false)}
 							/>
 							<div>
-								<Navbar {navigation} mobile={true} />
+								<Navbar {sections} mobile={true} />
 								<Socials {socials} mobile={true} />
 							</div>
 						</div>

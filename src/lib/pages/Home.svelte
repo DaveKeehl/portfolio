@@ -1,30 +1,28 @@
 <script lang="ts">
 	import SEO from '$templates/SEO.svelte';
+
 	import Hero from '$organisms/Hero.svelte';
 	import About from '$organisms/About.svelte';
 	import Projects from '$organisms/Projects.svelte';
-	import Articles from '$organisms/Articles.svelte';
+	import Blog from '$organisms/Blog.svelte';
 	import Contact from '$organisms/Contact.svelte';
-	import type { IArticle, IHomepage, IProject } from '$utils/lib';
+	import Header from '$organisms/Header.svelte';
+	import Footer from '$organisms/Footer.svelte';
+
+	import type { IHomepage, ISiteSettings } from '$utils/lib';
 
 	export let homepage: IHomepage;
-	export let projects: IProject[];
-	export let articles: IArticle[];
+	export let siteSettings: ISiteSettings;
 
-	const {
-		pageTitle,
-		pageDescription,
-		hero,
-		about,
-		projectSectionTitle,
-		blogSectionTitle,
-		contact
-	} = homepage;
+	const { hero, about, projects, blog, contact, header, footer } = homepage;
+	const { brandName, tagline } = siteSettings;
 </script>
 
-<SEO title={pageTitle} description={pageDescription} />
+<SEO title={brandName} description={tagline} />
+<Header {header} />
 <Hero {hero} />
 <About {about} />
-<Projects title={projectSectionTitle} {projects} />
-<Articles title={blogSectionTitle} {articles} {projects} />
+<Projects {projects} />
+<Blog {blog} />
 <Contact {contact} />
+<Footer {footer} />

@@ -1,6 +1,6 @@
 export interface IButton {
 	text: string;
-	link: string;
+	href: string;
 	external: boolean;
 	type?: string;
 }
@@ -17,55 +17,70 @@ export interface ISocial {
 }
 
 export interface IHeader {
-	logo: IImage;
-	navigation: string[];
-	socials: ISocial[];
+	logo: string;
+	sections: {
+		_id: string;
+		name: string;
+	}[];
+	socials: {
+		_id: string;
+		icon: string;
+		title: string;
+		url: string;
+	}[];
 }
 
 export interface IHero {
+	heading: string;
 	greetings: string;
-	valueProposition: string;
-	introduction: string;
-	button: IButton;
-	image: IImage;
-}
-
-export interface IAbout {
-	title: string;
-	text: string;
-	button: IButton;
-}
-
-export interface IProjectSection {
-	title: string;
-	content: {
-		html: string;
+	description: string;
+	buttons: {
+		primary: string;
+		secondary: string;
 	};
 }
 
-export interface IMetric {
-	name: string;
-	value: number;
+export interface IAbout {
+	heading: string;
+	image: string;
+	button: string;
+	content: any;
+}
+
+export interface IProjects {
+	heading: string;
+	projects: IProject[];
 }
 
 export interface IProject {
-	createdAt: string;
+	_id: string;
 	title: string;
-	slug: string;
-	featured: boolean;
-	liveUrl: string;
-	repositoryUrl: string;
-	visitButtonText: string;
-	excerpt: string;
-	description: string;
-	cover: IImage;
-	technologies: string[];
+	type: string;
+	image: string;
+	primaryCTA: {
+		text: string;
+		url: string;
+	};
 	industry: string;
 	year: number;
-	productType: string;
-	role: string[];
-	metrics?: IMetric[];
-	projectSections?: IProjectSection[];
+	roles: string[];
+	technologies: {
+		_id: string;
+		title: string;
+		url: string;
+	}[];
+	excerpt: string;
+}
+
+export interface IBlog {
+	heading: string;
+	labels: string[];
+	posts: {
+		_type: 'caseStudy' | 'article';
+		excerpt: string;
+		image: string;
+		title: string;
+	}[];
 }
 
 interface IArticleCard {
@@ -92,23 +107,32 @@ export interface IArticle {
 }
 
 export interface IContact {
-	title: string;
-	text: string;
-	email: string;
+	heading: string;
+	content: any;
 }
 
 export interface IFooter {
-	text: {
-		html: string;
-	};
+	content: any;
+}
+
+export interface ISiteSettings {
+	tagline: string;
+	brandName: string;
 }
 
 export interface IHomepage {
-	pageTitle: string;
-	pageDescription: string;
+	header: IHeader;
 	hero: IHero;
 	about: IAbout;
-	projectSectionTitle: string;
-	blogSectionTitle: string;
+	projects: IProjects;
+	blog: IBlog;
 	contact: IContact;
+	footer: IFooter;
+}
+
+export interface IPost {
+	_type: 'caseStudy' | 'article';
+	excerpt: string;
+	image: string;
+	title: string;
 }

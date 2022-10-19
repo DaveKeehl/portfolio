@@ -1,52 +1,43 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
 	import { getPrefix } from '$utils/functions';
-	import { mapping } from '$utils/technologies';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import { reveal } from 'svelte-reveal';
 	import type { IProject } from '$utils/lib';
 
 	export let project: IProject;
-	const { title, slug, liveUrl, visitButtonText, excerpt, cover, technologies } = project;
+	const { title, image, primaryCTA, excerpt, type } = project;
+	$: slug = title.toLowerCase().replace(/\s/g, '-');
 
 	export let reversed: boolean = false;
-
-	const prefix: string = getPrefix(dev);
 </script>
 
 <div class:reversed class="project" use:reveal>
 	<div class="image">
-		<img src={cover.url} alt={cover.alt} />
+		<img src={image} alt={title} />
 	</div>
 
 	<div class="content">
+		<div class="technologies">
+			<p>{type}</p>
+		</div>
+
 		<a href={`/project/${slug}`}>
 			<h2>{title}</h2>
 		</a>
 
-		<div class="technologies">
-			<p>></p>
-			<div>
-				{#each technologies as technology}
-					<p>{mapping[technology]}</p>
-				{/each}
-			</div>
-		</div>
-
 		<p class="excerpt p5--regular">{excerpt}</p>
 
 		<ButtonsGroup
-			primaryButton={{
-				text: visitButtonText,
-				link: liveUrl,
+			primary={{
+				text: primaryCTA.text,
+				href: primaryCTA.url,
 				external: true
 			}}
-			secondaryButton={{
+			secondary={{
 				text: 'Go to case study',
-				link: `${prefix}/project/${slug}`,
+				href: `${getPrefix()}/project/${slug}`,
 				external: false
 			}}
-			direction="horizontal"
 		/>
 	</div>
 </div>

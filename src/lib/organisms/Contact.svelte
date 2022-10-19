@@ -4,14 +4,13 @@
 	import type { IContact } from '$utils/lib';
 
 	export let contact: IContact;
-	const { title, text, email } = contact;
+	const { heading, content } = contact;
 </script>
 
 <Section number={4} id="contact">
 	<div use:reveal={{ delay: 200, marginBottom: -30 }}>
-		<h2 class="margin-bottom-small">{title}</h2>
-		<p class="p4--regular">{text}</p>
-		<a class="p4--semibold" href={`mailto:${email}`}>{email}</a>
+		<h2 class="margin-bottom-small">{heading}</h2>
+		<p class="p4--regular">{content}</p>
 	</div>
 </Section>
 

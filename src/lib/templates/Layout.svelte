@@ -11,7 +11,7 @@
 
 <Header {header} />
 <slot />
-<Footer {footer} {homepage} {article} />
+<Footer {footer} />
 
 <style lang="scss" global>
 	@import '../../styles/colors.scss';

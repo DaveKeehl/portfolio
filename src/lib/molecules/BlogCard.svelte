@@ -4,19 +4,25 @@
 	import { getPrefix } from '$utils/functions';
 	import type { IImage } from '$utils/lib';
 
+	// export let title: string;
+	// export let slug: string;
+	// export let resourceType: string;
+	// export let excerpt: string;
+	// export let cover: IImage;
+	// export let category: string;
+
 	export let title: string;
-	export let slug: string;
-	export let resourceType: string;
+	$: slug = title.toLowerCase().replace(/\s/g, '-');
+	export let image: string;
+	export let _type: string;
 	export let excerpt: string;
-	export let cover: IImage;
-	export let category: string;
 
 	export let CHUNK: number;
 	export let idx: number;
 
-	const cleanCategory = (category: string): string => {
-		return category.replace(/[_-]/g, ' ');
-	};
+	// const cleanCategory = (category: string): string => {
+	// 	return category.replace(/[_-]/g, ' ');
+	// };
 </script>
 
 <div
@@ -26,11 +32,11 @@
 		duration: idx >= CHUNK ? 500 : 800
 	}}
 >
-	<a href={`/${resourceType}/${slug}`} class="cover">
-		<img src={cover.url} alt={cover.alt} />
+	<a href={`/${_type}/${slug}`} class="cover">
+		<img src={image} alt={title} />
 	</a>
-	<h5 class="h5--SEMIBOLD">#{cleanCategory(category)}</h5>
-	<a href={`/${resourceType}/${slug}`}>
+	<!-- <h5 class="h5--SEMIBOLD">#{}</h5> -->
+	<a href={`/${_type}/${slug}`}>
 		<h3>{title}</h3>
 	</a>
 	<p class="p5--regular">{excerpt}</p>

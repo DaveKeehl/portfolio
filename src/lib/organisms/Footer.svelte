@@ -4,14 +4,13 @@
 	import type { IFooter } from '$utils/lib';
 
 	export let footer: IFooter;
-	export let homepage: boolean = false;
-	export let article: boolean = false;
+	const { content } = footer;
 </script>
 
 <footer use:reveal>
 	<Container>
-		<div class:homepage class:article>
-			{@html footer.text.html}
+		<div class="homepage">
+			{@html content}
 		</div>
 	</Container>
 </footer>
