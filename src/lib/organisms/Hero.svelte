@@ -12,7 +12,9 @@
 	const { heading, greetings, buttons, description } = hero;
 
 	const sectionStyles = css({
-		paddingBlock: '200px'
+		paddingBlock: '200px',
+		position: 'relative',
+		overflow: 'hidden'
 	});
 
 	const containerStyles = css({
@@ -112,51 +114,3 @@
 	</Container>
 	<div class={circleStyles()} />
 </section>
-
-<style lang="scss">
-	@import '../../styles/colors.scss';
-	@import '../../styles/breakpoints.scss';
-
-	/* section {
-		padding-top: 14rem;
-		padding-bottom: 12rem;
-		position: relative;
-
-		@media (min-width: $tablet-l) {
-			padding-top: 20rem;
-			padding-bottom: 18rem;
-		}
-	} */
-
-	/* .introduction {
-		margin-bottom: 3.5rem;
-		width: 100%;
-		animation-delay: 0.4s;
-
-		@media (min-width: $tablet-l) {
-			width: 80%;
-		}
-
-		@media (min-width: $laptop-m) {
-			width: 60%;
-		}
-	}
-
-	.button {
-		animation-delay: 0.6s;
-	}
-
-	img {
-		position: absolute;
-		bottom: 0;
-		right: 15%;
-		display: none;
-		width: 560px;
-		aspect-ratio: 1 / 1;
-		animation-delay: 0.8s;
-
-		@media (min-width: $laptop-m) {
-			display: block;
-		}
-	}*/
-</style>

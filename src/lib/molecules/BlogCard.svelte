@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { reveal } from 'svelte-reveal';
 
+	import Label from '$atoms/Label.svelte';
+
 	import { css } from '$utils/stitches.config';
 	import { deCamelCase } from '$utils/functions';
 
@@ -41,15 +43,6 @@
 		}
 	});
 
-	const labelStyles = css({
-		p6: 'code',
-		borderRadius: '2px',
-		background: '$turquoise-100-A10',
-		width: 'fit-content',
-		padding: '4px 10px',
-		textTransform: 'uppercase'
-	});
-
 	const titleStyles = css({
 		marginBlock: '16px',
 
@@ -76,7 +69,7 @@
 	<a href={`/${_type}/${slug}`} class={coverStyles()}>
 		<img src={image} alt={title} />
 	</a>
-	<span class={labelStyles()}>{cleanType}</span>
+	<Label>{cleanType}</Label>
 	<a href={`/${_type}/${slug}`} class={titleStyles()}><h3>{title}</h3></a>
 	<p class={excerptStyles()}>{excerpt}</p>
 </div>

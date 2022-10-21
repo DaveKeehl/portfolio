@@ -1,33 +1,75 @@
 <script lang="ts">
-	import { getHostname } from '$utils/functions';
-	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import { reveal } from 'svelte-reveal';
+
+	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
+	import Label from '$atoms/Label.svelte';
+
 	import type { IProject } from '$utils/lib';
+	import { css } from '$utils/stitches.config';
 
 	export let project: IProject;
+	export let reversed = false;
+
 	const { title, image, primaryCTA, excerpt, type } = project;
 	$: slug = title.toLowerCase().replace(/\s/g, '-');
 
-	export let reversed: boolean = false;
+	const titleStyles = css({
+		h3: 'bold',
+		marginBlock: '20px 16px'
+	});
+
+	const excerptStyles = css({
+		p5: 'regular',
+		opacity: '0.9',
+		color: '$blue-100',
+		marginBottom: '36px'
+	});
+
+	const imageStyles = css({
+		display: 'flex',
+		gridColumn: '1 / 5',
+		gridRow: '1 / 3',
+		position: 'relative',
+
+		'& img': {
+			position: 'relative',
+			width: '100%',
+			height: '100%',
+			aspectRatio: '16 / 10',
+			objectFit: 'cover',
+			borderRadius: '20px',
+			border: '1px solid $turquoise-200-A05',
+
+			'&::before': {
+				content: '',
+				position: 'absolute',
+				background: 'linear-gradient(to bottom, transparent, $blue-300-A75)',
+				top: '0',
+				left: '0',
+				width: '100%',
+				height: '100%',
+				zIndex: '5'
+			}
+		}
+	});
 </script>
 
 <div class:reversed class="project" use:reveal>
-	<div class="image">
+	<div class={`${imageStyles()} image`}>
 		<img src={image} alt={title} />
 	</div>
 
 	<div class="content">
-		<div class="technologies">
-			<p>{type}</p>
-		</div>
+		<Label>{type}</Label>
 
 		<a href={`/project/${slug}`}>
-			<h2>{title}</h2>
+			<h3 class={titleStyles()}>{title}</h3>
 		</a>
 
-		<p class="excerpt p5--regular">{excerpt}</p>
+		<p class={excerptStyles()}>{excerpt}</p>
 
 		<ButtonsGroup
+			size="small"
 			primary={{
 				text: primaryCTA.text,
 				href: primaryCTA.url,
@@ -35,7 +77,7 @@
 			}}
 			secondary={{
 				text: 'Go to case study',
-				href: `${getHostname()}/project/${slug}`,
+				href: `project/${slug}`,
 				external: false
 			}}
 		/>
@@ -46,7 +88,7 @@
 	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
 
-	a {
+	/* a {
 		display: block;
 		width: fit-content;
 
@@ -59,7 +101,7 @@
 				margin-bottom: 1rem;
 			}
 		}
-	}
+	} */
 
 	.project {
 		display: block;
@@ -73,17 +115,17 @@
 	}
 
 	.image {
-		display: flex;
+		/* display: flex;
 		grid-column: 1 / 5;
 		grid-row: 1 / 3;
-		position: relative;
+		position: relative; */
 
 		@media (min-width: $tablet-l) {
 			grid-row: 1 / 2;
 		}
 
 		&::before {
-			content: '';
+			/* content: '';
 			position: absolute;
 			background: linear-gradient(
 				to bottom,
@@ -93,7 +135,7 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 100%;
+			height: 100%; */
 
 			@media (min-width: $tablet-l) {
 				background: linear-gradient(
@@ -105,10 +147,10 @@
 		}
 
 		img {
-			width: 100%;
+			/* width: 100%;
 			height: 100%;
 			aspect-ratio: 16 / 10;
-			object-fit: cover;
+			object-fit: cover; */
 
 			@media (min-width: $tablet-l) {
 				aspect-ratio: 16 / 12;
@@ -131,39 +173,6 @@
 		@media (min-width: $laptop-m) {
 			grid-column: 4 / -1;
 		}
-	}
-
-	.technologies {
-		display: grid;
-		grid-template-columns: 1fr auto;
-		/* gap: 0.875rem; */
-		/* gap: 1rem; */
-		background: $black-a60;
-		backdrop-filter: blur(40px);
-		width: fit-content;
-		padding: 0.375rem 1rem;
-		border-radius: 0.25rem;
-		margin-bottom: 2.25rem;
-
-		div {
-			display: flex;
-			flex-wrap: wrap;
-		}
-
-		p {
-			font-family: 'Fira Code', monospace;
-			font-size: 0.875rem;
-			letter-spacing: 2%;
-			line-height: 1.5rem;
-
-			&:not(:last-child) {
-				margin-right: 1rem;
-			}
-		}
-	}
-
-	.excerpt {
-		margin-bottom: 2.25rem;
 	}
 
 	.reversed {

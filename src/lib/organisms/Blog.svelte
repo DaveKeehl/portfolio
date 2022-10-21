@@ -3,7 +3,7 @@
 	import { reveal } from 'svelte-reveal';
 
 	import Button from '$atoms/Button.svelte';
-	import Label from '$atoms/Label.svelte';
+	import Pill from '$atoms/Pill.svelte';
 	import BlogCard from '$molecules/BlogCard.svelte';
 	import Section from '$templates/Section.svelte';
 
@@ -71,7 +71,7 @@
 >
 	<div class={categoriesStyles()} use:reveal={{ delay: 300 }}>
 		{#each cleanLabels as label}
-			<Label selected={selectedLabels.has(label)} {label} {toggleLabel} />
+			<Pill selected={selectedLabels.has(label)} text={label} {toggleLabel} />
 		{/each}
 	</div>
 

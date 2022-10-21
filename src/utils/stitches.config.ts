@@ -16,6 +16,7 @@ export const { css, theme, globalCss } = createStitches({
 			'blue-100': '#B7CDE5',
 			'blue-200': '#476485',
 			'blue-300': '#031F40',
+			'blue-300-A75': '#031F40',
 			'blue-400': '#031836',
 			'blue-400-A80': 'rgba(3, 24, 54, 0.8)'
 		},
@@ -104,6 +105,28 @@ export const { css, theme, globalCss } = createStitches({
 				bold: {
 					fontSize: '20px',
 					fontWeight: '700',
+					lineHeight: '150%'
+				}
+			};
+			return variants[weight];
+		},
+		p4: (weight: string) => {
+			const variants: { [key: string]: { [key: string]: string } } = {
+				regular: {
+					fontSize: '18px',
+					fontWeight: '400',
+					lineHeight: '150%',
+					letterSpacing: '0.02em'
+				},
+				medium: {
+					fontSize: '18px',
+					fontWeight: '500',
+					lineHeight: '150%',
+					letterSpacing: '0.01em'
+				},
+				semiBold: {
+					fontSize: '18px',
+					fontWeight: '600',
 					lineHeight: '150%'
 				}
 			};

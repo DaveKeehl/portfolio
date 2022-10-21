@@ -29,7 +29,7 @@
 		borderRadius: '10px',
 		height: 'fit-content',
 		textAlign: 'center',
-		width: 'fit-content',
+		width: 'max-content',
 		transition: 'color 0.2s, background 0.2s',
 
 		'&:disabled': {
@@ -99,7 +99,9 @@
 
 {#if href}
 	<a
-		href={`${getHostname()}/${href}`}
+		href={external
+			? href
+			: `${getHostname()}${href.startsWith('/') ? '' : '/'}${href}`}
 		rel={external ? 'noopener noreferrer' : ''}
 		target={external ? '_blank' : ''}
 		{disabled}

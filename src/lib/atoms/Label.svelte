@@ -1,49 +1,17 @@
 <script lang="ts">
 	import { css } from '$utils/stitches.config';
 
-	export let label: string;
-	export let selected = false;
-	export let disabled = true;
-	export let toggleLabel: (category: string) => void;
-
-	const labelStyles = css({
-		p5: 'semiBold',
+	const styles = css({
+		p6: 'code',
+		borderRadius: '2px',
 		background: '$turquoise-100-A10',
-		color: '$turquoise-200',
-		padding: '8px 20px',
-		borderRadius: '24px',
-		userSelect: 'none',
-		transition: 'color 0.2s, box-shadow 0.1s',
-
-		'&:disabled': {
-			color: '$blue-200',
-			background: '$turquoise-100-A10',
-			cursor: 'not-allowed'
-		},
-
-		'&:hover': {
-			cursor: 'pointer',
-			color: '$turquoise-100'
-		},
-
-		'&:focus': {
-			outline: '2px solid $turquoise-100-A20'
-		},
-
-		variants: {
-			selected: {
-				true: {
-					outline: '2px solid $turquoise-200'
-				}
-			}
-		}
+		width: 'fit-content',
+		padding: '4px 10px',
+		textTransform: 'uppercase',
+		color: '$blue-100'
 	});
-
-	const handleClick = () => {
-		toggleLabel(label);
-	};
 </script>
 
-<p class={labelStyles({ selected })} on:click={handleClick} disabled>
-	{label}
-</p>
+<span class={styles()}>
+	<slot />
+</span>
