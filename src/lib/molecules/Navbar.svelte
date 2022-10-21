@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
-	import { getPrefix } from '$utils/functions';
+	import { getHostname } from '$utils/functions';
+	import { css } from '$utils/stitches.config';
 
 	export let sections: {
 		_id: string;
@@ -8,12 +8,26 @@
 	}[];
 	export let mobile: boolean;
 
-	const prefix: string = getPrefix(dev);
+	const prefix: string = getHostname();
+
+	const navItemStyles = css({
+		color: '$blue-200',
+		fontSize: '$p5',
+		fontWeight: '600',
+		lineHeight: '24px',
+		letterSpacing: '2%',
+		textTransform: 'uppercase',
+		transition: 'color 0.2s',
+
+		'&:hover': {
+			color: '$grayscale-100'
+		}
+	});
 </script>
 
 <nav class:mobile>
 	{#each sections as section}
-		<a href={`${prefix}#${section.name.toLowerCase()}`} class="p5--medium"
+		<a href={`${prefix}#${section.name.toLowerCase()}`} class={navItemStyles()}
 			>{section.name}</a
 		>
 	{/each}
@@ -31,13 +45,13 @@
 		}
 
 		a {
-			color: $white;
-			text-transform: uppercase;
-			transition: opacity 0.2s;
+			/* color: $white; */
+			/* text-transform: uppercase; */
+			/* transition: opacity 0.2s; */
 
-			&:hover {
-				opacity: 0.8;
-			}
+			/* &:hover { */
+			/* opacity: 0.8; */
+			/* } */
 
 			&:not(:last-child) {
 				margin-right: 1.5rem;

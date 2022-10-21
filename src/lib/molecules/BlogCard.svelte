@@ -1,15 +1,8 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
 	import { reveal } from 'svelte-reveal';
-	import { getPrefix } from '$utils/functions';
-	import type { IImage } from '$utils/lib';
 
-	// export let title: string;
-	// export let slug: string;
-	// export let resourceType: string;
-	// export let excerpt: string;
-	// export let cover: IImage;
-	// export let category: string;
+	import { css } from '$utils/stitches.config';
+	import { deCamelCase } from '$utils/functions';
 
 	export let title: string;
 	$: slug = title.toLowerCase().replace(/\s/g, '-');
@@ -20,64 +13,70 @@
 	export let CHUNK: number;
 	export let idx: number;
 
-	// const cleanCategory = (category: string): string => {
-	// 	return category.replace(/[_-]/g, ' ');
-	// };
+	const cleanType = deCamelCase(_type);
+
+	const cardStyles = css({
+		display: 'flex',
+		flexDirection: 'column'
+	});
+
+	const coverStyles = css({
+		display: 'flex',
+		overflow: 'hidden',
+		marginBottom: '1.5rem',
+		borderRadius: '16px',
+		border: '1px solid $turquoise-200-A05',
+
+		'& img': {
+			width: ' 100%',
+			aspectRatio: '16 / 9',
+			objectFit: 'cover',
+			transform: 'scale(1)',
+			willChange: 'transform',
+			transition: 'transform 0.2s'
+		},
+
+		'&:hover img': {
+			transform: 'scale(1.02)'
+		}
+	});
+
+	const labelStyles = css({
+		p6: 'code',
+		borderRadius: '2px',
+		background: '$turquoise-100-A10',
+		width: 'fit-content',
+		padding: '4px 10px',
+		textTransform: 'uppercase'
+	});
+
+	const titleStyles = css({
+		marginBlock: '16px',
+
+		'& h3': {
+			h3: 'bold'
+		}
+	});
+
+	const excerptStyles = css({
+		p5: 'regular',
+		color: '$blue-100',
+		opacity: '0.8'
+	});
 </script>
 
 <div
+	class={cardStyles()}
 	use:reveal={{
 		delay: idx % 2 ? 200 : 0,
 		marginBottom: idx >= CHUNK ? 2000 : 200,
 		duration: idx >= CHUNK ? 500 : 800
 	}}
 >
-	<a href={`/${_type}/${slug}`} class="cover">
+	<a href={`/${_type}/${slug}`} class={coverStyles()}>
 		<img src={image} alt={title} />
 	</a>
-	<!-- <h5 class="h5--SEMIBOLD">#{}</h5> -->
-	<a href={`/${_type}/${slug}`}>
-		<h3>{title}</h3>
-	</a>
-	<p class="p5--regular">{excerpt}</p>
+	<span class={labelStyles()}>{cleanType}</span>
+	<a href={`/${_type}/${slug}`} class={titleStyles()}><h3>{title}</h3></a>
+	<p class={excerptStyles()}>{excerpt}</p>
 </div>
-
-<style lang="scss">
-	@import '../../styles/colors.scss';
-
-	div {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.cover {
-		display: flex;
-		overflow: hidden;
-		margin-bottom: 1.5rem;
-
-		&:hover img {
-			transform: scale(1.1);
-		}
-
-		img {
-			width: 100%;
-			aspect-ratio: 16 / 9;
-			object-fit: cover;
-			transform: scale(1);
-			will-change: transform;
-			transition: transform 0.2s;
-		}
-	}
-
-	a {
-		color: $white;
-	}
-
-	h5 {
-		color: $blue-200;
-	}
-
-	h3 {
-		margin: 0.5rem 0;
-	}
-</style>

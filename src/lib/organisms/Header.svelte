@@ -2,34 +2,73 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 
-	import { getPrefix } from '$utils/functions';
-	import type { IHeader } from '$utils/lib';
-	import { open } from '$stores/menu';
-
 	import Navbar from '$molecules/Navbar.svelte';
 	import Container from '$templates/Container.svelte';
 	import Socials from '$molecules/Socials.svelte';
 
+	import { open } from '$stores/menu';
+	import { getHostname } from '$utils/functions';
+	import type { IHeader } from '$utils/lib';
+	import { css } from '$utils/stitches.config';
+
 	export let header: IHeader;
 	const { logo, sections, socials } = header;
 
-	let visible = true;
+	let isVisible = true;
 	let y = 0;
 	let lastY = 0;
 
-	const checkVisibility = (y: number): boolean => {
+	function checkVisibility(y: number): boolean {
+		const TOLERANCE = 0;
 		const dy = lastY - y;
 		lastY = y;
 
-		const OFFSET = 0;
-		const TOLERANCE = 0;
+		if (Math.abs(dy) <= TOLERANCE) return isVisible; // if delta-y doesn't go over the tolerance, persist the existing visibility state
+		return dy > TOLERANCE;
+	}
 
-		if (y < OFFSET || dy < 0) return false;
-		if (Math.abs(dy) <= TOLERANCE) return visible;
-		return true;
-	};
+	$: isVisible = checkVisibility(y);
 
-	$: visible = checkVisibility(y);
+	const headerStyles = css({
+		position: 'sticky',
+		top: '0',
+		left: '0',
+		width: '100%',
+		zIndex: '10',
+		opacity: '1',
+		transform: 'translateY(0)',
+		transition: 'all 0.3s',
+
+		'&.hidden': {
+			opacity: '0',
+			transform: 'translateY(-20px)'
+		},
+
+		'&::after': {
+			content: '',
+			position: 'absolute',
+			top: '0',
+			left: '0',
+			width: '100%',
+			height: '12rem',
+			background: `linear-gradient(
+				to bottom,
+				$blue-400,
+				$blue-400-A80 30%,
+				transparent
+			)`,
+			zIndex: '-1',
+			pointerEvents: 'none'
+		}
+	});
+
+	const wrapperStyles = css({
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		paddingTop: '2rem',
+		color: '$grayscale-100'
+	});
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -44,91 +83,50 @@
 	{/if}
 </svelte:head>
 
-<header class:hidden={!visible}>
+<header class:hidden={!isVisible} class={headerStyles()}>
 	<Container>
-		{#if visible}
-			<div class="wrapper" transition:fly={{ y: -20, duration: 500 }}>
-				<a href={getPrefix()}>
-					<img src={logo} alt="" />
-				</a>
+		<div class={wrapperStyles()} transition:fly={{ y: -20, duration: 500 }}>
+			<a href={getHostname()}>
+				<img src={logo} alt="" />
+			</a>
 
-				<Navbar {sections} mobile={false} />
+			<Navbar {sections} mobile={false} />
 
-				<Socials {socials} mobile={false} />
+			<Socials {socials} mobile={false} />
 
-				<div class="mobile">
-					<img
-						src="/icons/menu.svg"
-						alt="Burger menu icon to toggle mobile menu visibility"
-						class="menu-toggle"
-						on:click={() => open.set(true)}
-					/>
-					{#if $open}
-						<div class="menu" transition:fly={{ x: 200 }}>
-							<img
-								src="/icons/close.svg"
-								alt="Close mobile icon"
-								on:click={() => open.set(false)}
-							/>
-							<div>
-								<Navbar {sections} mobile={true} />
-								<Socials {socials} mobile={true} />
-							</div>
-						</div>
-						<div
-							class="bg"
+			<div class="mobile">
+				<img
+					src="/icons/menu.svg"
+					alt="Burger menu icon to toggle mobile menu visibility"
+					class="menu-toggle"
+					on:click={() => open.set(true)}
+				/>
+				{#if $open}
+					<div class="menu" transition:fly={{ x: 200 }}>
+						<img
+							src="/icons/close.svg"
+							alt="Close mobile icon"
 							on:click={() => open.set(false)}
-							transition:fade={{ duration: 300, easing: cubicInOut }}
 						/>
-					{/if}
-				</div>
+						<div>
+							<Navbar {sections} mobile={true} />
+							<Socials {socials} mobile={true} />
+						</div>
+					</div>
+					<div
+						class="bg"
+						on:click={() => open.set(false)}
+						transition:fade={{ duration: 300, easing: cubicInOut }}
+					/>
+				{/if}
 			</div>
-		{/if}
+		</div>
 	</Container>
 </header>
 
 <style lang="scss">
 	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
-
-	header {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		z-index: 10;
-		opacity: 1;
-		transition: opacity 0.5s;
-
-		&.hidden {
-			opacity: 0;
-		}
-
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 12rem;
-			background: linear-gradient(
-				to bottom,
-				$blue-300,
-				transparentize($blue-300, 0.2) 30%,
-				transparentize($blue-300, 1)
-			);
-			z-index: -1;
-			pointer-events: none;
-		}
-	}
-
-	.wrapper {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding-top: 2rem;
-		color: $white;
-	}
 
 	.mobile {
 		display: block;

@@ -14,7 +14,7 @@
 <Footer {footer} />
 
 <style lang="scss" global>
-	@import '../../styles/colors.scss';
-	@import '../../styles/typography.scss';
-	@import '../../styles/global.scss';
+	/* @import '../../styles/colors.scss'; */
+	/* @import '../../styles/typography.scss'; */
+	/* @import '../../styles/global.scss'; */
 </style>

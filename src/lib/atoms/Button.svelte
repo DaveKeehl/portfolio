@@ -1,183 +1,115 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+	import { css, theme } from '$utils/stitches.config';
+	import { getHostname } from '$utils/functions';
+
+	const dispatch = createEventDispatcher();
+
 	type Variant = 'primary' | 'secondary';
 	type Size = 'small' | 'large';
-	type State = 'default' | 'success' | 'warning' | 'error';
-	type Direction = 'normal' | 'reverse';
 
 	export let href: string | undefined = undefined;
-	export let external: boolean = false;
+	export let external = false;
 
 	export let variant: Variant = 'primary';
 	export let size: Size = 'small';
-	export let state: State = 'default';
+	export let disabled = false;
 
-	export let direction: Direction = 'normal';
-	export let disabled: boolean = false;
+	const handleClick = (event: MouseEvent) => {
+		dispatch('click', {
+			event
+		});
+	};
+
+	const button = css({
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		gap: '10px',
+		borderRadius: '10px',
+		height: 'fit-content',
+		textAlign: 'center',
+		width: 'fit-content',
+		transition: 'color 0.2s, background 0.2s',
+
+		'&:disabled': {
+			cursor: 'not-allowed'
+		},
+
+		variants: {
+			variant: {
+				primary: {
+					background: '$turquoise-200',
+					color: '$blue-300',
+					'&:hover': {
+						background: '$turquoise-100'
+					},
+					'&:focus': {
+						outline: 'none',
+						boxShadow: '0 0 0 4px $turquoise-300'
+					},
+					'&:disabled': {
+						background: '$grayscale-100',
+						color: '$blue-200'
+					}
+				},
+				secondary: {
+					background: '$turquoise-100-A10',
+					backdropFilter: 'blur(40px)',
+					color: '$turquoise-200',
+					'&:hover': {
+						color: '$turquoise-100'
+					},
+					'&:active': {
+						background: '$turquoise-100-A20',
+						color: '$turquoise-100'
+					},
+					'&:focus': {
+						outline: 'none',
+						boxShadow: '0 0 0 2px $turquoise-200'
+					},
+					'&:disabled': {
+						background: '$turquoise-100-A10',
+						color: '$blue-200'
+					}
+				}
+			},
+			size: {
+				small: {
+					fontSize: '18px',
+					fontWeight: '600',
+					lineHeight: '27px',
+					padding: '10px 20px'
+				},
+				large: {
+					fontSize: '20px',
+					fontWeight: '700',
+					lineHeight: '30px',
+					padding: '14px 20px'
+				}
+			}
+		}
+	});
+
+	const styles = button({
+		variant,
+		size
+	});
 </script>
 
-{#if href === undefined}
-	<button
-		class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
-		{disabled}
-		on:click
-	>
-		<slot />
-	</button>
-{:else}
+{#if href}
 	<a
-		{href}
+		href={`${getHostname()}/${href}`}
 		rel={external ? 'noopener noreferrer' : ''}
-		class={`button button__variant--${variant} button__size--${size} button__direction--${direction} button__state--${state}`}
 		target={external ? '_blank' : ''}
 		{disabled}
-		on:click
+		class={styles}
+		on:click={handleClick}
 	>
 		<slot />
 	</a>
+{:else}
+	<button class={styles} {disabled} on:click>
+		<slot />
+	</button>
 {/if}
-
-<style lang="scss">
-	@import '../../styles/colors.scss';
-	@import '../../styles/breakpoints.scss';
-
-	.button {
-		display: flex;
-		justify-content: center;
-		flex-direction: row;
-		text-align: center;
-		padding: 14px 24px;
-		border-radius: 8px;
-		width: 100%;
-		transition: color 0.2s, background 0.2s;
-
-		@media (min-width: $tablet) {
-			width: fit-content;
-		}
-	}
-
-	.button__direction {
-		&--normal {
-			flex-direction: row;
-		}
-
-		&--reverse {
-			flex-direction: row-reverse;
-		}
-	}
-
-	.button__variant {
-		&--primary {
-			background: $turquoise-200;
-			color: $blue-300;
-
-			&:hover {
-				background: $turquoise-100;
-			}
-
-			&:active {
-				background: $turquoise-200;
-			}
-
-			&:focus {
-				outline: none;
-				box-shadow: 0 0 0 4px $turquoise-300;
-			}
-
-			&:disabled {
-				background: $white;
-				color: $blue-200;
-				cursor: not-allowed;
-			}
-
-			&.button__state {
-				&--default {
-					box-shadow: 0 8px 32px $turquoise-200-a20;
-				}
-
-				&--success {
-					background: $success;
-				}
-
-				&--warning {
-					background: $warning;
-				}
-
-				&--error {
-					background: $error;
-					color: $white;
-				}
-			}
-		}
-
-		&--secondary {
-			background: $turquoise-100-a10;
-			backdrop-filter: blur(40px);
-			color: $turquoise-200;
-
-			&:hover {
-				color: $turquoise-100;
-			}
-
-			&:active {
-				background: $turquoise-100-a20;
-			}
-
-			&:focus {
-				outline: none;
-				box-shadow: 0 0 0 4px $turquoise-200;
-			}
-
-			&:disabled {
-				color: $blue-200;
-				cursor: not-allowed;
-			}
-
-			&.button__state {
-				&--success {
-					background: $success-bg;
-					color: $success;
-				}
-
-				&--warning {
-					background: $warning-bg;
-					color: $warning;
-				}
-
-				&--error {
-					background: $error-bg;
-					color: $error;
-				}
-			}
-		}
-	}
-
-	.button {
-		&__size {
-			&--small {
-				font-weight: 600;
-				font-size: 18px;
-				line-height: 124%;
-			}
-
-			&--large {
-				font-weight: 700;
-				font-size: 20px;
-				line-height: 118%;
-			}
-		}
-	}
-
-	/* .button {
-		&__state {
-			&--success {
-
-			}
-
-			&--warning {
-			}
-
-			&--error {
-			}
-		}
-	} */
-</style>

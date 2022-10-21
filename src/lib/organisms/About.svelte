@@ -2,26 +2,45 @@
 	import { reveal } from 'svelte-reveal';
 
 	import type { IAbout } from '$utils/lib';
-	import { getPrefix } from '$utils/functions';
 
 	import Section from '$templates/Section.svelte';
 	import Button from '$atoms/Button.svelte';
+	import { css, theme } from '$utils/stitches.config';
 
 	export let about: IAbout;
 	const { heading, content, image, button } = about;
+
+	const sectionStyles = css({
+		paddingBlock: '128px 72px',
+		background: `linear-gradient(
+			to bottom,
+			$grayscale-300 0%,
+			$grayscale-300 30%,
+			transparent
+		)`
+	});
+
+	const contentStyles = css({
+		display: 'flex'
+	});
 </script>
 
-<Section number={1} id="about" isAbout={true}>
-	<div>
-		<h2 class="h2--bold margin-bottom-small" use:reveal={{ delay: 200 }}>
-			{heading}
-		</h2>
-		<p class="p4--regular" use:reveal>{content}</p>
-		<div use:reveal={{ marginBottom: 50 }}>
-			<Button href={`${getPrefix()}/cv.pdf`} external>{button}</Button>
+<Section
+	{heading}
+	icon="HandWaving"
+	headingGap="small"
+	id="about"
+	class={sectionStyles()}
+>
+	<div class={contentStyles()}>
+		<div>
+			<p class="p4--regular" use:reveal>{content}</p>
+			<div use:reveal={{ marginBottom: 50 }}>
+				<Button href="cv.pdf" external>{button}</Button>
+			</div>
 		</div>
+		<img src={image} alt="" />
 	</div>
-	<img src={image} alt="" />
 </Section>
 
 <style lang="scss">

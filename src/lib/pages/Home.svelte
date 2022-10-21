@@ -10,19 +10,28 @@
 	import Footer from '$organisms/Footer.svelte';
 
 	import type { IHomepage, ISiteSettings } from '$utils/lib';
+	import { css } from '$utils/stitches.config';
 
 	export let homepage: IHomepage;
 	export let siteSettings: ISiteSettings;
 
 	const { hero, about, projects, blog, contact, header, footer } = homepage;
 	const { brandName, tagline } = siteSettings;
+
+	const sectionStyles = css({
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '160px'
+	});
 </script>
 
 <SEO title={brandName} description={tagline} />
 <Header {header} />
 <Hero {hero} />
-<About {about} />
-<Projects {projects} />
-<Blog {blog} />
-<Contact {contact} />
-<Footer {footer} />
+<div class={sectionStyles()}>
+	<About {about} />
+	<Projects {projects} />
+	<Blog {blog} />
+	<Contact {contact} />
+	<Footer {footer} />
+</div>

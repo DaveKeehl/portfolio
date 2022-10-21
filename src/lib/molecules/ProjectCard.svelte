@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getPrefix } from '$utils/functions';
+	import { getHostname } from '$utils/functions';
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
 	import { reveal } from 'svelte-reveal';
 	import type { IProject } from '$utils/lib';
@@ -35,7 +35,7 @@
 			}}
 			secondary={{
 				text: 'Go to case study',
-				href: `${getPrefix()}/project/${slug}`,
+				href: `${getHostname()}/project/${slug}`,
 				external: false
 			}}
 		/>

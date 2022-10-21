@@ -1,41 +1,49 @@
 <script lang="ts">
-	export let selected: boolean = false;
+	import { css } from '$utils/stitches.config';
+
 	export let label: string;
-	export let toggleCategory: (category: string) => void;
-</script>
+	export let selected = false;
+	export let disabled = true;
+	export let toggleLabel: (category: string) => void;
 
-<p class:selected class="p5--semibold" on:click={() => toggleCategory(label)}>
-	{label}
-</p>
+	const labelStyles = css({
+		p5: 'semiBold',
+		background: '$turquoise-100-A10',
+		color: '$turquoise-200',
+		padding: '8px 20px',
+		borderRadius: '24px',
+		userSelect: 'none',
+		transition: 'color 0.2s, box-shadow 0.1s',
 
-<style lang="scss">
-	@import '../../styles/colors.scss';
+		'&:disabled': {
+			color: '$blue-200',
+			background: '$turquoise-100-A10',
+			cursor: 'not-allowed'
+		},
 
-	p {
-		background: $turquoise-100-a10;
-		color: $turquoise-200;
-		padding: 0.5rem 1.25rem;
-		border-radius: 1.5rem;
-		box-shadow: 0 0 0 2px transparent;
-		transition: color 0.2s, box-shadow 0.1s;
+		'&:hover': {
+			cursor: 'pointer',
+			color: '$turquoise-100'
+		},
 
-		&::selection {
-			background: none;
-		}
+		'&:focus': {
+			outline: '2px solid $turquoise-100-A20'
+		},
 
-		&:hover {
-			cursor: pointer;
-			color: $turquoise-100;
-		}
-
-		&.selected {
-			color: $turquoise-200;
-			box-shadow: 0 0 0 2px $turquoise-200;
-
-			&:hover {
-				color: $turquoise-100;
-				box-shadow: 0 0 0 2px $turquoise-100;
+		variants: {
+			selected: {
+				true: {
+					outline: '2px solid $turquoise-200'
+				}
 			}
 		}
-	}
-</style>
+	});
+
+	const handleClick = () => {
+		toggleLabel(label);
+	};
+</script>
+
+<p class={labelStyles({ selected })} on:click={handleClick} disabled>
+	{label}
+</p>

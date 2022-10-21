@@ -4,14 +4,21 @@
 
 	export let primary: IButton;
 	export let secondary: IButton;
+	export let size: 'small' | 'large';
 </script>
 
 <div>
-	<Button variant="primary" href={primary.href} external={primary.external}>
+	<Button
+		variant="primary"
+		{size}
+		href={primary.href}
+		external={primary.external}
+	>
 		{primary.text}
 	</Button>
 	<Button
 		variant="secondary"
+		{size}
 		href={secondary.href}
 		external={secondary.external}
 	>
