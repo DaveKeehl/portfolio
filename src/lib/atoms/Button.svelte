@@ -8,12 +8,15 @@
 	type Variant = 'primary' | 'secondary';
 	type Size = 'small' | 'large';
 
+	let className = '';
+
 	export let href: string | undefined = undefined;
 	export let external = false;
-
 	export let variant: Variant = 'primary';
 	export let size: Size = 'small';
 	export let disabled = false;
+	export { className as class };
+	export let style = '';
 
 	const handleClick = (event: MouseEvent) => {
 		dispatch('click', {
@@ -21,7 +24,7 @@
 		});
 	};
 
-	const button = css({
+	const buttonStyles = css({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -42,13 +45,16 @@
 				primary: {
 					background: '$turquoise-200',
 					color: '$blue-300',
+
 					'&:hover': {
 						background: '$turquoise-100'
 					},
+
 					'&:focus': {
 						outline: 'none',
 						boxShadow: '0 0 0 4px $turquoise-300'
 					},
+
 					'&:disabled': {
 						background: '$grayscale-100',
 						color: '$blue-200'
@@ -58,17 +64,21 @@
 					background: '$turquoise-100-A10',
 					backdropFilter: 'blur(40px)',
 					color: '$turquoise-200',
+
 					'&:hover': {
 						color: '$turquoise-100'
 					},
+
 					'&:active': {
 						background: '$turquoise-100-A20',
 						color: '$turquoise-100'
 					},
+
 					'&:focus': {
 						outline: 'none',
 						boxShadow: '0 0 0 2px $turquoise-200'
 					},
+
 					'&:disabled': {
 						background: '$turquoise-100-A10',
 						color: '$blue-200'
@@ -91,11 +101,6 @@
 			}
 		}
 	});
-
-	const styles = button({
-		variant,
-		size
-	});
 </script>
 
 {#if href}
@@ -106,13 +111,19 @@
 		rel={external ? 'noopener noreferrer' : ''}
 		target={external ? '_blank' : ''}
 		{disabled}
-		class={styles}
+		class={`${className} ${buttonStyles({ variant, size })}`.trim()}
+		{style}
 		on:click={handleClick}
 	>
 		<slot />
 	</a>
 {:else}
-	<button class={styles} {disabled} on:click>
+	<button
+		class={`${className} ${buttonStyles({ variant, size })}`.trim()}
+		{style}
+		{disabled}
+		on:click
+	>
 		<slot />
 	</button>
 {/if}

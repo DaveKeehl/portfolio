@@ -58,6 +58,7 @@
 		mixBlendMode: 'lighten',
 		backgroundSize: 'cover',
 		backgroundPosition: '-200px',
+		outline: '1px solid $turquoise-200-A10',
 
 		'&::before': {
 			content: '',
@@ -67,7 +68,7 @@
 			width: '100%',
 			height: '100%',
 			background: `linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%)`,
-			zIndex: '10'
+			borderRadius: '16px'
 		}
 	});
 </script>
