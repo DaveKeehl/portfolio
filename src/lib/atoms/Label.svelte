@@ -8,10 +8,11 @@
 		width: 'fit-content',
 		padding: '4px 10px',
 		textTransform: 'uppercase',
-		color: '$blue-100'
+		color: '$blue-100',
+		backdropFilter: 'blur(4px)'
 	});
 </script>
 
-<span class={styles()}>
+<div class={styles()}>
 	<slot />
-</span>
+</div>

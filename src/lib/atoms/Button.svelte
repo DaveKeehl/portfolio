@@ -30,6 +30,7 @@
 		height: 'fit-content',
 		textAlign: 'center',
 		width: 'max-content',
+		border: '1px solid $turquoise-200-A05',
 		transition: 'color 0.2s, background 0.2s',
 
 		'&:disabled': {
