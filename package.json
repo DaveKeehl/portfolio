@@ -12,6 +12,7 @@
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
+		"@portabletext/svelte": "^1.0.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",

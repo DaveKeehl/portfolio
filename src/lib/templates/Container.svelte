@@ -1,9 +1,17 @@
 <script lang="ts">
+	import { css } from '$utils/stitches.config';
+
 	let className: string = '';
 	export { className as class };
+
+	const containerStyles = css({
+		width: '80%',
+		maxWidth: '1120px',
+		margin: '0 auto'
+	});
 </script>
 
-<div class={`${className}`}>
+<div class={`${className} ${containerStyles()}`}>
 	<slot />
 </div>
 
@@ -12,13 +20,13 @@
 	@import '../../styles/breakpoints.scss';
 
 	div {
-		width: 90%;
-		margin: 0 auto;
+		/* width: 90%;
+		margin: 0 auto; */
 
-		@media (min-width: $mobile-xl) {
+		/* @media (min-width: $mobile-xl) {
 			width: 80%;
 			max-width: 1160px;
-		}
+		} */
 	}
 
 	.section__layout {

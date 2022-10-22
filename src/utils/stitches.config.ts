@@ -17,6 +17,7 @@ export const { css, theme, globalCss } = createStitches({
 			'turquoise-300': '#0CB5BB',
 			'blue-100': '#B7CDE5',
 			'blue-200': '#476485',
+			'blue-200-A25': 'rgba(71, 100, 133, 0.25)',
 			'blue-200-A40': 'rgba(71, 100, 133, 0.4)',
 			'blue-300': '#031F40',
 			'blue-300-A75': '#031F40',
@@ -130,6 +131,11 @@ export const { css, theme, globalCss } = createStitches({
 				semiBold: {
 					fontSize: '18px',
 					fontWeight: '600',
+					lineHeight: '150%'
+				},
+				code: {
+					fontFamily: 'Menlo',
+					fontSize: '18px',
 					lineHeight: '150%'
 				}
 			};

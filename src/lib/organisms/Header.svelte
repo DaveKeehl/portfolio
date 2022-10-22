@@ -36,7 +36,7 @@
 		width: '100%',
 		zIndex: '10',
 		opacity: '1',
-		borderBottom: '1px solid $blue-200-A40',
+		// borderBottom: '1px solid $blue-200-A40',
 		backdropFilter: 'blur(10px)',
 		transform: 'translateY(0)',
 		transition: 'all 0.3s',
@@ -44,6 +44,16 @@
 		'&.hidden': {
 			opacity: '0',
 			transform: 'translateY(-20px)'
+		},
+
+		'&::before': {
+			content: '',
+			position: 'absolute',
+			bottom: '0',
+			width: '100%',
+			height: '1px',
+			background:
+				'linear-gradient(to right, transparent, $blue-200-A25, transparent)'
 		},
 
 		'&::after': {
@@ -71,6 +81,10 @@
 		paddingBlock: '1rem',
 		color: '$grayscale-100'
 	});
+
+	const logoStyles = css({
+		display: 'flex'
+	});
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -88,7 +102,7 @@
 <header class:hidden={!isVisible} class={headerStyles()}>
 	<Container>
 		<div class={wrapperStyles()} transition:fly={{ y: -20, duration: 500 }}>
-			<a href={getHostname()}>
+			<a href={getHostname()} class={logoStyles()}>
 				<img src={logo} alt="" />
 			</a>
 

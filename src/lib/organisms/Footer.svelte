@@ -1,6 +1,9 @@
 <script lang="ts">
-	import Container from '$templates/Container.svelte';
 	import { reveal } from 'svelte-reveal';
+	import { PortableText } from '@portabletext/svelte';
+
+	import Container from '$templates/Container.svelte';
+
 	import type { IFooter } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
 
@@ -25,10 +28,28 @@
 			background: '$blue-200'
 		}
 	});
+
+	const textStyles = css({
+		'& > *': {
+			p5: 'regular',
+			color: '$blue-100'
+		},
+
+		'& a': {
+			p5: 'semiBold',
+			color: '$turquoise-200',
+
+			'&:hover': {
+				textDecoration: 'underline'
+			}
+		}
+	});
 </script>
 
 <footer use:reveal class={footerStyles()}>
 	<Container class={containerStyles()}>
-		{@html content}
+		<div class={textStyles()}>
+			<PortableText value={content} />
+		</div>
 	</Container>
 </footer>

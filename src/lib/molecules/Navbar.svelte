@@ -12,7 +12,13 @@
 	const prefix: string = getHostname();
 	const getHref = (sectionName: string) => `${prefix}#${sectionName}`;
 
+	const navStyles = css({
+		display: 'flex',
+		gap: '1.5rem'
+	});
+
 	const navItemStyles = css({
+		display: 'flex',
 		color: '$blue-200',
 		fontSize: '$p5',
 		fontWeight: '600',
@@ -33,7 +39,7 @@
 	$: currentSection = $section;
 </script>
 
-<nav class:mobile>
+<nav class:mobile class={navStyles()}>
 	{#each sections as section}
 		<a
 			href={getHref(section.name.toLowerCase())}
@@ -49,11 +55,11 @@
 	@import '../../styles/breakpoints.scss';
 
 	nav {
-		display: none;
+		/* display: none;
 
 		@media (min-width: $tablet-l) {
 			display: flex;
-		}
+		} */
 
 		a {
 			/* color: $white; */
@@ -64,9 +70,9 @@
 			/* opacity: 0.8; */
 			/* } */
 
-			&:not(:last-child) {
+			/* &:not(:last-child) {
 				margin-right: 1.5rem;
-			}
+			} */
 		}
 
 		&.mobile {

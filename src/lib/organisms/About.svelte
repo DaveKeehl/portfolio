@@ -1,8 +1,10 @@
 <script lang="ts">
 	import IntersectionObserver from 'svelte-intersection-observer';
+	import { PortableText } from '@portabletext/svelte';
 
 	import Section from '$templates/Section.svelte';
 	import Button from '$atoms/Button.svelte';
+
 	import { css } from '$utils/stitches.config';
 	import type { IAbout } from '$utils/lib';
 	import { section } from '$utils/stores';
@@ -11,8 +13,6 @@
 	const { heading, content, image, button } = about;
 
 	let element: HTMLElement | undefined;
-	let intersecting: boolean;
-	$: console.log({ intersecting });
 
 	const sectionStyles = css({
 		paddingBlock: '128px 72px',
@@ -28,14 +28,28 @@
 	});
 
 	const textStyles = css({
-		p4: 'regular'
+		width: '75%',
+
+		'& > *': {
+			p4: 'regular',
+			color: '$blue-100',
+			opacity: '0.9'
+		},
+
+		'& a': {
+			textDecoration: 'underline',
+
+			'&:hover': {
+				color: '$grayscale-100'
+			}
+		}
 	});
 
 	const imageStyles = css({
+		background: `url(${image})`,
+		position: 'absolute',
 		width: '295px',
 		height: '420px',
-		background: `linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%), url(${image})`,
-		position: 'absolute',
 		top: '0',
 		right: '0',
 		transform: 'rotate(-5.4deg)',
@@ -43,7 +57,18 @@
 		borderRadius: '16px',
 		mixBlendMode: 'lighten',
 		backgroundSize: 'cover',
-		backgroundPosition: '-200px'
+		backgroundPosition: '-200px',
+
+		'&::before': {
+			content: '',
+			position: 'absolute',
+			top: '0',
+			left: '0',
+			width: '100%',
+			height: '100%',
+			background: `linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%)`,
+			zIndex: '10'
+		}
 	});
 </script>
 
@@ -61,7 +86,9 @@
 			class={sectionStyles()}
 		>
 			<div class={contentStyles()}>
-				<p class={textStyles()}>{content}</p>
+				<div class={textStyles()}>
+					<PortableText value={content} />
+				</div>
 				<Button href="cv.pdf" external>{button}</Button>
 				<div class={imageStyles()} />
 			</div>

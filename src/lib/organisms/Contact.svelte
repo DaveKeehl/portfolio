@@ -1,30 +1,45 @@
 <script lang="ts">
 	import IntersectionObserver from 'svelte-intersection-observer';
+	import { PortableText } from '@portabletext/svelte';
 
 	import Section from '$templates/Section.svelte';
 
 	import type { IContact } from '$utils/lib';
 	import { section } from '$utils/stores';
+	import { css } from '$utils/stitches.config';
 
 	export let contact: IContact;
 	const { heading, content } = contact;
 
 	let element: HTMLElement;
-	let intersecting: boolean;
+
+	const textStyles = css({
+		'& > *': {
+			p4: 'regular',
+			color: '$blue-100',
+			opacity: '0.9'
+		},
+
+		'& a': {
+			p4: 'code',
+			display: 'block',
+			marginTop: '20px',
+			fontWeight: '700',
+			color: '$turquoise-200',
+
+			'&:hover': {
+				textDecoration: 'underline'
+			}
+		}
+	});
 </script>
 
-<IntersectionObserver
-	{element}
-	bind:intersecting
-	on:intersect={(e) => section.set('contact')}
->
-	<Section
-		id="contact"
-		{heading}
-		headingGap="small"
-		icon="ChatTeardropDots"
-		{element}
-	>
-		<p class="p4--regular">{content}</p>
-	</Section>
+<IntersectionObserver {element} on:intersect={() => section.set('contact')}>
+	<div bind:this={element}>
+		<Section id="contact" {heading} headingGap="small" icon="ChatTeardropDots">
+			<div class={textStyles()}>
+				<PortableText value={content} />
+			</div>
+		</Section>
+	</div>
 </IntersectionObserver>
