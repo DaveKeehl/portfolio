@@ -34,7 +34,6 @@
 			aspectRatio: '16 / 9',
 			objectFit: 'cover',
 			transform: 'scale(1)',
-			willChange: 'transform',
 			transition: 'transform 0.2s'
 		},
 

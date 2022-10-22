@@ -50,7 +50,8 @@
 			left: '0',
 			width: '100%',
 			height: '100%',
-			zIndex: '5'
+			zIndex: '5',
+			pointerEvents: 'none'
 		},
 
 		variants: {
@@ -71,7 +72,12 @@
 		width: '100%',
 		height: '100%',
 		aspectRatio: '16 / 10',
-		objectFit: 'cover'
+		objectFit: 'cover',
+		transition: 'transform 0.3s',
+
+		'&:hover': {
+			transform: 'scale(1.02)'
+		}
 	});
 
 	const contentStyles = css({

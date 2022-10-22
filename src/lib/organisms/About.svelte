@@ -59,6 +59,7 @@
 		backgroundSize: 'cover',
 		backgroundPosition: '-200px',
 		outline: '1px solid $turquoise-200-A10',
+		transition: 'transform 0.3s',
 
 		'&::before': {
 			content: '',
@@ -68,7 +69,16 @@
 			width: '100%',
 			height: '100%',
 			background: `linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%)`,
-			borderRadius: '16px'
+			borderRadius: '16px',
+			transition: 'opacity 0.3s'
+		},
+
+		'&:hover': {
+			transform: 'rotate(-4deg)',
+
+			'&::before': {
+				opacity: '0.6'
+			}
 		}
 	});
 </script>
