@@ -1,4 +1,5 @@
 <script lang="ts">
+	import IntersectionObserver from 'svelte-intersection-observer';
 	import { fade } from 'svelte/transition';
 	import { reveal } from 'svelte-reveal';
 
@@ -10,6 +11,7 @@
 	import type { IBlog, IPost } from '$utils/lib';
 	import { deCamelCase } from '$utils/functions';
 	import { css } from '$utils/stitches.config';
+	import { section } from '$utils/stores';
 
 	export let blog: IBlog;
 	const { heading, labels, posts } = blog;
@@ -60,34 +62,48 @@
 		placeItems: 'center',
 		marginTop: '5rem'
 	});
+
+	let element: HTMLElement;
 </script>
 
-<Section
-	id="blog"
-	{heading}
-	headingGap="large"
-	icon="Quotes"
-	class={sectionStyles()}
+<IntersectionObserver
+	{element}
+	on:intersect={() => section.set('blog')}
+	threshold={0.2}
 >
-	<div class={categoriesStyles()} use:reveal={{ delay: 300 }}>
-		{#each cleanLabels as label}
-			<Pill selected={selectedLabels.has(label)} text={label} {toggleLabel} />
-		{/each}
-	</div>
-
-	<div class={postsStyles()}>
-		{#each visiblePosts as card, idx}
-			<BlogCard {...card} {idx} {CHUNK} />
-		{/each}
-	</div>
-
-	{#if cursor < filteredPosts.length}
-		<div
-			class={buttonWrapperStyles()}
-			transition:fade={{ duration: 100 }}
-			use:reveal={{ marginBottom: 20 }}
+	<div bind:this={element}>
+		<Section
+			id="blog"
+			{heading}
+			headingGap="large"
+			icon="Quotes"
+			class={sectionStyles()}
 		>
-			<Button on:click={showMorePosts}>Load more posts</Button>
-		</div>
-	{/if}
-</Section>
+			<div class={categoriesStyles()} use:reveal={{ delay: 300 }}>
+				{#each cleanLabels as label}
+					<Pill
+						selected={selectedLabels.has(label)}
+						text={label}
+						{toggleLabel}
+					/>
+				{/each}
+			</div>
+
+			<div class={postsStyles()}>
+				{#each visiblePosts as card, idx}
+					<BlogCard {...card} {idx} {CHUNK} />
+				{/each}
+			</div>
+
+			{#if cursor < filteredPosts.length}
+				<div
+					class={buttonWrapperStyles()}
+					transition:fade={{ duration: 100 }}
+					use:reveal={{ marginBottom: 20 }}
+				>
+					<Button on:click={showMorePosts}>Load more posts</Button>
+				</div>
+			{/if}
+		</Section>
+	</div>
+</IntersectionObserver>

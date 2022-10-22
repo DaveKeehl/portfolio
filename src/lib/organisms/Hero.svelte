@@ -1,4 +1,5 @@
 <script lang="ts">
+	import IntersectionObserver from 'svelte-intersection-observer';
 	import { reveal } from 'svelte-reveal';
 
 	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
@@ -7,9 +8,12 @@
 	import { getHostname } from '$utils/functions';
 	import type { IHero } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
+	import { section } from '$utils/stores';
 
 	export let hero: IHero;
 	const { heading, greetings, buttons, description } = hero;
+
+	let element: HTMLElement | undefined;
 
 	const sectionStyles = css({
 		paddingBlock: '200px',
@@ -79,38 +83,44 @@
 	});
 </script>
 
-<section class={sectionStyles()}>
-	<Container class={containerStyles()}>
-		<div class={introductionStyles()}>
-			<p class={greetingStyles()} use:reveal>{greetings}</p>
-			<h1 class={headingStyles()} use:reveal={{ delay: 100 }}>
-				{heading.split(' ')[0]}{' '}<span class={strokeBaseElementStyles()}
-					>{heading.split(' ')[1]}<img
-						src="/stroke.svg"
-						alt=""
-						class={strokeStyles()}
-					/></span
-				>{' '}{heading.split(' ').slice(2).join(' ')}
-			</h1>
-		</div>
-		<p class={descriptionStyles()} use:reveal={{ delay: 200 }}>
-			{description}
-		</p>
-		<div class="button" use:reveal={{ delay: 300 }}>
-			<ButtonsGroup
-				size="large"
-				primary={{
-					text: buttons.primary,
-					href: `${getHostname()}#projects`,
-					external: false
-				}}
-				secondary={{
-					text: buttons.secondary,
-					href: `${getHostname()}#contact`,
-					external: false
-				}}
-			/>
-		</div>
-	</Container>
-	<div class={circleStyles()} />
-</section>
+<IntersectionObserver
+	{element}
+	on:intersect={() => section.set('welcome')}
+	threshold={0.5}
+>
+	<section class={sectionStyles()} id="welcome" bind:this={element}>
+		<Container class={containerStyles()}>
+			<div class={introductionStyles()}>
+				<p class={greetingStyles()} use:reveal>{greetings}</p>
+				<h1 class={headingStyles()} use:reveal={{ delay: 100 }}>
+					{heading.split(' ')[0]}{' '}<span class={strokeBaseElementStyles()}
+						>{heading.split(' ')[1]}<img
+							src="/stroke.svg"
+							alt=""
+							class={strokeStyles()}
+						/></span
+					>{' '}{heading.split(' ').slice(2).join(' ')}
+				</h1>
+			</div>
+			<p class={descriptionStyles()} use:reveal={{ delay: 200 }}>
+				{description}
+			</p>
+			<div class="button" use:reveal={{ delay: 300 }}>
+				<ButtonsGroup
+					size="large"
+					primary={{
+						text: buttons.primary,
+						href: `${getHostname()}#projects`,
+						external: false
+					}}
+					secondary={{
+						text: buttons.secondary,
+						href: `${getHostname()}#contact`,
+						external: false
+					}}
+				/>
+			</div>
+		</Container>
+		<div class={circleStyles()} />
+	</section>
+</IntersectionObserver>

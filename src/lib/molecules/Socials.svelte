@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ISocial } from '$utils/lib';
+	import { css } from '$utils/stitches.config';
 
 	export let socials: {
 		_id: string;
@@ -8,11 +8,20 @@
 		url: string;
 	}[];
 	export let mobile: boolean;
+
+	const socialStyles = css({
+		display: 'flex'
+	});
 </script>
 
 <div class:mobile>
 	{#each socials as social}
-		<a href={social.url} target="_blank" rel="noopener noreferrer">
+		<a
+			href={social.url}
+			target="_blank"
+			rel="noopener noreferrer"
+			class={socialStyles()}
+		>
 			<img src={social.icon} alt={social.title} />
 		</a>
 	{/each}

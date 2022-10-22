@@ -13,6 +13,13 @@
 	const { title, image, primaryCTA, excerpt, type } = project;
 	$: slug = title.toLowerCase().replace(/\s/g, '-');
 
+	const projectCardStyles = css({
+		display: 'grid',
+		gridTemplateColumns: 'repeat(10, 1fr)',
+		gridTemplateRows: '1fr',
+		alignItems: 'center'
+	});
+
 	const titleStyles = css({
 		h3: 'bold',
 		marginBlock: '20px 16px'
@@ -25,48 +32,76 @@
 		marginBottom: '36px'
 	});
 
-	const imageStyles = css({
+	const imageContainerStyles = css({
 		display: 'flex',
-		gridColumn: '1 / 5',
-		gridRow: '1 / 3',
+		gridColumn: '5 / -1',
+		gridRow: '1 / 2',
 		position: 'relative',
+		borderRadius: '20px',
+		overflow: 'hidden',
+		border: '1px solid $turquoise-200-A05',
 
-		'& img': {
-			position: 'relative',
+		'&::before': {
+			content: '',
+			position: 'absolute',
+			background:
+				'linear-gradient(90deg, rgba(2, 19, 38, 0.9) 10.94%, rgba(2, 21, 43, 0.1) 100%)',
+			top: '0',
+			left: '0',
 			width: '100%',
 			height: '100%',
-			aspectRatio: '16 / 10',
-			objectFit: 'cover',
-			borderRadius: '20px',
-			border: '1px solid $turquoise-200-A05',
+			zIndex: '5'
+		},
 
-			'&::before': {
-				content: '',
-				position: 'absolute',
-				background: 'linear-gradient(to bottom, transparent, $blue-300-A75)',
-				top: '0',
-				left: '0',
-				width: '100%',
-				height: '100%',
-				zIndex: '5'
+		variants: {
+			reversed: {
+				true: {
+					gridColumn: '1 / 7',
+
+					'&::before': {
+						background:
+							'linear-gradient(90deg, rgba(2, 21, 43, 0.1) 0%, #021326 89.06%)'
+					}
+				}
+			}
+		}
+	});
+
+	const imageStyles = css({
+		width: '100%',
+		height: '100%',
+		aspectRatio: '16 / 10',
+		objectFit: 'cover'
+	});
+
+	const contentStyles = css({
+		zIndex: '5',
+		gridColumn: '1 / 6',
+		gridRow: '1 / 2',
+
+		variants: {
+			reversed: {
+				true: {
+					gridColumn: '6 / -1'
+				}
 			}
 		}
 	});
 </script>
 
-<div class:reversed class="project" use:reveal>
-	<div class={`${imageStyles()} image`}>
-		<img src={image} alt={title} />
+<div class={projectCardStyles({ reversed })}>
+	<div class={imageContainerStyles({ reversed })}>
+		<img src={image} alt={title} class={imageStyles({ reversed })} />
 	</div>
 
-	<div class="content">
+	<div class={contentStyles({ reversed })}>
 		<Label>{type}</Label>
 
 		<a href={`/project/${slug}`}>
-			<h3 class={titleStyles()}>{title}</h3>
+			<h3 class={titleStyles({ reversed })}>{title}</h3>
 		</a>
 
-		<p class={excerptStyles()}>{excerpt}</p>
+		<p class={excerptStyles({ reversed })}>{excerpt}</p>
 
 		<ButtonsGroup
 			size="small"
@@ -83,119 +118,3 @@
 		/>
 	</div>
 </div>
-
-<style lang="scss">
-	@import '../../styles/colors.scss';
-	@import '../../styles/breakpoints.scss';
-
-	/* a {
-		display: block;
-		width: fit-content;
-
-		h2 {
-			transform: translateY(-50%);
-			color: $white;
-
-			@media (min-width: $tablet-l) {
-				transform: none;
-				margin-bottom: 1rem;
-			}
-		}
-	} */
-
-	.project {
-		display: block;
-
-		@media (min-width: $tablet-l) {
-			display: grid;
-			grid-template-columns: repeat(6, 1fr);
-			grid-template-rows: 1fr;
-			align-items: center;
-		}
-	}
-
-	.image {
-		/* display: flex;
-		grid-column: 1 / 5;
-		grid-row: 1 / 3;
-		position: relative; */
-
-		@media (min-width: $tablet-l) {
-			grid-row: 1 / 2;
-		}
-
-		&::before {
-			/* content: '';
-			position: absolute;
-			background: linear-gradient(
-				to bottom,
-				transparentize($blue-300, 1),
-				transparentize($blue-300, 0.25)
-			);
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%; */
-
-			@media (min-width: $tablet-l) {
-				background: linear-gradient(
-					to right,
-					transparentize($blue-300, 1),
-					transparentize($blue-300, 0.25)
-				);
-			}
-		}
-
-		img {
-			/* width: 100%;
-			height: 100%;
-			aspect-ratio: 16 / 10;
-			object-fit: cover; */
-
-			@media (min-width: $tablet-l) {
-				aspect-ratio: 16 / 12;
-			}
-
-			@media (min-width: $laptop-m) {
-				aspect-ratio: 16 / 10;
-			}
-		}
-	}
-
-	.content {
-		z-index: 5;
-
-		@media (min-width: $tablet-l) {
-			grid-row: 1 / 2;
-			grid-column: 3 / -1;
-		}
-
-		@media (min-width: $laptop-m) {
-			grid-column: 4 / -1;
-		}
-	}
-
-	.reversed {
-		.image {
-			grid-column: 3 / -1;
-
-			&::before {
-				@media (min-width: $tablet-l) {
-					background: linear-gradient(
-						to left,
-						transparentize($blue-300, 1),
-						transparentize($blue-300, 0.25)
-					);
-				}
-			}
-		}
-
-		.content {
-			grid-column: 1 / 5;
-
-			@media (min-width: $laptop-m) {
-				grid-column: 1 / 4;
-			}
-		}
-	}
-</style>

@@ -36,6 +36,8 @@
 		width: '100%',
 		zIndex: '10',
 		opacity: '1',
+		borderBottom: '1px solid $blue-200-A40',
+		backdropFilter: 'blur(10px)',
 		transform: 'translateY(0)',
 		transition: 'all 0.3s',
 
@@ -66,7 +68,7 @@
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingTop: '2rem',
+		paddingBlock: '1rem',
 		color: '$grayscale-100'
 	});
 </script>

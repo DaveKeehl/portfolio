@@ -44,7 +44,7 @@
 	});
 
 	const titleStyles = css({
-		marginBlock: '16px',
+		marginBlock: '16px 8px',
 
 		'& h3': {
 			h3: 'bold'

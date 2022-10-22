@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getHostname } from '$utils/functions';
 	import { css } from '$utils/stitches.config';
+	import { section } from '$utils/stores';
 
 	export let sections: {
 		_id: string;
@@ -9,6 +10,7 @@
 	export let mobile: boolean;
 
 	const prefix: string = getHostname();
+	const getHref = (sectionName: string) => `${prefix}#${sectionName}`;
 
 	const navItemStyles = css({
 		color: '$blue-200',
@@ -21,13 +23,22 @@
 
 		'&:hover': {
 			color: '$grayscale-100'
+		},
+
+		'&.active': {
+			color: '$grayscale-100'
 		}
 	});
+
+	$: currentSection = $section;
 </script>
 
 <nav class:mobile>
 	{#each sections as section}
-		<a href={`${prefix}#${section.name.toLowerCase()}`} class={navItemStyles()}
+		<a
+			href={getHref(section.name.toLowerCase())}
+			class={navItemStyles()}
+			class:active={currentSection === section.name.toLowerCase()}
 			>{section.name}</a
 		>
 	{/each}

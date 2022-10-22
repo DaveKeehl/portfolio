@@ -11,6 +11,10 @@
 	export let id: string = '';
 	export let icon: 'Fire' | 'HandWaving' | 'Quotes' | 'ChatTeardropDots';
 
+	const sectionStyles = css({
+		scrollPaddingTop: '50px'
+	});
+
 	const headingContainerStyles = css({
 		display: 'flex',
 		alignItems: 'center',
@@ -27,7 +31,7 @@
 	});
 </script>
 
-<section {id} class={`${className}`.trim()}>
+<section {id} class={`${className} ${sectionStyles()}`.trim()}>
 	<Container>
 		<div class={headingContainerStyles()}>
 			<Icon name={icon} size={48} color={theme.colors['grayscale-100'].name} />

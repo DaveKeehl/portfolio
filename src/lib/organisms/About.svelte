@@ -1,14 +1,18 @@
 <script lang="ts">
-	import { reveal } from 'svelte-reveal';
-
-	import type { IAbout } from '$utils/lib';
+	import IntersectionObserver from 'svelte-intersection-observer';
 
 	import Section from '$templates/Section.svelte';
 	import Button from '$atoms/Button.svelte';
 	import { css } from '$utils/stitches.config';
+	import type { IAbout } from '$utils/lib';
+	import { section } from '$utils/stores';
 
 	export let about: IAbout;
 	const { heading, content, image, button } = about;
+
+	let element: HTMLElement | undefined;
+	let intersecting: boolean;
+	$: console.log({ intersecting });
 
 	const sectionStyles = css({
 		paddingBlock: '128px 72px',
@@ -43,18 +47,24 @@
 	});
 </script>
 
-<Section
-	{heading}
-	icon="HandWaving"
-	headingGap="small"
-	id="about"
-	class={sectionStyles()}
+<IntersectionObserver
+	{element}
+	on:intersect={() => section.set('about')}
+	threshold={0.5}
 >
-	<div class={contentStyles()}>
-		<p class={textStyles()} use:reveal>{content}</p>
-		<div use:reveal={{ marginBottom: 50 }}>
-			<Button href="cv.pdf" external>{button}</Button>
-		</div>
-		<div class={imageStyles()} />
+	<div bind:this={element}>
+		<Section
+			{heading}
+			icon="HandWaving"
+			headingGap="small"
+			id="about"
+			class={sectionStyles()}
+		>
+			<div class={contentStyles()}>
+				<p class={textStyles()}>{content}</p>
+				<Button href="cv.pdf" external>{button}</Button>
+				<div class={imageStyles()} />
+			</div>
+		</Section>
 	</div>
-</Section>
+</IntersectionObserver>
