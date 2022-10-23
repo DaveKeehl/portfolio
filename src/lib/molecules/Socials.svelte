@@ -9,12 +9,22 @@
 	}[];
 	export let mobile: boolean;
 
+	const socialsStyles = css({
+		display: 'flex',
+		gap: '0.75rem'
+	});
+
 	const socialStyles = css({
-		display: 'flex'
+		display: 'flex',
+		transition: 'opacity 0.2s',
+
+		'&:hover': {
+			opacity: '0.8'
+		}
 	});
 </script>
 
-<div class:mobile>
+<div class:mobile class={socialsStyles()}>
 	{#each socials as social}
 		<a
 			href={social.url}
@@ -32,19 +42,19 @@
 	@import '../../styles/colors.scss';
 
 	div {
-		display: none;
-		gap: 1rem;
+		/* display: none;
+		gap: 1rem; */
 
-		@media (min-width: $tablet-l) {
+		/* @media (min-width: $tablet-l) {
 			display: flex;
-		}
+		} */
 
 		a {
-			transition: opacity 0.2s;
+			/* transition: opacity 0.2s; */
 
-			&:hover {
+			/* &:hover {
 				opacity: 0.8;
-			}
+			} */
 		}
 
 		&.mobile {

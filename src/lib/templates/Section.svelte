@@ -12,7 +12,7 @@
 	export let icon: 'Fire' | 'HandWaving' | 'Quotes' | 'ChatTeardropDots';
 
 	const sectionStyles = css({
-		scrollPaddingTop: '50px'
+		// scrollPaddingTop: '50px'
 	});
 
 	const headingContainerStyles = css({

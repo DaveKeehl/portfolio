@@ -36,14 +36,15 @@
 		width: '100%',
 		zIndex: '10',
 		opacity: '1',
-		// borderBottom: '1px solid $blue-200-A40',
 		backdropFilter: 'blur(10px)',
 		transform: 'translateY(0)',
 		transition: 'all 0.3s',
+		pointerEvents: 'all',
 
 		'&.hidden': {
 			opacity: '0',
-			transform: 'translateY(-20px)'
+			transform: 'translateY(-20px)',
+			pointerEvents: 'none'
 		},
 
 		'&::before': {
@@ -62,28 +63,95 @@
 			top: '0',
 			left: '0',
 			width: '100%',
-			height: '12rem',
-			background: `linear-gradient(
-				to bottom,
-				$blue-400,
-				$blue-400-A80 30%,
-				transparent
-			)`,
+			height: '100%',
+			background: '$blue-400',
 			zIndex: '-1',
-			pointerEvents: 'none'
+			pointerEvents: 'none',
+			opacity: '0.7'
 		}
 	});
 
-	const wrapperStyles = css({
+	const topHeaderStyles = css({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		paddingBlock: '1rem',
-		color: '$grayscale-100'
+		color: '$grayscale-100',
+		width: '100%'
+	});
+
+	const mainNavigationStyles = css({
+		display: 'none',
+
+		'@lg': {
+			display: 'flex'
+		}
 	});
 
 	const logoStyles = css({
-		display: 'flex'
+		display: 'flex',
+		flex: 'none',
+		justifyContent: 'flex-start',
+
+		'@lg': {
+			flex: '1'
+		}
+	});
+
+	const socialStyles = css({
+		display: 'flex',
+		flex: 'none',
+		justifyContent: 'flex-end',
+
+		'@lg': {
+			flex: '1'
+		}
+	});
+
+	const mobileNavigation = css({
+		width: '100%',
+		display: 'flex',
+		justifyContent: 'center',
+		position: 'relative',
+		overflow: 'hidden',
+
+		'@lg': {
+			display: 'none'
+		},
+
+		'&::before': {
+			content: '',
+			position: 'absolute',
+			top: '0',
+			width: '100%',
+			height: '1px',
+			background:
+				'linear-gradient(to right, transparent, $blue-200-A25, transparent)'
+		},
+
+		// '&::after': {
+		// 	content: '',
+		// 	position: 'absolute',
+		// 	top: '0',
+		// 	left: '50%',
+		// 	transform: 'translateX(-50%)',
+		// 	width: '100%',
+		// 	height: '100%',
+		// 	// background:
+		// 	// 	'linear-gradient(to right, $blue-400 8%, transparent 20%, transparent 80%, $blue-400 92%)',
+		// 	zIndex: '10',
+		// 	pointerEvents: 'none'
+		// },
+
+		'& > nav': {
+			width: '80%',
+			paddingBlock: '16px',
+			overflow: 'scroll',
+
+			'@sm': {
+				justifyContent: 'center'
+			}
+		}
 	});
 </script>
 
@@ -101,101 +169,19 @@
 
 <header class:hidden={!isVisible} class={headerStyles()}>
 	<Container>
-		<div class={wrapperStyles()} transition:fly={{ y: -20, duration: 500 }}>
+		<div class={topHeaderStyles()}>
 			<a href={getHostname()} class={logoStyles()}>
-				<img src={logo} alt="" />
+				<img src={logo} alt="Logo" />
 			</a>
-
-			<Navbar {sections} mobile={false} />
-
-			<Socials {socials} mobile={false} />
-
-			<div class="mobile">
-				<img
-					src="/icons/menu.svg"
-					alt="Burger menu icon to toggle mobile menu visibility"
-					class="menu-toggle"
-					on:click={() => open.set(true)}
-				/>
-				{#if $open}
-					<div class="menu" transition:fly={{ x: 200 }}>
-						<img
-							src="/icons/close.svg"
-							alt="Close mobile icon"
-							on:click={() => open.set(false)}
-						/>
-						<div>
-							<Navbar {sections} mobile={true} />
-							<Socials {socials} mobile={true} />
-						</div>
-					</div>
-					<div
-						class="bg"
-						on:click={() => open.set(false)}
-						transition:fade={{ duration: 300, easing: cubicInOut }}
-					/>
-				{/if}
+			<div class={mainNavigationStyles()}>
+				<Navbar {sections} mobile={false} />
+			</div>
+			<div class={socialStyles()}>
+				<Socials {socials} mobile={false} />
 			</div>
 		</div>
 	</Container>
+	<div class={mobileNavigation()}>
+		<Navbar {sections} mobile={false} />
+	</div>
 </header>
-
-<style lang="scss">
-	@import '../../styles/colors.scss';
-	@import '../../styles/breakpoints.scss';
-
-	.mobile {
-		display: block;
-
-		@media (min-width: $tablet-l) {
-			display: none;
-		}
-
-		img {
-			&:hover {
-				cursor: pointer;
-			}
-		}
-
-		.menu {
-			position: fixed;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: flex-start;
-			gap: 2rem;
-			top: 0;
-			right: 0;
-			z-index: 20;
-			background: $white;
-			height: 100vh;
-			width: 70vw;
-			padding: 1.5rem 2rem;
-
-			img {
-				width: 3rem;
-				transform: translate3d(-10px, -10px, 0);
-			}
-
-			div {
-				display: flex;
-				flex-direction: column;
-				gap: 2rem;
-				width: 100%;
-			}
-		}
-
-		.bg {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: $black-a60;
-
-			&:hover {
-				cursor: pointer;
-			}
-		}
-	}
-</style>

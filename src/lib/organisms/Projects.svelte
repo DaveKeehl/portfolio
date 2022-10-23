@@ -13,16 +13,26 @@
 
 	let element: HTMLElement;
 
+	const sectionStyles = css({
+		scrollPadding: '50px'
+	});
+
 	const projectsStyles = css({
 		display: 'grid',
 		gap: '3.5rem',
-		scrollPaddingTop: '50px'
+		scrollPadding: '50px'
 	});
 </script>
 
 <IntersectionObserver {element} on:intersect={() => section.set('projects')}>
 	<div bind:this={element}>
-		<Section id="projects" {heading} headingGap="large" icon="Fire">
+		<Section
+			id="projects"
+			{heading}
+			headingGap="large"
+			icon="Fire"
+			class={sectionStyles()}
+		>
 			<div class={projectsStyles()}>
 				{#each cards as project, i}
 					<ProjectCard {project} reversed={i % 2 !== 0} />

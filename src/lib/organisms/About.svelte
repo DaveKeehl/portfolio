@@ -113,7 +113,7 @@
 				<div class={textStyles()}>
 					<PortableText value={content} />
 				</div>
-				<Button href="cv.pdf" external>{button}</Button>
+				<Button href="/davide_ciulla_cv.pdf" external>{button}</Button>
 				<div class={imageStyles()} />
 			</div>
 		</Section>

@@ -14,7 +14,8 @@
 		},
 
 		html: {
-			scrollBehavior: 'smooth'
+			scrollBehavior: 'smooth',
+			scrollPaddingTop: '100px'
 		},
 
 		body: {

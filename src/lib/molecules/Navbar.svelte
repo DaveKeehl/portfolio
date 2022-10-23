@@ -15,6 +15,10 @@
 	const navStyles = css({
 		display: 'flex',
 		gap: '1.5rem'
+
+		// '@lg': {
+		// 	display: 'flex'
+		// }
 	});
 
 	const navItemStyles = css({
