@@ -67,7 +67,7 @@
 			background: '$blue-400',
 			zIndex: '-1',
 			pointerEvents: 'none',
-			opacity: '0.7'
+			opacity: '0.76'
 		}
 	});
 
@@ -75,7 +75,7 @@
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingBlock: '1rem',
+		paddingBlock: '18px',
 		color: '$grayscale-100',
 		width: '100%'
 	});
@@ -92,6 +92,7 @@
 		display: 'flex',
 		flex: 'none',
 		justifyContent: 'flex-start',
+		height: '32px',
 
 		'@lg': {
 			flex: '1'
@@ -145,7 +146,7 @@
 
 		'& > nav': {
 			width: '80%',
-			paddingBlock: '16px',
+			paddingBlock: '14px',
 			overflow: 'scroll',
 
 			'@sm': {

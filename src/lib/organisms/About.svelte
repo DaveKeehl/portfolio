@@ -15,13 +15,9 @@
 	let element: HTMLElement | undefined;
 
 	const sectionStyles = css({
-		paddingBlock: '72px',
+		paddingTop: '96px',
 		background:
-			'linear-gradient(to bottom, $grayscale-300 31.25%, $blue-400 100%)',
-
-		'@lg': {
-			paddingBlock: '128px 72px'
-		}
+			'linear-gradient(to bottom, $grayscale-300 31.25%, $blue-400 100%)'
 	});
 
 	const contentStyles = css({

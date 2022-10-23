@@ -100,7 +100,7 @@
 					fontSize: '20px',
 					fontWeight: '700',
 					lineHeight: '30px',
-					padding: '14px 20px'
+					padding: '12px 20px'
 				}
 			}
 		}

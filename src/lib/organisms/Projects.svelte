@@ -14,13 +14,12 @@
 	let element: HTMLElement;
 
 	const sectionStyles = css({
-		scrollPadding: '50px'
+		scrollPaddingTop: '2rem'
 	});
 
 	const projectsStyles = css({
 		display: 'grid',
-		gap: '3.5rem',
-		scrollPadding: '50px'
+		gap: '3.5rem'
 	});
 </script>
 

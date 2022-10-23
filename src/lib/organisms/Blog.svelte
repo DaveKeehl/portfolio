@@ -39,7 +39,7 @@
 	const cleanLabels = labels.map((label) => deCamelCase(label));
 
 	const sectionStyles = css({
-		paddingTop: '2rem'
+		scrollPaddingTop: '2rem'
 	});
 
 	const postsStyles = css({
@@ -75,7 +75,7 @@
 		<Section
 			id="blog"
 			{heading}
-			headingGap="large"
+			headingGap="small"
 			icon="Quotes"
 			class={sectionStyles()}
 		>
