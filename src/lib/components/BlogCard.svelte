@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { reveal } from 'svelte-reveal';
 
-	import Label from '$atoms/Label.svelte';
+	import Label from '$lib/components/Label.svelte';
 
 	import { css } from '$utils/stitches.config';
 	import { deCamelCase } from '$utils/functions';

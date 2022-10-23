@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Container from '$templates/Container.svelte';
+	import Container from '$lib/utils/Container.svelte';
 
 	import { css, theme } from '$utils/stitches.config';
-	import Icon from '$atoms/Icon.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let className: string = '';
 	export let heading: string;

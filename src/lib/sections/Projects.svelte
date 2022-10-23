@@ -1,8 +1,8 @@
 <script lang="ts">
 	import IntersectionObserver from 'svelte-intersection-observer';
 
-	import ProjectCard from '$molecules/ProjectCard.svelte';
-	import Section from '$templates/Section.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import Section from '$lib/utils/Section.svelte';
 
 	import type { IProjects } from '$utils/lib';
 	import { section } from '$utils/stores';

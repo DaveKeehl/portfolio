@@ -2,8 +2,8 @@
 	import IntersectionObserver from 'svelte-intersection-observer';
 	import { reveal } from 'svelte-reveal';
 
-	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
-	import Container from '$templates/Container.svelte';
+	import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
+	import Container from '$lib/utils/Container.svelte';
 
 	import { getHostname } from '$utils/functions';
 	import type { IHero } from '$utils/lib';

@@ -1,6 +1,3 @@
-export const url =
-	'https://api-eu-central-1.graphcms.com/v2/ckpi8048a1k5f01w3groi7vak/master';
-
 export const getHomepage = /* groq */ `{
 	"siteSettings": *[_type == "siteSettings"] {
 		brandName,

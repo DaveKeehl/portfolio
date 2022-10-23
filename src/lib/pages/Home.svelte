@@ -1,13 +1,13 @@
 <script lang="ts">
-	import SEO from '$templates/SEO.svelte';
+	import SEO from '$lib/utils/SEO.svelte';
 
-	import Hero from '$organisms/Hero.svelte';
-	import About from '$organisms/About.svelte';
-	import Projects from '$organisms/Projects.svelte';
-	import Blog from '$organisms/Blog.svelte';
-	import Contact from '$organisms/Contact.svelte';
-	import Header from '$organisms/Header.svelte';
-	import Footer from '$organisms/Footer.svelte';
+	import Hero from '$lib/sections/Hero.svelte';
+	import About from '$lib/sections/About.svelte';
+	import Projects from '$lib/sections/Projects.svelte';
+	import Blog from '$lib/sections/Blog.svelte';
+	import Contact from '$lib/sections/Contact.svelte';
+	import Header from '$lib/sections/Header.svelte';
+	import Footer from '$lib/sections/Footer.svelte';
 
 	import type { IHomepage, ISiteSettings } from '$utils/lib';
 	import { css } from '$utils/stitches.config';

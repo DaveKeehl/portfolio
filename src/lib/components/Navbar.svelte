@@ -7,7 +7,6 @@
 		_id: string;
 		name: string;
 	}[];
-	export let mobile: boolean;
 
 	const prefix: string = getHostname();
 	const getHref = (sectionName: string) => `${prefix}#${sectionName}`;
@@ -15,10 +14,6 @@
 	const navStyles = css({
 		display: 'flex',
 		gap: '1.5rem'
-
-		// '@lg': {
-		// 	display: 'flex'
-		// }
 	});
 
 	const navItemStyles = css({
@@ -43,7 +38,7 @@
 	$: currentSection = $section;
 </script>
 
-<nav class:mobile class={navStyles()}>
+<nav class={navStyles()}>
 	{#each sections as section}
 		<a
 			href={getHref(section.name.toLowerCase())}
@@ -53,47 +48,3 @@
 		>
 	{/each}
 </nav>
-
-<style lang="scss">
-	@import '../../styles/colors.scss';
-	@import '../../styles/breakpoints.scss';
-
-	nav {
-		/* display: none;
-
-		@media (min-width: $tablet-l) {
-			display: flex;
-		} */
-
-		a {
-			/* color: $white; */
-			/* text-transform: uppercase; */
-			/* transition: opacity 0.2s; */
-
-			/* &:hover { */
-			/* opacity: 0.8; */
-			/* } */
-
-			/* &:not(:last-child) {
-				margin-right: 1.5rem;
-			} */
-		}
-
-		&.mobile {
-			display: flex;
-			flex-direction: column;
-			gap: 1rem;
-
-			a {
-				font-size: 24px;
-				font-weight: 700;
-				color: $black;
-				text-transform: initial;
-			}
-
-			@media (min-width: $tablet-l) {
-				display: none;
-			}
-		}
-	}
-</style>

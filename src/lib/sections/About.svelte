@@ -2,8 +2,8 @@
 	import IntersectionObserver from 'svelte-intersection-observer';
 	import { PortableText } from '@portabletext/svelte';
 
-	import Section from '$templates/Section.svelte';
-	import Button from '$atoms/Button.svelte';
+	import Section from '$lib/utils/Section.svelte';
+	import Button from '$lib/components/Button.svelte';
 
 	import { css } from '$utils/stitches.config';
 	import type { IAbout } from '$utils/lib';

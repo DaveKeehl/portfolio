@@ -2,7 +2,7 @@
 	import IntersectionObserver from 'svelte-intersection-observer';
 	import { PortableText } from '@portabletext/svelte';
 
-	import Section from '$templates/Section.svelte';
+	import Section from '$lib/utils/Section.svelte';
 
 	import type { IContact } from '$utils/lib';
 	import { section } from '$utils/stores';

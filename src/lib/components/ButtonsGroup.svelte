@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Button from '$atoms/Button.svelte';
+	import Button from '$lib/components/Button.svelte';
 
 	import type { IButton } from '$utils/lib';
 	import { css } from '$utils/stitches.config';

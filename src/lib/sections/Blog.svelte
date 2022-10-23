@@ -3,10 +3,10 @@
 	import { fade } from 'svelte/transition';
 	import { reveal } from 'svelte-reveal';
 
-	import Button from '$atoms/Button.svelte';
-	import Pill from '$atoms/Pill.svelte';
-	import BlogCard from '$molecules/BlogCard.svelte';
-	import Section from '$templates/Section.svelte';
+	import Button from '$lib/components/Button.svelte';
+	import Pill from '$lib/components/Pill.svelte';
+	import BlogCard from '$lib/components/BlogCard.svelte';
+	import Section from '$lib/utils/Section.svelte';
 
 	import type { IBlog, IPost } from '$utils/lib';
 	import { deCamelCase } from '$utils/functions';

@@ -2,7 +2,7 @@
 	import { reveal } from 'svelte-reveal';
 	import { PortableText } from '@portabletext/svelte';
 
-	import Container from '$templates/Container.svelte';
+	import Container from '$lib/utils/Container.svelte';
 
 	import type { IFooter } from '$utils/lib';
 	import { css } from '$utils/stitches.config';

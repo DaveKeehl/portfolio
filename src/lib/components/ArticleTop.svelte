@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Container from '$templates/Container.svelte';
+	import Container from '$lib/utils/Container.svelte';
 	import type { IImage } from '$utils/lib';
 	import { reveal } from 'svelte-reveal';
 
@@ -8,7 +8,9 @@
 	export let cover: IImage;
 </script>
 
-<h1 class="h1--bold title" use:reveal={{ debug: false, ref: 'title' }}>{title}</h1>
+<h1 class="h1--bold title" use:reveal={{ debug: false, ref: 'title' }}>
+	{title}
+</h1>
 <h3 class="h3--semibold" use:reveal={{ delay: 200 }}>{category}</h3>
 
 <div class="image">
@@ -18,7 +20,7 @@
 		</div>
 	</Container>
 </div>
-
+<!-- 
 <style lang="scss">
 	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
@@ -64,4 +66,4 @@
 			box-shadow: 0 0 7rem 0.625rem $turquoise-100-a10;
 		}
 	}
-</style>
+</style> -->

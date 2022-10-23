@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { fade, fly } from 'svelte/transition';
-	import { cubicInOut } from 'svelte/easing';
+	import Navbar from '$lib/components/Navbar.svelte';
+	import Container from '$lib/utils/Container.svelte';
+	import Socials from '$lib/components/Socials.svelte';
 
-	import Navbar from '$molecules/Navbar.svelte';
-	import Container from '$templates/Container.svelte';
-	import Socials from '$molecules/Socials.svelte';
-
-	import { open } from '$stores/menu';
+	import { open } from '$utils/stores';
 	import { getHostname } from '$utils/functions';
 	import type { IHeader } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
@@ -175,14 +172,14 @@
 				<img src={logo} alt="Logo" />
 			</a>
 			<div class={mainNavigationStyles()}>
-				<Navbar {sections} mobile={false} />
+				<Navbar {sections} />
 			</div>
 			<div class={socialStyles()}>
-				<Socials {socials} mobile={false} />
+				<Socials {socials} />
 			</div>
 		</div>
 	</Container>
 	<div class={mobileNavigation()}>
-		<Navbar {sections} mobile={false} />
+		<Navbar {sections} />
 	</div>
 </header>

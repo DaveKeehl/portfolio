@@ -26,7 +26,7 @@
 			fontFeatureSettings: "'salt' on",
 			textRendering: 'optimizeLegibility',
 			'-webkit-font-smoothing': 'antialiased',
-			cursor: 'url(/icons/cursor.svg), default'
+			cursor: 'url(/cursor.svg), default'
 		},
 
 		a: {

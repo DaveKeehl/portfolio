@@ -1,9 +1,9 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import { url, getArticleBySlug } from '$utils/queries';
+import { getArticleBySlug } from '$utils/queries';
 
 export const load: PageLoad = async ({ params, fetch }) => {
-	const res = await fetch(url, {
+	const res = await fetch('', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -25,5 +25,5 @@ export const load: PageLoad = async ({ params, fetch }) => {
 		};
 	}
 
-	throw error(500, `Could not load ${url}`);
+	throw error(500, 'Could not load');
 };

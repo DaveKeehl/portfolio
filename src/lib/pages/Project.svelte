@@ -1,33 +1,22 @@
 <script lang="ts">
-	import type { IProject } from '$utils/lib';
-	import ArticleTop from '$molecules/ArticleTop.svelte';
-	import Container from '$templates/Container.svelte';
-	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
-	import SEO from '$templates/SEO.svelte';
 	import { reveal } from 'svelte-reveal';
 
+	import ArticleTop from '$lib/components/ArticleTop.svelte';
+	import Container from '$lib/utils/Container.svelte';
+	import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
+	import SEO from '$lib/utils/SEO.svelte';
+
+	import type { IProject } from '$utils/lib';
+
 	export let project: IProject;
-	const {
-		title,
-		liveUrl,
-		repositoryUrl,
-		visitButtonText,
-		cover,
-		industry,
-		year,
-		productType,
-		role,
-		description,
-		metrics,
-		projectSections
-	} = project;
+	const { title, industry, year } = project;
 </script>
 
-<SEO title={`${title} | Davide Ciulla`} {description} image={cover.url} />
+<!-- <SEO title={`${title} | Davide Ciulla`} {description} image={cover.url} /> -->
 
 <Container>
 	<article>
-		<ArticleTop {title} category="Case Study" {cover} />
+		<!-- <ArticleTop {title} category="Case Study" {cover} /> -->
 
 		<div class="wrapper">
 			<section>
@@ -42,18 +31,18 @@
 					</div>
 					<div>
 						<h4 class="h4--semibold">Product type</h4>
-						<p class="p1--bold">{productType}</p>
+						<!-- <p class="p1--bold">{productType}</p> -->
 					</div>
 					<div>
 						<h4 class="h4--semibold">Role</h4>
-						<p class="p1--bold">{role.join(', ')}</p>
+						<!-- <p class="p1--bold">{role.join(', ')}</p> -->
 					</div>
 				</div>
 
 				<div class="introduction" use:reveal={{ delay: 200 }}>
 					<h2 class="h2--bold">In a nutshell.</h2>
-					<p class="p3--regular">{description}</p>
-					<ButtonsGroup
+					<!-- <p class="p3--regular">{description}</p> -->
+					<!-- <ButtonsGroup
 						primaryButton={{
 							text: visitButtonText,
 							link: liveUrl,
@@ -63,33 +52,34 @@
 							text: 'GitHub Repository',
 							link: repositoryUrl,
 							external: true
-						}}
-						direction="horizontal"
-					/>
+						}} -->
+					direction="horizontal" />
 				</div>
 			</section>
 
-			<div class="metrics" use:reveal={{ debug: true, ref: 'metrics' }}>
+			<!-- <div class="metrics" use:reveal={{ debug: true, ref: 'metrics' }}>
 				{#each metrics || [] as metric}
 					<div>
 						<h1 class="h1--bold">{metric.value}</h1>
 						<p class="p4--SEMIBOLD">{metric.name}</p>
 					</div>
 				{/each}
-			</div>
+			</div> -->
 
-			<div class="content">
+			<!-- <div class="content">
 				{#each projectSections || [] as section}
 					<section>
 						<h2 class="h2--semibold" use:reveal>{section.title}</h2>
-						<p class="p3--regular" use:reveal={{ delay: 200 }}>{@html section.content.html}</p>
+						<p class="p3--regular" use:reveal={{ delay: 200 }}>
+							{@html section.content.html}
+						</p>
 					</section>
 				{/each}
-			</div>
+			</div> -->
 		</div>
 	</article>
 </Container>
-
+<!-- 
 <style lang="scss">
 	@import '../../styles/colors.scss';
 	@import '../../styles/breakpoints.scss';
@@ -180,4 +170,4 @@
 			align-items: center;
 		}
 	}
-</style>
+</style> -->

@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { reveal } from 'svelte-reveal';
-
-	import ButtonsGroup from '$molecules/ButtonsGroup.svelte';
-	import Label from '$atoms/Label.svelte';
+	import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
+	import Label from '$lib/components/Label.svelte';
 
 	import type { IProject } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
