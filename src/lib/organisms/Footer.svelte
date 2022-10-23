@@ -35,6 +35,16 @@
 			color: '$blue-100'
 		},
 
+		'& p:last-child': {
+			lineHeight: '20px'
+		},
+
+		'@media (min-width: 531px)': {
+			'& p:last-child': {
+				lineHeight: '10px'
+			}
+		},
+
 		'& a': {
 			p5: 'semiBold',
 			color: '$turquoise-200',

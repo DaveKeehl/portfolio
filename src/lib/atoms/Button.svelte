@@ -32,12 +32,16 @@
 		borderRadius: '10px',
 		height: 'fit-content',
 		textAlign: 'center',
-		width: 'max-content',
+		width: '100%',
 		border: '1px solid $turquoise-200-A05',
 		transition: 'color 0.2s, background 0.2s',
 
 		'&:disabled': {
 			cursor: 'not-allowed'
+		},
+
+		'@md': {
+			width: 'max-content'
 		},
 
 		variants: {
@@ -111,7 +115,7 @@
 		rel={external ? 'noopener noreferrer' : ''}
 		target={external ? '_blank' : ''}
 		{disabled}
-		class={`${className} ${buttonStyles({ variant, size })}`.trim()}
+		class={`${className} button ${buttonStyles({ variant, size })}`.trim()}
 		{style}
 		on:click={handleClick}
 	>
@@ -119,7 +123,7 @@
 	</a>
 {:else}
 	<button
-		class={`${className} ${buttonStyles({ variant, size })}`.trim()}
+		class={`${className} button ${buttonStyles({ variant, size })}`.trim()}
 		{style}
 		{disabled}
 		on:click

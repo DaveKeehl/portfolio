@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { globalCss } from '$utils/stitches.config';
-	import { section } from '$utils/stores';
 
 	const globalStyles = globalCss({
 		'*': {
@@ -44,12 +43,10 @@
 	});
 
 	globalStyles();
-
-	$: console.log($section);
 </script>
 
 <slot />
 
 <style lang="scss" global>
-	@import '../styles/global.scss';
+	@import '../styles/global.css';
 </style>

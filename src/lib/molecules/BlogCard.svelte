@@ -66,7 +66,7 @@
 	}}
 >
 	<a href={`/${_type}/${slug}`} class={coverStyles()}>
-		<img src={image} alt={title} />
+		<img src={image} alt={title} loading="lazy" />
 	</a>
 	<Label>{cleanType}</Label>
 	<a href={`/${_type}/${slug}`} class={titleStyles()}><h3>{title}</h3></a>

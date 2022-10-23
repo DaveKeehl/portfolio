@@ -15,9 +15,13 @@
 	let element: HTMLElement | undefined;
 
 	const sectionStyles = css({
-		paddingBlock: '128px 72px',
+		paddingBlock: '72px',
 		background:
-			'linear-gradient(to bottom, $grayscale-300 31.25%, $blue-400 100%)'
+			'linear-gradient(to bottom, $grayscale-300 31.25%, $blue-400 100%)',
+
+		'@lg': {
+			paddingBlock: '128px 72px'
+		}
 	});
 
 	const contentStyles = css({
@@ -28,7 +32,11 @@
 	});
 
 	const textStyles = css({
-		width: '75%',
+		width: '100%',
+
+		'@lg': {
+			width: '75%'
+		},
 
 		'& > *': {
 			p4: 'regular',
@@ -46,6 +54,7 @@
 	});
 
 	const imageStyles = css({
+		display: 'none',
 		background: `url(${image})`,
 		position: 'absolute',
 		width: '295px',
@@ -60,6 +69,10 @@
 		backgroundPosition: '-200px',
 		outline: '1px solid $turquoise-200-A10',
 		transition: 'transform 0.3s',
+
+		'@lg': {
+			display: 'block'
+		},
 
 		'&::before': {
 			content: '',

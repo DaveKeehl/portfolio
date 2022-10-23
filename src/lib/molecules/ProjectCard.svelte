@@ -14,10 +14,15 @@
 	$: slug = title.toLowerCase().replace(/\s/g, '-');
 
 	const projectCardStyles = css({
-		display: 'grid',
-		gridTemplateColumns: 'repeat(10, 1fr)',
-		gridTemplateRows: '1fr',
-		alignItems: 'center'
+		display: 'flex',
+		flexDirection: 'column',
+
+		'@lg': {
+			display: 'grid',
+			gridTemplateColumns: 'repeat(10, 1fr)',
+			gridTemplateRows: '1fr',
+			alignItems: 'center'
+		}
 	});
 
 	const titleStyles = css({
@@ -40,9 +45,15 @@
 		borderRadius: '20px',
 		overflow: 'hidden',
 		border: '1px solid $turquoise-200-A05',
+		marginBottom: '20px',
+
+		'@lg': {
+			marginBottom: '0'
+		},
 
 		'&::before': {
 			content: '',
+			display: 'none',
 			position: 'absolute',
 			background:
 				'linear-gradient(90deg, rgba(2, 19, 38, 0.9) 10.94%, rgba(2, 21, 43, 0.1) 100%)',
@@ -51,7 +62,11 @@
 			width: '100%',
 			height: '100%',
 			zIndex: '5',
-			pointerEvents: 'none'
+			pointerEvents: 'none',
+
+			'@lg': {
+				display: 'block'
+			}
 		},
 
 		variants: {
@@ -97,7 +112,12 @@
 
 <div class={projectCardStyles({ reversed })}>
 	<div class={imageContainerStyles({ reversed })}>
-		<img src={image} alt={title} class={imageStyles({ reversed })} />
+		<img
+			src={image}
+			alt={title}
+			class={imageStyles({ reversed })}
+			loading="lazy"
+		/>
 	</div>
 
 	<div class={contentStyles({ reversed })}>

@@ -17,9 +17,16 @@
 
 	const headingContainerStyles = css({
 		display: 'flex',
-		alignItems: 'center',
-		gap: '32px',
-		marginBottom: headingGap === 'small' ? '40px' : '80px'
+		flexDirection: 'column',
+		alignItems: 'flex-start',
+		gap: '20px',
+		marginBottom: headingGap === 'small' ? '40px' : '80px',
+
+		'@md': {
+			gap: '32px',
+			flexDirection: 'row',
+			alignItems: 'center'
+		}
 	});
 
 	const headingStyles = css({
@@ -27,7 +34,9 @@
 	});
 
 	const contentStyles = css({
-		paddingLeft: '80px'
+		'@md': {
+			paddingLeft: '80px'
+		}
 	});
 </script>
 

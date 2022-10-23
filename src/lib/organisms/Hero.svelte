@@ -16,9 +16,13 @@
 	let element: HTMLElement | undefined;
 
 	const sectionStyles = css({
-		paddingBlock: '200px',
+		paddingBlock: '128px',
 		position: 'relative',
-		overflow: 'hidden'
+		overflow: 'hidden',
+
+		'@lg': {
+			paddingBlock: '200px'
+		}
 	});
 
 	const containerStyles = css({
@@ -93,7 +97,8 @@
 			<div class={introductionStyles()}>
 				<p class={greetingStyles()} use:reveal>{greetings}</p>
 				<h1 class={headingStyles()} use:reveal={{ delay: 100 }}>
-					{heading.split(' ')[0]}{' '}<span class={strokeBaseElementStyles()}
+					{heading.split(' ')[0]}{' '}<span
+						class={`${strokeBaseElementStyles()} stroke`}
 						>{heading.split(' ')[1]}<img
 							src="/stroke.svg"
 							alt=""

@@ -9,7 +9,7 @@
 		padding: '4px 10px',
 		textTransform: 'uppercase',
 		color: '$blue-100',
-		backdropFilter: 'blur(4px)'
+		backdropFilter: 'blur(8px)'
 	});
 </script>
 

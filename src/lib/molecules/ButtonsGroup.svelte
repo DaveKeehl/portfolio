@@ -11,44 +11,31 @@
 	const groupStyles = css({
 		display: 'grid',
 		gridTemplateColumns: '1fr',
-		gap: '1rem'
+		gap: '1rem',
+
+		'@md': {
+			display: 'flex'
+		}
 	});
 </script>
 
-<div class={groupStyles()}>
-	<Button
-		variant="primary"
-		{size}
-		href={primary.href}
-		external={primary.external}
-	>
-		{primary.text}
-	</Button>
-	<Button
-		variant="secondary"
-		{size}
-		href={secondary.href}
-		external={secondary.external}
-	>
-		{secondary.text}
-	</Button>
+<div class="button-group">
+	<div class={groupStyles()}>
+		<Button
+			variant="primary"
+			{size}
+			href={primary.href}
+			external={primary.external}
+		>
+			{primary.text}
+		</Button>
+		<Button
+			variant="secondary"
+			{size}
+			href={secondary.href}
+			external={secondary.external}
+		>
+			{secondary.text}
+		</Button>
+	</div>
 </div>
-
-<style lang="scss">
-	@import '../../styles/breakpoints.scss';
-
-	div {
-		/* display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem; */
-
-		@media (min-width: $mobile-xl) {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		@media (min-width: $tablet) {
-			display: flex;
-			flex-direction: row;
-		}
-	}
-</style>

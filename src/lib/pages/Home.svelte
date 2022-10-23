@@ -21,7 +21,11 @@
 	const sectionStyles = css({
 		display: 'flex',
 		flexDirection: 'column',
-		gap: '160px'
+		gap: '120px',
+
+		'@lg': {
+			gap: '160px'
+		}
 	});
 </script>
 

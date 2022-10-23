@@ -1,0 +1,42 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Poppins', sans-serif;
+}
+
+.button-group {
+	flex-direction: row;
+	container-type: inline-size;
+	container-name: group;
+}
+
+@container group (max-width: 500px) {
+	.button-group .button {
+		flex: 1;
+	}
+}
+
+@container group (max-width: 400px) {
+	.button-group > div {
+		flex-direction: column;
+	}
+
+	.button-group .button {
+		width: 100%;
+	}
+}
+
+.stroke {
+	container-type: inline-size;
+	container-name: stroke;
+}
+
+@media (min-width: 514px) and (max-width: 655px) {
+	.stroke img {
+		width: 300px;
+		left: -40px;
+	}
+}

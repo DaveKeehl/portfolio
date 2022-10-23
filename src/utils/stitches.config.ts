@@ -16,6 +16,7 @@ export const { css, theme, globalCss } = createStitches({
 			'turquoise-200-A40': 'rgba(15, 226, 234, 0.4)',
 			'turquoise-300': '#0CB5BB',
 			'blue-100': '#B7CDE5',
+			'blue-100-A50': 'rgba(183, 205, 229, 0.5)',
 			'blue-200': '#476485',
 			'blue-200-A25': 'rgba(71, 100, 133, 0.25)',
 			'blue-200-A40': 'rgba(71, 100, 133, 0.4)',
@@ -37,6 +38,13 @@ export const { css, theme, globalCss } = createStitches({
 			p5: '16px',
 			p6: '14px'
 		}
+	},
+	media: {
+		sm: '(min-width: 640px)',
+		md: '(min-width: 768px)',
+		lg: '(min-width: 1024px)',
+		xl: '(min-width: 1280px)',
+		'2xl': '(min-width: 1536px)'
 	},
 	utils: {
 		h1: (weight: string) => {
