@@ -44,6 +44,7 @@ export const getHomepage = /* groq */ `{
       "projects": *[_type == "project" && featured == true] {
         _id,
         title,
+				"slug": slug.current,
         type,
         "image": image.asset->{url}.url,
         primaryCTA {
@@ -64,9 +65,13 @@ export const getHomepage = /* groq */ `{
 		"blog": *[_type == "blog"] {
 			heading,
 			"labels": array::unique(*[_type in ["caseStudy", "article"]]{_type}._type),
-			"posts": *[_type in ["caseStudy", "article"] && visibility == "public"] | order(_createdAt) {
+			"posts": *[
+				(_type == "caseStudy" && visibility == "public" && project->featured == true) || 
+				(_type == "article" && visibility == "public")
+			] | order(_createdAt) {
 				_type,
 				"title": coalesce(title, project->title),
+				"slug": coalesce(slug, project->slug).current,
 				"image": coalesce(image, project->image).asset->{url}.url,
 				excerpt,
 			}
