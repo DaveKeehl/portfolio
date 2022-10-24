@@ -1,6 +1,6 @@
 {
-    "name": "Davide Ciulla",
-    "short_name": "Davide Ciulla",
+    "name": "Portfolio",
+    "short_name": "Portfolio",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#031f40",
-    "background_color": "#031f40",
+    "theme_color": "#021127",
+    "background_color": "#021127",
     "display": "standalone"
 }

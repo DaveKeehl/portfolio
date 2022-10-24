@@ -1,25 +1,7 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
-<path d="M0 112C0 50.1441 50.1441 0 112 0H400C461.856 0 512 50.1441 512 112V400C512 461.856 461.856 512 400 512H112C50.1441 512 0 461.856 0 400V112Z" fill="#031F40"/>
-<g filter="url(#filter0_d)">
+<rect width="512" height="512" rx="112" fill="#021127"/>
 <path d="M167.686 175.102C210.909 175.102 239.343 200.732 252.987 251.994C266.522 303.31 294.955 328.968 338.285 328.968C381.617 328.968 410.051 303.31 423.586 251.994C410.416 320.264 381.982 354.399 338.285 354.399C294.59 354.399 266.157 320.264 252.987 251.994C231.712 183.724 203.278 149.589 167.686 149.589C132.093 149.589 103.659 183.724 82.3839 251.994C96.028 200.732 124.462 175.102 167.686 175.102Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="7.43548" stroke-miterlimit="3" stroke-linecap="square"/>
 <path d="M82.3839 252.439L423.586 249.322L423.586 255.556L82.3839 252.439Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="8.90476"/>
 <path d="M423.588 237.684C431.483 237.684 437.891 244.094 437.891 251.993C437.891 259.892 431.483 266.303 423.588 266.303C415.692 266.303 409.284 259.892 409.284 251.993C409.284 244.094 415.692 237.684 423.588 237.684Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="8.90476"/>
 <path d="M82.3851 244.839C86.3328 244.839 89.5368 248.045 89.5368 251.994C89.5368 255.944 86.3328 259.149 82.3851 259.149C78.4373 259.149 75.2333 255.944 75.2333 251.994C75.2333 248.045 78.4373 244.839 82.3851 244.839Z" fill="#0FE2EA" stroke="#0FE2EA" stroke-width="8.90476"/>
-</g>
-</g>
-<defs>
-<filter id="filter0_d" x="-25" y="51.8715" width="562" height="406.573" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="47"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.0588235 0 0 0 0 0.886275 0 0 0 0 0.917647 0 0 0 0.28 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-</filter>
-<clipPath id="clip0">
-<path d="M0 112C0 50.1441 50.1441 0 112 0H400C461.856 0 512 50.1441 512 112V400C512 461.856 461.856 512 400 512H112C50.1441 512 0 461.856 0 400V112Z" fill="white"/>
-</clipPath>
-</defs>
 </svg>

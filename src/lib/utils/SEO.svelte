@@ -42,9 +42,8 @@
 	/>
 	<link rel="manifest" href="/favicon/site.webmanifest" />
 	<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#031f40" />
-	<meta name="msapplication-TileColor" content="#031f40" />
-	<meta name="theme-color" content="#031f40" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="msapplication-TileColor" content="#021127" />
+	<meta name="theme-color" content="#021127" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link
 		rel="preconnect"
