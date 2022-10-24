@@ -70,7 +70,7 @@
 		aspectRatio: '1/1',
 		background: '$blue-100',
 		filter: 'blur(180px)',
-		opacity: '0.2',
+		opacity: '0.25',
 		borderRadius: '100%'
 	});
 

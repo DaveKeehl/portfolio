@@ -4,7 +4,7 @@ export const { css, theme, globalCss } = createStitches({
 	theme: {
 		colors: {
 			'grayscale-100': '#EEF2F6',
-			'grayscale-300': '#021326',
+			'grayscale-300': 'hsl(212deg 90% 6%)',
 			'grayscale-300-A60': 'rgba(2, 19, 38, 0.6)',
 			'turquoise-100': '#9AF6F9',
 			'turquoise-100-A10': 'rgba(241, 254, 254, 0.1)',
@@ -22,7 +22,7 @@ export const { css, theme, globalCss } = createStitches({
 			'blue-200-A40': 'rgba(71, 100, 133, 0.4)',
 			'blue-300': '#031F40',
 			'blue-300-A75': '#031F40',
-			'blue-400': '#031836',
+			'blue-400': 'hsl(215deg 89% 8%)',
 			'blue-400-A80': 'rgba(3, 24, 54, 0.8)'
 		},
 		fontSizes: {
