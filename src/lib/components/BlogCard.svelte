@@ -7,7 +7,7 @@
 	import { deCamelCase } from '$utils/functions';
 
 	export let title: string;
-	$: slug = title.toLowerCase().replace(/\s/g, '-');
+	export let slug: string;
 	export let image: string;
 	export let _type: string;
 	export let excerpt: string;
@@ -55,6 +55,8 @@
 		color: '$blue-100',
 		opacity: '0.8'
 	});
+
+	const resource = _type === 'caseStudy' ? 'project' : 'blog';
 </script>
 
 <div
@@ -65,10 +67,10 @@
 		duration: idx >= CHUNK ? 500 : 800
 	}}
 >
-	<a href={`/${_type}/${slug}`} class={coverStyles()}>
+	<a href={`/${resource}/${slug}`} class={coverStyles()}>
 		<img src={image} alt={title} loading="lazy" />
 	</a>
 	<Label>{cleanType}</Label>
-	<a href={`/${_type}/${slug}`} class={titleStyles()}><h3>{title}</h3></a>
+	<a href={`/${resource}/${slug}`} class={titleStyles()}><h3>{title}</h3></a>
 	<p class={excerptStyles()}>{excerpt}</p>
 </div>

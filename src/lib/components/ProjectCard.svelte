@@ -8,8 +8,7 @@
 	export let project: IProject;
 	export let reversed = false;
 
-	const { title, image, primaryCTA, excerpt, type } = project;
-	$: slug = title.toLowerCase().replace(/\s/g, '-');
+	const { title, slug, image, primaryCTA, excerpt, type } = project;
 
 	const projectCardStyles = css({
 		display: 'flex',

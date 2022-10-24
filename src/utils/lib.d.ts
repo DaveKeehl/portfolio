@@ -55,6 +55,7 @@ export interface IProjects {
 export interface IProject {
 	_id: string;
 	title: string;
+	slug: string;
 	type: string;
 	image: string;
 	primaryCTA: {
@@ -80,6 +81,7 @@ export interface IBlog {
 		excerpt: string;
 		image: string;
 		title: string;
+		slug: string;
 	}[];
 }
 
