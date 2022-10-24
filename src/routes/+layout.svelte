@@ -48,6 +48,6 @@
 
 <slot />
 
-<style lang="scss" global>
+<style>
 	@import '../styles/global.css';
 </style>
