@@ -23,8 +23,13 @@
 	});
 
 	const titleStyles = css({
-		h3: 'bold',
-		marginBlock: '20px 16px'
+		display: 'block',
+		width: 'fit-content',
+
+		'& h3': {
+			h3: 'bold',
+			marginBlock: '20px 16px'
+		}
 	});
 
 	const excerptStyles = css({
@@ -120,8 +125,8 @@
 	<div class={contentStyles({ reversed })}>
 		<Label>{type}</Label>
 
-		<a href={`/project/${slug}`}>
-			<h3 class={titleStyles({ reversed })}>{title}</h3>
+		<a href={`/project/${slug}`} class={titleStyles({ reversed })}>
+			<h3>{title}</h3>
 		</a>
 
 		<p class={excerptStyles({ reversed })}>{excerpt}</p>

@@ -43,6 +43,8 @@
 	});
 
 	const titleStyles = css({
+		display: 'block',
+		width: 'fit-content',
 		marginBlock: '16px 8px',
 
 		'& h3': {

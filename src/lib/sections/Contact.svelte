@@ -23,6 +23,7 @@
 		'& a': {
 			p4: 'code',
 			display: 'block',
+			width: 'fit-content',
 			marginTop: '20px',
 			fontWeight: '700',
 			color: '$turquoise-200',
