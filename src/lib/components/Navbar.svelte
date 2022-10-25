@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { getHostname } from '$utils/functions';
+	import type { ISection } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
 	import { section } from '$utils/stores';
 
-	export let sections: {
-		_id: string;
-		name: string;
-	}[];
+	export let sections: ISection[];
 
 	const prefix: string = getHostname();
 	const getHref = (sectionName: string) => `${prefix}#${sectionName}`;

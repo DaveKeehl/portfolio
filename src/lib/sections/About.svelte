@@ -51,7 +51,7 @@
 
 	const imageStyles = css({
 		display: 'none',
-		background: `url(${image})`,
+		background: `url(${image.url})`,
 		position: 'absolute',
 		width: '295px',
 		height: '420px',

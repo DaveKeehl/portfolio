@@ -1,3 +1,29 @@
+// =========================================
+// PAGES
+// =========================================
+export interface IHomepage {
+	header: IHeader;
+	hero: IHero;
+	about: IAbout;
+	projects: IProjects;
+	blog: IBlog;
+	contact: IContact;
+	footer: IFooter;
+}
+
+// =========================================
+// CONFIG
+// =========================================
+
+export interface ISiteSettings {
+	tagline: string;
+	brandName: string;
+}
+
+// =========================================
+// COMPONENTS
+// =========================================
+
 export interface IButton {
 	text: string;
 	href: string;
@@ -7,27 +33,24 @@ export interface IButton {
 
 export interface IImage {
 	url: string;
-	alt: string;
+	alt?: string;
+	assetId: string;
 }
 
 export interface ISocial {
-	name: string;
+	title: string;
 	url: string;
-	image: IImage;
+	icon: IImage;
 }
 
+// =========================================
+// SECTIONS
+// =========================================
+
 export interface IHeader {
-	logo: string;
-	sections: {
-		_id: string;
-		name: string;
-	}[];
-	socials: {
-		_id: string;
-		icon: string;
-		title: string;
-		url: string;
-	}[];
+	logo: IImage;
+	sections: ISection[];
+	socials: ISocial[];
 }
 
 export interface IHero {
@@ -42,7 +65,7 @@ export interface IHero {
 
 export interface IAbout {
 	heading: string;
-	image: string;
+	image: IImage;
 	button: string;
 	content: any;
 }
@@ -52,48 +75,24 @@ export interface IProjects {
 	projects: IProject[];
 }
 
-export interface IProject {
-	_id: string;
-	title: string;
-	slug: string;
-	type: string;
-	image: string;
-	primaryCTA: {
-		text: string;
-		url: string;
-	};
-	industry: string;
-	year: number;
-	roles: string[];
-	technologies: {
-		_id: string;
-		title: string;
-		url: string;
-	}[];
-	excerpt: string;
-}
-
 export interface IBlog {
 	heading: string;
 	labels: string[];
-	posts: {
-		_type: 'caseStudy' | 'article';
-		excerpt: string;
-		image: string;
-		title: string;
-		slug: string;
-	}[];
+	posts: IPost[];
 }
 
-interface IArticleCard {
-	createdAt: string;
-	title: string;
-	slug: string;
-	excerpt: string;
-	cover: IImage;
-	resourceType: 'project' | 'blog';
-	category: string;
+export interface IContact {
+	heading: string;
+	content: any;
 }
+
+export interface IFooter {
+	content: any;
+}
+
+// =========================================
+// UTILS
+// =========================================
 
 export interface IArticle {
 	createdAt: string;
@@ -108,33 +107,38 @@ export interface IArticle {
 	};
 }
 
-export interface IContact {
-	heading: string;
-	content: any;
-}
-
-export interface IFooter {
-	content: any;
-}
-
-export interface ISiteSettings {
-	tagline: string;
-	brandName: string;
-}
-
-export interface IHomepage {
-	header: IHeader;
-	hero: IHero;
-	about: IAbout;
-	projects: IProjects;
-	blog: IBlog;
-	contact: IContact;
-	footer: IFooter;
-}
-
 export interface IPost {
 	_type: 'caseStudy' | 'article';
 	excerpt: string;
-	image: string;
+	image: IImage;
 	title: string;
+	slug: string;
+}
+
+export interface IProject {
+	_id: string;
+	title: string;
+	slug: string;
+	type: string;
+	image: IImage;
+	primaryCTA: {
+		text: string;
+		url: string;
+	};
+	industry: string;
+	year: number;
+	roles: string[];
+	technologies: ITechnology[];
+	excerpt: string;
+}
+
+export interface ISection {
+	_id: string;
+	name: string;
+}
+
+export interface ITechnology {
+	_id: string;
+	title: string;
+	url: string;
 }

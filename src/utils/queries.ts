@@ -10,17 +10,28 @@ export const getHomepage = /* groq */ `{
 		},
 		openGraph {
 			baseUrl,
-			"image": image.asset->{url}.url
+			"image": image {
+          alt,
+          "url": asset->url,
+					"assetId": asset._ref
+        },
 		}
 	}[0],
 	"homepage": {
 		"header": {
-			"logo": *[_type == "siteSettings"][0].logo.asset->{url}.url,
+      "logo": *[_type == "siteSettings"][0] {
+        "assetId": logo.asset._ref,
+        "url": logo.asset->url,
+        "alt": logo.alt
+      },
 			"socials": *[_type == "social"] {
-				_id,
 				title,
 				url,
-				"icon": icon.asset->{url}.url
+				"icon": icon {
+					alt,
+					"url": asset->url,
+					"assetId": asset._ref
+				}
 			},
 			"sections": *[section != null && !(_id in path("drafts.**"))] | order(section.order) { 
 				_id,
@@ -35,7 +46,11 @@ export const getHomepage = /* groq */ `{
 		}[0],
 		"about": *[_type == "about"] {
       heading,
-      "image": image.asset->{url}.url,
+			"image": image {
+				alt,
+				"url": asset->url,
+				"assetId": asset._ref
+			},
       content,
       button
     }[0],
@@ -46,7 +61,11 @@ export const getHomepage = /* groq */ `{
         title,
 				"slug": slug.current,
         type,
-        "image": image.asset->{url}.url,
+        "image": image {
+          alt,
+          "url": asset->url,
+					"assetId": asset._ref
+        },
         primaryCTA {
           text,
           url
@@ -72,7 +91,11 @@ export const getHomepage = /* groq */ `{
 				_type,
 				"title": coalesce(title, project->title),
 				"slug": coalesce(slug, project->slug).current,
-				"image": coalesce(image, project->image).asset->{url}.url,
+				"image": coalesce(image, project->image) {
+					alt,
+					"url": asset->url,
+					"assetId": asset._ref
+				},
 				excerpt,
 			}
 		}[0],

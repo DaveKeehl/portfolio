@@ -1,12 +1,10 @@
 <script lang="ts">
+	import SanityImage from './SanityImage.svelte';
+
+	import type { ISocial } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
 
-	export let socials: {
-		_id: string;
-		icon: string;
-		title: string;
-		url: string;
-	}[];
+	export let socials: ISocial[];
 
 	const socialsStyles = css({
 		display: 'flex',
@@ -31,7 +29,7 @@
 			rel="noopener noreferrer"
 			class={socialStyles()}
 		>
-			<img src={social.icon} alt={social.title} />
+			<SanityImage src={social.icon.assetId} alt={social.title} />
 		</a>
 	{/each}
 </div>

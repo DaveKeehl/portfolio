@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
 	import Label from '$lib/components/Label.svelte';
+	import SanityImage from './SanityImage.svelte';
 
 	import type { IProject } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
@@ -114,8 +115,8 @@
 
 <div class={projectCardStyles({ reversed })}>
 	<div class={imageContainerStyles({ reversed })}>
-		<img
-			src={image}
+		<SanityImage
+			src={image.url}
 			alt={title}
 			class={imageStyles({ reversed })}
 			loading="lazy"

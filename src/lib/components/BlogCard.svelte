@@ -2,13 +2,15 @@
 	import { reveal } from 'svelte-reveal';
 
 	import Label from '$lib/components/Label.svelte';
+	import SanityImage from './SanityImage.svelte';
 
 	import { css } from '$utils/stitches.config';
 	import { deCamelCase } from '$utils/functions';
+	import type { IImage } from '$utils/lib';
 
 	export let title: string;
 	export let slug: string;
-	export let image: string;
+	export let image: IImage;
 	export let _type: string;
 	export let excerpt: string;
 
@@ -70,7 +72,7 @@
 	}}
 >
 	<a href={`/${resource}/${slug}`} class={coverStyles()}>
-		<img src={image} alt={title} loading="lazy" />
+		<SanityImage src={image.url} alt={title} loading="lazy" />
 	</a>
 	<Label>{cleanType}</Label>
 	<a href={`/${resource}/${slug}`} class={titleStyles()}><h3>{title}</h3></a>

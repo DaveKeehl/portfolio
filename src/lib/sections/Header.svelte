@@ -2,6 +2,7 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Container from '$lib/utils/Container.svelte';
 	import Socials from '$lib/components/Socials.svelte';
+	import SanityImage from '$components/SanityImage.svelte';
 
 	import { open } from '$utils/stores';
 	import { getHostname } from '$utils/functions';
@@ -169,7 +170,7 @@
 	<Container>
 		<div class={topHeaderStyles()}>
 			<a href={getHostname()} class={logoStyles()}>
-				<img src={logo} alt="Logo" />
+				<SanityImage src={logo.assetId} alt="Logo" />
 			</a>
 			<div class={mainNavigationStyles()}>
 				<Navbar {sections} />
