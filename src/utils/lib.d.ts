@@ -18,6 +18,7 @@ export interface IHomepage {
 export interface ISiteSettings {
 	tagline: string;
 	brandName: string;
+	openGraph: IOpenGraph;
 }
 
 // =========================================
@@ -93,6 +94,10 @@ export interface IFooter {
 // =========================================
 // UTILS
 // =========================================
+
+export interface IOpenGraph {
+	image: IImage;
+}
 
 export interface IArticle {
 	createdAt: string;

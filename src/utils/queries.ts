@@ -2,14 +2,7 @@ export const getHomepage = /* groq */ `{
 	"siteSettings": *[_type == "siteSettings"] {
 		brandName,
 		tagline,
-		favicon {
-			"favicon192": favicon192.asset->{url}.url,
-			"favicon32": favicon32.asset->{url}.url,
-			"favicon16": favicon16.asset->{url}.url,
-			"faviconSVG": faviconSVG.asset->{url}.url
-		},
 		openGraph {
-			baseUrl,
 			"image": image {
           alt,
           "url": asset->url,

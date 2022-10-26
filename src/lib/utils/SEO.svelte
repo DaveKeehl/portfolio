@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { getHostname } from '$utils/functions';
+	import type { IOpenGraph } from '$utils/lib';
 
 	export let title: string;
 	export let description: string;
-	export let image: string = '/og_image.png';
+	export let openGraph: IOpenGraph;
 </script>
 
 <svelte:head>
@@ -19,7 +20,7 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={getHostname()} />
-	<meta property="og:image" content={image} />
+	<meta property="og:image" content={openGraph.image.url} />
 	<meta property="twitter:card" content="summary_card_large" />
 	<meta property="twitter:creator" content="Davide Ciulla" />
 	<meta property="twitter:description" content={description} />

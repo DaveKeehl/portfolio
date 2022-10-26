@@ -1,6 +1,5 @@
 <script lang="ts">
 	import SEO from '$lib/utils/SEO.svelte';
-
 	import Hero from '$lib/sections/Hero.svelte';
 	import About from '$lib/sections/About.svelte';
 	import Projects from '$lib/sections/Projects.svelte';
@@ -16,7 +15,7 @@
 	export let siteSettings: ISiteSettings;
 
 	const { hero, about, projects, blog, contact, header, footer } = homepage;
-	const { brandName, tagline } = siteSettings;
+	const { brandName, tagline, openGraph } = siteSettings;
 
 	const sectionStyles = css({
 		display: 'flex',
@@ -29,7 +28,7 @@
 	});
 </script>
 
-<SEO title={brandName} description={tagline} />
+<SEO title={brandName} description={tagline} {openGraph} />
 <Header {header} />
 <Hero {hero} />
 <div class={sectionStyles()}>
