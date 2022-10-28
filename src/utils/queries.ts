@@ -4,10 +4,10 @@ export const getHomepage = /* groq */ `{
 		tagline,
 		openGraph {
 			"image": image {
-          alt,
-          "url": asset->url,
-					"assetId": asset._ref
-        },
+				alt,
+				"url": asset->url,
+				"assetId": asset._ref
+			},
 		}
 	}[0],
 	"homepage": {
@@ -150,39 +150,10 @@ export const getProjectBySlug = `
 	}
 `;
 
-export const getArticleBySlug = `
-	query getArticleBySlug($slug: String!) {
-		header(where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
-			logo {
-				alt
-				url
-			}
-			navigation
-			socials {
-				name
-				url
-				image {
-					alt
-					url
-				}
-			}
-		}
-		article(where: {slug: $slug}) {
-			title
-			category
-			cover {
-				url
-				alt
-			}
-			excerpt
-			content {
-				html
-			}
-		}
-		footer(where: {id: "ckpixr1wo2aff0b04e3kvml4s"}) {
-			text {
-				html
-			}
-		}
-	}
+export const getArticleBySlug = /* groq */ `
+	*[_type == 'article' && slug.current == $slug] {
+    _createdAt,
+		title,
+    content
+	}[0]
 `;
