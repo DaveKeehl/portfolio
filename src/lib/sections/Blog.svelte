@@ -21,18 +21,20 @@
 
 	let selectedLabels: Set<string> = new Set();
 
-	$: isPostVisible = (post: IPost) => {
+	$: hasPostMatchingLabel = (post: IPost) => {
 		if (selectedLabels.size === 0) return true; // If there are no filters, returns all posts
 		return selectedLabels.has(deCamelCase(post._type)); // else, a post is visible if the corresponding label is selected
 	};
 
-	$: filteredPosts = posts.filter((post) => isPostVisible(post));
+	$: filteredPosts = posts.filter((post) => hasPostMatchingLabel(post));
 	$: visiblePosts = filteredPosts.slice(0, cursor);
 
 	const showMorePosts = () => (cursor += CHUNK);
 
 	const toggleLabel = (label: string) => {
-		selectedLabels[selectedLabels.has(label) ? 'delete' : 'add'](label);
+		const hasLabelSelected = selectedLabels.has(label);
+		const toggleAction = hasLabelSelected ? 'delete' : 'add';
+		selectedLabels[toggleAction](label);
 		selectedLabels = selectedLabels;
 	};
 
@@ -84,7 +86,7 @@
 					<Pill
 						selected={selectedLabels.has(label)}
 						text={label}
-						{toggleLabel}
+						on:click={() => toggleLabel(label)}
 					/>
 				{/each}
 			</div>

@@ -4,10 +4,8 @@ export const getHomepage = /* groq */ `{
 		tagline,
 		openGraph {
 			"image": image {
-				alt,
-				"url": asset->url,
-				"assetId": asset._ref
-			},
+        "url": asset->url
+      }.url
 		}
 	}[0],
 	"homepage": {

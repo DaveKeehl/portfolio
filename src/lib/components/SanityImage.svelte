@@ -18,7 +18,7 @@
 		return builder.image(source);
 	}
 
-	const url = transform ? transform(urlFor(src)).url() : urlFor(src).url();
+	$: url = transform ? transform(urlFor(src)).url() : urlFor(src).url();
 </script>
 
 <img src={url} {alt} class={className} {loading} />

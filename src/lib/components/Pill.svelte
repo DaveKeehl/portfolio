@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	import { css } from '$utils/stitches.config';
+
+	const dispatch = createEventDispatcher();
 
 	export let text: string;
 	export let selected = false;
 	export let disabled = false;
-	export let toggleLabel: (category: string) => void;
 
 	const labelStyles = css({
 		p5: 'semiBold',
@@ -39,8 +42,8 @@
 		}
 	});
 
-	const handleClick = () => {
-		toggleLabel(text);
+	const handleClick = (event: MouseEvent) => {
+		dispatch('click', { event });
 	};
 </script>
 

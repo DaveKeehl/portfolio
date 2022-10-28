@@ -96,20 +96,14 @@ export interface IFooter {
 // =========================================
 
 export interface IOpenGraph {
-	image: IImage;
+	image: string;
 }
 
 export interface IArticle {
-	createdAt: string;
-	id: string;
+	_createdAt: string;
 	title: string;
-	slug: string;
-	category: string;
-	cover: IImage;
-	excerpt: string;
-	content: {
-		html: string;
-	};
+	image: IImage;
+	content: any;
 }
 
 export interface IPost {

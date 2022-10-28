@@ -17,7 +17,7 @@
 	export let CHUNK: number;
 	export let idx: number;
 
-	const cleanType = deCamelCase(_type);
+	$: cleanType = deCamelCase(_type);
 
 	const cardStyles = css({
 		display: 'flex',
@@ -60,7 +60,7 @@
 		opacity: '0.8'
 	});
 
-	const resource = _type === 'caseStudy' ? 'project' : 'blog';
+	$: resource = _type === 'caseStudy' ? 'project' : 'article';
 </script>
 
 <div

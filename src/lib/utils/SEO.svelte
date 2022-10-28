@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getHostname } from '$utils/functions';
 	import type { IOpenGraph } from '$utils/lib';
+	import { getCssText } from '../../utils/stitches.config';
 
 	export let title: string;
 	export let description: string;
@@ -20,7 +21,7 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={getHostname()} />
-	<meta property="og:image" content={openGraph.image.url} />
+	<meta property="og:image" content={openGraph.image} />
 	<meta property="twitter:card" content="summary_card_large" />
 	<meta property="twitter:creator" content="Davide Ciulla" />
 	<meta property="twitter:description" content={description} />
@@ -60,4 +61,5 @@
 		href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap"
 		rel="stylesheet"
 	/>
+	{@html `<${''}style id="stitches">${getCssText()}</${''}style>`}
 </svelte:head>
