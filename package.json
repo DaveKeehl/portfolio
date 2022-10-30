@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@sanity/client": "^3.4.1",
 		"@sanity/image-url": "^1.0.1",
-		"@stitches/core": "^1.2.8"
+		"@stitches/core": "^1.2.8",
+		"read-time-estimate": "^0.0.3"
 	}
 }

@@ -8,13 +8,15 @@
 	import Header from '$lib/sections/Header.svelte';
 	import Footer from '$lib/sections/Footer.svelte';
 
-	import type { IHomepage, ISiteSettings } from '$utils/lib';
+	import type { IFooter, IHeader, IHomepage, ISiteSettings } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
 
-	export let homepage: IHomepage;
 	export let siteSettings: ISiteSettings;
+	export let homepage: IHomepage;
+	export let header: IHeader;
+	export let footer: IFooter;
 
-	const { hero, about, projects, blog, contact, header, footer } = homepage;
+	const { hero, about, projects, blog, contact } = homepage;
 	const { brandName, tagline, openGraph } = siteSettings;
 
 	const sectionStyles = css({

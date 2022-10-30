@@ -2,13 +2,11 @@
 // PAGES
 // =========================================
 export interface IHomepage {
-	header: IHeader;
 	hero: IHero;
 	about: IAbout;
 	projects: IProjects;
 	blog: IBlog;
 	contact: IContact;
-	footer: IFooter;
 }
 
 // =========================================

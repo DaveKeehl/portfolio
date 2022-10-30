@@ -9,6 +9,7 @@
 	import type { IHero } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
 	import { section } from '$utils/stores';
+	import BlurredCircle from '$components/BlurredCircle.svelte';
 
 	export let hero: IHero;
 	const { heading, greetings, buttons, description } = hero;
@@ -126,6 +127,6 @@
 				/>
 			</div>
 		</Container>
-		<div class={circleStyles()} />
+		<BlurredCircle />
 	</section>
 </IntersectionObserver>

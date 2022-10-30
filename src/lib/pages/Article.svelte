@@ -7,21 +7,22 @@
 
 	import type { IArticle } from '$utils/lib';
 
-	export let article: IArticle;
-	const { title, category, cover, excerpt, content } = article;
+	export let data: IArticle;
+	let { _createdAt, image, title, content } = data;
 </script>
 
-<SEO
+<h1>{title}</h1>
+<!-- <SEO
 	title={`${title} | Davide Ciulla`}
 	description={excerpt}
 	image={cover.url}
-/>
+/> -->
 
-<Container>
+<!-- <Container>
 	<article>
 		<ArticleTop {title} {category} {cover} />
 		<section use:reveal={{ debug: true, ref: 'content' }}>
 			{@html content.html}
 		</section>
 	</article>
-</Container>
+</Container> -->

@@ -1,21 +1,22 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import { getArticleBySlug } from '$utils/queries';
+import { getArticleBySlug, getFooter, getHeader } from '$utils/queries';
 import { client } from '$utils/sanity';
 
-export const load: PageLoad = async () => {
-	const data = await client.fetch(getArticleBySlug, {
-		slug: 'welcome-to-my-portfolio'
+export const load: PageLoad = async ({ params }) => {
+	const header = await client.fetch(getHeader);
+	const footer = await client.fetch(getFooter);
+	const articleBySlug = await client.fetch(getArticleBySlug, {
+		slug: params.slug
 	});
 
-	if (data) {
-		const { _createdAt, title, content, image } = data;
+	if (header && footer && articleBySlug) {
+		const { article } = articleBySlug;
 
 		return {
-			_createdAt,
-			title,
-			image,
-			content
+			header,
+			article,
+			footer
 		};
 	}
 
