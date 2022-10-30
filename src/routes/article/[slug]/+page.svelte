@@ -7,14 +7,15 @@
 	import Header from '$lib/sections/Header.svelte';
 	import Footer from '$lib/sections/Footer.svelte';
 	import Label from '$components/Label.svelte';
+	import BlurredCircle from '$components/BlurredCircle.svelte';
+	import SEO from '$lib/utils/SEO.svelte';
 
 	import type { PageData } from './$types';
 	import { section } from '$utils/stores';
 	import { css } from '$utils/stitches.config';
-	import BlurredCircle from '$components/BlurredCircle.svelte';
 
 	export let data: PageData;
-	let { header, article, footer } = data;
+	let { siteSettings, header, article, footer } = data;
 	let { _createdAt, title, image, content, excerpt } = article;
 
 	const createdAt = new Date(_createdAt);
@@ -102,9 +103,25 @@
 	const contentStyles = css({
 		color: '$blue-100',
 		marginBlock: '288px 160px',
-		textAlign: 'left'
+		textAlign: 'left',
+
+		'& p': {
+			p4: 'regular',
+			opacity: '0.9'
+		},
+
+		'& h1': {
+			color: '$grayscale-100',
+			marginBlock: '64px 16px'
+		}
 	});
 </script>
+
+<SEO
+	{title}
+	description={siteSettings.tagline}
+	openGraph={{ image: image.url }}
+/>
 
 <div class={articleStyles()}>
 	<div class={articleTopStyles()}>
@@ -118,6 +135,7 @@
 		</div>
 		<BlurredCircle />
 	</div>
+
 	<div class={contentSectionStyles()}>
 		<div class={contentContainerStyles()}>
 			<SanityImage src={image.url} alt="" class={imageStyles()} />
