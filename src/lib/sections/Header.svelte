@@ -156,16 +156,6 @@
 
 <svelte:window bind:scrollY={y} />
 
-<svelte:head>
-	{#if $open}
-		<style>
-			body {
-				overflow: hidden;
-			}
-		</style>
-	{/if}
-</svelte:head>
-
 <header class:hidden={!isVisible} class={headerStyles()}>
 	<Container>
 		<div class={topHeaderStyles()}>

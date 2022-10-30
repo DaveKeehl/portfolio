@@ -29,9 +29,9 @@
 	onMount(() => section.set(''));
 
 	const articleStyles = css({
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center'
+		// display: 'flex',
+		// flexDirection: 'column',
+		// alignItems: 'center'
 		// textAlign: 'center'
 	});
 
@@ -118,14 +118,15 @@
 </script>
 
 <SEO
-	{title}
+	title={`${title} | Davide Ciulla`}
 	description={siteSettings.tagline}
 	openGraph={{ image: image.url }}
 />
 
+<Header {header} />
+
 <div class={articleStyles()}>
 	<div class={articleTopStyles()}>
-		<Header {header} />
 		<div class={articleMetaStyles()}>
 			<Label>ARTICLE</Label>
 			<h1 class={titleStyles()}>{title}</h1>
