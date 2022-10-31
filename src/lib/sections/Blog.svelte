@@ -8,7 +8,7 @@
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import Section from '$lib/utils/Section.svelte';
 
-	import type { IBlog, IPost } from '$utils/lib';
+	import type { IBlog, IPostPreview } from '$utils/lib';
 	import { deCamelCase } from '$utils/functions';
 	import { css } from '$utils/stitches.config';
 	import { section } from '$utils/stores';
@@ -21,7 +21,7 @@
 
 	let selectedLabels: Set<string> = new Set();
 
-	$: hasPostMatchingLabel = (post: IPost) => {
+	$: hasPostMatchingLabel = (post: IPostPreview) => {
 		if (selectedLabels.size === 0) return true; // If there are no filters, returns all posts
 		return selectedLabels.has(deCamelCase(post._type)); // else, a post is visible if the corresponding label is selected
 	};
@@ -93,7 +93,8 @@
 
 			<div class={postsStyles()}>
 				{#each visiblePosts as card, idx}
-					<BlogCard {...card} {idx} {CHUNK} />
+					<!-- <BlogCard {...card} {idx} {CHUNK} /> -->
+					<BlogCard {...card} />
 				{/each}
 			</div>
 

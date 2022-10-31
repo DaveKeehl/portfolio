@@ -7,6 +7,13 @@ import {
 	getSiteSettings
 } from '$utils/queries';
 import { client } from '$utils/sanity';
+import type {
+	IArticle,
+	IFooter,
+	IHeader,
+	IPostPreview,
+	ISiteSettings
+} from '$utils/lib';
 
 export const load: PageLoad = async ({ params }) => {
 	const siteSettings = await client.fetch(getSiteSettings);
@@ -17,14 +24,23 @@ export const load: PageLoad = async ({ params }) => {
 	});
 
 	if (siteSettings && header && footer && articleBySlug) {
-		const { article } = articleBySlug;
+		const { article, relatedPosts } = articleBySlug;
 
-		return {
+		const data: {
+			siteSettings: ISiteSettings;
+			header: IHeader;
+			article: IArticle;
+			relatedPosts: IPostPreview[];
+			footer: IFooter;
+		} = {
 			siteSettings,
 			header,
 			article,
+			relatedPosts,
 			footer
 		};
+
+		return data;
 	}
 
 	throw error(500, 'Could not load');

@@ -10,6 +10,7 @@
 
 	import type { IFooter, IHeader, IHomepage, ISiteSettings } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
+	import Container from '$lib/utils/Container.svelte';
 
 	export let siteSettings: ISiteSettings;
 	export let homepage: IHomepage;
@@ -28,6 +29,12 @@
 			gap: '160px'
 		}
 	});
+
+	const containerStyles = css({
+		'@md': {
+			paddingLeft: '80px'
+		}
+	});
 </script>
 
 <SEO title={brandName} description={tagline} {openGraph} />
@@ -38,5 +45,8 @@
 	<Projects {projects} />
 	<Blog {blog} />
 	<Contact {contact} />
-	<Footer {footer} />
+
+	<Container class={containerStyles()}>
+		<Footer {footer} />
+	</Container>
 </div>

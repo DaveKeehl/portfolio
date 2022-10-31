@@ -11,6 +11,6 @@
 	});
 </script>
 
-<div class={`${className} ${containerStyles()}`}>
+<div class={`${containerStyles()} ${className} `}>
 	<slot />
 </div>

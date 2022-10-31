@@ -105,6 +105,33 @@ export const getHomepage = /* groq */ `{
 	}[0]
 }`;
 
+export const getArticleBySlug = /* groq */ `{
+	"article": *[_type == 'article' && slug.current == $slug] {
+    _createdAt,
+		title,
+    content,
+		"image": image {
+			alt,
+			"url": asset->url,
+			"assetId": asset._ref
+		}
+	}[0],
+	"relatedPosts": *[
+			(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
+			(_type == "article" && visibility == "public" && slug.current != $slug)
+		] | order(_createdAt) {
+			_type,
+			"title": coalesce(title, project->title),
+			"slug": coalesce(slug, project->slug).current,
+			"image": coalesce(image, project->image) {
+				alt,
+				"url": asset->url,
+				"assetId": asset._ref
+			},
+			excerpt,
+		}
+}`;
+
 export const getProjectBySlug = `
 	query getProjectBySlug($slug: String!) {
 		header(where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
@@ -151,19 +178,4 @@ export const getProjectBySlug = `
 			}
 		}
 	}
-`;
-
-export const getArticleBySlug = /* groq */ `{
-	"article": *[_type == 'article' && slug.current == $slug] {
-    _createdAt,
-		title,
-		excerpt,
-    content,
-		"image": image {
-			alt,
-			"url": asset->url,
-			"assetId": asset._ref
-		}
-	}[0]
-}
 `;

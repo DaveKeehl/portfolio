@@ -13,10 +13,11 @@
 	import type { PageData } from './$types';
 	import { section } from '$utils/stores';
 	import { css } from '$utils/stitches.config';
+	import BlogCard from '$components/BlogCard.svelte';
 
 	export let data: PageData;
-	let { siteSettings, header, article, footer } = data;
-	let { _createdAt, title, image, content, excerpt } = article;
+	let { siteSettings, header, article, relatedPosts, footer } = data;
+	let { _createdAt, title, image, content } = article;
 
 	const createdAt = new Date(_createdAt);
 	const day = createdAt.getDate();
@@ -28,19 +29,11 @@
 
 	onMount(() => section.set(''));
 
-	const articleStyles = css({
-		// display: 'flex',
-		// flexDirection: 'column',
-		// alignItems: 'center'
-		// textAlign: 'center'
-	});
-
 	const articleTopStyles = css({
+		position: 'relative',
 		display: 'flex',
 		flexDirection: 'column',
-		width: '100%',
-		position: 'relative',
-		overflow: 'hidden'
+		width: '100%'
 	});
 
 	const articleMetaStyles = css({
@@ -48,17 +41,26 @@
 		flexDirection: 'column',
 		alignItems: 'center',
 		gap: '16px',
-		paddingBlock: '128px 164px',
+		paddingBlock: '96px 176px',
 		paddingInline: '40px',
 		width: '100%',
 
 		'@sm': {
+			paddingBlock: '96px 240px'
+		},
+
+		'@md': {
+			paddingBlock: '96px 264px'
+		},
+
+		'@lg': {
 			paddingBlock: '160px 264px'
 		}
 	});
 
 	const titleStyles = css({
-		h1: 'bold'
+		h1: 'bold',
+		textAlign: 'center'
 	});
 
 	const datetimeStyles = css({
@@ -69,15 +71,16 @@
 
 	const contentSectionStyles = css({
 		position: 'relative',
+		display: 'flex',
+		justifyContent: 'center',
 		width: '100%',
 		background:
-			'linear-gradient(to bottom, $grayscale-300 31.25%, $blue-400 100%)',
-		display: 'flex',
-		justifyContent: 'center'
+			'linear-gradient(to bottom, $grayscale-300 150px, transparent 550px)'
 	});
 
 	const contentContainerStyles = css({
-		width: '700px'
+		width: '80%',
+		maxWidth: '700px'
 	});
 
 	const imageStyles = css({
@@ -85,25 +88,30 @@
 		top: '0',
 		left: '50%',
 		transform: 'translateX(-50%) translateY(-50%)',
+		width: '80%',
+		maxWidth: '700px',
 		borderRadius: '20px',
 		border: '1px solid $turquoise-200-A05',
 		aspectRatio: '16 / 9',
-		objectFit: 'cover',
-		width: '90%',
-
-		'@sm': {
-			width: '600px'
-		},
-
-		'@md': {
-			width: '700px'
-		}
+		objectFit: 'cover'
 	});
 
 	const contentStyles = css({
 		color: '$blue-100',
-		marginBlock: '288px 160px',
 		textAlign: 'left',
+		marginBlock: '180px 160px',
+
+		'@xs': {
+			marginBlock: '200px 160px'
+		},
+
+		'@sm': {
+			marginBlock: '240px 160px'
+		},
+
+		'@md': {
+			marginBlock: '288px 160px'
+		},
 
 		'& p': {
 			p4: 'regular',
@@ -115,6 +123,29 @@
 			marginBlock: '64px 16px'
 		}
 	});
+
+	const relatedContainerStyles = css({
+		width: '80%',
+		maxWidth: '700px',
+		margin: '0 auto',
+		marginBottom: '160px'
+	});
+
+	const relatedTitleStyles = css({
+		h2: 'bold'
+	});
+
+	const relatedPostsStyles = css({
+		display: 'flex',
+		flexDirection: 'row',
+		gap: '16px'
+	});
+
+	const footerContainerStyles = css({
+		width: '80%',
+		maxWidth: '700px',
+		margin: '0 auto'
+	});
 </script>
 
 <SEO
@@ -125,26 +156,35 @@
 
 <Header {header} />
 
-<div class={articleStyles()}>
-	<div class={articleTopStyles()}>
-		<div class={articleMetaStyles()}>
-			<Label>ARTICLE</Label>
-			<h1 class={titleStyles()}>{title}</h1>
-			<p class={datetimeStyles()}>
-				{date} • {Math.ceil(estimatedReadDuration.duration)} MIN READ
-			</p>
-		</div>
-		<BlurredCircle />
+<div class={articleTopStyles()}>
+	<div class={articleMetaStyles()}>
+		<Label>ARTICLE</Label>
+		<h1 class={titleStyles()}>{title}</h1>
+		<p class={datetimeStyles()}>
+			{date} • {Math.ceil(estimatedReadDuration.duration)} MIN READ
+		</p>
 	</div>
+	<BlurredCircle />
+</div>
 
-	<div class={contentSectionStyles()}>
-		<div class={contentContainerStyles()}>
-			<SanityImage src={image.url} alt="" class={imageStyles()} />
-			<div class={contentStyles()}>
-				<PortableText value={content} />
-			</div>
+<div class={contentSectionStyles()}>
+	<div class={contentContainerStyles()}>
+		<SanityImage src={image.url} alt="" class={imageStyles()} />
+		<div class={contentStyles()}>
+			<PortableText value={content} />
 		</div>
 	</div>
 </div>
 
-<Footer {footer} />
+<div class={relatedContainerStyles()}>
+	<h2 class={relatedTitleStyles()}>Other posts.</h2>
+	<div class={relatedPostsStyles()}>
+		{#each relatedPosts as card}
+			<BlogCard {...card} />
+		{/each}
+	</div>
+</div>
+
+<div class={footerContainerStyles()}>
+	<Footer {footer} />
+</div>

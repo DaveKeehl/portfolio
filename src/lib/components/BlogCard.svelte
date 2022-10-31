@@ -14,8 +14,8 @@
 	export let _type: string;
 	export let excerpt: string;
 
-	export let CHUNK: number;
-	export let idx: number;
+	// export let CHUNK: number;
+	// export let idx: number;
 
 	$: cleanType = deCamelCase(_type);
 
@@ -61,16 +61,15 @@
 	});
 
 	$: resource = _type === 'caseStudy' ? 'project' : 'article';
+
+	// use:reveal={{
+	// 	delay: idx % 2 ? 200 : 0,
+	// 	marginBottom: idx >= CHUNK ? 2000 : 200,
+	// 	duration: idx >= CHUNK ? 500 : 800
+	// }}
 </script>
 
-<div
-	class={cardStyles()}
-	use:reveal={{
-		delay: idx % 2 ? 200 : 0,
-		marginBottom: idx >= CHUNK ? 2000 : 200,
-		duration: idx >= CHUNK ? 500 : 800
-	}}
->
+<div class={cardStyles()}>
 	<a href={`/${resource}/${slug}`} class={coverStyles()}>
 		<SanityImage src={image.url} alt={title} loading="lazy" />
 	</a>

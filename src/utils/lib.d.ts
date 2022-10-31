@@ -77,7 +77,7 @@ export interface IProjects {
 export interface IBlog {
 	heading: string;
 	labels: string[];
-	posts: IPost[];
+	posts: IPostPreview[];
 }
 
 export interface IContact {
@@ -104,7 +104,7 @@ export interface IArticle {
 	content: any;
 }
 
-export interface IPost {
+export interface IPostPreview {
 	_type: 'caseStudy' | 'article';
 	excerpt: string;
 	image: IImage;
