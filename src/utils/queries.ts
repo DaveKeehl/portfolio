@@ -106,7 +106,7 @@ export const getHomepage = /* groq */ `{
 }`;
 
 export const getArticleBySlug = /* groq */ `{
-	"article": *[_type == 'article' && slug.current == $slug] {
+	"article": *[_type == 'article' && slug.current == $slug && visibility == "public"] {
     _createdAt,
 		title,
     content,

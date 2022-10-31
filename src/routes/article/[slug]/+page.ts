@@ -23,9 +23,11 @@ export const load: PageLoad = async ({ params }) => {
 		slug: params.slug
 	});
 
-	if (siteSettings && header && footer && articleBySlug) {
-		const { article, relatedPosts } = articleBySlug;
+	const { article, relatedPosts } = articleBySlug;
 
+	if (!article) throw error(400, 'Could not find');
+
+	if (siteSettings && header && footer) {
 		const data: {
 			siteSettings: ISiteSettings;
 			header: IHeader;
