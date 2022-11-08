@@ -66,7 +66,7 @@ export const getHomepage = /* groq */ `{
 				"url": asset->url,
 				"assetId": asset._ref
 			},
-			primaryCTA {
+			liveButton {
 				text,
 				url
 			},
@@ -117,65 +117,60 @@ export const getArticleBySlug = /* groq */ `{
 		}
 	}[0],
 	"relatedPosts": *[
-			(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
-			(_type == "article" && visibility == "public" && slug.current != $slug)
-		] | order(_createdAt) {
-			_type,
-			"title": coalesce(title, project->title),
-			"slug": coalesce(slug, project->slug).current,
-			"image": coalesce(image, project->image) {
-				alt,
-				"url": asset->url,
-				"assetId": asset._ref
-			},
-			excerpt,
-		}
+		(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
+		(_type == "article" && visibility == "public" && slug.current != $slug)
+	] | order(_createdAt) {
+		_type,
+		"title": coalesce(title, project->title),
+		"slug": coalesce(slug, project->slug).current,
+		"image": coalesce(image, project->image) {
+			alt,
+			"url": asset->url,
+			"assetId": asset._ref
+		},
+		excerpt,
+	}
 }`;
 
-export const getProjectBySlug = `
-	query getProjectBySlug($slug: String!) {
-		header(where: {id: "ckqqhwh7kz2rw0b12c63g59em"}) {
-			logo {
-				alt
-				url
-			}
-			navigation
-			socials {
-				name
-				url
-				image {
-					alt
-					url
-				}
-			}
-		}
-		project(where: {slug: $slug}) {
-			title
-			description
-			visitButtonText
-			liveUrl
-			repositoryUrl
-			cover {
-				alt
-				url
-			}
-			technologies
-			industry
-			year
-			productType
-			role
-			metrics
-			projectSections {
-				title
-				content {
-					html
-				}
-			}
-		}
-		footer(where: {id: "ckpixr1wo2aff0b04e3kvml4s"}) {
-			text {
-				html
-			}
-		}
+export const getProjectBySlug = /* groq */ `{
+  "project": *[
+		_type == 'caseStudy' && project->slug.current == $slug && project->featured == true
+	] {
+    _createdAt,
+		"title": project->title,
+    "type": project->type,
+    "industry": project->industry,
+    "year": project->year,
+    "roles": project->roles,
+    "technologies": project->technologies[]->{ title, url },
+		"image": project->image {
+			alt,
+			"url": asset->url,
+			"assetId": asset._ref
+		},
+		"liveButton": project->liveButton {
+			text,
+			url
+		},
+		"repositoryButton": project->repositoryButton {
+			text,
+			url
+		},
+    nutshell,
+    content
+	}[0],
+	"relatedPosts": *[
+			(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
+			(_type == "article" && visibility == "public" && slug.current != $slug)
+	] | order(_createdAt) {
+		_type,
+		"title": coalesce(title, project->title),
+		"slug": coalesce(slug, project->slug).current,
+		"image": coalesce(image, project->image) {
+			alt,
+			"url": asset->url,
+			"assetId": asset._ref
+		},
+		excerpt,
 	}
-`;
+}`;

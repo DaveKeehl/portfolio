@@ -9,7 +9,7 @@
 	export let project: IProject;
 	export let reversed = false;
 
-	const { title, slug, image, primaryCTA, excerpt, type } = project;
+	const { title, slug, image, liveButton, excerpt, type } = project;
 
 	const projectCardStyles = css({
 		display: 'flex',
@@ -135,8 +135,8 @@
 		<ButtonsGroup
 			size="small"
 			primary={{
-				text: primaryCTA.text,
-				href: primaryCTA.url,
+				text: liveButton.text,
+				href: liveButton.url,
 				external: true
 			}}
 			secondary={{

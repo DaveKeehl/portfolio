@@ -113,12 +113,16 @@ export interface IPostPreview {
 }
 
 export interface IProject {
-	_id: string;
+	_createdAt: string;
 	title: string;
 	slug: string;
 	type: string;
 	image: IImage;
-	primaryCTA: {
+	liveButton: {
+		text: string;
+		url: string;
+	};
+	repositoryButton: {
 		text: string;
 		url: string;
 	};
@@ -127,6 +131,8 @@ export interface IProject {
 	roles: string[];
 	technologies: ITechnology[];
 	excerpt: string;
+	nutshell: string;
+	content: any;
 }
 
 export interface ISection {

@@ -16,25 +16,20 @@ import type {
 } from '$utils/lib';
 
 export const load: PageLoad = async ({ params }) => {
-	const siteSettings = await client.fetch(getSiteSettings);
-	const header = await client.fetch(getHeader);
-	const footer = await client.fetch(getFooter);
-	const articleBySlug = await client.fetch(getArticleBySlug, {
-		slug: params.slug
-	});
+	const siteSettings: ISiteSettings = await client.fetch(getSiteSettings);
+	const header: IHeader = await client.fetch(getHeader);
+	const footer: IFooter = await client.fetch(getFooter);
+	const articleBySlug: { article: IArticle; relatedPosts: IPostPreview[] } =
+		await client.fetch(getArticleBySlug, {
+			slug: params.slug
+		});
 
 	const { article, relatedPosts } = articleBySlug;
 
 	if (!article) throw error(400, 'Could not find');
 
 	if (siteSettings && header && footer) {
-		const data: {
-			siteSettings: ISiteSettings;
-			header: IHeader;
-			article: IArticle;
-			relatedPosts: IPostPreview[];
-			footer: IFooter;
-		} = {
+		const data = {
 			siteSettings,
 			header,
 			article,
