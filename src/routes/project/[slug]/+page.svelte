@@ -8,22 +8,35 @@
 	import Footer from '$lib/sections/Footer.svelte';
 	import Label from '$components/Label.svelte';
 	import BlurredCircle from '$components/BlurredCircle.svelte';
+	import BlogCard from '$components/BlogCard.svelte';
+	import ButtonsGroup from '$components/ButtonsGroup.svelte';
 	import SEO from '$lib/utils/SEO.svelte';
 
 	import type { PageData } from './$types';
 	import { section } from '$utils/stores';
 	import { css } from '$utils/stitches.config';
-	import BlogCard from '$components/BlogCard.svelte';
 
 	export let data: PageData;
 	let { siteSettings, header, project, relatedPosts, footer } = data;
-	let { _createdAt, title, image, content } = project;
+	let {
+		_createdAt,
+		title,
+		image,
+		content,
+		nutshell,
+		industry,
+		year,
+		roles,
+		technologies,
+		type,
+		repositoryButton,
+		liveButton
+	} = project;
 
 	const createdAt = new Date(_createdAt);
 	const day = createdAt.getDate();
 	const month = createdAt.toLocaleString('default', { month: 'short' });
-	const year = createdAt.getFullYear();
-	const date = `${day} ${month} ${year}`;
+	const date = `${day} ${month} ${createdAt.getFullYear()}`;
 
 	const estimatedReadDuration = readTimeEstimate(toPlainText(content));
 
@@ -75,12 +88,12 @@
 		justifyContent: 'center',
 		width: '100%',
 		background:
-			'linear-gradient(to bottom, $grayscale-300 150px, transparent 550px)'
+			'linear-gradient(to bottom, $grayscale-300 150px, $blue-400 550px)'
 	});
 
 	const contentContainerStyles = css({
 		width: '80%',
-		maxWidth: '700px'
+		maxWidth: '900px'
 	});
 
 	const imageStyles = css({
@@ -96,9 +109,70 @@
 		objectFit: 'cover'
 	});
 
-	const contentStyles = css({
+	const introStyles = css({
+		display: 'flex',
+		justifyContent: 'space-between',
+		gap: '72px'
+	});
+
+	const detailsStyles = css({
+		flex: '2',
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '28px'
+	});
+
+	const detailsPartStyles = css({
+		'& > *:first-child': {
+			p4: 'medium',
+			color: '$blue-100',
+			opacity: '0.6',
+			marginBottom: '2px'
+		},
+
+		'& > *:last-child': {
+			p4: 'semiBold',
+			color: '$grayscale-100'
+		},
+
+		'& a': {
+			p4: 'medium',
+			display: 'inline-flex',
+			color: '$grayscale-100',
+
+			'&:hover': {
+				cursor: 'ne-resize',
+				textDecoration: 'underline'
+			}
+		}
+	});
+
+	const nutshellBlockStyles = css({
+		flex: '3',
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '32px',
+
+		'& h2': {
+			h2: 'bold'
+		}
+	});
+
+	const nutshellContentStyles = css({
 		color: '$blue-100',
-		textAlign: 'left',
+		p4: 'regular',
+		opacity: '0.9'
+	});
+
+	const dividerStyles = css({
+		width: '100%',
+		height: '1px',
+		background: '$blue-100',
+		opacity: '0.1',
+		marginBlock: '104px'
+	});
+
+	const contentStyles = css({
 		marginBlock: '180px 160px',
 
 		'@xs': {
@@ -110,7 +184,7 @@
 		},
 
 		'@md': {
-			marginBlock: '288px 160px'
+			marginBlock: '320px 160px'
 		},
 
 		'& p': {
@@ -124,15 +198,23 @@
 		}
 	});
 
+	const richContentStyles = css({
+		color: '$blue-100',
+		textAlign: 'left',
+		maxWidth: '700px',
+		margin: '0 auto'
+	});
+
 	const relatedContainerStyles = css({
 		width: '80%',
-		maxWidth: '700px',
+		maxWidth: '900px',
 		margin: '0 auto',
 		marginBottom: '160px'
 	});
 
 	const relatedTitleStyles = css({
-		h2: 'bold'
+		h2: 'bold',
+		marginBottom: '40px'
 	});
 
 	const relatedPostsStyles = css({
@@ -143,7 +225,7 @@
 
 	const footerContainerStyles = css({
 		width: '80%',
-		maxWidth: '700px',
+		maxWidth: '900px',
 		margin: '0 auto'
 	});
 </script>
@@ -170,8 +252,64 @@
 <div class={contentSectionStyles()}>
 	<div class={contentContainerStyles()}>
 		<SanityImage src={image.url} alt="" class={imageStyles()} />
+
 		<div class={contentStyles()}>
-			<PortableText value={content} />
+			<div class={introStyles()}>
+				<div class={detailsStyles()}>
+					<div class={detailsPartStyles()}>
+						<p>Industry</p>
+						<p>{industry}</p>
+					</div>
+					<div class={detailsPartStyles()}>
+						<p>Year</p>
+						<p>{year}</p>
+					</div>
+					<div class={detailsPartStyles()}>
+						<p>Product type</p>
+						<p>{type}</p>
+					</div>
+					<div class={detailsPartStyles()}>
+						<p>Roles</p>
+						<p>{roles.join(', ')}</p>
+					</div>
+					<div class={detailsPartStyles()}>
+						<p>Technologies</p>
+						<p>
+							{#each technologies as technology, idx}
+								<a href={technology.url} target="_blank" rel="noreferrer">
+									{technology.title}
+								</a>{idx < technologies.length - 1 ? ', ' : ''}
+							{/each}
+						</p>
+					</div>
+				</div>
+
+				<div class={nutshellBlockStyles()}>
+					<h2>In a nutshell</h2>
+					<div class={nutshellContentStyles()}>
+						<PortableText value={nutshell} />
+					</div>
+					<ButtonsGroup
+						primary={{
+							href: liveButton.url,
+							text: liveButton.text,
+							external: true
+						}}
+						secondary={{
+							href: repositoryButton.url,
+							text: repositoryButton.text,
+							external: true
+						}}
+						size="small"
+					/>
+				</div>
+			</div>
+
+			<div class={dividerStyles()} />
+
+			<div class={richContentStyles()}>
+				<PortableText value={content} />
+			</div>
 		</div>
 	</div>
 </div>

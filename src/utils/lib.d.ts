@@ -131,7 +131,7 @@ export interface IProject {
 	roles: string[];
 	technologies: ITechnology[];
 	excerpt: string;
-	nutshell: string;
+	nutshell: any;
 	content: any;
 }
 
@@ -141,7 +141,6 @@ export interface ISection {
 }
 
 export interface ITechnology {
-	_id: string;
 	title: string;
 	url: string;
 }
