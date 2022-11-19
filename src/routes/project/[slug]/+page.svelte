@@ -111,8 +111,13 @@
 
 	const introStyles = css({
 		display: 'flex',
+		flexDirection: 'column',
 		justifyContent: 'space-between',
-		gap: '72px'
+		gap: '72px',
+
+		'@md': {
+			flexDirection: 'row'
+		}
 	});
 
 	const detailsStyles = css({
@@ -132,12 +137,16 @@
 
 		'& > *:last-child': {
 			p4: 'semiBold',
-			color: '$grayscale-100'
-		},
+			color: '$grayscale-100',
+			whiteSpace: 'pre-wrap'
+		}
+	});
+
+	const technologyLinkStyles = css({
+		display: 'inline-flex',
 
 		'& a': {
 			p4: 'medium',
-			display: 'inline-flex',
 			color: '$grayscale-100',
 
 			'&:hover': {
@@ -276,9 +285,14 @@
 						<p>Technologies</p>
 						<p>
 							{#each technologies as technology, idx}
-								<a href={technology.url} target="_blank" rel="noreferrer">
-									{technology.title}
-								</a>{idx < technologies.length - 1 ? ', ' : ''}
+								<span class={technologyLinkStyles()}>
+									<a href={technology.url} target="_blank" rel="noreferrer">
+										{technology.title}
+									</a>
+									{#if idx < technologies.length - 1}
+										{', '}
+									{/if}
+								</span>
 							{/each}
 						</p>
 					</div>
