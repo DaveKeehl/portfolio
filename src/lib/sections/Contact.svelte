@@ -1,8 +1,8 @@
 <script lang="ts">
 	import IntersectionObserver from 'svelte-intersection-observer';
-	import { PortableText } from '@portabletext/svelte';
 
 	import Section from '$lib/utils/Section.svelte';
+	import RichContent from '$components/RichContent.svelte';
 
 	import type { IContact } from '$utils/lib';
 	import { section } from '$utils/stores';
@@ -14,23 +14,12 @@
 	let element: HTMLElement;
 
 	const textStyles = css({
-		'& > *': {
-			p4: 'regular',
-			color: '$blue-100',
-			opacity: '0.9'
-		},
-
 		'& a': {
 			p4: 'code',
 			display: 'block',
 			width: 'fit-content',
 			marginTop: '20px',
-			fontWeight: '700',
-			color: '$turquoise-200',
-
-			'&:hover': {
-				textDecoration: 'underline'
-			}
+			fontWeight: '700'
 		}
 	});
 </script>
@@ -38,9 +27,7 @@
 <IntersectionObserver {element} on:intersect={() => section.set('contact')}>
 	<div bind:this={element}>
 		<Section id="contact" {heading} headingGap="small" icon="ChatTeardropDots">
-			<div class={textStyles()}>
-				<PortableText value={content} />
-			</div>
+			<RichContent class={textStyles()} {content} />
 		</Section>
 	</div>
 </IntersectionObserver>

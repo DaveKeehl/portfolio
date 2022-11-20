@@ -4,7 +4,6 @@
 	import Socials from '$lib/components/Socials.svelte';
 	import SanityImage from '$components/SanityImage.svelte';
 
-	import { open } from '$utils/stores';
 	import { getHostname } from '$utils/functions';
 	import type { IHeader } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
@@ -86,15 +85,19 @@
 		}
 	});
 
-	const logoStyles = css({
+	const logoContainerStyles = css({
 		display: 'flex',
 		flex: 'none',
 		justifyContent: 'flex-start',
-		height: '32px',
 
 		'@lg': {
 			flex: '1'
 		}
+	});
+
+	const logoStyles = css({
+		display: 'flex',
+		height: '32px'
 	});
 
 	const socialStyles = css({
@@ -159,9 +162,11 @@
 <header class:hidden={!isVisible} class={headerStyles()}>
 	<Container>
 		<div class={topHeaderStyles()}>
-			<a href={getHostname()} class={logoStyles()}>
-				<SanityImage src={logo.assetId} alt="Logo" />
-			</a>
+			<div class={logoContainerStyles()}>
+				<a href={getHostname()} class={logoStyles()}>
+					<SanityImage src={logo.assetId} alt="Logo" />
+				</a>
+			</div>
 			<div class={mainNavigationStyles()}>
 				<Navbar {sections} />
 			</div>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import { css, theme } from '$utils/stitches.config';
+	import { css } from '$utils/stitches.config';
 	import { getHostname } from '$utils/functions';
 
 	const dispatch = createEventDispatcher();

@@ -1,19 +1,11 @@
 <script lang="ts">
-	import { PortableText, toPlainText } from '@portabletext/svelte';
-	import readTimeEstimate from 'read-time-estimate';
-	import { onMount } from 'svelte';
-
-	import SanityImage from '$components/SanityImage.svelte';
-	import Header from '$lib/sections/Header.svelte';
-	import Footer from '$lib/sections/Footer.svelte';
-	import Label from '$components/Label.svelte';
-	import BlurredCircle from '$components/BlurredCircle.svelte';
-	import BlogCard from '$components/BlogCard.svelte';
 	import ButtonsGroup from '$components/ButtonsGroup.svelte';
-	import SEO from '$lib/utils/SEO.svelte';
+	import RichContent from '$components/RichContent.svelte';
+	import Divider from '$components/Posts/Divider.svelte';
+	import ProjectDetail from '$components/Posts/ProjectDetail.svelte';
+	import Post from '$pages/Post.svelte';
 
 	import type { PageData } from './$types';
-	import { section } from '$utils/stores';
 	import { css } from '$utils/stitches.config';
 
 	export let data: PageData;
@@ -33,82 +25,6 @@
 		liveButton
 	} = project;
 
-	const createdAt = new Date(_createdAt);
-	const day = createdAt.getDate();
-	const month = createdAt.toLocaleString('default', { month: 'short' });
-	const date = `${day} ${month} ${createdAt.getFullYear()}`;
-
-	const estimatedReadDuration = readTimeEstimate(toPlainText(content));
-
-	onMount(() => section.set(''));
-
-	const articleTopStyles = css({
-		position: 'relative',
-		display: 'flex',
-		flexDirection: 'column',
-		width: '100%'
-	});
-
-	const articleMetaStyles = css({
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		gap: '16px',
-		paddingBlock: '96px 176px',
-		paddingInline: '40px',
-		width: '100%',
-
-		'@sm': {
-			paddingBlock: '96px 240px'
-		},
-
-		'@md': {
-			paddingBlock: '96px 264px'
-		},
-
-		'@lg': {
-			paddingBlock: '160px 264px'
-		}
-	});
-
-	const titleStyles = css({
-		h1: 'bold',
-		textAlign: 'center'
-	});
-
-	const datetimeStyles = css({
-		p5: 'regular',
-		color: '$blue-100',
-		textTransform: 'uppercase'
-	});
-
-	const contentSectionStyles = css({
-		position: 'relative',
-		display: 'flex',
-		justifyContent: 'center',
-		width: '100%',
-		background:
-			'linear-gradient(to bottom, $grayscale-300 150px, $blue-400 550px)'
-	});
-
-	const contentContainerStyles = css({
-		width: '80%',
-		maxWidth: '900px'
-	});
-
-	const imageStyles = css({
-		position: 'absolute',
-		top: '0',
-		left: '50%',
-		transform: 'translateX(-50%) translateY(-50%)',
-		width: '80%',
-		maxWidth: '700px',
-		borderRadius: '20px',
-		border: '1px solid $turquoise-200-A05',
-		aspectRatio: '16 / 9',
-		objectFit: 'cover'
-	});
-
 	const introStyles = css({
 		display: 'flex',
 		flexDirection: 'column',
@@ -125,21 +41,6 @@
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '28px'
-	});
-
-	const detailsPartStyles = css({
-		'& > *:first-child': {
-			p4: 'medium',
-			color: '$blue-100',
-			opacity: '0.6',
-			marginBottom: '2px'
-		},
-
-		'& > *:last-child': {
-			p4: 'semiBold',
-			color: '$grayscale-100',
-			whiteSpace: 'pre-wrap'
-		}
 	});
 
 	const technologyLinkStyles = css({
@@ -160,183 +61,69 @@
 		flex: '3',
 		display: 'flex',
 		flexDirection: 'column',
-		gap: '32px',
-
-		'& h2': {
-			h2: 'bold'
-		}
+		gap: '32px'
 	});
 
-	const nutshellContentStyles = css({
-		color: '$blue-100',
-		p4: 'regular',
-		opacity: '0.9'
+	const nutshellStyles = css({
+		h2: 'bold'
 	});
 
 	const dividerStyles = css({
-		width: '100%',
-		height: '1px',
-		background: '$blue-100',
-		opacity: '0.1',
 		marginBlock: '104px'
-	});
-
-	const contentStyles = css({
-		marginBlock: '180px 160px',
-
-		'@xs': {
-			marginBlock: '200px 160px'
-		},
-
-		'@sm': {
-			marginBlock: '240px 160px'
-		},
-
-		'@md': {
-			marginBlock: '320px 160px'
-		},
-
-		'& p': {
-			p4: 'regular',
-			opacity: '0.9'
-		},
-
-		'& h1': {
-			color: '$grayscale-100',
-			marginBlock: '64px 16px'
-		}
-	});
-
-	const richContentStyles = css({
-		color: '$blue-100',
-		textAlign: 'left',
-		maxWidth: '700px',
-		margin: '0 auto'
-	});
-
-	const relatedContainerStyles = css({
-		width: '80%',
-		maxWidth: '900px',
-		margin: '0 auto',
-		marginBottom: '160px'
-	});
-
-	const relatedTitleStyles = css({
-		h2: 'bold',
-		marginBottom: '40px'
-	});
-
-	const relatedPostsStyles = css({
-		display: 'flex',
-		flexDirection: 'row',
-		gap: '16px'
-	});
-
-	const footerContainerStyles = css({
-		width: '80%',
-		maxWidth: '900px',
-		margin: '0 auto'
 	});
 </script>
 
-<SEO
-	title={`${title} | Davide Ciulla`}
-	description={siteSettings.tagline}
-	openGraph={{ image: image.url }}
-/>
+<Post
+	{siteSettings}
+	{header}
+	{footer}
+	{title}
+	{_createdAt}
+	{image}
+	{relatedPosts}
+	{content}
+	label="CASE STUDY"
+	maxWidth={900}
+>
+	<div class={introStyles()}>
+		<div class={detailsStyles()}>
+			<ProjectDetail title="Project type">{type}</ProjectDetail>
+			<ProjectDetail title="Year">{year}</ProjectDetail>
+			<ProjectDetail title="Roles">{roles.join(', ')}</ProjectDetail>
+			<ProjectDetail title="Technologies">
+				{#each technologies as technology, idx}
+					<span class={technologyLinkStyles()}>
+						<a href={technology.url} target="_blank" rel="noreferrer">
+							{technology.title}
+						</a>
+						{#if idx < technologies.length - 1}
+							{', '}
+						{/if}
+					</span>
+				{/each}
+			</ProjectDetail>
+		</div>
 
-<Header {header} />
-
-<div class={articleTopStyles()}>
-	<div class={articleMetaStyles()}>
-		<Label>CASE STUDY</Label>
-		<h1 class={titleStyles()}>{title}</h1>
-		<p class={datetimeStyles()}>
-			{date} • {Math.ceil(estimatedReadDuration.duration)} MIN READ
-		</p>
-	</div>
-	<BlurredCircle />
-</div>
-
-<div class={contentSectionStyles()}>
-	<div class={contentContainerStyles()}>
-		<SanityImage src={image.url} alt="" class={imageStyles()} />
-
-		<div class={contentStyles()}>
-			<div class={introStyles()}>
-				<div class={detailsStyles()}>
-					<div class={detailsPartStyles()}>
-						<p>Industry</p>
-						<p>{industry}</p>
-					</div>
-					<div class={detailsPartStyles()}>
-						<p>Year</p>
-						<p>{year}</p>
-					</div>
-					<div class={detailsPartStyles()}>
-						<p>Product type</p>
-						<p>{type}</p>
-					</div>
-					<div class={detailsPartStyles()}>
-						<p>Roles</p>
-						<p>{roles.join(', ')}</p>
-					</div>
-					<div class={detailsPartStyles()}>
-						<p>Technologies</p>
-						<p>
-							{#each technologies as technology, idx}
-								<span class={technologyLinkStyles()}>
-									<a href={technology.url} target="_blank" rel="noreferrer">
-										{technology.title}
-									</a>
-									{#if idx < technologies.length - 1}
-										{', '}
-									{/if}
-								</span>
-							{/each}
-						</p>
-					</div>
-				</div>
-
-				<div class={nutshellBlockStyles()}>
-					<h2>In a nutshell</h2>
-					<div class={nutshellContentStyles()}>
-						<PortableText value={nutshell} />
-					</div>
-					<ButtonsGroup
-						primary={{
-							href: liveButton.url,
-							text: liveButton.text,
-							external: true
-						}}
-						secondary={{
-							href: repositoryButton.url,
-							text: repositoryButton.text,
-							external: true
-						}}
-						size="small"
-					/>
-				</div>
-			</div>
-
-			<div class={dividerStyles()} />
-
-			<div class={richContentStyles()}>
-				<PortableText value={content} />
-			</div>
+		<div class={nutshellBlockStyles()}>
+			<h2 class={nutshellStyles()}>In a nutshell</h2>
+			<RichContent content={nutshell} />
+			<ButtonsGroup
+				primary={{
+					href: liveButton.url,
+					text: liveButton.text,
+					external: true
+				}}
+				secondary={{
+					href: repositoryButton.url,
+					text: repositoryButton.text,
+					external: true
+				}}
+				size="small"
+			/>
 		</div>
 	</div>
-</div>
 
-<div class={relatedContainerStyles()}>
-	<h2 class={relatedTitleStyles()}>Other posts.</h2>
-	<div class={relatedPostsStyles()}>
-		{#each relatedPosts as card}
-			<BlogCard {...card} />
-		{/each}
-	</div>
-</div>
-
-<div class={footerContainerStyles()}>
-	<Footer {footer} />
-</div>
+	<Divider class={dividerStyles()} />
+	<RichContent {content} />
+	<Divider class={dividerStyles()} />
+</Post>

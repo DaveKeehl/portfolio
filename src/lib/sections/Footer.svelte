@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { reveal } from 'svelte-reveal';
-	import { PortableText } from '@portabletext/svelte';
 
-	import Container from '$lib/utils/Container.svelte';
+	import RichContent from '$components/RichContent.svelte';
 
 	import type { IFooter } from '$utils/lib';
 	import { css } from '$utils/stitches.config';
@@ -27,9 +26,12 @@
 	});
 
 	const textStyles = css({
-		'& > *': {
-			p5: 'regular',
-			color: '$blue-100'
+		'& > *:not(:last-child)': {
+			marginBottom: '0 !important'
+		},
+
+		'& p': {
+			p5: 'regular'
 		},
 
 		'& p:last-child': {
@@ -43,18 +45,11 @@
 		},
 
 		'& a': {
-			p5: 'semiBold',
-			color: '$turquoise-200',
-
-			'&:hover': {
-				textDecoration: 'underline'
-			}
+			p5: 'semiBold'
 		}
 	});
 </script>
 
 <footer use:reveal class={footerStyles()}>
-	<div class={textStyles()}>
-		<PortableText value={content} />
-	</div>
+	<RichContent class={textStyles()} {content} />
 </footer>

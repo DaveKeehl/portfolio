@@ -139,7 +139,6 @@ export const getProjectBySlug = /* groq */ `{
     _createdAt,
 		"title": project->title,
     "type": project->type,
-    "industry": project->industry,
     "year": project->year,
     "roles": project->roles,
     "technologies": project->technologies[]->{ title, url },
