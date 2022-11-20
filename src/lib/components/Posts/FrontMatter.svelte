@@ -44,7 +44,7 @@
 		},
 
 		'@lg': {
-			paddingBlock: '160px 264px'
+			paddingBlock: '128px 264px'
 		}
 	});
 

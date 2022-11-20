@@ -46,7 +46,7 @@
 		},
 
 		'@md': {
-			marginBlock: '320px 104px'
+			marginBlock: '288px 104px'
 		}
 	});
 </script>

@@ -16,18 +16,19 @@
 
 	const relatedTitleStyles = css({
 		h2: 'bold',
-		marginBottom: '40px'
+		marginBottom: '56px'
 	});
 
 	const relatedPostsStyles = css({
-		display: 'flex',
-		flexDirection: 'row',
-		gap: '16px'
+		display: 'grid',
+		gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+		columnGap: '20px',
+		rowGap: '56px'
 	});
 </script>
 
 <div class={relatedContainerStyles()}>
-	<h2 class={relatedTitleStyles()}>Other posts.</h2>
+	<h2 class={relatedTitleStyles()}>Related posts.</h2>
 	<div class={relatedPostsStyles()}>
 		{#each posts as card}
 			<BlogCard {...card} />
