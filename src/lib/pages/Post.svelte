@@ -26,7 +26,8 @@
   export let image: IImage;
   export let content: any;
   export let relatedPosts: IPostPreview[];
-  export let maxWidth: number;
+
+  const maxWidth = 800;
 
   onMount(() => section.set(''));
 </script>

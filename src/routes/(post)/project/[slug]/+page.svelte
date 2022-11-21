@@ -70,7 +70,7 @@
   });
 </script>
 
-<Post {...post} label="CASE STUDY" maxWidth={900}>
+<Post {...post} label="CASE STUDY">
   <div class={introStyles()}>
     <div class={detailsStyles()}>
       <ProjectDetail title="Project type">{data.project.type}</ProjectDetail>

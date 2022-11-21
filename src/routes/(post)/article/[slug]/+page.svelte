@@ -24,7 +24,7 @@
   });
 </script>
 
-<Post {...post} label="ARTICLE" maxWidth={800}>
+<Post {...post} label="ARTICLE">
   <RichContent content={data.article.content} />
   <Divider class={dividerStyles()} />
 </Post>
