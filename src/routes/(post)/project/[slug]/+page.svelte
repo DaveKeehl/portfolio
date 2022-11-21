@@ -26,7 +26,7 @@
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    gap: '72px',
+    gap: '96px',
 
     '@md': {
       flexDirection: 'row'
@@ -38,20 +38,6 @@
     display: 'flex',
     flexDirection: 'column',
     gap: '28px'
-  });
-
-  const technologyLinkStyles = css({
-    display: 'inline-flex',
-
-    '& a': {
-      p4: 'medium',
-      color: '$grayscale-100',
-
-      '&:hover': {
-        cursor: 'ne-resize',
-        textDecoration: 'underline'
-      }
-    }
   });
 
   const nutshellBlockStyles = css({
@@ -75,9 +61,9 @@
     <div class={detailsStyles()}>
       <ProjectDetail title="Project type">{data.project.type}</ProjectDetail>
       <ProjectDetail title="Year">{data.project.year}</ProjectDetail>
-      <ProjectDetail title="Roles"
-        >{data.project.roles.join(', ')}</ProjectDetail
-      >
+      <ProjectDetail title="Roles">
+        {data.project.roles.join(', ')}
+      </ProjectDetail>
       <ProjectDetail title="Technologies">
         {data.project.technologies.map((tech) => tech.title).join(', ')}
       </ProjectDetail>
