@@ -45,8 +45,17 @@
 	const handleClick = (event: MouseEvent) => {
 		dispatch('click', { event });
 	};
+
+	const handleKeypress = (event: KeyboardEvent) => {
+		dispatch('click', { event });
+	};
 </script>
 
-<p class={labelStyles({ selected })} on:click={handleClick} {disabled}>
+<p
+	class={labelStyles({ selected })}
+	on:click={handleClick}
+	on:keypress={handleKeypress}
+	{disabled}
+>
 	{text}
 </p>
