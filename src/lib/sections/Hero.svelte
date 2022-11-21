@@ -117,12 +117,12 @@
           size="large"
           primary={{
             text: buttons.primary,
-            href: `${getHostname()}#projects`,
+            href: `#projects`,
             external: false
           }}
           secondary={{
             text: buttons.secondary,
-            href: `${getHostname()}#contact`,
+            href: `#contact`,
             external: false
           }}
         />
