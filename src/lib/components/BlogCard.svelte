@@ -61,6 +61,7 @@
 	});
 
 	$: resource = _type === 'caseStudy' ? 'project' : 'article';
+	$: href = `/${resource}/${slug}`;
 
 	// use:reveal={{
 	// 	delay: idx % 2 ? 200 : 0,
@@ -70,10 +71,10 @@
 </script>
 
 <div class={cardStyles()}>
-	<a href={`/${resource}/${slug}`} class={coverStyles()}>
+	<a {href} class={coverStyles()}>
 		<SanityImage src={image.url} alt={title} loading="lazy" />
 	</a>
 	<Label>{cleanType}</Label>
-	<a href={`/${resource}/${slug}`} class={titleStyles()}><h3>{title}</h3></a>
+	<a {href} class={titleStyles()}><h3>{title}</h3></a>
 	<p class={excerptStyles()}>{excerpt}</p>
 </div>

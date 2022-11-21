@@ -109,9 +109,7 @@
 
 {#if href}
 	<a
-		href={external
-			? href
-			: `${getHostname()}${href.startsWith('/') ? '' : '/'}${href}`}
+		{href}
 		rel={external ? 'noopener noreferrer' : ''}
 		target={external ? '_blank' : ''}
 		{disabled}

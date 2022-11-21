@@ -141,7 +141,7 @@
 			}}
 			secondary={{
 				text: 'Go to case study',
-				href: `project/${slug}`,
+				href: `/project/${slug}`,
 				external: false
 			}}
 		/>

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { toPlainText } from '@portabletext/svelte';
-	import readTimeEstimate from 'read-time-estimate';
 
 	import BlurredCircle from '$components/BlurredCircle.svelte';
 	import Label from '$components/Label.svelte';
 
 	import { css } from '$utils/stitches.config';
+	import readTime from '$utils/readTimeEstimate';
 
 	export let _createdAt: string;
 	export let content: any;
@@ -17,7 +17,7 @@
 	const month = createdAt.toLocaleString('default', { month: 'short' });
 	const date = `${day} ${month} ${createdAt.getFullYear()}`;
 
-	const estimatedReadDuration = readTimeEstimate(toPlainText(content));
+	const estimatedReadDuration = readTime(toPlainText(content));
 
 	const articleTopStyles = css({
 		position: 'relative',

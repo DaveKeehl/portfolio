@@ -163,7 +163,7 @@
 	<Container>
 		<div class={topHeaderStyles()}>
 			<div class={logoContainerStyles()}>
-				<a href={getHostname()} class={logoStyles()}>
+				<a href="/" class={logoStyles()}>
 					<SanityImage src={logo.assetId} alt="Logo" />
 				</a>
 			</div>
