@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 import path from 'path';
 
@@ -13,12 +13,24 @@ const config = {
 			// default options are shown
 			pages: 'build',
 			assets: 'build',
-			fallback: null
+			fallback: null,
+			precompress: false,
+			strict: true
 		}),
 		alias: {
 			$components: path.resolve('./src/lib/components'),
 			$utils: path.resolve('./src/utils'),
 			$pages: path.resolve('./src/lib/pages')
+		},
+		prerender: {
+			entries: [
+				'/',
+				'/article/welcome-to-my-portfolio',
+				'/project/stack-and-heap-diagram',
+				'/project/fonts-jar',
+				'/project/f1-insights',
+				'/project/svelte-reveal'
+			]
 		}
 	}
 };
