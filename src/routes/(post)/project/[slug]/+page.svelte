@@ -26,7 +26,7 @@
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    gap: '96px',
+    gap: '64px',
 
     '@md': {
       flexDirection: 'row'
