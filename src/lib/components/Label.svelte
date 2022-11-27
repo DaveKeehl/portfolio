@@ -1,18 +1,5 @@
-<script lang="ts">
-	import { css } from '$utils/stitches.config';
-
-	const styles = css({
-		p6: 'code',
-		borderRadius: '2px',
-		background: '$turquoise-100-A10',
-		width: 'fit-content',
-		padding: '4px 10px',
-		textTransform: 'uppercase',
-		color: '$blue-100',
-		backdropFilter: 'blur(8px)'
-	});
-</script>
-
-<div class={styles()}>
-	<slot />
+<div
+  class="p6-code rounded-sm bg-turquoise-100/10 w-fit py-1 px-[10px] uppercase text-blue-100 backdrop-blur"
+>
+  <slot />
 </div>
