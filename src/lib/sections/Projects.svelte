@@ -1,42 +1,33 @@
 <script lang="ts">
-	import IntersectionObserver from 'svelte-intersection-observer';
+  import IntersectionObserver from 'svelte-intersection-observer';
 
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import Section from '$lib/utils/Section.svelte';
+  import ProjectCard from '$lib/components/ProjectCard.svelte';
+  import Section from '$lib/utils/Section.svelte';
 
-	import type { IProjects } from '$utils/lib';
-	import { section } from '$utils/stores';
-	import { css } from '$utils/stitches.config';
+  import type { IProjects } from '$utils/lib';
+  import { section } from '$utils/stores';
+  import { css } from '$utils/stitches.config';
 
-	export let projects: IProjects;
-	const { heading, projects: cards } = projects;
+  export let projects: IProjects;
+  const { heading, projects: cards } = projects;
 
-	let element: HTMLElement;
-
-	const sectionStyles = css({
-		scrollPaddingTop: '2rem'
-	});
-
-	const projectsStyles = css({
-		display: 'grid',
-		gap: '3.5rem'
-	});
+  let element: HTMLElement;
 </script>
 
 <IntersectionObserver {element} on:intersect={() => section.set('projects')}>
-	<div bind:this={element}>
-		<Section
-			id="projects"
-			{heading}
-			headingGap="large"
-			icon="Fire"
-			class={sectionStyles()}
-		>
-			<div class={projectsStyles()}>
-				{#each cards as project, i}
-					<ProjectCard {project} reversed={i % 2 !== 0} />
-				{/each}
-			</div>
-		</Section>
-	</div>
+  <div bind:this={element}>
+    <Section
+      id="projects"
+      {heading}
+      headingGap="large"
+      icon="Fire"
+      class="scroll-pt-8"
+    >
+      <div class="grid gap-14">
+        {#each cards as project, i}
+          <ProjectCard {project} reversed={i % 2 !== 0} />
+        {/each}
+      </div>
+    </Section>
+  </div>
 </IntersectionObserver>
