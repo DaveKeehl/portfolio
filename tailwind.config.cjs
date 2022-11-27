@@ -19,6 +19,7 @@ module.exports = {
         blue: {
           100: '#B7CDE5',
           200: '#476485',
+          '200/25': 'hsl(212deg 30% 40% / 25%)',
           300: '#031F40',
           400: 'hsl(215deg 89% 8%)'
         }
@@ -47,7 +48,10 @@ module.exports = {
       backgroundImage: ({ theme }) => ({
         hero: `linear-gradient(to right, ${theme(
           'colors.turquoise.100'
-        )} 0%, ${theme('colors.turquoise.300')} 100%)`
+        )} 0%, ${theme('colors.turquoise.300')} 100%)`,
+        header: `linear-gradient(to right, transparent, ${theme(
+          'colors.blue.200/25'
+        )}, transparent)`
       })
     }
   },

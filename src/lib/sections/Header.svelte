@@ -1,181 +1,70 @@
 <script lang="ts">
-	import Navbar from '$lib/components/Navbar.svelte';
-	import Container from '$lib/utils/Container.svelte';
-	import Socials from '$lib/components/Socials.svelte';
-	import SanityImage from '$components/SanityImage.svelte';
+  import Navbar from '$lib/components/Navbar.svelte';
+  import Container from '$lib/utils/Container.svelte';
+  import Socials from '$lib/components/Socials.svelte';
+  import SanityImage from '$components/SanityImage.svelte';
 
-	import { getHostname } from '$utils/functions';
-	import type { IHeader } from '$utils/lib';
-	import { css } from '$utils/stitches.config';
+  import { getHostname } from '$utils/functions';
+  import type { IHeader } from '$utils/lib';
+  import { css } from '$utils/stitches.config';
 
-	export let header: IHeader;
-	const { logo, sections, socials } = header;
+  export let header: IHeader;
+  const { logo, sections, socials } = header;
 
-	let isVisible = true;
-	let y = 0;
-	let lastY = 0;
+  let isVisible = true;
+  let y = 0;
+  let lastY = 0;
 
-	function checkVisibility(y: number): boolean {
-		const TOLERANCE = 0;
-		const dy = lastY - y;
-		lastY = y;
+  function checkVisibility(y: number): boolean {
+    const TOLERANCE = 0;
+    const dy = lastY - y;
+    lastY = y;
 
-		if (Math.abs(dy) <= TOLERANCE) return isVisible; // if delta-y doesn't go over the tolerance, persist the existing visibility state
-		return dy > TOLERANCE;
-	}
+    if (Math.abs(dy) <= TOLERANCE) return isVisible; // if delta-y doesn't go over the tolerance, persist the existing visibility state
+    return dy > TOLERANCE;
+  }
 
-	$: isVisible = checkVisibility(y);
-
-	const headerStyles = css({
-		position: 'sticky',
-		top: '0',
-		left: '0',
-		width: '100%',
-		zIndex: '10',
-		opacity: '1',
-		backdropFilter: 'blur(10px)',
-		transform: 'translateY(0)',
-		transition: 'all 0.3s',
-		pointerEvents: 'all',
-
-		'&.hidden': {
-			opacity: '0',
-			transform: 'translateY(-20px)',
-			pointerEvents: 'none'
-		},
-
-		'&::before': {
-			content: '',
-			position: 'absolute',
-			bottom: '0',
-			width: '100%',
-			height: '1px',
-			background:
-				'linear-gradient(to right, transparent, $blue-200-A25, transparent)'
-		},
-
-		'&::after': {
-			content: '',
-			position: 'absolute',
-			top: '0',
-			left: '0',
-			width: '100%',
-			height: '100%',
-			background: '$blue-400',
-			zIndex: '-1',
-			pointerEvents: 'none',
-			opacity: '0.76'
-		}
-	});
-
-	const topHeaderStyles = css({
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		paddingBlock: '18px',
-		color: '$grayscale-100',
-		width: '100%'
-	});
-
-	const mainNavigationStyles = css({
-		display: 'none',
-
-		'@lg': {
-			display: 'flex'
-		}
-	});
-
-	const logoContainerStyles = css({
-		display: 'flex',
-		flex: 'none',
-		justifyContent: 'flex-start',
-
-		'@lg': {
-			flex: '1'
-		}
-	});
-
-	const logoStyles = css({
-		display: 'flex',
-		height: '32px'
-	});
-
-	const socialStyles = css({
-		display: 'flex',
-		flex: 'none',
-		justifyContent: 'flex-end',
-
-		'@lg': {
-			flex: '1'
-		}
-	});
-
-	const mobileNavigation = css({
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		position: 'relative',
-		overflow: 'hidden',
-
-		'@lg': {
-			display: 'none'
-		},
-
-		'&::before': {
-			content: '',
-			position: 'absolute',
-			top: '0',
-			width: '100%',
-			height: '1px',
-			background:
-				'linear-gradient(to right, transparent, $blue-200-A25, transparent)'
-		},
-
-		// '&::after': {
-		// 	content: '',
-		// 	position: 'absolute',
-		// 	top: '0',
-		// 	left: '50%',
-		// 	transform: 'translateX(-50%)',
-		// 	width: '100%',
-		// 	height: '100%',
-		// 	// background:
-		// 	// 	'linear-gradient(to right, $blue-400 8%, transparent 20%, transparent 80%, $blue-400 92%)',
-		// 	zIndex: '10',
-		// 	pointerEvents: 'none'
-		// },
-
-		'& > nav': {
-			width: '80%',
-			paddingBlock: '14px',
-			overflow: 'scroll',
-
-			'@sm': {
-				justifyContent: 'center'
-			}
-		}
-	});
+  // $: isVisible = checkVisibility(y);
+  isVisible = true;
 </script>
 
 <svelte:window bind:scrollY={y} />
 
-<header class:hidden={!isVisible} class={headerStyles()}>
-	<Container>
-		<div class={topHeaderStyles()}>
-			<div class={logoContainerStyles()}>
-				<a href="/" class={logoStyles()}>
-					<SanityImage src={logo.assetId} alt="Logo" />
-				</a>
-			</div>
-			<div class={mainNavigationStyles()}>
-				<Navbar {sections} />
-			</div>
-			<div class={socialStyles()}>
-				<Socials {socials} />
-			</div>
-		</div>
-	</Container>
-	<div class={mobileNavigation()}>
-		<Navbar {sections} />
-	</div>
+<header
+  class:headerHidden={!isVisible}
+  class="sticky top-0 left-0 w-full z-10 opacity-100 backdrop-blur-[10px] translate-y-0 transition-all pointer-events-auto before:content-[''] before:absolute before:bottom-0 before:w-full before:h-px before:bg-header after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-blue-400 after:-z-[1] after:pointer-events-none after:opacity-75"
+>
+  <Container>
+    <div
+      class="flex justify-between items-center py-[18px] text-grayscale-100 w-full"
+    >
+      <div class="flex flex-none justify-start lg:flex-1">
+        <a href="/" class="flex h-8">
+          <SanityImage src={logo.assetId} alt="Logo" />
+        </a>
+      </div>
+      <div class="hidden lg:flex">
+        <Navbar {sections} />
+      </div>
+      <div class="flex flex-none justify-end lg:flex-1">
+        <Socials {socials} />
+      </div>
+    </div>
+  </Container>
+  <div
+    class="w-full flex justify-center relative overflow-hidden lg:hidden before:content-[''] before:absolute before:top-0 before:w-full before:h-px before:bg-header"
+  >
+    <Navbar
+      {sections}
+      class="w-4/5 py-[14px] overflow-scroll sm:justify-center"
+    />
+  </div>
 </header>
+
+<style>
+  .headerHidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+</style>

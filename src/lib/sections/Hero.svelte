@@ -2,14 +2,12 @@
   import IntersectionObserver from 'svelte-intersection-observer';
   import { reveal } from 'svelte-reveal';
 
+  import BlurredCircle from '$components/BlurredCircle.svelte';
   import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
   import Container from '$lib/utils/Container.svelte';
 
-  import { getHostname } from '$utils/functions';
   import type { IHero } from '$utils/lib';
-  import { css } from '$utils/stitches.config';
   import { section } from '$utils/stores';
-  import BlurredCircle from '$components/BlurredCircle.svelte';
 
   export let hero: IHero;
   const { heading, greetings, buttons, description } = hero;

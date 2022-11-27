@@ -3,6 +3,8 @@
   import type { ISection } from '$utils/lib';
   import { section } from '$utils/stores';
 
+  let className = '';
+  export { className as class };
   export let sections: ISection[];
 
   const prefix: string = getHostname();
@@ -11,7 +13,7 @@
   $: currentSection = $section;
 </script>
 
-<nav class="flex gap-6">
+<nav class={`flex gap-6 ${className}`}>
   {#each sections as section}
     <a
       href={getHref(section.name.toLowerCase())}

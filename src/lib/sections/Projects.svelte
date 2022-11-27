@@ -6,7 +6,6 @@
 
   import type { IProjects } from '$utils/lib';
   import { section } from '$utils/stores';
-  import { css } from '$utils/stitches.config';
 
   export let projects: IProjects;
   const { heading, projects: cards } = projects;
