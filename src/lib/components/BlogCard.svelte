@@ -1,80 +1,47 @@
 <script lang="ts">
-	import { reveal } from 'svelte-reveal';
+  import { reveal } from 'svelte-reveal';
 
-	import Label from '$lib/components/Label.svelte';
-	import SanityImage from './SanityImage.svelte';
+  import Label from '$lib/components/Label.svelte';
+  import SanityImage from './SanityImage.svelte';
 
-	import { css } from '$utils/stitches.config';
-	import { deCamelCase } from '$utils/functions';
-	import type { IImage } from '$utils/lib';
+  import { css } from '$utils/stitches.config';
+  import { deCamelCase } from '$utils/functions';
+  import type { IImage } from '$utils/lib';
 
-	export let title: string;
-	export let slug: string;
-	export let image: IImage;
-	export let _type: string;
-	export let excerpt: string;
+  export let title: string;
+  export let slug: string;
+  export let image: IImage;
+  export let _type: string;
+  export let excerpt: string;
 
-	// export let CHUNK: number;
-	// export let idx: number;
+  // export let CHUNK: number;
+  // export let idx: number;
 
-	$: cleanType = deCamelCase(_type);
+  $: cleanType = deCamelCase(_type);
 
-	const cardStyles = css({
-		display: 'flex',
-		flexDirection: 'column'
-	});
+  $: resource = _type === 'caseStudy' ? 'project' : 'article';
+  $: href = `/${resource}/${slug}`;
 
-	const coverStyles = css({
-		display: 'flex',
-		overflow: 'hidden',
-		marginBottom: '1.5rem',
-		borderRadius: '16px',
-		border: '1px solid $turquoise-200-A05',
-
-		'& img': {
-			width: ' 100%',
-			aspectRatio: '16 / 9',
-			objectFit: 'cover',
-			transform: 'scale(1)',
-			transition: 'transform 0.2s'
-		},
-
-		'&:hover img': {
-			transform: 'scale(1.02)'
-		}
-	});
-
-	const titleStyles = css({
-		display: 'block',
-		width: 'fit-content',
-		marginBlock: '16px 8px',
-
-		'& h3': {
-			h3: 'bold'
-		}
-	});
-
-	const excerptStyles = css({
-		p5: 'regular',
-		color: '$blue-100',
-		opacity: '0.8'
-	});
-
-	$: resource = _type === 'caseStudy' ? 'project' : 'article';
-	$: href = `/${resource}/${slug}`;
-
-	// use:reveal={{
-	// 	delay: idx % 2 ? 200 : 0,
-	// 	marginBottom: idx >= CHUNK ? 2000 : 200,
-	// 	duration: idx >= CHUNK ? 500 : 800
-	// }}
+  // use:reveal={{
+  // 	delay: idx % 2 ? 200 : 0,
+  // 	marginBottom: idx >= CHUNK ? 2000 : 200,
+  // 	duration: idx >= CHUNK ? 500 : 800
+  // }}
 </script>
 
-<div class={cardStyles()}>
-	<a {href} class={coverStyles()}>
-		<SanityImage src={image.url} alt={title} loading="lazy" />
-	</a>
-	<Label>{cleanType}</Label>
-	<a {href} class={titleStyles()}><h3>{title}</h3></a>
-	<p class={excerptStyles()}>{excerpt}</p>
+<div class="flex flex-col">
+  <a
+    {href}
+    class="flex overflow-hidden mb-6 rounded-2xl border-1 border-turquoise-200/5"
+  >
+    <SanityImage
+      src={image.url}
+      alt={title}
+      class="w-full aspect-video object-cover scale-100 transition-transform hover:scale-[1.02]"
+      loading="lazy"
+    />
+  </a>
+  <Label>{cleanType}</Label>
+  <a {href} class="block w-fit mt-4 mb-2 h3-bold">{title}</a>
+  <p class="p5-regular text-blue-100 opacity-80">{excerpt}</p>
 </div>

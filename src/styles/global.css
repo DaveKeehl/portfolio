@@ -9,7 +9,7 @@
   h4,
   h5,
   h6 {
-    @apply font-heading;
+    font-family: theme(fontFamily.heading);
   }
 
   h1 {
@@ -33,68 +33,79 @@
   }
 }
 
-@layer components {
+@layer utilities {
   .h1-bold {
+    font-family: theme(fontFamily.heading);
     font-size: theme(fontSize.h1);
     font-weight: theme(fontWeight.bold);
     line-height: 120%;
   }
 
   .h2-semibold {
+    font-family: theme(fontFamily.heading);
     font-size: theme(fontSize.h2);
     font-weight: theme(fontWeight.semibold);
     line-height: 140%;
   }
 
   .h2-bold {
+    font-family: theme(fontFamily.heading);
     font-size: theme(fontSize.h2);
     font-weight: theme(fontWeight.bold);
     line-height: 140%;
   }
 
   .h3-semibold {
+    font-family: theme(fontFamily.heading);
     font-size: theme(fontSize.h3);
     font-weight: theme(fontWeight.semibold);
     line-height: 150%;
   }
 
   .h3-bold {
+    font-family: theme(fontFamily.heading);
     font-size: theme(fontSize.h3);
     font-weight: theme(fontWeight.bold);
     line-height: 150%;
   }
 
   .p1-semibold {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p1);
     font-weight: theme(fontWeight.semibold);
     line-height: 150%;
   }
 
   .p1-bold {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p1);
     font-weight: theme(fontWeight.bold);
     line-height: 150%;
   }
 
   .p3-regular {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p3);
     font-weight: theme(fontWeight.normal);
     line-height: 150%;
   }
 
   .p3-medium {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p3);
     font-weight: theme(fontWeight.medium);
     line-height: 150%;
   }
 
   .p3-bold {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p3);
     font-weight: theme(fontWeight.bold);
     line-height: 150%;
   }
 
   .p4-regular {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p4);
     font-weight: theme(fontWeight.normal);
     line-height: 150%;
@@ -102,6 +113,7 @@
   }
 
   .p4-medium {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p4);
     font-weight: theme(fontWeight.medium);
     line-height: 150%;
@@ -109,6 +121,7 @@
   }
 
   .p4-semibold {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p4);
     font-weight: theme(fontWeight.semibold);
     line-height: 150%;
@@ -122,6 +135,7 @@
   }
 
   .p5-regular {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p5);
     font-weight: theme(fontWeight.normal);
     line-height: 150%;
@@ -129,6 +143,7 @@
   }
 
   .p5-medium {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p5);
     font-weight: theme(fontWeight.medium);
     line-height: 150%;
@@ -136,6 +151,7 @@
   }
 
   .p5-semibold {
+    font-family: theme(fontFamily.body);
     font-size: theme(fontSize.p5);
     font-weight: theme(fontWeight.semibold);
     line-height: 150%;

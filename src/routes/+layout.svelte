@@ -1,5 +1,6 @@
 <script lang="ts">
   import { globalCss } from '$utils/stitches.config';
+  import '../styles/global.css';
 
   const globalStyles = globalCss({
     '*': {
@@ -47,7 +48,3 @@
 </script>
 
 <slot />
-
-<style>
-  @import '../styles/global.css';
-</style>
