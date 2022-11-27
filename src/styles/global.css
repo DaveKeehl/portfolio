@@ -1,42 +1,82 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: 'Poppins', sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+
+  h2 {
+    @apply text-h2;
+  }
+
+  h3 {
+    @apply text-h3;
+  }
+
+  h4 {
+    @apply text-h4;
+  }
+
+  h5 {
+    @apply text-h5;
+  }
+}
+
+@layer components {
+  .h1-bold {
+    font-size: theme(fontSize.h1);
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .h2-semibold {
+    font-size: theme(fontSize.h2);
+    font-weight: 700;
+    line-height: 120%;
+  }
 }
 
 .button-group {
-	flex-direction: row;
-	container-type: inline-size;
-	container-name: group;
+  flex-direction: row;
+  container-type: inline-size;
+  container-name: group;
 }
 
 @container group (max-width: 500px) {
-	.button-group .button {
-		flex: 1;
-	}
+  .button-group .button {
+    flex: 1;
+  }
 }
 
 @container group (max-width: 420px) {
-	.button-group > div {
-		flex-direction: column;
-	}
+  .button-group > div {
+    flex-direction: column;
+  }
 
-	.button-group .button {
-		width: 100%;
-	}
+  .button-group .button {
+    width: 100%;
+  }
 }
 
 .stroke {
-	container-type: inline-size;
-	container-name: stroke;
+  container-type: inline-size;
+  container-name: stroke;
 }
 
 @media (min-width: 514px) and (max-width: 655px) {
-	.stroke img {
-		width: 300px;
-		left: -40px;
-	}
+  .stroke img {
+    width: 300px;
+    left: -40px;
+  }
 }

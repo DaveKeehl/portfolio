@@ -7,7 +7,6 @@
 
   import type { PageData } from './$types';
   import { css } from '$utils/stitches.config';
-  import { map } from 'lodash';
 
   export let data: PageData;
 

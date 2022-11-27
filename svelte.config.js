@@ -6,7 +6,9 @@ import path from 'path';
 const config = {
   // Consult https://github.com/sveltejs/svelte-preprocess
   // for more information about preprocessors
-  preprocess: preprocess(),
+  preprocess: preprocess({
+    postcss: true
+  }),
 
   kit: {
     adapter: adapter({
@@ -20,7 +22,8 @@ const config = {
     alias: {
       $components: path.resolve('./src/lib/components'),
       $utils: path.resolve('./src/utils'),
-      $pages: path.resolve('./src/lib/pages')
+      $pages: path.resolve('./src/lib/pages'),
+      $styles: path.resolve('./src/styles')
     }
   }
 };
