@@ -36,14 +36,118 @@
 @layer components {
   .h1-bold {
     font-size: theme(fontSize.h1);
-    font-weight: 700;
+    font-weight: theme(fontWeight.bold);
     line-height: 120%;
   }
 
   .h2-semibold {
     font-size: theme(fontSize.h2);
-    font-weight: 700;
-    line-height: 120%;
+    font-weight: theme(fontWeight.semibold);
+    line-height: 140%;
+  }
+
+  .h2-bold {
+    font-size: theme(fontSize.h2);
+    font-weight: theme(fontWeight.bold);
+    line-height: 140%;
+  }
+
+  .h3-semibold {
+    font-size: theme(fontSize.h3);
+    font-weight: theme(fontWeight.semibold);
+    line-height: 150%;
+  }
+
+  .h3-bold {
+    font-size: theme(fontSize.h3);
+    font-weight: theme(fontWeight.bold);
+    line-height: 150%;
+  }
+
+  .p1-semibold {
+    font-size: theme(fontSize.p1);
+    font-weight: theme(fontWeight.semibold);
+    line-height: 150%;
+  }
+
+  .p1-bold {
+    font-size: theme(fontSize.p1);
+    font-weight: theme(fontWeight.bold);
+    line-height: 150%;
+  }
+
+  .p3-regular {
+    font-size: theme(fontSize.p3);
+    font-weight: theme(fontWeight.normal);
+    line-height: 150%;
+  }
+
+  .p3-medium {
+    font-size: theme(fontSize.p3);
+    font-weight: theme(fontWeight.medium);
+    line-height: 150%;
+  }
+
+  .p3-bold {
+    font-size: theme(fontSize.p3);
+    font-weight: theme(fontWeight.bold);
+    line-height: 150%;
+  }
+
+  .p4-regular {
+    font-size: theme(fontSize.p4);
+    font-weight: theme(fontWeight.normal);
+    line-height: 150%;
+    letter-spacing: 0.02em;
+  }
+
+  .p4-medium {
+    font-size: theme(fontSize.p4);
+    font-weight: theme(fontWeight.medium);
+    line-height: 150%;
+    letter-spacing: 0.01em;
+  }
+
+  .p4-semibold {
+    font-size: theme(fontSize.p4);
+    font-weight: theme(fontWeight.semibold);
+    line-height: 150%;
+  }
+
+  .p4-code {
+    font-family: theme(fontFamily.code);
+    font-size: theme(fontSize.p4);
+    /* font-weight: theme(fontWeight.semibold); */
+    line-height: 150%;
+  }
+
+  .p5-regular {
+    font-size: theme(fontSize.p5);
+    font-weight: theme(fontWeight.normal);
+    line-height: 150%;
+    letter-spacing: 0.02em;
+  }
+
+  .p5-medium {
+    font-size: theme(fontSize.p5);
+    font-weight: theme(fontWeight.medium);
+    line-height: 150%;
+    letter-spacing: 0.02em;
+  }
+
+  .p5-semibold {
+    font-size: theme(fontSize.p5);
+    font-weight: theme(fontWeight.semibold);
+    line-height: 150%;
+    letter-spacing: 0.02em;
+  }
+
+  .p6-code {
+    font-family: theme(fontFamily.code);
+    font-size: theme(fontSize.p6);
+    font-weight: theme(fontWeight.bold);
+    line-height: 150%;
+    letter-spacing: 0.04em;
   }
 }
 
