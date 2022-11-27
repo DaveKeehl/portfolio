@@ -32,7 +32,7 @@
 <div class="flex flex-col">
   <a
     {href}
-    class="flex overflow-hidden mb-6 rounded-2xl border-1 border-turquoise-200/5"
+    class="flex overflow-hidden mb-6 rounded-2xl border border-turquoise-200/5"
   >
     <SanityImage
       src={image.url}
