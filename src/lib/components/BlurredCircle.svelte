@@ -1,19 +1,3 @@
-<script lang="ts">
-	import { css } from '$utils/stitches.config';
-
-	const circleStyles = css({
-		position: 'absolute',
-		bottom: '0',
-		left: '50%',
-		zIndex: '-1',
-		transform: 'translate(-50%, 50%)',
-		width: '600px',
-		aspectRatio: '1/1',
-		background: '$blue-100',
-		filter: 'blur(180px)',
-		opacity: '0.25',
-		borderRadius: '100%'
-	});
-</script>
-
-<div class={circleStyles()} />
+<div
+  class="absolute bottom-0 left-1/2 -z-[1] -translate-x-1/2 translate-y-1/2 w-[600px] aspect-square blur-[180px] opacity-25 rounded-full bg-blue-100"
+/>
