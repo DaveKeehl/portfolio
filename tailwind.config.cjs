@@ -43,7 +43,12 @@ module.exports = {
       },
       gridTemplateColumns: {
         blogPosts: 'repeat(auto-fill, minmax(360px, 1fr))'
-      }
+      },
+      backgroundImage: ({ theme }) => ({
+        hero: `linear-gradient(to right, ${theme(
+          'colors.turquoise.100'
+        )} 0%, ${theme('colors.turquoise.300')} 100%)`
+      })
     }
   },
   plugins: []

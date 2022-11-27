@@ -165,6 +165,10 @@
     line-height: 150%;
     letter-spacing: 0.04em;
   }
+
+  .text-shadow {
+    text-shadow: 0 4px 24px rgba(2, 19, 39, 0.7);
+  }
 }
 
 .button-group {

@@ -15,78 +15,6 @@
   const { heading, greetings, buttons, description } = hero;
 
   let element: HTMLElement | undefined;
-
-  const sectionStyles = css({
-    paddingBlock: '128px',
-    position: 'relative',
-    overflow: 'hidden',
-
-    '@lg': {
-      paddingBlock: '200px'
-    }
-  });
-
-  const containerStyles = css({
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '48px'
-  });
-
-  const introductionStyles = css({
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px'
-  });
-
-  const greetingStyles = css({
-    p1: 'semiBold',
-    color: '$turquoise-200',
-    width: 'fit-content',
-    background:
-      'linear-gradient(to right, $turquoise-100 0%, $turquoise-300 100%)',
-    '-webkit-background-clip': 'text',
-    '-webkit-text-fill-color': 'transparent',
-    backgroundClip: 'text',
-    textFillColor: 'transparent'
-  });
-
-  const headingStyles = css({
-    h1: 'bold',
-    textShadow: '0 4px 24px rgba(2, 19, 39, 0.7)'
-  });
-
-  const descriptionStyles = css({
-    p3: 'regular',
-    color: '$blue-100',
-    maxWidth: '600px'
-  });
-
-  const circleStyles = css({
-    position: 'absolute',
-    bottom: '0',
-    left: '50%',
-    zIndex: '-1',
-    transform: 'translate(-50%, 50%)',
-    width: '600px',
-    aspectRatio: '1/1',
-    background: '$blue-100',
-    filter: 'blur(180px)',
-    opacity: '0.25',
-    borderRadius: '100%'
-  });
-
-  const strokeBaseElementStyles = css({
-    position: 'relative'
-  });
-
-  const strokeStyles = css({
-    position: 'absolute',
-    zIndex: '-1',
-    top: '50%',
-    left: '0',
-    transform: 'translateY(-50%)',
-    userSelect: 'none'
-  });
 </script>
 
 <IntersectionObserver
@@ -94,22 +22,33 @@
   on:intersect={() => section.set('welcome')}
   threshold={0.5}
 >
-  <section class={sectionStyles()} id="welcome" bind:this={element}>
-    <Container class={containerStyles()}>
-      <div class={introductionStyles()}>
-        <p class={greetingStyles()} use:reveal>{greetings}</p>
-        <h1 class={headingStyles()} use:reveal={{ delay: 100 }}>
-          {heading.split(' ')[0]}{' '}<span
-            class={`${strokeBaseElementStyles()} stroke`}
+  <section
+    class="py-32 lg:py-[200px] overflow-hidden relative"
+    id="welcome"
+    bind:this={element}
+  >
+    <Container class="flex flex-col gap-12">
+      <div class="flex flex-col gap-4">
+        <p
+          class="p1-semibold text-turquoise-200 w-fit bg-hero [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
+          use:reveal
+        >
+          {greetings}
+        </p>
+        <h1 class="h1-bold text-shadow" use:reveal={{ delay: 100 }}>
+          {heading.split(' ')[0]}{' '}<span class="relative stroke"
             >{heading.split(' ')[1]}<img
               src="/stroke.svg"
               alt=""
-              class={strokeStyles()}
+              class="absolute -z-[1] top-1/2 left-0 -translate-y-1/2 select-none"
             /></span
           >{' '}{heading.split(' ').slice(2).join(' ')}
         </h1>
       </div>
-      <p class={descriptionStyles()} use:reveal={{ delay: 200 }}>
+      <p
+        class="p3-regular text-blue-100 max-w-[600px]"
+        use:reveal={{ delay: 200 }}
+      >
         {description}
       </p>
       <div class="button" use:reveal={{ delay: 300 }}>
