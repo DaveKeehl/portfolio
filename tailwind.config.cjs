@@ -40,6 +40,9 @@ module.exports = {
         p4: '18px',
         p5: '16px',
         p6: '14px'
+      },
+      gridTemplateColumns: {
+        blogPosts: 'repeat(auto-fill, minmax(360px, 1fr))'
       }
     }
   },
