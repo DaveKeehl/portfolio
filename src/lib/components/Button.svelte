@@ -70,7 +70,13 @@
             'py-2.5',
             'px-5'
           ],
-          large: ['text-[20px]', 'font-bold', 'leading-[30px]', 'py-4', 'px-5']
+          large: [
+            'text-[20px]',
+            'font-bold',
+            'leading-[30px]',
+            'py-3.5',
+            'px-5'
+          ]
         }
       }
     }
