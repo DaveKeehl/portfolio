@@ -10,7 +10,6 @@
 
   import type { IBlog, IPostPreview } from '$utils/lib';
   import { deCamelCase } from '$utils/functions';
-  import { css } from '$utils/stitches.config';
   import { section } from '$utils/stores';
 
   export let blog: IBlog;
