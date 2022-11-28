@@ -46,6 +46,7 @@
             'bg-turquoise-200',
             'text-blue-300',
             'hover:bg-turquoise-100',
+            'active:bg-turquoise-200',
             // 'active:shadow-primary-btn-focus',
             'disabled:bg-grayscale-100',
             'disabled:text-blue-200'
