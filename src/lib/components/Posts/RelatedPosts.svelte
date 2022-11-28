@@ -1,37 +1,17 @@
 <script lang="ts">
-	import BlogCard from '$components/BlogCard.svelte';
+  import BlogCard from '$components/BlogCard.svelte';
 
-	import type { IPostPreview } from '$utils/lib';
-	import { css } from '$utils/stitches.config';
+  import type { IPostPreview } from '$utils/lib';
 
-	export let posts: IPostPreview[];
-	export let maxWidth: number;
-
-	const relatedContainerStyles = css({
-		width: '80%',
-		maxWidth: `${maxWidth}px`,
-		margin: '0 auto',
-		marginBottom: '160px'
-	});
-
-	const relatedTitleStyles = css({
-		h2: 'bold',
-		marginBottom: '56px'
-	});
-
-	const relatedPostsStyles = css({
-		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-		columnGap: '20px',
-		rowGap: '56px'
-	});
+  export let posts: IPostPreview[];
+  export let maxWidth: number;
 </script>
 
-<div class={relatedContainerStyles()}>
-	<h2 class={relatedTitleStyles()}>Related posts.</h2>
-	<div class={relatedPostsStyles()}>
-		{#each posts as card}
-			<BlogCard {...card} />
-		{/each}
-	</div>
+<div class="w-4/5 my-0 mx-auto mb-40" style={`max-width: ${maxWidth}px`}>
+  <h2 class="h2-bold mb-14">Related posts.</h2>
+  <div class="grid grid-cols-blogPosts gap-x-5 gap-y-14">
+    {#each posts as card}
+      <BlogCard {...card} />
+    {/each}
+  </div>
 </div>

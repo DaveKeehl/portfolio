@@ -1,19 +1,12 @@
 <script lang="ts">
-	import Footer from '$lib/sections/Footer.svelte';
+  import Footer from '$lib/sections/Footer.svelte';
 
-	import type { IFooter } from '$utils/lib';
-	import { css } from '$utils/stitches.config';
+  import type { IFooter } from '$utils/lib';
 
-	export let footer: IFooter;
-	export let maxWidth: number;
-
-	const footerContainerStyles = css({
-		width: '80%',
-		maxWidth: `${maxWidth}px`,
-		margin: '0 auto'
-	});
+  export let footer: IFooter;
+  export let maxWidth: number;
 </script>
 
-<div class={footerContainerStyles()}>
-	<Footer {footer} />
+<div class="w-4/5 my-0 mx-auto" style={`max-width: ${maxWidth}px`}>
+  <Footer {footer} />
 </div>
