@@ -4,7 +4,6 @@
   import Post from '$pages/Post.svelte';
 
   import type { PageData } from './$types';
-  import { css } from '$utils/stitches.config';
 
   export let data: PageData;
 
@@ -18,13 +17,9 @@
     content: data.article.content,
     relatedPosts: data.relatedPosts
   };
-
-  const dividerStyles = css({
-    marginBlock: '104px'
-  });
 </script>
 
 <Post {...post} label="ARTICLE">
   <RichContent content={data.article.content} />
-  <Divider class={dividerStyles()} />
+  <Divider class="my-[104px]" />
 </Post>
