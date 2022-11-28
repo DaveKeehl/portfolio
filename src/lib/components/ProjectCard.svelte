@@ -11,35 +11,6 @@
 
   const { title, slug, image, liveButton, excerpt, type } = project;
 
-  const projectCardStyles = css({
-    display: 'flex',
-    flexDirection: 'column',
-
-    '@lg': {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(10, 1fr)',
-      gridTemplateRows: '1fr',
-      alignItems: 'center'
-    }
-  });
-
-  const titleStyles = css({
-    display: 'block',
-    width: 'fit-content',
-
-    '& h3': {
-      h3: 'bold',
-      marginBlock: '20px 16px'
-    }
-  });
-
-  const excerptStyles = css({
-    p5: 'regular',
-    opacity: '0.9',
-    color: '$blue-100',
-    marginBottom: '36px'
-  });
-
   const imageContainerStyles = css({
     display: 'flex',
     gridColumn: '5 / -1',
@@ -86,18 +57,6 @@
     }
   });
 
-  const imageStyles = css({
-    width: '100%',
-    height: '100%',
-    aspectRatio: '16 / 10',
-    objectFit: 'cover',
-    transition: 'transform 0.3s',
-
-    '&:hover': {
-      transform: 'scale(1.02)'
-    }
-  });
-
   const contentStyles = css({
     zIndex: '5',
     gridColumn: '1 / 6',
@@ -113,12 +72,14 @@
   });
 </script>
 
-<div class={projectCardStyles({ reversed })}>
+<div
+  class="flex flex-col lg:grid lg:grid-cols-10 lg:grid-rows-1 lg:items-center"
+>
   <div class={imageContainerStyles({ reversed })}>
     <SanityImage
       src={image.url}
       alt={title}
-      class={imageStyles({ reversed })}
+      class="w-full h-full [aspect-ratio:16/10] object-cover transition-transform duration-300 hover:scale-[1.02]"
       loading="lazy"
     />
   </div>
@@ -126,11 +87,11 @@
   <div class={contentStyles({ reversed })}>
     <Label>{type}</Label>
 
-    <a href={`/project/${slug}`} class={titleStyles({ reversed })}>
-      <h3>{title}</h3>
-    </a>
+    <a href={`/project/${slug}`} class="h3-bold block w-fit mt-5 mb-4"
+      >{title}</a
+    >
 
-    <p class={excerptStyles({ reversed })}>{excerpt}</p>
+    <p class="p5-regular opacity-90 text-blue-100 mb-9">{excerpt}</p>
 
     <ButtonsGroup
       size="small"
