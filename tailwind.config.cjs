@@ -25,6 +25,10 @@ module.exports = {
           400: 'hsl(215deg 89% 8%)'
         }
       },
+      boxShadow: ({ theme }) => ({
+        'primary-btn-focus': `0 0 0 4px ${theme('colors.turquoise.300')}`,
+        'secondaru-btn-focus': `0 0 0 2px ${theme('colors.turquoise.200')}`
+      }),
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
