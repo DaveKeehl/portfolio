@@ -38,7 +38,7 @@
             >{heading.split(' ')[1]}<img
               src="/stroke.svg"
               alt=""
-              class="absolute -z-[1] top-1/2 left-0 -translate-y-1/2 select-none"
+              class="absolute -z-[1] top-1/2 left-0 -translate-y-1/2 select-none scale-[1.7] origin-left"
             /></span
           >{' '}{heading.split(' ').slice(2).join(' ')}
         </h1>
