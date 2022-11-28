@@ -22,8 +22,7 @@
     return dy > TOLERANCE;
   }
 
-  // $: isVisible = checkVisibility(y);
-  isVisible = true;
+  $: isVisible = checkVisibility(y);
 </script>
 
 <svelte:window bind:scrollY={y} />
