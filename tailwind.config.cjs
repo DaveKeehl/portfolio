@@ -51,7 +51,12 @@ module.exports = {
         )} 0%, ${theme('colors.turquoise.300')} 100%)`,
         header: `linear-gradient(to right, transparent, ${theme(
           'colors.blue.200/25'
-        )}, transparent)`
+        )}, transparent)`,
+        about: `linear-gradient(to bottom, ${theme(
+          'colors.grayscale.300'
+        )} 31.25%, ${theme('colors.blue.400')} 100%)`,
+        'about-img':
+          'linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%)'
       })
     }
   },
