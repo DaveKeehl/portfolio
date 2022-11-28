@@ -13,7 +13,8 @@ module.exports = {
         },
         turquoise: {
           100: '#9AF6F9',
-          200: '#0FE2EA',
+          200: 'hsl(182deg 88% 49%)',
+          '200/40': 'hsl(182deg 88% 49% / 40%)',
           300: '#0CB5BB'
         },
         blue: {
