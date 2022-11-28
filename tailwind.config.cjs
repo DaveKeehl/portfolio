@@ -64,9 +64,13 @@ module.exports = {
           'linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%)',
         post: `linear-gradient(to bottom, ${theme(
           'colors.grayscale.300'
-        )} 150px, ${theme('colors.blue.400')} 550px)`
+        )} 150px, ${theme('colors.blue.400')} 550px)`,
+        'project-card':
+          'linear-gradient(90deg, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.2) 50%)',
+        'project-card-reversed':
+          'linear-gradient(90deg, rgba(2, 21, 43, 0.2) 50%, rgba(2, 19, 38, 0.9) 90%)'
       })
     }
   },
-  plugins: [require('@tailwindcss/container-queries')]
+  plugins: []
 };

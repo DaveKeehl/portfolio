@@ -1,72 +1,54 @@
 <script lang="ts">
+  import { cva } from 'cva';
   import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
   import Label from '$lib/components/Label.svelte';
   import SanityImage from './SanityImage.svelte';
 
   import type { IProject } from '$utils/lib';
-  import { css } from '$utils/stitches.config';
 
   export let project: IProject;
   export let reversed = false;
 
   const { title, slug, image, liveButton, excerpt, type } = project;
 
-  const imageContainerStyles = css({
-    display: 'flex',
-    gridColumn: '5 / -1',
-    gridRow: '1 / 2',
-    position: 'relative',
-    borderRadius: '20px',
-    overflow: 'hidden',
-    border: '1px solid $turquoise-200-A05',
-    marginBottom: '20px',
-
-    '@lg': {
-      marginBottom: '0'
-    },
-
-    '&::before': {
-      content: '',
-      display: 'none',
-      position: 'absolute',
-      background:
-        'linear-gradient(90deg, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.2) 50%)',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      zIndex: '5',
-      pointerEvents: 'none',
-
-      '@lg': {
-        display: 'block'
-      }
-    },
-
-    variants: {
-      reversed: {
-        true: {
-          gridColumn: '1 / 7',
-
-          '&::before': {
-            background:
-              'linear-gradient(90deg, rgba(2, 21, 43, 0.2) 50%, rgba(2, 19, 38, 0.9) 90%)'
-          }
+  const imageContainerStyles = cva(
+    [
+      'flex',
+      'col-[5/-1]',
+      'row-[1/2]',
+      'relative',
+      'rounded-[20px]',
+      'overflow-hidden',
+      'border',
+      'border-solid',
+      'border-turquoise-200/5',
+      'mb-5',
+      'lg:mb-0',
+      "before:content-['']",
+      'before:hidden',
+      'before:absolute',
+      'before:bg-project-card',
+      'before:top-0',
+      'before:left-0',
+      'before:w-full',
+      'before:h-full',
+      'before:z-[5]',
+      'before:pointer-events-none',
+      'before:lg:block'
+    ],
+    {
+      variants: {
+        reversed: {
+          true: ['col-[1/7]', 'before:bg-project-card-reversed']
         }
       }
     }
-  });
+  );
 
-  const contentStyles = css({
-    zIndex: '5',
-    gridColumn: '1 / 6',
-    gridRow: '1 / 2',
-
+  const contentStyles = cva(['z-[5]', 'col-[1/6]', 'row-[1/2]'], {
     variants: {
       reversed: {
-        true: {
-          gridColumn: '6 / -1'
-        }
+        true: ['col-[6/-1]']
       }
     }
   });
