@@ -1,61 +1,56 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
+  import { cva } from 'cva';
 
-	import { css } from '$utils/stitches.config';
+  const dispatch = createEventDispatcher();
 
-	const dispatch = createEventDispatcher();
+  export let text: string;
+  export let selected = false;
+  export let disabled = false;
 
-	export let text: string;
-	export let selected = false;
-	export let disabled = false;
+  const pill = cva(
+    [
+      'p5-semibold',
+      'bg-turquoise-100/10',
+      'text-turquoise-200',
+      'py-2',
+      'px-5',
+      'rounded-3xl',
+      'select-none',
+      'transition-color',
+      'transition-shadow',
+      'disabled:text-blue-200',
+      'disabled:bg-turquoise-100/10',
+      'disabled:cursor-not-allowed',
+      'hover:cursor-pointer',
+      'hover:text-turquoise-100',
+      'focus:outline',
+      'focus:outline-2',
+      'focus:outline-turquoise-100/20'
+    ],
+    {
+      variants: {
+        selected: {
+          true: ['outline', 'outline-2', 'outline-turquoise-200']
+        }
+      }
+    }
+  );
 
-	const labelStyles = css({
-		p5: 'semiBold',
-		background: '$turquoise-100-A10',
-		color: '$turquoise-200',
-		padding: '8px 20px',
-		borderRadius: '24px',
-		userSelect: 'none',
-		transition: 'color 0.2s, box-shadow 0.1s',
+  const handleClick = (event: MouseEvent) => {
+    dispatch('click', { event });
+  };
 
-		'&:disabled': {
-			color: '$blue-200',
-			background: '$turquoise-100-A10',
-			cursor: 'not-allowed'
-		},
-
-		'&:hover': {
-			cursor: 'pointer',
-			color: '$turquoise-100'
-		},
-
-		'&:focus': {
-			outline: '2px solid $turquoise-100-A20'
-		},
-
-		variants: {
-			selected: {
-				true: {
-					outline: '2px solid $turquoise-200'
-				}
-			}
-		}
-	});
-
-	const handleClick = (event: MouseEvent) => {
-		dispatch('click', { event });
-	};
-
-	const handleKeypress = (event: KeyboardEvent) => {
-		dispatch('click', { event });
-	};
+  const handleKeypress = (event: KeyboardEvent) => {
+    dispatch('click', { event });
+  };
 </script>
 
 <p
-	class={labelStyles({ selected })}
-	on:click={handleClick}
-	on:keypress={handleKeypress}
-	{disabled}
+  class={pill({ selected })}
+  on:click={handleClick}
+  on:keypress={handleKeypress}
+  {disabled}
 >
-	{text}
+  {text}
 </p>

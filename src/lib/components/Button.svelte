@@ -23,12 +23,12 @@
     });
   };
 
-  const cvaButton = cva(
+  const button = cva(
     [
       'flex',
       'justify-center',
       'items-center',
-      'gap-[10px]',
+      'gap-2.5',
       'rounded-[10px]',
       'h-fit',
       'text-center',
@@ -36,7 +36,8 @@
       'border',
       'border-turquoise-200/5',
       'transition',
-      'md:w-max'
+      'md:w-max',
+      'focus:outline-none'
     ],
     {
       variants: {
@@ -45,19 +46,17 @@
             'bg-turquoise-200',
             'text-blue-300',
             'hover:bg-turquoise-100',
-            'focus:outline-0',
             'focus:shadow-primary-btn-focus',
             'disabled:bg-grayscale-100',
             'disabled:text-blue-200'
           ],
           secondary: [
             'bg-turquoise-100/10',
-            'backdrop-blur-[40px]',
+            'backdrop-blur-2xl',
             'text-turquoise-200',
             'hover:text-turquoise-100',
             'active:bg-turquoise-100/20',
             'active:text-turquoise-100',
-            'focus:outline-0',
             'focus:shadow-secondary-btn-focus',
             'disabled:bg-grayscale-100',
             'disabled:text-blue-200'
@@ -68,16 +67,10 @@
             'text-[18px]',
             'font-semibold',
             'leading-[27px]',
-            'py-[10px]',
-            'px-[20px]'
+            'py-2.5',
+            'px-5'
           ],
-          large: [
-            'text-[20px]',
-            'font-bold',
-            'leading-[30px]',
-            'py-[12px]',
-            'px-[20px]'
-          ]
+          large: ['text-[20px]', 'font-bold', 'leading-[30px]', 'py-4', 'px-5']
         }
       }
     }
@@ -90,7 +83,7 @@
     rel={external ? 'noopener noreferrer' : ''}
     target={external ? '_blank' : ''}
     {disabled}
-    class={`${className} button ${cvaButton({ intent: variant, size })}`.trim()}
+    class={`${className} button ${button({ intent: variant, size })}`.trim()}
     {style}
     on:click={handleClick}
   >
@@ -98,7 +91,7 @@
   </a>
 {:else}
   <button
-    class={`${className} button ${cvaButton({ intent: variant, size })}`.trim()}
+    class={`${className} button ${button({ intent: variant, size })}`.trim()}
     {style}
     {disabled}
     on:click
