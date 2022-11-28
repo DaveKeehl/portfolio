@@ -2,7 +2,6 @@
   import Button from '$lib/components/Button.svelte';
 
   import type { IButton } from '$utils/lib';
-  import { css } from '$utils/stitches.config';
 
   export let primary: IButton;
   export let secondary: IButton;

@@ -4,9 +4,7 @@
   import Socials from '$lib/components/Socials.svelte';
   import SanityImage from '$components/SanityImage.svelte';
 
-  import { getHostname } from '$utils/functions';
   import type { IHeader } from '$utils/lib';
-  import { css } from '$utils/stitches.config';
 
   export let header: IHeader;
   const { logo, sections, socials } = header;

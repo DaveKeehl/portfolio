@@ -4,7 +4,6 @@
   import Label from '$lib/components/Label.svelte';
   import SanityImage from './SanityImage.svelte';
 
-  import { css } from '$utils/stitches.config';
   import { deCamelCase } from '$utils/functions';
   import type { IImage } from '$utils/lib';
 

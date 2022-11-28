@@ -1,53 +1,27 @@
 <script lang="ts">
-	import Container from '$lib/utils/Container.svelte';
+  import Container from '$lib/utils/Container.svelte';
+  import Icon from '$lib/components/Icon.svelte';
 
-	import { css, theme } from '$utils/stitches.config';
-	import Icon from '$lib/components/Icon.svelte';
+  let className: string = '';
+  export let heading: string;
+  export let headingGap: 'small' | 'large';
+  export { className as class };
+  export let id: string = '';
+  export let icon: 'Fire' | 'HandWaving' | 'Quotes' | 'ChatTeardropDots';
 
-	let className: string = '';
-	export let heading: string;
-	export let headingGap: 'small' | 'large';
-	export { className as class };
-	export let id: string = '';
-	export let icon: 'Fire' | 'HandWaving' | 'Quotes' | 'ChatTeardropDots';
-
-	const sectionStyles = css({
-		// scrollPaddingTop: '50px'
-	});
-
-	const headingContainerStyles = css({
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'flex-start',
-		gap: '20px',
-		marginBottom: headingGap === 'small' ? '40px' : '80px',
-
-		'@md': {
-			gap: '32px',
-			flexDirection: 'row',
-			alignItems: 'center'
-		}
-	});
-
-	const headingStyles = css({
-		h2: 'bold'
-	});
-
-	const contentStyles = css({
-		'@md': {
-			paddingLeft: '80px'
-		}
-	});
+  const marginBottom = headingGap === 'small' ? 'mb-10' : 'mb-20';
 </script>
 
-<section {id} class={`${className} ${sectionStyles()}`.trim()}>
-	<Container>
-		<div class={headingContainerStyles()}>
-			<Icon name={icon} size={48} color={theme.colors['grayscale-100'].name} />
-			<h2 class={headingStyles()}>{heading}</h2>
-		</div>
-		<div class={contentStyles()}>
-			<slot />
-		</div>
-	</Container>
+<section {id} class={`${className}`.trim()}>
+  <Container>
+    <div
+      class={`flex flex-col items-start gap-5 ${marginBottom} md:gap-8 md:flex-row md:items-center`}
+    >
+      <Icon name={icon} size={48} color="#EEF2F6" />
+      <h2 class="h2-bold">{heading}</h2>
+    </div>
+    <div class="md:pl-20">
+      <slot />
+    </div>
+  </Container>
 </section>
