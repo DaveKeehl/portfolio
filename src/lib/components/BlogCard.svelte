@@ -36,7 +36,7 @@
     <SanityImage
       src={image.url}
       alt={title}
-      class="w-full aspect-video object-cover scale-100 transition-transform hover:scale-[1.02]"
+      class="w-full aspect-video object-cover transition-transform hover:scale-[1.02]"
       loading="lazy"
     />
   </a>
