@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { getHostname } from '$utils/functions';
   import type { ISection } from '$utils/lib';
   import { section } from '$utils/stores';
 
@@ -7,16 +6,13 @@
   export { className as class };
   export let sections: ISection[];
 
-  const prefix: string = getHostname();
-  const getHref = (sectionName: string) => `${prefix}#${sectionName}`;
-
   $: currentSection = $section;
 </script>
 
 <nav class={`flex gap-6 ${className}`}>
   {#each sections as section}
     <a
-      href={getHref(section.name.toLowerCase())}
+      href={`/#${section.name.toLowerCase()}`}
       class="flex text-blue-200 text-p5 font-semibold leading-6 tracking-[2%] uppercase transition-colors hover:text-grayscale-100"
       class:text-grayscale-100={currentSection === section.name.toLowerCase()}
       >{section.name}</a
