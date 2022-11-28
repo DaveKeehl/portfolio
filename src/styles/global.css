@@ -208,6 +208,10 @@
   .text-shadow {
     text-shadow: 0 4px 24px rgba(2, 19, 39, 0.7);
   }
+
+  .pill-transition {
+    transition: color 0.2s, outline 0.1s;
+  }
 }
 
 .button-group {

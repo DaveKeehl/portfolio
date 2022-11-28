@@ -17,8 +17,6 @@
       'px-5',
       'rounded-3xl',
       'select-none',
-      'transition-color',
-      'transition-shadow',
       'disabled:text-blue-200',
       'disabled:bg-turquoise-100/10',
       'disabled:cursor-not-allowed',
@@ -26,7 +24,8 @@
       'hover:text-turquoise-100',
       'focus:outline',
       'focus:outline-2',
-      'focus:outline-turquoise-100/20'
+      'focus:outline-turquoise-100/20',
+      'pill-transition'
     ],
     {
       variants: {
