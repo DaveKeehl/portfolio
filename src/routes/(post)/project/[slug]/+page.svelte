@@ -6,7 +6,6 @@
   import Post from '$pages/Post.svelte';
 
   import type { PageData } from './$types';
-  import { css } from '$utils/stitches.config';
 
   export let data: PageData;
 
@@ -20,44 +19,11 @@
     content: data.project.content,
     relatedPosts: data.relatedPosts
   };
-
-  const introStyles = css({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    gap: '64px',
-
-    '@md': {
-      flexDirection: 'row'
-    }
-  });
-
-  const detailsStyles = css({
-    flex: '2',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '28px'
-  });
-
-  const nutshellBlockStyles = css({
-    flex: '3',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '32px'
-  });
-
-  const nutshellStyles = css({
-    h2: 'bold'
-  });
-
-  const dividerStyles = css({
-    marginBlock: '104px'
-  });
 </script>
 
 <Post {...post} label="CASE STUDY">
-  <div class={introStyles()}>
-    <div class={detailsStyles()}>
+  <div class="flex flex-col justify-between gap-16 md:flex-row">
+    <div class="flex flex-col flex-[2] gap-7">
       <ProjectDetail title="Project type">{data.project.type}</ProjectDetail>
       <ProjectDetail title="Year">{data.project.year}</ProjectDetail>
       <ProjectDetail title="Roles">
@@ -68,8 +34,8 @@
       </ProjectDetail>
     </div>
 
-    <div class={nutshellBlockStyles()}>
-      <h2 class={nutshellStyles()}>In a nutshell</h2>
+    <div class="flex flex-col flex-[3] gap-8 ">
+      <h2 class="h2-bold">In a nutshell</h2>
       <RichContent content={data.project.nutshell} />
       <ButtonsGroup
         primary={{
@@ -87,7 +53,7 @@
     </div>
   </div>
 
-  <Divider class={dividerStyles()} />
+  <Divider class="my-[104px]" />
   <RichContent content={data.project.content} />
-  <Divider class={dividerStyles()} />
+  <Divider class="my-[104px]" />
 </Post>
