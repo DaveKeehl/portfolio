@@ -27,7 +27,7 @@ module.exports = {
       },
       boxShadow: ({ theme }) => ({
         'primary-btn-focus': `0 0 0 4px ${theme('colors.turquoise.300')}`,
-        'secondaru-btn-focus': `0 0 0 2px ${theme('colors.turquoise.200')}`
+        'secondary-btn-focus': `0 0 0 2px ${theme('colors.turquoise.200')}`
       }),
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],
