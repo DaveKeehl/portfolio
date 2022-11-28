@@ -1,55 +1,49 @@
 <script lang="ts">
-	import { reveal } from 'svelte-reveal';
+  import { reveal } from 'svelte-reveal';
+  import RichContent from '$components/RichContent.svelte';
+  import type { IFooter } from '$utils/lib';
 
-	import RichContent from '$components/RichContent.svelte';
-
-	import type { IFooter } from '$utils/lib';
-	import { css } from '$utils/stitches.config';
-
-	export let footer: IFooter;
-	const { content } = footer;
-
-	const footerStyles = css({
-		position: 'relative',
-		paddingTop: '40px',
-		paddingBottom: '80px',
-
-		'&::before': {
-			content: '',
-			position: 'absolute',
-			top: '0',
-			// left: '80px',
-			width: '50px',
-			height: '1px',
-			background: '$blue-200'
-		}
-	});
-
-	const textStyles = css({
-		'& > *:not(:last-child)': {
-			marginBottom: '0 !important'
-		},
-
-		'& p': {
-			p5: 'regular'
-		},
-
-		'& p:last-child': {
-			lineHeight: '20px'
-		},
-
-		'@media (min-width: 531px)': {
-			'& p:last-child': {
-				lineHeight: '10px'
-			}
-		},
-
-		'& a': {
-			p5: 'semiBold'
-		}
-	});
+  export let footer: IFooter;
+  const { content } = footer;
 </script>
 
-<footer use:reveal class={footerStyles()}>
-	<RichContent class={textStyles()} {content} />
+<footer
+  use:reveal
+  class="relative pt-10 pb-20 before:content-[''] before:absolute before:top-0 before:w-[50px] before:h-px before:bg-blue-200"
+>
+  <RichContent class="rich-text-footer" {content} />
 </footer>
+
+<style lang="scss" global>
+  .rich-text-footer {
+    & > *:not(:last-child) {
+      margin-bottom: 0 !important;
+    }
+
+    & p {
+      font-family: theme('fontFamily.body');
+      font-size: theme('fontSize.p5');
+      font-weight: theme('fontWeight.normal');
+      line-height: 150%;
+      letter-spacing: 0.02em;
+    }
+
+    & p:last-child {
+      line-height: 20px;
+    }
+
+    @media (min-width: 531px) {
+      & p:last-child {
+        line-height: 10px;
+      }
+    }
+
+    & a {
+      font-family: theme('fontFamily.body');
+      font-size: theme('fontSize.p5');
+      font-weight: theme('fontWeight.semibold');
+      line-height: 150%;
+      letter-spacing: 0.02em;
+    }
+  }
+</style>

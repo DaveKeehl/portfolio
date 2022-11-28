@@ -16,21 +16,21 @@
 <IntersectionObserver {element} on:intersect={() => section.set('contact')}>
   <div bind:this={element}>
     <Section id="contact" {heading} headingGap="small" icon="ChatTeardropDots">
-      <RichContent class="rich-text" {content} />
+      <RichContent class="rich-text-contact" {content} />
     </Section>
   </div>
 </IntersectionObserver>
 
 <style lang="scss" global>
-  .rich-text {
+  .rich-text-contact {
     a {
+      display: block;
       font-family: theme('fontFamily.code');
       font-size: theme('fontSize.p4');
+      font-weight: 700;
       line-height: 150%;
-      display: 'block';
-      width: 'fit-content';
-      margin-top: '20px';
-      font-weight: '700';
+      width: fit-content;
+      margin-top: 20px;
     }
   }
 </style>

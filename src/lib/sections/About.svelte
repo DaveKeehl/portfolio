@@ -29,7 +29,7 @@
     >
       <div class="flex flex-col gap-10 relative">
         <div
-          class="w-full lg:w-9/12 p4-regular text-blue-100 opacity-90 rich-text"
+          class="w-full lg:w-9/12 p4-regular text-blue-100 opacity-90 rich-text-about"
         >
           <PortableText value={content} />
         </div>
@@ -52,7 +52,7 @@
 </IntersectionObserver>
 
 <style lang="scss" global>
-  .rich-text {
+  .rich-text-about {
     a {
       text-decoration: underline;
 
