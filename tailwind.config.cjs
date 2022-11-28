@@ -56,7 +56,10 @@ module.exports = {
           'colors.grayscale.300'
         )} 31.25%, ${theme('colors.blue.400')} 100%)`,
         'about-img':
-          'linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%)'
+          'linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%)',
+        post: `linear-gradient(to bottom, ${theme(
+          'colors.grayscale.300'
+        )} 150px, ${theme('colors.blue.400')} 550px)`
       })
     }
   },
