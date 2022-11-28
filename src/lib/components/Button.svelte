@@ -46,7 +46,7 @@
             'bg-turquoise-200',
             'text-blue-300',
             'hover:bg-turquoise-100',
-            'focus:shadow-primary-btn-focus',
+            // 'active:shadow-primary-btn-focus',
             'disabled:bg-grayscale-100',
             'disabled:text-blue-200'
           ],
@@ -57,7 +57,7 @@
             'hover:text-turquoise-100',
             'active:bg-turquoise-100/20',
             'active:text-turquoise-100',
-            'focus:shadow-secondary-btn-focus',
+            // 'active:shadow-secondary-btn-focus',
             'disabled:bg-grayscale-100',
             'disabled:text-blue-200'
           ]
