@@ -64,14 +64,8 @@
           ]
         },
         size: {
-          small: [
-            'text-[18px]',
-            'font-semibold',
-            'leading-[27px]',
-            'py-2.5',
-            'px-5'
-          ],
-          large: ['text-[20px]', 'font-bold', 'leading-[30px]', 'py-3', 'px-5']
+          small: 'text-[18px] font-semibold leading-[27px] py-2.5 px-5',
+          large: 'text-[20px] font-bold leading-[30px] py-3 px-5'
         }
       }
     }
