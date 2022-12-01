@@ -17,7 +17,9 @@
 
 <IntersectionObserver
   {element}
-  on:intersect={() => section.set('welcome')}
+  on:intersect={() => {
+    if (window.location.pathname === '/') section.set('welcome');
+  }}
   threshold={0.5}
 >
   <section
