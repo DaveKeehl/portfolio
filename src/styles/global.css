@@ -43,9 +43,9 @@
     color: theme(colors.blue.100);
   }
 
-  html {
+  /* html {
     scroll-behavior: smooth;
-  }
+  } */
 
   body {
     background: theme(colors.blue.400);

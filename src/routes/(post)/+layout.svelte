@@ -1,11 +1,11 @@
 <script lang="ts">
-  import '../styles/global.css';
+  import '../../styles/global.css';
 </script>
 
 <slot />
 
 <style global>
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 </style>
