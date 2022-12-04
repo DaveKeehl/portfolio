@@ -43,10 +43,6 @@
     color: theme(colors.blue.100);
   }
 
-  /* html {
-    scroll-behavior: smooth;
-  } */
-
   body {
     background: theme(colors.blue.400);
     color: theme(colors.grayscale.100);
