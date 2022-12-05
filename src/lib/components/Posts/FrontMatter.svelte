@@ -29,5 +29,5 @@
       {date} • {Math.ceil(estimatedReadDuration.duration)} MIN READ
     </p>
   </div>
-  <BlurredCircle />
+  <BlurredCircle class="max-w-full" />
 </div>
