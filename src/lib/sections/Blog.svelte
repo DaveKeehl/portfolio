@@ -78,7 +78,7 @@
       {#if cursor < filteredPosts.length}
         <div
           class="grid place-items-center mt-20"
-          transition:fade={{ duration: 100 }}
+          transition:fade|local={{ duration: 100 }}
           use:reveal={{ rootMargin: '0 0 20px 0' }}
         >
           <Button on:click={showMorePosts}>Load more posts</Button>
