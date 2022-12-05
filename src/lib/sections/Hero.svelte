@@ -39,7 +39,7 @@
           {heading.split(' ')[0]}{' '}<span class="relative stroke"
             >{heading.split(' ')[1]}<img
               src="/stroke.svg"
-              alt=""
+              alt="Turquoise colored paint stroke"
               class="absolute -z-[1] top-1/2 left-0 -translate-y-1/2 select-none scale-[1.7] origin-left"
             /></span
           >{' '}{heading.split(' ').slice(2).join(' ')}

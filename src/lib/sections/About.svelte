@@ -42,7 +42,7 @@
           />
           <img
             src={image.url}
-            alt=""
+            alt={image.alt}
             class="absolute top-0 left-0 w-full h-full bg-cover bg-[-200px] object-cover object-[-200px] opacity-80 rounded-2xl"
           />
         </div>

@@ -14,7 +14,7 @@
     >
       <SanityImage
         src={image.url}
-        alt=""
+        alt={image.alt}
         class="aspect-video object-cover hover:scale-[1.02] transition-transform"
       />
     </div>
