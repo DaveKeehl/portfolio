@@ -21,7 +21,7 @@
 
 <div class="relative flex flex-col w-full">
   <div
-    class="flex flex-col items-center gap-4 px-10 pt-24 pb-44 w-full sm:pb-60 md:pb-64 lg:pt-32"
+    class="flex flex-col items-center gap-4 px-10 pt-24 pb-36 xs:pb-40 w-full sm:pb-60 md:pb-64 lg:pt-32"
   >
     <Label>{label}</Label>
     <h1 class="h1-bold text-center">{title}</h1>

@@ -18,7 +18,7 @@
         class="aspect-video object-cover hover:scale-[1.02] transition-transform"
       />
     </div>
-    <div class="mt-[180px] mb-[104px] xs:mt-[200px] sm:mt-60 md:mt-72">
+    <div class="mt-[150px] mb-[104px] xs:mt-[200px] sm:mt-60 md:mt-72">
       <slot />
     </div>
   </div>
