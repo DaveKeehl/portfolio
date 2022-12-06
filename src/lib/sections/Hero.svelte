@@ -13,6 +13,14 @@
   const { heading, greetings, buttons, description } = hero;
 
   let element: HTMLElement | undefined;
+
+  const onClick = (event: any, sectionName: string) => {
+    event.detail.event.detail.event.preventDefault();
+    const target = document.querySelector(`#${sectionName}`)?.scrollIntoView({
+      behavior: 'smooth'
+    });
+    window.history.pushState({ section: sectionName }, '', `#${sectionName}`);
+  };
 </script>
 
 <IntersectionObserver
@@ -64,6 +72,8 @@
             href: `#contact`,
             external: false
           }}
+          on:click-primary={(e) => onClick(e, 'projects')}
+          on:click-secondary={(e) => onClick(e, 'contact')}
         />
       </div>
     </Container>

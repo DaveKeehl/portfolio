@@ -12,8 +12,7 @@
   const onClick = (e: any, sectionName: string) => {
     if (window.location.pathname === '/') {
       e.preventDefault();
-      const target = document.querySelector(`#${sectionName}`);
-      target?.scrollIntoView({
+      document.querySelector(`#${sectionName}`)?.scrollIntoView({
         behavior: 'smooth'
       });
       window.history.pushState({ section: sectionName }, '', `#${sectionName}`);
