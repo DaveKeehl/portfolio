@@ -11,6 +11,8 @@
 
   const { title, slug, image, liveButton, excerpt, type } = project;
 
+  $: href = `/project/${slug}`;
+
   const imageContainerStyles = cva(
     [
       'flex',
@@ -57,21 +59,19 @@
 <div
   class="flex flex-col lg:grid lg:grid-cols-10 lg:grid-rows-1 lg:items-center"
 >
-  <div class={imageContainerStyles({ reversed })}>
+  <a {href} class={imageContainerStyles({ reversed })}>
     <SanityImage
       src={image.url}
       alt={title}
       class="w-full h-full [aspect-ratio:16/10] object-cover transition-transform duration-300 hover:scale-[1.02]"
       loading="lazy"
     />
-  </div>
+  </a>
 
   <div class={contentStyles({ reversed })}>
     <Label>{type}</Label>
 
-    <a href={`/project/${slug}`} class="h3-bold block w-fit mt-5 mb-4"
-      >{title}</a
-    >
+    <a {href} class="h3-bold block w-fit mt-5 mb-4">{title}</a>
 
     <p class="p5-regular opacity-90 text-blue-100 mb-9">{excerpt}</p>
 
