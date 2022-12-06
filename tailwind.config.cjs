@@ -25,6 +25,9 @@ module.exports = {
           400: 'hsl(215deg 89% 8%)'
         }
       },
+      blur: {
+        circle: '180px'
+      },
       boxShadow: ({ theme }) => ({
         'primary-btn-focus': `0 0 0 4px ${theme('colors.turquoise.300')}`,
         'secondary-btn-focus': `0 0 0 2px ${theme('colors.turquoise.200')}`
@@ -72,5 +75,8 @@ module.exports = {
       })
     }
   },
-  plugins: []
+  plugins: [],
+  future: {
+    hoverOnlyWhenSupported: true
+  }
 };
