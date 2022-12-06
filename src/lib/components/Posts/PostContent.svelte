@@ -8,9 +8,9 @@
 </script>
 
 <div class="relative flex justify-center w-full bg-post">
-  <div class="w-4/5" style={`max-width: ${maxWidth}px`}>
+  <div class="w-10/12" style={`max-width: ${maxWidth}px`}>
     <div
-      class="overflow-hidden rounded-[20px] border border-turquoise-200/5 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 max-w-[700px]"
+      class="overflow-hidden rounded-[20px] border border-turquoise-200/5 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10/12 max-w-[700px]"
     >
       <SanityImage
         src={image.url}

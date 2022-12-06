@@ -53,7 +53,7 @@
   >
     <Navbar
       {sections}
-      class="w-4/5 py-[14px] overflow-scroll sm:justify-center"
+      class="w-10/12 py-[14px] overflow-scroll sm:justify-center"
     />
   </div>
 </header>

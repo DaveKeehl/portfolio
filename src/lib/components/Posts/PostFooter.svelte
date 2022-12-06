@@ -7,6 +7,6 @@
   export let maxWidth: number;
 </script>
 
-<div class="w-4/5 my-0 mx-auto" style={`max-width: ${maxWidth}px`}>
+<div class="w-10/12 my-0 mx-auto" style={`max-width: ${maxWidth}px`}>
   <Footer {footer} />
 </div>

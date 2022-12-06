@@ -7,7 +7,7 @@
   export let maxWidth: number;
 </script>
 
-<div class="w-4/5 my-0 mx-auto mb-40" style={`max-width: ${maxWidth}px`}>
+<div class="w-10/12 my-0 mx-auto mb-40" style={`max-width: ${maxWidth}px`}>
   <h2 class="h2-bold mb-14">Related posts.</h2>
   <div class="grid grid-cols-1 lg:grid-cols-blogPosts gap-x-5 gap-y-14">
     {#each posts as card}
