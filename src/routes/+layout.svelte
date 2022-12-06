@@ -1,8 +1,8 @@
 <script lang="ts">
   import '$styles/global.css';
-  import { inject } from '@vercel/analytics';
+  // import { inject } from '@vercel/analytics';
 
-  inject();
+  // inject();
 </script>
 
 <slot />
