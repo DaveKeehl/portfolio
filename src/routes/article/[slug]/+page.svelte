@@ -21,5 +21,5 @@
 
 <Post {...post} label="ARTICLE">
   <RichContent content={data.article.content} />
-  <Divider class="my-[104px]" />
+  <Divider class="my-16 md:my-[104px]" />
 </Post>

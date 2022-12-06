@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <Divider class="my-[104px]" />
+  <Divider class="my-16 md:my-[104px]" />
   <RichContent content={data.project.content} />
-  <Divider class="my-[104px]" />
+  <Divider class="my-16 md:my-[104px]" />
 </Post>
