@@ -30,7 +30,7 @@
     {
       variants: {
         selected: {
-          true: 'outline outline-2 outline-turquoise-200'
+          true: 'shadow-secondary-btn-focus'
         }
       }
     }
