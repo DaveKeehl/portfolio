@@ -208,6 +208,15 @@
   .pill-transition {
     transition: color 0.2s, outline 0.1s;
   }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .button-group {
