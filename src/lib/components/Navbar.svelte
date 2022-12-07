@@ -20,7 +20,7 @@
   };
 </script>
 
-<nav class={`flex gap-6 ${className}`}>
+<nav class={`flex gap-6 no-scrollbar ${className}`}>
   {#each sections as section}
     <a
       href={`/#${section.name.toLowerCase()}`}
