@@ -16,7 +16,7 @@
 
   const onClick = (event: any, sectionName: string) => {
     event.detail.event.detail.event.preventDefault();
-    const target = document.querySelector(`#${sectionName}`)?.scrollIntoView({
+    document.querySelector(`#${sectionName}`)?.scrollIntoView({
       behavior: 'smooth'
     });
     window.history.pushState({ section: sectionName }, '', `#${sectionName}`);
@@ -31,7 +31,7 @@
   threshold={0.5}
 >
   <section
-    class="py-32 lg:py-[200px] overflow-hidden relative"
+    class="py-20 md:py-32 lg:py-[200px] overflow-hidden relative"
     id="welcome"
     bind:this={element}
   >
