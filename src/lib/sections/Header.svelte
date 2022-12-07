@@ -29,7 +29,7 @@
 
 <header
   class:headerHidden={!isVisible}
-  class="sticky top-0 left-0 w-full z-10 opacity-100 backdrop-blur-[10px] translate-y-0 transition-all pointer-events-auto before:content-[''] before:absolute before:bottom-0 before:w-full before:h-px before:bg-header after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-blue-400 after:-z-[1] after:pointer-events-none after:opacity-75"
+  class="sticky top-0 left-0 w-full z-10 opacity-100 backdrop-blur-[10px] translate-y-0 transition-all duration-300 pointer-events-auto before:content-[''] before:absolute before:bottom-0 before:w-full before:h-px before:bg-header after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-blue-400 after:-z-[1] after:pointer-events-none after:opacity-75"
 >
   <Container>
     <div
