@@ -8,7 +8,6 @@ export const getHeader = /* groq */ `{
 		title,
 		url,
 		"icon": icon {
-			alt,
 			"url": asset->url,
 			"assetId": asset._ref
 		}
