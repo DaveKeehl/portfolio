@@ -13,7 +13,7 @@
       rel="noopener noreferrer"
       class="flex hover:opacity-80 transition-opacity"
     >
-      <SanityImage src={social.icon.assetId} alt={social.title} />
+      <SanityImage src={social.icon.assetId} alt={`${social.title} logo`} />
     </a>
   {/each}
 </div>
