@@ -19,7 +19,9 @@
   const estimatedReadDuration = readTime(toPlainText(content));
 </script>
 
-<div class="relative flex flex-col w-full">
+<div
+  class="relative flex flex-col w-full border-b-[1px] border-b-blue-100/[4%]"
+>
   <div
     class="flex flex-col items-center gap-4 px-10 pt-16 md:pt-24 pb-36 xs:pb-40 w-full sm:pb-60 md:pb-64 lg:pt-32"
   >
