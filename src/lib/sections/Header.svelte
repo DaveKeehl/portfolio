@@ -18,7 +18,9 @@
     const dy = lastY - y;
     lastY = y;
 
-    if (Math.abs(dy) <= TOLERANCE) return isVisible; // if delta-y doesn't go over the tolerance, persist the existing visibility state
+    // Note: if delta-y doesn't go over the tolerance, persist the existing visibility state
+    if (lastY <= 0 || Math.abs(dy) <= TOLERANCE) return isVisible;
+
     return dy > TOLERANCE;
   }
 
