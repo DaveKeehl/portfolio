@@ -13,13 +13,21 @@
   let y = 0;
   let lastY = 0;
 
+  /**
+   * Determine whether the header should be visible based on the window y-value.
+   * @param y - The window y-value.
+   * @return Whether the header is visible.
+   */
   function checkVisibility(y: number): boolean {
     const TOLERANCE = 0;
-    const dy = lastY - y;
+    const dy = lastY - y; // basically the scroll amount
     lastY = y;
 
-    // Note: if delta-y doesn't go over the tolerance, persist the existing visibility state
-    if (lastY <= 0 || Math.abs(dy) <= TOLERANCE) return isVisible;
+    // If the y value is 0 (no scroll) or negative (from the top of the page you scroll up), show the header
+    if (lastY <= 0) return true;
+
+    // If delta-y (i.e. the scroll amount) doesn't go over the tolerance, persist the existing visibility state
+    if (Math.abs(dy) <= TOLERANCE) return isVisible;
 
     return dy > TOLERANCE;
   }
