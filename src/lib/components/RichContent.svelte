@@ -1,5 +1,6 @@
 <script lang="ts">
   import { PortableText } from '@portabletext/svelte';
+  import Link from './Link.svelte';
 
   let className = '';
 
@@ -8,7 +9,14 @@
 </script>
 
 <div class={`rich-text text-blue-100 text-left ${className}`}>
-  <PortableText value={content} />
+  <PortableText
+    value={content}
+    components={{
+      marks: {
+        link: Link
+      }
+    }}
+  />
 </div>
 
 <style lang="scss" global>
