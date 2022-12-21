@@ -10,19 +10,13 @@
 <style>
   div {
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
     transform: translate3d(-50%, 50%, 0);
-    -webkit-transform: translate3d(-50%, 50%, 0);
-    -moz-transform: translate3d(-50%, 50%, 0);
   }
 
   @supports (-moz-appearance: none) {
     div {
       opacity: 0.1;
       transform: translate3d(-50%, 50%, 0) scale(1.5);
-      -webkit-transform: translate3d(-50%, 50%, 0) scale(1.5);
-      -moz-transform: translate3d(-50%, 50%, 0) scale(1.5);
     }
   }
 </style>
