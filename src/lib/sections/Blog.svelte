@@ -11,6 +11,7 @@
   import type { IBlog, IPostPreview } from '$utils/lib';
   import { deCamelCase } from '$utils/functions';
   import { section } from '$utils/stores';
+  import BlogCards from '$components/BlogCards.svelte';
 
   export let blog: IBlog;
   const { heading, labels, posts } = blog;
@@ -68,22 +69,7 @@
         {/each}
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-blogPosts gap-x-5 gap-y-14">
-        {#each visiblePosts as card, idx}
-          <!-- <BlogCard {...card} {idx} {CHUNK} /> -->
-          <BlogCard {...card} />
-        {/each}
-      </div>
-
-      {#if cursor < filteredPosts.length}
-        <div
-          class="grid place-items-center mt-20"
-          transition:fade|local={{ duration: 100 }}
-          use:reveal={{ rootMargin: '0 0 20px 0' }}
-        >
-          <Button on:click={showMorePosts}>Load more posts</Button>
-        </div>
-      {/if}
+      <BlogCards posts={filteredPosts} />
     </Section>
   </div>
 </IntersectionObserver>

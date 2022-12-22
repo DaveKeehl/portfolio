@@ -51,7 +51,8 @@ module.exports = {
         p6: '14px'
       },
       gridTemplateColumns: {
-        blogPosts: 'repeat(auto-fill, minmax(260px, 1fr))'
+        blogPosts: 'repeat(auto-fill, minmax(350px, 1fr))',
+        relatedBlogPosts: 'repeat(auto-fill, minmax(260px, 1fr))'
       },
       backgroundImage: ({ theme }) => ({
         hero: `linear-gradient(to right, ${theme(
