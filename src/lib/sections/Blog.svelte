@@ -15,7 +15,7 @@
   export let blog: IBlog;
   const { heading, labels, posts } = blog;
 
-  const CHUNK = 2;
+  const CHUNK = 4;
   let cursor = CHUNK;
 
   let selectedLabels: Set<string> = new Set();
