@@ -1,5 +1,6 @@
 <script lang="ts">
   import { cva } from 'cva';
+  import Button from './Button.svelte';
   import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
   import Label from '$lib/components/Label.svelte';
   import SanityImage from './SanityImage.svelte';
@@ -75,18 +76,24 @@
 
     <p class="p5-regular opacity-90 text-blue-100 mb-9">{excerpt}</p>
 
-    <ButtonsGroup
-      size="small"
-      primary={{
-        text: liveButton.text,
-        href: liveButton.url,
-        external: true
-      }}
-      secondary={{
-        text: 'Go to case study',
-        href: `/project/${slug}`,
-        external: false
-      }}
-    />
+    {#if liveButton}
+      <ButtonsGroup
+        size="small"
+        primary={{
+          text: liveButton.text,
+          href: liveButton.url,
+          external: true
+        }}
+        secondary={{
+          text: 'Go to case study',
+          href: `/project/${slug}`,
+          external: false
+        }}
+      />
+    {:else}
+      <Button size="small" variant="primary" href={`/project/${slug}`}>
+        Go to case study
+      </Button>
+    {/if}
   </div>
 </div>

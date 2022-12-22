@@ -6,6 +6,7 @@
   import Post from '$pages/Post.svelte';
 
   import type { PageData } from './$types';
+  import Button from '$components/Button.svelte';
 
   export let data: PageData;
 
@@ -37,19 +38,30 @@
     <div class="flex flex-col flex-[3] gap-8 ">
       <h2 class="h2-bold">In a nutshell</h2>
       <RichContent content={data.project.nutshell} />
-      <ButtonsGroup
-        primary={{
-          href: data.project.liveButton.url,
-          text: data.project.liveButton.text,
-          external: true
-        }}
-        secondary={{
-          href: data.project.repositoryButton.url,
-          text: data.project.repositoryButton.text,
-          external: true
-        }}
-        size="small"
-      />
+      {#if data.project.liveButton}
+        <ButtonsGroup
+          primary={{
+            href: data.project.liveButton.url,
+            text: data.project.liveButton.text,
+            external: true
+          }}
+          secondary={{
+            href: data.project.repositoryButton.url,
+            text: data.project.repositoryButton.text,
+            external: true
+          }}
+          size="small"
+        />
+      {:else}
+        <Button
+          size="small"
+          variant="primary"
+          href={data.project.repositoryButton.url}
+          external
+        >
+          {data.project.repositoryButton.text}
+        </Button>
+      {/if}
     </div>
   </div>
 
