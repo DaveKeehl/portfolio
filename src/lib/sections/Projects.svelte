@@ -23,8 +23,8 @@
       class="scroll-pt-8"
     >
       <div class="grid gap-14">
-        {#each cards as project, i}
-          <ProjectCard {project} reversed={i % 2 !== 0} />
+        {#each cards as project, idx}
+          <ProjectCard {project} reversed={idx % 2 !== 0} />
         {/each}
       </div>
     </Section>
