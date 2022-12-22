@@ -19,7 +19,7 @@
   };
 </script>
 
-<Post {...post} label="ARTICLE">
+<Post {...post} label="ARTICLE" isArticle>
   <RichContent content={data.article.content} />
   <Divider class="my-16 md:my-[104px]" />
 </Post>

@@ -22,7 +22,7 @@
   };
 </script>
 
-<Post {...post} label="CASE STUDY">
+<Post {...post} label="CASE STUDY" isArticle={false}>
   <div class="flex flex-col justify-between gap-16 md:flex-row">
     <div class="flex flex-col flex-[2] gap-7">
       <ProjectDetail title="Project type">{data.project.type}</ProjectDetail>

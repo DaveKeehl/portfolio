@@ -26,6 +26,7 @@
   export let image: IImage;
   export let content: any;
   export let relatedPosts: IPostPreview[];
+  export let isArticle: boolean;
 
   const maxWidth = 800;
 
@@ -42,7 +43,7 @@
 
 <FrontMatter {label} {_createdAt} {title} {content} />
 
-<PostContent {maxWidth} {image}>
+<PostContent {maxWidth} {image} {isArticle}>
   <slot />
 </PostContent>
 
