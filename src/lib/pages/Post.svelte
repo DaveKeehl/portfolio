@@ -28,7 +28,7 @@
   export let relatedPosts: IPostPreview[];
   export let isArticle: boolean;
 
-  const maxWidth = 800;
+  const maxWidth = isArticle ? 700 : 800;
 
   onMount(() => section.set(''));
 </script>
@@ -43,7 +43,7 @@
 
 <FrontMatter {label} {_createdAt} {title} {content} />
 
-<PostContent {maxWidth} {image} {isArticle}>
+<PostContent {maxWidth} {image}>
   <slot />
 </PostContent>
 

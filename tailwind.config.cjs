@@ -51,7 +51,7 @@ module.exports = {
         p6: '14px'
       },
       gridTemplateColumns: {
-        blogPosts: 'repeat(auto-fill, minmax(360px, 1fr))'
+        blogPosts: 'repeat(auto-fill, minmax(260px, 1fr))'
       },
       backgroundImage: ({ theme }) => ({
         hero: `linear-gradient(to right, ${theme(
@@ -69,9 +69,9 @@ module.exports = {
           'colors.grayscale.300'
         )} 150px, ${theme('colors.blue.400')} 550px)`,
         'project-card':
-          'linear-gradient(to right, rgba(2, 19, 38, 0.88) 10%, rgba(2, 21, 43, 0.15) 75%)',
+          'linear-gradient(to right, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.15) 73%)',
         'project-card-reversed':
-          'linear-gradient(to left, rgba(2, 19, 38, 0.88) 10%, rgba(2, 21, 43, 0.15) 75%)'
+          'linear-gradient(to left, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.15) 73%)'
       })
     }
   },
