@@ -69,9 +69,9 @@ module.exports = {
           'colors.grayscale.300'
         )} 150px, ${theme('colors.blue.400')} 550px)`,
         'project-card':
-          'linear-gradient(90deg, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.2) 50%)',
+          'linear-gradient(to right, rgba(2, 19, 38, 0.88) 10%, rgba(2, 21, 43, 0.15) 75%)',
         'project-card-reversed':
-          'linear-gradient(90deg, rgba(2, 21, 43, 0.2) 50%, rgba(2, 19, 38, 0.9) 90%)'
+          'linear-gradient(to left, rgba(2, 19, 38, 0.88) 10%, rgba(2, 21, 43, 0.15) 75%)'
       })
     }
   },
