@@ -20,7 +20,16 @@ export const getHeader = /* groq */ `{
 
 export const getFooter = /* groq */ `
 	*[_type == "footer"] {
-		content
+		content[]{
+			...,
+			markDefs[]{
+				...,
+				_type == "internalLink" => {
+					"slug": @.reference->slug.current,
+					"type": @.reference->_type
+				}
+			}
+		}
 	}[0]
 `;
 

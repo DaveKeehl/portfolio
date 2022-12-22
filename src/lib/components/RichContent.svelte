@@ -1,5 +1,6 @@
 <script lang="ts">
   import { PortableText } from '@portabletext/svelte';
+  import InternalLink from './InternalLink.svelte';
   import Link from './Link.svelte';
 
   let className = '';
@@ -13,7 +14,8 @@
     value={content}
     components={{
       marks: {
-        link: Link
+        link: Link,
+        internalLink: InternalLink
       }
     }}
   />
