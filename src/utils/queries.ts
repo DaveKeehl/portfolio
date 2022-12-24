@@ -1,3 +1,16 @@
+const richText = /* groq */ `
+	content[]{
+		...,
+		markDefs[]{
+			...,
+			_type == "internalLink" => {
+				"slug": @.reference->slug.current,
+				"type": @.reference->_type
+			}
+		}
+	}
+`;
+
 export const getHeader = /* groq */ `{
 	"logo": *[_type == "siteSettings"][0] {
 		"assetId": logo.asset._ref,
@@ -20,16 +33,7 @@ export const getHeader = /* groq */ `{
 
 export const getFooter = /* groq */ `
 	*[_type == "footer"] {
-		content[]{
-			...,
-			markDefs[]{
-				...,
-				_type == "internalLink" => {
-					"slug": @.reference->slug.current,
-					"type": @.reference->_type
-				}
-			}
-		}
+		${richText}
 	}[0]
 `;
 
@@ -117,16 +121,7 @@ export const getArticleBySlug = /* groq */ `{
 	"article": *[_type == 'article' && slug.current == $slug && visibility == "public"] {
     _createdAt,
 		title,
-		content[]{
-			...,
-			markDefs[]{
-				...,
-				_type == "internalLink" => {
-					"slug": @.reference->slug.current,
-					"type": @.reference->_type
-				}
-			}
-		},
+		${richText},
 		"image": image {
 			alt,
 			"url": asset->url,
@@ -173,16 +168,7 @@ export const getProjectBySlug = /* groq */ `{
 			url
 		},
     nutshell,
-		content[]{
-			...,
-			markDefs[]{
-				...,
-				_type == "internalLink" => {
-					"slug": @.reference->slug.current,
-					"type": @.reference->_type
-				}
-			}
-		}
+		${richText}
 	}[0],
 	"relatedPosts": *[
 			(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
