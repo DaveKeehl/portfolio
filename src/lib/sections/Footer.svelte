@@ -1,6 +1,6 @@
 <script lang="ts">
   import { reveal } from 'svelte-reveal';
-  import RichContent from '$components/RichContent.svelte';
+  import RichContent from '$components/PortableText/RichContent.svelte';
   import type { IFooter } from '$utils/lib';
 
   export let footer: IFooter;

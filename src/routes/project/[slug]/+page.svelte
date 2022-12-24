@@ -1,6 +1,6 @@
 <script lang="ts">
   import ButtonsGroup from '$components/ButtonsGroup.svelte';
-  import RichContent from '$components/RichContent.svelte';
+  import RichContent from '$components/PortableText/RichContent.svelte';
   import Divider from '$components/Posts/Divider.svelte';
   import ProjectDetail from '$components/Posts/ProjectDetail.svelte';
   import Post from '$pages/Post.svelte';

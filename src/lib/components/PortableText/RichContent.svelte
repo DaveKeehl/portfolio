@@ -42,9 +42,10 @@
 
     & a {
       color: theme('colors.turquoise.200');
+      text-decoration: underline;
 
       &:hover {
-        text-decoration: underline;
+        color: theme('colors.turquoise.100');
       }
     }
 

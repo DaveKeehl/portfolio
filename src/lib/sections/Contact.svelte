@@ -2,7 +2,7 @@
   import IntersectionObserver from 'svelte-intersection-observer';
 
   import Section from '$lib/utils/Section.svelte';
-  import RichContent from '$components/RichContent.svelte';
+  import RichContent from '$components/PortableText/RichContent.svelte';
 
   import type { IContact } from '$utils/lib';
   import { section } from '$utils/stores';
