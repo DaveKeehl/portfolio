@@ -42,7 +42,6 @@
 
     & a {
       color: theme('colors.turquoise.200');
-      text-decoration: underline;
 
       &:hover {
         color: theme('colors.turquoise.100');
@@ -83,5 +82,9 @@
       font-weight: theme('fontWeight.bold');
       line-height: 150%;
     }
+  }
+
+  .post .rich-text a {
+    text-decoration: underline;
   }
 </style>
