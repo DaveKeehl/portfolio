@@ -117,7 +117,16 @@ export const getArticleBySlug = /* groq */ `{
 	"article": *[_type == 'article' && slug.current == $slug && visibility == "public"] {
     _createdAt,
 		title,
-    content,
+		content[]{
+			...,
+			markDefs[]{
+				...,
+				_type == "internalLink" => {
+					"slug": @.reference->slug.current,
+					"type": @.reference->_type
+				}
+			}
+		},
 		"image": image {
 			alt,
 			"url": asset->url,
@@ -164,7 +173,16 @@ export const getProjectBySlug = /* groq */ `{
 			url
 		},
     nutshell,
-    content
+		content[]{
+			...,
+			markDefs[]{
+				...,
+				_type == "internalLink" => {
+					"slug": @.reference->slug.current,
+					"type": @.reference->_type
+				}
+			}
+		}
 	}[0],
 	"relatedPosts": *[
 			(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
