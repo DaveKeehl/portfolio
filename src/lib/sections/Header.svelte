@@ -39,11 +39,11 @@
 
 <header
   class:headerHidden={!isVisible}
-  class="sticky top-0 left-0 w-full z-10 opacity-100 backdrop-blur-[10px] translate-y-0 transition-all duration-300 pointer-events-auto before:content-[''] before:absolute before:bottom-0 before:w-full before:h-px before:bg-header after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-blue-400 after:-z-[1] after:pointer-events-none after:opacity-75"
+  class="pointer-events-auto sticky top-0 left-0 z-10 w-full translate-y-0 opacity-100 backdrop-blur-[10px] transition-all duration-300 before:absolute before:bottom-0 before:h-px before:w-full before:bg-header before:content-[''] after:pointer-events-none after:absolute after:top-0 after:left-0 after:-z-[1] after:h-full after:w-full after:bg-blue-400 after:opacity-75 after:content-['']"
 >
   <Container>
     <div
-      class="flex justify-between items-center py-[18px] text-grayscale-100 w-full"
+      class="flex w-full items-center justify-between py-[18px] text-grayscale-100"
     >
       <div class="flex flex-none justify-start lg:flex-1">
         <a href="/" class="flex h-8">
@@ -59,11 +59,11 @@
     </div>
   </Container>
   <div
-    class="w-full flex justify-center relative overflow-hidden lg:hidden before:content-[''] before:absolute before:top-0 before:w-full before:h-px before:bg-header"
+    class="relative flex w-full justify-center overflow-hidden before:absolute before:top-0 before:h-px before:w-full before:bg-header before:content-[''] lg:hidden"
   >
     <Navbar
       {sections}
-      class="w-10/12 py-[14px] overflow-scroll sm:justify-center"
+      class="w-10/12 overflow-scroll py-[14px] sm:justify-center"
     />
   </div>
 </header>

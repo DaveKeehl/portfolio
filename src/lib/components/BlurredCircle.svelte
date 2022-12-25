@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class={`absolute bottom-0 left-1/2 -z-[1] -translate-x-1/2 translate-y-1/2 w-[600px] aspect-square blur-circle opacity-25 rounded-full bg-blue-100 ${className}`}
+  class={`absolute bottom-0 left-1/2 -z-[1] aspect-square w-[600px] -translate-x-1/2 translate-y-1/2 rounded-full bg-blue-100 opacity-25 blur-circle ${className}`}
 />
 
 <style>

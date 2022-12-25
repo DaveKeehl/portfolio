@@ -31,30 +31,30 @@
   threshold={0.5}
 >
   <section
-    class="py-20 md:py-32 lg:py-[200px] overflow-hidden relative"
+    class="relative overflow-hidden py-20 md:py-32 lg:py-[200px]"
     id="welcome"
     bind:this={element}
   >
     <Container class="flex flex-col gap-12">
       <div class="flex flex-col gap-4">
         <p
-          class="p1-semibold text-turquoise-200 w-fit bg-hero [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
+          class="p1-semibold w-fit bg-hero text-turquoise-200 [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
           use:reveal
         >
           {greetings}
         </p>
         <h1 class="h1-bold text-shadow" use:reveal={{ delay: 100 }}>
-          {heading.split(' ')[0]}{' '}<span class="relative stroke"
+          {heading.split(' ')[0]}{' '}<span class="stroke relative"
             >{heading.split(' ')[1]}<img
               src="/stroke.svg"
               alt="Turquoise colored paint stroke"
-              class="absolute -z-[1] top-1/2 left-0 -translate-y-1/2 select-none scale-[1.7] origin-left"
+              class="absolute top-1/2 left-0 -z-[1] origin-left -translate-y-1/2 scale-[1.7] select-none"
             /></span
           >{' '}{heading.split(' ').slice(2).join(' ')}
         </h1>
       </div>
       <p
-        class="p3-regular text-blue-100 max-w-[600px]"
+        class="p3-regular max-w-[600px] text-blue-100"
         use:reveal={{ delay: 200 }}
       >
         {description}

@@ -3,4 +3,4 @@
   export { className as class };
 </script>
 
-<div class={`block w-full h-px bg-blue-100 opacity-10 ${className}`} />
+<div class={`block h-px w-full bg-blue-100 opacity-10 ${className}`} />

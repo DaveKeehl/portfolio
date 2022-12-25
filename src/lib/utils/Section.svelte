@@ -15,7 +15,7 @@
 <section {id} class={`${className}`.trim()}>
   <Container>
     <div
-      class={`flex flex-col items-start gap-5 ${marginBottom} md:gap-8 md:flex-row md:items-center`}
+      class={`flex flex-col items-start gap-5 ${marginBottom} md:flex-row md:items-center md:gap-8`}
     >
       <Icon name={icon} size={48} color="#EEF2F6" />
       <h2 class="h2-bold">{heading}</h2>

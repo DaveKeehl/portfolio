@@ -49,7 +49,6 @@
   class={pill({ selected })}
   on:click={handleClick}
   on:keypress={handleKeypress}
-  {disabled}
 >
   {text}
 </p>

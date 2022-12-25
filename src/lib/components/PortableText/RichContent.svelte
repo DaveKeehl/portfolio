@@ -9,7 +9,7 @@
   export { className as class };
 </script>
 
-<div class={`rich-text text-blue-100 text-left ${className}`}>
+<div class={`rich-text text-left text-blue-100 ${className}`}>
   <PortableText
     value={content}
     components={{

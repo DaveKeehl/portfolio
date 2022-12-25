@@ -25,25 +25,25 @@
       icon="HandWaving"
       headingGap="small"
       id="about"
-      class="pt-24 bg-about"
+      class="bg-about pt-24"
     >
-      <div class="flex flex-col gap-10 relative">
+      <div class="relative flex flex-col gap-10">
         <div
-          class="w-full lg:w-9/12 p4-regular text-blue-100 opacity-90 rich-text-about"
+          class="p4-regular rich-text-about w-full text-blue-100 opacity-90 lg:w-9/12"
         >
           <PortableText value={content} />
         </div>
         <Button href="/davide_ciulla_cv.pdf" external>{button}</Button>
         <div
-          class="hidden absolute w-[295px] h-[420px] top-0 right-0 -rotate-[5.4deg] hover:-rotate-[4deg] lg:block transition-transform duration-300 mix-blend-lighten outline outline-turquoise-200/[.06] rounded-2xl"
+          class="absolute top-0 right-0 hidden h-[420px] w-[295px] -rotate-[5.4deg] rounded-2xl mix-blend-lighten outline outline-turquoise-200/[.06] transition-transform duration-300 hover:-rotate-[4deg] lg:block"
         >
           <div
-            class="absolute top-0 left-0 w-full h-full bg-about-img z-10 transition-opacity hover:opacity-60 duration-300"
+            class="absolute top-0 left-0 z-10 h-full w-full bg-about-img transition-opacity duration-300 hover:opacity-60"
           />
           <img
             src={image.url}
             alt={image.alt}
-            class="absolute top-0 left-0 w-full h-full bg-cover bg-[-200px] object-cover object-[-200px] opacity-80 rounded-2xl"
+            class="absolute top-0 left-0 h-full w-full rounded-2xl bg-cover bg-[-200px] object-cover object-[-200px] opacity-80"
           />
         </div>
       </div>

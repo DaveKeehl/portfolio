@@ -31,16 +31,16 @@
 <div class="flex flex-col">
   <a
     {href}
-    class="flex overflow-hidden mb-6 rounded-2xl border border-turquoise-200/5"
+    class="mb-6 flex overflow-hidden rounded-2xl border border-turquoise-200/5"
   >
     <SanityImage
       src={image.url}
       alt={image.alt}
-      class="w-full aspect-video object-cover transition-transform hover:scale-[1.02]"
+      class="aspect-video w-full object-cover transition-transform hover:scale-[1.02]"
       loading="lazy"
     />
   </a>
   <Label>{cleanType}</Label>
-  <a {href} class="block w-fit mt-4 mb-2 h3-bold">{title}</a>
+  <a {href} class="h3-bold mt-4 mb-2 block w-fit">{title}</a>
   <p class="p5-regular text-blue-100 opacity-80">{excerpt}</p>
 </div>

@@ -57,7 +57,7 @@
       class="scroll-pt-8"
     >
       <div
-        class="flex items-center flex-wrap gap-3 mb-16"
+        class="mb-16 flex flex-wrap items-center gap-3"
         use:reveal={{ delay: 300 }}
       >
         {#each cleanLabels as label}

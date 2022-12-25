@@ -3,8 +3,8 @@
 </script>
 
 <div>
-  <p class="p4-medium text-blue-100 opacity-60 mb-[2px]">{title}</p>
-  <p class="p4-semibold text-grayscale-100 whitespace-pre-wrap">
+  <p class="p4-medium mb-[2px] text-blue-100 opacity-60">{title}</p>
+  <p class="p4-semibold whitespace-pre-wrap text-grayscale-100">
     <slot />
   </p>
 </div>

@@ -9,7 +9,7 @@
 
 <footer
   use:reveal
-  class="relative pt-10 pb-14 md:pb-20 before:content-[''] before:absolute before:top-0 before:w-[50px] before:h-px before:bg-blue-200"
+  class="relative pt-10 pb-14 before:absolute before:top-0 before:h-px before:w-[50px] before:bg-blue-200 before:content-[''] md:pb-20"
 >
   <RichContent class="rich-text-footer" {content} />
 </footer>

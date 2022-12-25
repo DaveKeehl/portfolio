@@ -77,7 +77,6 @@
     {href}
     rel={external ? 'noopener noreferrer' : ''}
     target={external ? '_blank' : ''}
-    {disabled}
     class={`${className} button ${button({ intent: variant, size })}`.trim()}
     {style}
     on:click={handleClick}

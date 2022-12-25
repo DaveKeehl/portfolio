@@ -29,7 +29,7 @@
 
 {#if cursor < posts.length}
   <div
-    class="grid place-items-center mt-20"
+    class="mt-20 grid place-items-center"
     transition:fade|local={{ duration: 100 }}
     use:reveal={{ rootMargin: '0 0 20px 0' }}
   >

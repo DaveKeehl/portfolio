@@ -10,7 +10,7 @@
   export let transform:
     | ((builder: ImageUrlBuilder) => ImageUrlBuilder)
     | undefined = undefined;
-  export let loading: '' | 'eager' | 'lazy' = '';
+  export let loading: 'eager' | 'lazy' | undefined = undefined;
 
   const builder = imageUrlBuilder(client);
 

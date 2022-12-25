@@ -64,7 +64,7 @@
     <SanityImage
       src={image.url}
       alt={title}
-      class="w-full h-full [aspect-ratio:16/10] object-cover transition-transform duration-300 hover:scale-[1.02]"
+      class="h-full w-full object-cover transition-transform duration-300 [aspect-ratio:16/10] hover:scale-[1.02]"
       loading="lazy"
     />
   </a>
@@ -72,9 +72,9 @@
   <div class={contentStyles({ reversed })}>
     <Label>{type}</Label>
 
-    <a {href} class="h3-bold block w-fit mt-5 mb-4">{title}</a>
+    <a {href} class="h3-bold mt-5 mb-4 block w-fit">{title}</a>
 
-    <p class="p5-regular opacity-90 text-blue-100 mb-9">{excerpt}</p>
+    <p class="p5-regular mb-9 text-blue-100 opacity-90">{excerpt}</p>
 
     {#if liveButton}
       <ButtonsGroup

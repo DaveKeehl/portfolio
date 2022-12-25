@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
   import type { ISection } from '$utils/lib';
   import { section } from '$utils/stores';
 
@@ -20,11 +19,11 @@
   };
 </script>
 
-<nav class={`flex gap-6 no-scrollbar ${className}`}>
+<nav class={`no-scrollbar flex gap-6 ${className}`}>
   {#each sections as section}
     <a
       href={`/#${section.name.toLowerCase()}`}
-      class="flex text-blue-200 text-p5 font-semibold leading-6 tracking-[2%] uppercase transition-colors hover:text-grayscale-100"
+      class="flex text-p5 font-semibold uppercase leading-6 tracking-[2%] text-blue-200 transition-colors hover:text-grayscale-100"
       class:text-grayscale-100={currentSection === section.name.toLowerCase()}
       on:click={(e) => onClick(e, section.name.toLowerCase())}
     >

@@ -24,7 +24,7 @@
 
 <Post {...post} label="CASE STUDY" isArticle={false}>
   <div class="flex flex-col justify-between gap-16 md:flex-row">
-    <div class="flex flex-col flex-[2] gap-7">
+    <div class="flex flex-[2] flex-col gap-7">
       <ProjectDetail title="Project type">{data.project.type}</ProjectDetail>
       <ProjectDetail title="Year">{data.project.year}</ProjectDetail>
       <ProjectDetail title="Roles">
@@ -35,7 +35,7 @@
       </ProjectDetail>
     </div>
 
-    <div class="flex flex-col flex-[3] gap-8 ">
+    <div class="flex flex-[3] flex-col gap-8 ">
       <h2 class="h2-bold">In a nutshell</h2>
       <RichContent content={data.project.nutshell} />
       {#if data.project.liveButton}

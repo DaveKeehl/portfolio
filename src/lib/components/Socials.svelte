@@ -11,7 +11,7 @@
       href={social.url}
       target="_blank"
       rel="noopener noreferrer"
-      class="flex hover:opacity-80 transition-opacity"
+      class="flex transition-opacity hover:opacity-80"
     >
       <SanityImage src={social.icon.assetId} alt={`${social.title} logo`} />
     </a>
