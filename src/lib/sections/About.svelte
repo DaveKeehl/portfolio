@@ -7,6 +7,7 @@
 
   import type { IAbout } from '$utils/lib';
   import { section } from '$utils/stores';
+  import SanityImage from '$components/SanityImage.svelte';
 
   export let about: IAbout;
   const { heading, content, image, button } = about;
@@ -40,7 +41,7 @@
           <div
             class="absolute top-0 left-0 z-10 h-full w-full bg-about-img transition-opacity duration-300 hover:opacity-60"
           />
-          <img
+          <SanityImage
             src={image.url}
             alt={image.alt}
             class="absolute top-0 left-0 h-full w-full rounded-2xl bg-cover bg-[-200px] object-cover object-[-200px] opacity-80"

@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { reveal } from 'svelte-reveal';
-
   import Label from '$lib/components/Label.svelte';
   import SanityImage from './SanityImage.svelte';
 
@@ -13,19 +11,10 @@
   export let _type: string;
   export let excerpt: string;
 
-  // export let CHUNK: number;
-  // export let idx: number;
-
   $: cleanType = deCamelCase(_type);
 
   $: resource = _type === 'caseStudy' ? 'project' : 'article';
   $: href = `/${resource}/${slug}`;
-
-  // use:reveal={{
-  // 	delay: idx % 2 ? 200 : 0,
-  // 	marginBottom: idx >= CHUNK ? 2000 : 200,
-  // 	duration: idx >= CHUNK ? 500 : 800
-  // }}
 </script>
 
 <div class="flex flex-col">

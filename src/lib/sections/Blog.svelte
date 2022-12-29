@@ -1,11 +1,7 @@
 <script lang="ts">
   import IntersectionObserver from 'svelte-intersection-observer';
-  import { fade } from 'svelte/transition';
-  import { reveal } from 'svelte-reveal';
 
-  import Button from '$lib/components/Button.svelte';
   import Pill from '$lib/components/Pill.svelte';
-  import BlogCard from '$lib/components/BlogCard.svelte';
   import Section from '$lib/utils/Section.svelte';
 
   import type { IBlog, IPostPreview } from '$utils/lib';
@@ -56,10 +52,7 @@
       icon="Quotes"
       class="scroll-pt-8"
     >
-      <div
-        class="mb-16 flex flex-wrap items-center gap-3"
-        use:reveal={{ delay: 300 }}
-      >
+      <div class="mb-16 flex flex-wrap items-center gap-3">
         {#each cleanLabels as label}
           <Pill
             selected={selectedLabels.has(label)}

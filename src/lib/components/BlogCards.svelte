@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { IPostPreview } from '$utils/lib';
-  import { reveal } from 'svelte-reveal';
   import { fade } from 'svelte/transition';
   import BlogCard from './BlogCard.svelte';
   import Button from './Button.svelte';
@@ -22,7 +21,6 @@
 
 <div class={`grid grid-cols-1 ${gridLayout} gap-x-5 gap-y-14`}>
   {#each visiblePosts as card, idx}
-    <!-- <BlogCard {...card} {idx} {CHUNK} /> -->
     <BlogCard {...card} />
   {/each}
 </div>
@@ -31,7 +29,6 @@
   <div
     class="mt-20 grid place-items-center"
     transition:fade|local={{ duration: 100 }}
-    use:reveal={{ rootMargin: '0 0 20px 0' }}
   >
     <Button on:click={showMorePosts}>Load more posts</Button>
   </div>

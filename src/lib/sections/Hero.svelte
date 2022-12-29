@@ -1,6 +1,5 @@
 <script lang="ts">
   import IntersectionObserver from 'svelte-intersection-observer';
-  import { reveal } from 'svelte-reveal';
 
   import BlurredCircle from '$components/BlurredCircle.svelte';
   import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
@@ -39,11 +38,10 @@
       <div class="flex flex-col gap-4">
         <p
           class="p1-semibold w-fit bg-hero text-turquoise-200 [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
-          use:reveal
         >
           {greetings}
         </p>
-        <h1 class="h1-bold text-shadow" use:reveal={{ delay: 100 }}>
+        <h1 class="h1-bold text-shadow">
           {heading.split(' ')[0]}{' '}<span class="stroke relative"
             >{heading.split(' ')[1]}<img
               src="/stroke.svg"
@@ -53,13 +51,10 @@
           >{' '}{heading.split(' ').slice(2).join(' ')}
         </h1>
       </div>
-      <p
-        class="p3-regular max-w-[600px] text-blue-100"
-        use:reveal={{ delay: 200 }}
-      >
+      <p class="p3-regular max-w-[600px] text-blue-100">
         {description}
       </p>
-      <div class="button" use:reveal={{ delay: 300 }}>
+      <div class="button">
         <ButtonsGroup
           size="large"
           primary={{
