@@ -31,6 +31,9 @@
       variants: {
         selected: {
           true: 'shadow-secondary-btn-focus'
+        },
+        disabled: {
+          true: ''
         }
       }
     }
@@ -46,7 +49,7 @@
 </script>
 
 <p
-  class={pill({ selected })}
+  class={pill({ selected, disabled })}
   on:click={handleClick}
   on:keypress={handleKeypress}
 >
