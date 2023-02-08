@@ -11,12 +11,12 @@
   export let title: string;
   export let label: string;
 
-  const createdAt = new Date(_createdAt);
-  const day = createdAt.getDate();
-  const month = createdAt.toLocaleString('default', { month: 'short' });
-  const date = `${day} ${month} ${createdAt.getFullYear()}`;
+  $: createdAt = new Date(_createdAt);
+  $: day = createdAt.getDate();
+  $: month = createdAt.toLocaleString('default', { month: 'short' });
+  $: date = `${day} ${month} ${createdAt.getFullYear()}`;
 
-  const estimatedReadDuration = readTime(toPlainText(content));
+  $: estimatedReadDuration = readTime(toPlainText(content));
 </script>
 
 <div
