@@ -6,15 +6,15 @@
 
   import readTime from '$utils/readTimeEstimate';
 
-  export let _createdAt: string;
+  export let _updatedAt: string;
   export let content: any;
   export let title: string;
   export let label: string;
 
-  $: createdAt = new Date(_createdAt);
-  $: day = createdAt.getDate();
-  $: month = createdAt.toLocaleString('default', { month: 'short' });
-  $: date = `${day} ${month} ${createdAt.getFullYear()}`;
+  $: updatedAt = new Date(_updatedAt);
+  $: day = updatedAt.getDate();
+  $: month = updatedAt.toLocaleString('default', { month: 'short' });
+  $: date = `${day} ${month} ${updatedAt.getFullYear()}`;
 
   $: estimatedReadDuration = readTime(toPlainText(content));
 </script>

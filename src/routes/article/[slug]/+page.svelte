@@ -12,7 +12,7 @@
     header: data.header,
     footer: data.footer,
     title: data.article.title,
-    _createdAt: data.article._createdAt,
+    _updatedAt: data.article._updatedAt,
     image: data.article.image,
     content: data.article.content,
     relatedPosts: data.relatedPosts

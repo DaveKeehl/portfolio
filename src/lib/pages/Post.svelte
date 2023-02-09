@@ -22,7 +22,7 @@
   export let footer: IFooter;
   export let title: string;
   export let label: string;
-  export let _createdAt: string;
+  export let _updatedAt: string;
   export let image: IImage;
   export let content: any;
   export let relatedPosts: IPostPreview[];
@@ -41,7 +41,7 @@
 
 <Header {header} />
 
-<FrontMatter {label} {_createdAt} {title} {content} />
+<FrontMatter {label} {_updatedAt} {title} {content} />
 
 <PostContent {maxWidth} {image}>
   <slot />

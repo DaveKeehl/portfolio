@@ -15,7 +15,7 @@
     header: data.header,
     footer: data.footer,
     title: data.project.title,
-    _createdAt: data.project._createdAt,
+    _updatedAt: data.project._updatedAt,
     image: data.project.image,
     content: data.project.content,
     relatedPosts: data.relatedPosts

@@ -99,7 +99,7 @@ export const getHomepage = /* groq */ `{
 		"posts": *[
 			(_type == "caseStudy" && visibility == "public" && project->featured == true) || 
 			(_type == "article" && visibility == "public")
-		] | order(_createdAt) {
+		] | order(_updatedAt) {
 			_type,
 			"title": coalesce(title, project->title),
 			"slug": coalesce(slug, project->slug).current,
@@ -119,7 +119,7 @@ export const getHomepage = /* groq */ `{
 
 export const getArticleBySlug = /* groq */ `{
 	"article": *[_type == 'article' && slug.current == $slug && visibility == "public"] {
-    _createdAt,
+    _updatedAt,
 		title,
 		${richText},
 		"image": image {
@@ -131,7 +131,7 @@ export const getArticleBySlug = /* groq */ `{
 	"relatedPosts": *[
 		(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
 		(_type == "article" && visibility == "public" && slug.current != $slug)
-	] | order(_createdAt) {
+	] | order(_updatedAt) {
 		_type,
 		"title": coalesce(title, project->title),
 		"slug": coalesce(slug, project->slug).current,
@@ -148,7 +148,7 @@ export const getProjectBySlug = /* groq */ `{
   "project": *[
 		_type == 'caseStudy' && project->slug.current == $slug && project->featured == true
 	] {
-    _createdAt,
+    _updatedAt,
 		"title": project->title,
     "type": project->type,
     "year": project->year,
@@ -173,7 +173,7 @@ export const getProjectBySlug = /* groq */ `{
 	"relatedPosts": *[
 			(_type == "caseStudy" && visibility == "public" && project->featured == true && project->slug.current != $slug) || 
 			(_type == "article" && visibility == "public" && slug.current != $slug)
-	] | order(_createdAt) {
+	] | order(_updatedAt) {
 		_type,
 		"title": coalesce(title, project->title),
 		"slug": coalesce(slug, project->slug).current,
