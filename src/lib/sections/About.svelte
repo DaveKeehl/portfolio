@@ -36,15 +36,15 @@
         </div>
         <Button href="/davide_ciulla_cv.pdf" external>{button}</Button>
         <div
-          class="absolute top-0 right-0 hidden h-[420px] w-[295px] -rotate-[5.4deg] rounded-2xl mix-blend-lighten outline outline-turquoise-200/[.06] transition-transform duration-300 hover:-rotate-[4deg] lg:block"
+          class="group absolute top-0 right-0 hidden h-[420px] w-[295px] -rotate-[5.4deg] rounded-2xl mix-blend-lighten outline outline-turquoise-200/[.06] transition-transform duration-300 hover:-rotate-[4deg] lg:block"
         >
           <div
-            class="absolute top-0 left-0 z-10 h-full w-full bg-about-img transition-opacity duration-300 hover:opacity-60"
+            class="absolute top-0 left-0 z-10 h-full w-full bg-about-img transition-opacity duration-300 group-hover:opacity-80"
           />
           <SanityImage
             src={image.url}
             alt={image.alt}
-            class="absolute top-0 left-0 h-full w-full rounded-2xl bg-cover bg-[-200px] object-cover object-[-200px] opacity-80"
+            class="absolute top-0 left-0 h-full w-full rounded-2xl bg-cover object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-80"
           />
         </div>
       </div>
