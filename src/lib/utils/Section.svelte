@@ -2,11 +2,11 @@
   import Container from '$lib/utils/Container.svelte';
   import Icon from '$lib/components/Icon.svelte';
 
-  let className: string = '';
+  let className = '';
   export let heading: string;
   export let headingGap: 'small' | 'large';
   export { className as class };
-  export let id: string = '';
+  export let id = '';
   export let icon: 'Fire' | 'HandWaving' | 'Quotes' | 'ChatTeardropDots';
 
   const marginBottom = headingGap === 'small' ? 'mb-10' : 'mb-20';

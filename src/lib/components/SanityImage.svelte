@@ -6,7 +6,7 @@
   let className = '';
   export { className as class };
   export let src: string;
-  export let alt: string = '';
+  export let alt = '';
   export let transform:
     | ((builder: ImageUrlBuilder) => ImageUrlBuilder)
     | undefined = undefined;
