@@ -23,9 +23,6 @@
   };
 
   $: filteredPosts = posts.filter((post) => hasPostMatchingLabel(post));
-  $: visiblePosts = filteredPosts.slice(0, cursor);
-
-  const showMorePosts = () => (cursor += CHUNK);
 
   const toggleLabel = (label: string) => {
     const hasLabelSelected = selectedLabels.has(label);
