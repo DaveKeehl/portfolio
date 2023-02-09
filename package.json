@@ -8,8 +8,8 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --check --plugin-search-dir=. . && eslint .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "lint": "npx eslint . && prettier --check .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@portabletext/svelte": "^1.0.1",
