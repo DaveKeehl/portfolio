@@ -30,7 +30,7 @@
       <ProjectDetail title="Roles">
         {data.project.roles.join(', ')}
       </ProjectDetail>
-      <ProjectDetail title="Technologies">
+      <ProjectDetail title="Tools and technologies">
         {data.project.technologies.map((tech) => tech.title).join(', ')}
       </ProjectDetail>
     </div>
