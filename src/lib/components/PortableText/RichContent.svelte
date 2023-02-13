@@ -1,5 +1,8 @@
 <script lang="ts">
   import { PortableText } from '@portabletext/svelte';
+  import Code from './Code.svelte';
+  import Image from './Image.svelte';
+  import InlineCode from './InlineCode.svelte';
   import InternalLink from './InternalLink.svelte';
   import Link from './Link.svelte';
 
@@ -7,6 +10,8 @@
 
   export let content: any;
   export { className as class };
+
+  $: console.log(content);
 </script>
 
 <div class={`rich-text text-left text-blue-100 ${className}`}>
@@ -15,7 +20,12 @@
     components={{
       marks: {
         link: Link,
-        internalLink: InternalLink
+        internalLink: InternalLink,
+        inlineCode: InlineCode
+      },
+      types: {
+        image: Image,
+        code: Code
       }
     }}
   />
@@ -101,6 +111,29 @@
       list-style: auto;
       list-style-position: outside;
       margin-left: 32px;
+    }
+
+    & figure {
+      img {
+        margin: 0 auto 0.5rem;
+      }
+
+      figcaption {
+        text-align: center;
+        font-family: theme('fontFamily.body');
+        font-size: theme('fontSize.p5');
+        font-weight: theme('fontWeight.normal');
+        line-height: 150%;
+        letter-spacing: 0.02em;
+        opacity: 0.9;
+      }
+    }
+
+    & code {
+      border-radius: 1rem;
+      border: white;
+      padding: 1.5rem !important;
+      box-shadow: 0px 0px 0px 1px hsl(213deg 16% 13%);
     }
   }
 

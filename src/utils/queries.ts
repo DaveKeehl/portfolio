@@ -6,6 +6,13 @@ const richText = /* groq */ `
 			_type == "internalLink" => {
 				"slug": @.reference->slug.current,
 				"type": @.reference->_type
+			},
+			_type == "image" => {
+				...,
+				"type": @.reference->_type,
+				"altText": @.reference->altText,
+				"caption": @.reference->caption,
+				"maxWidth": @.reference->maxWidth
 			}
 		}
 	}
