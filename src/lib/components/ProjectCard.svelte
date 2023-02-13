@@ -1,5 +1,7 @@
 <script lang="ts">
   import { cva } from 'cva';
+  import { twMerge } from 'tailwind-merge';
+
   import Button from './Button.svelte';
   import ButtonsGroup from '$lib/components/ButtonsGroup.svelte';
   import Label from '$lib/components/Label.svelte';
@@ -60,7 +62,7 @@
 <div
   class="flex flex-col lg:grid lg:grid-cols-10 lg:grid-rows-1 lg:items-center"
 >
-  <a {href} class={imageContainerStyles({ reversed })}>
+  <a {href} class={twMerge(imageContainerStyles({ reversed }))}>
     <SanityImage
       src={image.url}
       alt={title}
@@ -69,7 +71,7 @@
     />
   </a>
 
-  <div class={contentStyles({ reversed })}>
+  <div class={twMerge(contentStyles({ reversed }))}>
     <Label>{type}</Label>
 
     <a {href} class="h3-bold mt-5 mb-4 block w-fit">{title}</a>

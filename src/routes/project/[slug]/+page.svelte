@@ -20,8 +20,6 @@
     content: data.project.content,
     relatedPosts: data.relatedPosts
   };
-
-  // $: console.log(post.content);
 </script>
 
 <Post {...post} label="CASE STUDY" isArticle={false}>

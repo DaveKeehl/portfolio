@@ -5,13 +5,12 @@
   import InlineCode from './InlineCode.svelte';
   import InternalLink from './InternalLink.svelte';
   import Link from './Link.svelte';
+  import NormalListItem from './NormalListItem.svelte';
 
   let className = '';
 
   export let content: any;
   export { className as class };
-
-  $: console.log(content);
 </script>
 
 <div class={`rich-text text-left text-blue-100 ${className}`}>
@@ -22,6 +21,9 @@
         link: Link,
         internalLink: InternalLink,
         inlineCode: InlineCode
+      },
+      listItem: {
+        normal: NormalListItem
       },
       types: {
         image: Image,

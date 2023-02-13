@@ -1,3 +1,9 @@
+<script lang="ts">
+  import type { MarkComponentProps } from '@portabletext/svelte';
+
+  export let portableText: MarkComponentProps;
+</script>
+
 <pre><slot /></pre>
 
 <style>
