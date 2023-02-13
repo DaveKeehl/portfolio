@@ -37,7 +37,7 @@
       'border-turquoise-200/5',
       'transition',
       'md:w-max',
-      'focus:outline-none'
+      'outline-none'
     ],
     {
       variants: {
