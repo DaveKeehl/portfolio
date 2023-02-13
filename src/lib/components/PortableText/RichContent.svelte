@@ -42,14 +42,14 @@
 
     & li {
       font-family: theme('fontFamily.body');
-      font-size: theme('fontSize.p5');
+      font-size: theme('fontSize.p4');
       font-weight: theme('fontWeight.normal');
       line-height: 150%;
       letter-spacing: 0.02em;
       opacity: 0.9;
 
       &:not(:last-child) {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
     }
 
