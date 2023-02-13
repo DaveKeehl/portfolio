@@ -40,6 +40,19 @@
       opacity: 0.9;
     }
 
+    & li {
+      font-family: theme('fontFamily.body');
+      font-size: theme('fontSize.p5');
+      font-weight: theme('fontWeight.normal');
+      line-height: 150%;
+      letter-spacing: 0.02em;
+      opacity: 0.9;
+
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+
     & a {
       color: theme('colors.turquoise.200');
 
@@ -64,14 +77,14 @@
 
     & h1 {
       font-family: theme('fontFamily.heading');
-      font-size: theme('fontSize.h1');
+      font-size: theme('fontSize.h2');
       font-weight: theme('fontWeight.bold');
       line-height: 120%;
     }
 
     & h2 {
       font-family: theme('fontFamily.heading');
-      font-size: theme('fontSize.h2');
+      font-size: theme('fontSize.h3');
       font-weight: theme('fontWeight.bold');
       line-height: 140%;
     }
@@ -81,6 +94,13 @@
       font-size: theme('fontSize.h3');
       font-weight: theme('fontWeight.bold');
       line-height: 150%;
+    }
+
+    & ul,
+    & ol {
+      list-style: auto;
+      list-style-position: outside;
+      margin-left: 32px;
     }
   }
 
