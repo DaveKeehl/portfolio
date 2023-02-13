@@ -135,7 +135,7 @@
       border-radius: 1rem;
       border: white;
       padding: 1.5rem !important;
-      box-shadow: 0px 0px 0px 1px hsl(213deg 16% 13%);
+      border: 1px solid hsl(207deg 45% 13%);
     }
   }
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { HighlightSvelte } from 'svelte-highlight';
-  import githubDark from 'svelte-highlight/styles/github-dark';
+  import nightOwl from 'svelte-highlight/styles/night-owl';
   import type { MarkComponentProps } from '@portabletext/svelte';
 
   export let portableText: MarkComponentProps<{
@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-  {@html githubDark}
+  {@html nightOwl}
 </svelte:head>
 
 <HighlightSvelte code={portableText.value.code} />
