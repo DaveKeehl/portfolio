@@ -77,14 +77,14 @@
 
     & h1 {
       font-family: theme('fontFamily.heading');
-      font-size: theme('fontSize.h2');
+      font-size: theme('fontSize.h1');
       font-weight: theme('fontWeight.bold');
       line-height: 120%;
     }
 
     & h2 {
       font-family: theme('fontFamily.heading');
-      font-size: theme('fontSize.h3');
+      font-size: theme('fontSize.h2');
       font-weight: theme('fontWeight.bold');
       line-height: 140%;
     }
