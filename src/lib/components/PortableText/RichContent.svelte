@@ -59,6 +59,7 @@
       line-height: 150%;
       letter-spacing: 0.02em;
       opacity: 0.9;
+      padding-left: 2px;
 
       &:not(:last-child) {
         margin-bottom: 8px;
@@ -110,9 +111,17 @@
 
     & ul,
     & ol {
-      list-style: auto;
       list-style-position: outside;
+    }
+
+    & ol {
+      list-style: decimal;
       margin-left: 32px;
+    }
+
+    & ul {
+      list-style: disc;
+      margin-left: 20px;
     }
 
     & figure {
