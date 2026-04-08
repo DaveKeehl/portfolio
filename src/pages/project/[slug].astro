@@ -1,0 +1,95 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import FrontMatter from '@components/posts/FrontMatter.astro';
+import PostContent from '@components/posts/PostContent.astro';
+import Divider from '@components/posts/Divider.astro';
+import RelatedPosts from '@components/posts/RelatedPosts.astro';
+import PostFooter from '@components/posts/PostFooter.astro';
+import ProjectDetail from '@components/posts/ProjectDetail.astro';
+import Button from '@components/Button.astro';
+import ButtonsGroup from '@components/ButtonsGroup.astro';
+
+import { siteSettings } from '@data/site';
+import { header } from '@data/header';
+import { footer } from '@data/footer';
+import { blogSection } from '@data/blog';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: String(project.id).replace(/\.md$/, '') },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const maxWidth = 800;
+
+// Related posts: all posts except this one
+const relatedPosts = blogSection.posts.filter(
+  (post) => post.slug !== project.id.replace(/\.md$/, '')
+);
+
+const { data } = project;
+---
+
+<BaseLayout
+  title={`${data.title} | Davide Ciulla`}
+  description={siteSettings.tagline}
+  openGraph={{ image: data.image }}
+>
+  <Header logo={siteSettings.logo} sections={header.sections} socials={header.socials} />
+
+  <FrontMatter
+    label="CASE STUDY"
+    updatedAt={data.updatedAt}
+    title={data.title}
+    content={project.body || ''}
+  />
+
+  <PostContent maxWidth={maxWidth} image={{ url: data.image, alt: data.imageAlt }}>
+    <div class="flex flex-col justify-between gap-16 md:flex-row">
+      <div class="flex flex-[2] flex-col gap-7">
+        <ProjectDetail title="Project type">{data.type}</ProjectDetail>
+        <ProjectDetail title="Year">{data.year}</ProjectDetail>
+        <ProjectDetail title="Roles">{data.roles.join(', ')}</ProjectDetail>
+        <ProjectDetail title="Tools and technologies">
+          {data.technologies.map((tech) => tech.title).join(', ')}
+        </ProjectDetail>
+      </div>
+
+      <div class="flex flex-[3] flex-col gap-8">
+        <h2 class="h2-bold">In a nutshell</h2>
+        {data.nutshell && (
+          <div class="rich-text text-left text-blue-100">
+            <Fragment set:html={data.nutshell} />
+          </div>
+        )}
+        {data.liveButton && data.repositoryButton ? (
+          <ButtonsGroup
+            primary={{ href: data.liveButton.url, text: data.liveButton.text, external: true }}
+            secondary={{ href: data.repositoryButton.url, text: data.repositoryButton.text, external: true }}
+            size="small"
+          />
+        ) : data.repositoryButton ? (
+          <Button size="small" variant="primary" href={data.repositoryButton.url} external>
+            {data.repositoryButton.text}
+          </Button>
+        ) : null}
+      </div>
+    </div>
+
+    <Divider class="my-16 md:my-[104px]" />
+    <div class="rich-text text-left text-blue-100">
+      <Content />
+    </div>
+    <Divider class="my-16 md:my-[104px]" />
+  </PostContent>
+
+  <RelatedPosts posts={relatedPosts} maxWidth={maxWidth} />
+  <PostFooter content={footer.content} maxWidth={maxWidth} />
+</BaseLayout>

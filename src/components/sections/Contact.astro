@@ -1,0 +1,30 @@
+---
+import Section from '@components/Section.astro';
+
+interface Props {
+  heading: string;
+  content: string;
+}
+
+const { heading, content } = Astro.props;
+---
+
+<div data-section="contact">
+  <Section id="contact" heading={heading} headingGap="small" icon="ChatTeardropDots">
+    <div class="rich-text rich-text-contact text-left text-blue-100">
+      <Fragment set:html={content} />
+    </div>
+  </Section>
+</div>
+
+<style>
+  .rich-text-contact :global(a) {
+    display: block;
+    font-family: var(--font-code);
+    font-size: var(--text-p4);
+    font-weight: 700;
+    line-height: 150%;
+    width: fit-content;
+    margin-top: 20px;
+  }
+</style>

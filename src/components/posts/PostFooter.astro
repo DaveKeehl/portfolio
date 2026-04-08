@@ -1,0 +1,14 @@
+---
+import Footer from '@components/sections/Footer.astro';
+
+interface Props {
+  content: string;
+  maxWidth: number;
+}
+
+const { content, maxWidth } = Astro.props;
+---
+
+<div class="my-0 mx-auto w-10/12" style={`max-width: ${maxWidth}px`}>
+  <Footer {content} />
+</div>

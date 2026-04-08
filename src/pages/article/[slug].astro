@@ -1,0 +1,58 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import FrontMatter from '@components/posts/FrontMatter.astro';
+import PostContent from '@components/posts/PostContent.astro';
+import Divider from '@components/posts/Divider.astro';
+import RelatedPosts from '@components/posts/RelatedPosts.astro';
+import PostFooter from '@components/posts/PostFooter.astro';
+
+import { siteSettings } from '@data/site';
+import { header } from '@data/header';
+import { footer } from '@data/footer';
+import { blogSection } from '@data/blog';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: String(article.id).replace(/\.md$/, '') },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+
+const maxWidth = 700;
+
+// Related posts: all posts except this one
+const relatedPosts = blogSection.posts.filter(
+  (post) => post.slug !== article.id.replace(/\.md$/, '')
+);
+---
+
+<BaseLayout
+  title={`${article.data.title} | Davide Ciulla`}
+  description={siteSettings.tagline}
+  openGraph={{ image: article.data.image }}
+>
+  <Header logo={siteSettings.logo} sections={header.sections} socials={header.socials} />
+
+  <FrontMatter
+    label="ARTICLE"
+    updatedAt={article.data.updatedAt}
+    title={article.data.title}
+    content={article.body || ''}
+  />
+
+  <PostContent maxWidth={maxWidth} image={{ url: article.data.image, alt: article.data.imageAlt }}>
+    <div class="rich-text text-left text-blue-100">
+      <Content />
+    </div>
+    <Divider class="my-16 md:my-[104px]" />
+  </PostContent>
+
+  <RelatedPosts posts={relatedPosts} maxWidth={maxWidth} />
+  <PostFooter content={footer.content} maxWidth={maxWidth} />
+</BaseLayout>

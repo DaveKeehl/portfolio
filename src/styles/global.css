@@ -1,6 +1,72 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* ============================================
+   Tailwind v4 Theme (ported from tailwind.config.cjs)
+   ============================================ */
+
+@theme {
+  /* Screens */
+  --breakpoint-xs: 500px;
+
+  /* Colors - Grayscale */
+  --color-grayscale-100: #EEF2F6;
+  --color-grayscale-300: hsl(212deg 90% 6%);
+
+  /* Colors - Turquoise */
+  --color-turquoise-100: hsl(182deg 88% 79%);
+  --color-turquoise-200: hsl(182deg 88% 49%);
+  --color-turquoise-200-40: hsl(182deg 88% 49% / 40%);
+  --color-turquoise-300: hsl(182deg 88% 39%);
+
+  /* Colors - Blue */
+  --color-blue-100: #B7CDE5;
+  --color-blue-200: #476485;
+  --color-blue-200-25: hsl(212deg 30% 40% / 25%);
+  --color-blue-300: #031F40;
+  --color-blue-400: hsl(215deg 89% 8%);
+
+  /* Blur */
+  --blur-circle: 180px;
+
+  /* Box Shadows */
+  --shadow-primary-btn-focus: 0 0 0 4px hsl(182deg 88% 39%);
+  --shadow-secondary-btn-focus: 0 0 0 2px hsl(182deg 88% 49%);
+
+  /* Font Families */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'Menlo', sans-serif;
+
+  /* Font Sizes */
+  --text-h1: 48px;
+  --text-h2: 36px;
+  --text-h3: 28px;
+  --text-h4: 18px;
+  --text-h5: 16px;
+  --text-p1: 24px;
+  --text-p2: 22px;
+  --text-p3: 20px;
+  --text-p4: 18px;
+  --text-p5: 16px;
+  --text-p6: 14px;
+
+  /* Grid Template Columns */
+  --grid-template-columns-blogPosts: repeat(auto-fill, minmax(350px, 1fr));
+  --grid-template-columns-relatedBlogPosts: repeat(auto-fill, minmax(260px, 1fr));
+
+  /* Background Images (Gradients) */
+  --background-image-hero: linear-gradient(to right, hsl(182deg 88% 79%) 0%, hsl(182deg 88% 39%) 100%);
+  --background-image-header: linear-gradient(to right, transparent, hsl(212deg 30% 40% / 25%), transparent);
+  --background-image-about: linear-gradient(to bottom, hsl(212deg 90% 6%) 31.25%, hsl(215deg 89% 8%) 100%);
+  --background-image-about-img: linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%);
+  --background-image-post: linear-gradient(to bottom, hsl(212deg 90% 6%) 150px, hsl(215deg 89% 8%) 550px);
+  --background-image-project-card: linear-gradient(to right, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.15) 73%);
+  --background-image-project-card-reversed: linear-gradient(to left, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.15) 73%);
+}
+
+/* ============================================
+   Base Layer
+   ============================================ */
 
 @layer base {
   h1,
@@ -9,27 +75,27 @@
   h4,
   h5,
   h6 {
-    font-family: theme(fontFamily.heading);
+    font-family: var(--font-heading);
   }
 
   h1 {
-    @apply text-h1;
+    font-size: var(--text-h1);
   }
 
   h2 {
-    @apply text-h2;
+    font-size: var(--text-h2);
   }
 
   h3 {
-    @apply text-h3;
+    font-size: var(--text-h3);
   }
 
   h4 {
-    @apply text-h4;
+    font-size: var(--text-h4);
   }
 
   h5 {
-    @apply text-h5;
+    font-size: var(--text-h5);
   }
 
   * {
@@ -39,15 +105,15 @@
   }
 
   ::selection {
-    background: theme(colors.turquoise.200/40);
-    color: theme(colors.blue.100);
+    background: var(--color-turquoise-200-40);
+    color: var(--color-blue-100);
   }
 
   body {
-    background: theme(colors.blue.400);
-    color: theme(colors.grayscale.100);
-    font-size: theme(fontSize.p5);
-    font-family: theme(fontFamily.body);
+    background: var(--color-blue-400);
+    color: var(--color-grayscale-100);
+    font-size: var(--text-p5);
+    font-family: var(--font-body);
     font-feature-settings: 'salt' on;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -68,156 +134,160 @@
   }
 }
 
-@layer utilities {
-  .h1-bold {
-    font-family: theme(fontFamily.heading);
-    font-size: theme(fontSize.h1);
-    font-weight: theme(fontWeight.bold);
-    line-height: 120%;
-  }
+/* ============================================
+   Typography Utilities
+   ============================================ */
 
-  .h2-semibold {
-    font-family: theme(fontFamily.heading);
-    font-size: theme(fontSize.h2);
-    font-weight: theme(fontWeight.semibold);
-    line-height: 140%;
-  }
+@utility h1-bold {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 120%;
+}
 
-  .h2-bold {
-    font-family: theme(fontFamily.heading);
-    font-size: theme(fontSize.h2);
-    font-weight: theme(fontWeight.bold);
-    line-height: 140%;
-  }
+@utility h2-semibold {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 140%;
+}
 
-  .h3-semibold {
-    font-family: theme(fontFamily.heading);
-    font-size: theme(fontSize.h3);
-    font-weight: theme(fontWeight.semibold);
-    line-height: 150%;
-  }
+@utility h2-bold {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 140%;
+}
 
-  .h3-bold {
-    font-family: theme(fontFamily.heading);
-    font-size: theme(fontSize.h3);
-    font-weight: theme(fontWeight.bold);
-    line-height: 150%;
-  }
+@utility h3-semibold {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 150%;
+}
 
-  .p1-semibold {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p1);
-    font-weight: theme(fontWeight.semibold);
-    line-height: 150%;
-  }
+@utility h3-bold {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 150%;
+}
 
-  .p1-bold {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p1);
-    font-weight: theme(fontWeight.bold);
-    line-height: 150%;
-  }
+@utility p1-semibold {
+  font-family: var(--font-body);
+  font-size: var(--text-p1);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 150%;
+}
 
-  .p3-regular {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p3);
-    font-weight: theme(fontWeight.normal);
-    line-height: 150%;
-  }
+@utility p1-bold {
+  font-family: var(--font-body);
+  font-size: var(--text-p1);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 150%;
+}
 
-  .p3-medium {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p3);
-    font-weight: theme(fontWeight.medium);
-    line-height: 150%;
-  }
+@utility p3-regular {
+  font-family: var(--font-body);
+  font-size: var(--text-p3);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: 150%;
+}
 
-  .p3-bold {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p3);
-    font-weight: theme(fontWeight.bold);
-    line-height: 150%;
-  }
+@utility p3-medium {
+  font-family: var(--font-body);
+  font-size: var(--text-p3);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 150%;
+}
 
-  .p4-regular {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p4);
-    font-weight: theme(fontWeight.normal);
-    line-height: 150%;
-    letter-spacing: 0.02em;
-  }
+@utility p3-bold {
+  font-family: var(--font-body);
+  font-size: var(--text-p3);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 150%;
+}
 
-  .p4-medium {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p4);
-    font-weight: theme(fontWeight.medium);
-    line-height: 150%;
-    letter-spacing: 0.01em;
-  }
+@utility p4-regular {
+  font-family: var(--font-body);
+  font-size: var(--text-p4);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: 150%;
+  letter-spacing: 0.02em;
+}
 
-  .p4-semibold {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p4);
-    font-weight: theme(fontWeight.semibold);
-    line-height: 150%;
-  }
+@utility p4-medium {
+  font-family: var(--font-body);
+  font-size: var(--text-p4);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 150%;
+  letter-spacing: 0.01em;
+}
 
-  .p4-code {
-    font-family: theme(fontFamily.code);
-    font-size: theme(fontSize.p4);
-    /* font-weight: theme(fontWeight.semibold); */
-    line-height: 150%;
-  }
+@utility p4-semibold {
+  font-family: var(--font-body);
+  font-size: var(--text-p4);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 150%;
+}
 
-  .p5-regular {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p5);
-    font-weight: theme(fontWeight.normal);
-    line-height: 150%;
-    letter-spacing: 0.02em;
-  }
+@utility p4-code {
+  font-family: var(--font-code);
+  font-size: var(--text-p4);
+  line-height: 150%;
+}
 
-  .p5-medium {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p5);
-    font-weight: theme(fontWeight.medium);
-    line-height: 150%;
-    letter-spacing: 0.02em;
-  }
+@utility p5-regular {
+  font-family: var(--font-body);
+  font-size: var(--text-p5);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: 150%;
+  letter-spacing: 0.02em;
+}
 
-  .p5-semibold {
-    font-family: theme(fontFamily.body);
-    font-size: theme(fontSize.p5);
-    font-weight: theme(fontWeight.semibold);
-    line-height: 150%;
-    letter-spacing: 0.02em;
-  }
+@utility p5-medium {
+  font-family: var(--font-body);
+  font-size: var(--text-p5);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 150%;
+  letter-spacing: 0.02em;
+}
 
-  .p6-code {
-    font-family: theme(fontFamily.code);
-    font-size: theme(fontSize.p6);
-    font-weight: theme(fontWeight.bold);
-    line-height: 150%;
-    letter-spacing: 0.04em;
-  }
+@utility p5-semibold {
+  font-family: var(--font-body);
+  font-size: var(--text-p5);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 150%;
+  letter-spacing: 0.02em;
+}
 
-  .text-shadow {
-    text-shadow: 0 4px 24px rgba(2, 19, 39, 0.7);
-  }
+@utility p6-code {
+  font-family: var(--font-code);
+  font-size: var(--text-p6);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 150%;
+  letter-spacing: 0.04em;
+}
 
-  .pill-transition {
-    transition: color 0.2s, outline 0.1s;
-  }
+@utility text-shadow {
+  text-shadow: 0 4px 24px rgba(2, 19, 39, 0.7);
+}
 
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+@utility pill-transition {
+  transition: color 0.2s, outline 0.1s;
+}
 
-  .no-scrollbar::-webkit-scrollbar {
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
     display: none;
   }
 }
+
+/* ============================================
+   Container Queries (button group)
+   ============================================ */
 
 .button-group {
   flex-direction: row;
@@ -241,6 +311,10 @@
   }
 }
 
+/* ============================================
+   Stroke container query
+   ============================================ */
+
 .stroke {
   container-type: inline-size;
   container-name: stroke;
@@ -251,4 +325,128 @@
     width: 300px;
     left: -40px;
   }
+}
+
+/* ============================================
+   Rich Text (for markdown content rendering)
+   Ported from RichContent.svelte scoped styles
+   ============================================ */
+
+.rich-text > *:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.rich-text:first-child {
+  margin-top: 0;
+}
+
+.rich-text p {
+  font-family: var(--font-body);
+  font-size: var(--text-p4);
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.rich-text li {
+  font-family: var(--font-body);
+  font-size: var(--text-p4);
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+  padding-left: 2px;
+}
+
+.rich-text li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.rich-text a {
+  color: var(--color-turquoise-200);
+}
+
+.rich-text a:hover {
+  color: var(--color-turquoise-100);
+}
+
+.rich-text h1,
+.rich-text h2,
+.rich-text h3,
+.rich-text h4 {
+  color: var(--color-grayscale-100);
+}
+
+.rich-text h1:not(:first-child),
+.rich-text h2:not(:first-child),
+.rich-text h3:not(:first-child),
+.rich-text h4:not(:first-child) {
+  margin-block: 64px 32px;
+}
+
+.rich-text h1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.rich-text h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.rich-text h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.rich-text ul,
+.rich-text ol {
+  list-style-position: outside;
+}
+
+.rich-text ol {
+  list-style: decimal;
+  margin-left: 32px;
+}
+
+.rich-text ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.rich-text figure img {
+  margin: 0 auto 0.5rem;
+}
+
+.rich-text figure figcaption {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--text-p5);
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.rich-text code {
+  border-radius: 1rem;
+  padding: 1.5rem !important;
+  border: 1px solid hsl(207deg 45% 13%);
+}
+
+.rich-text pre {
+  border-radius: 1rem;
+  padding: 1.5rem !important;
+  border: 1px solid hsl(207deg 45% 13%);
+}
+
+.post .rich-text a {
+  text-decoration: underline;
 }

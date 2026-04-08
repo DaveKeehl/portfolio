@@ -1,0 +1,41 @@
+---
+import Section from '@components/Section.astro';
+import Button from '@components/Button.astro';
+
+interface Props {
+  heading: string;
+  image: { url: string; alt: string };
+  button: string;
+  content: string;
+}
+
+const { heading, image, button, content } = Astro.props;
+---
+
+<div data-section="about">
+  <Section heading={heading} icon="HandWaving" headingGap="small" id="about" class="bg-about pt-24">
+    <div class="relative flex flex-col gap-10">
+      <div class="p4-regular rich-text rich-text-about w-full text-blue-100 opacity-90 lg:w-9/12">
+        <Fragment set:html={content} />
+      </div>
+      <Button href="/davide_ciulla_cv.pdf" external>{button}</Button>
+      <div class="group absolute top-0 right-0 hidden h-[420px] w-[295px] -rotate-[5.4deg] rounded-2xl mix-blend-lighten outline outline-turquoise-200/[.06] transition-transform duration-300 hover:-rotate-[4deg] lg:block">
+        <div class="absolute top-0 left-0 z-10 h-full w-full bg-about-img transition-opacity duration-300 group-hover:opacity-80" />
+        <img
+          src={image.url}
+          alt={image.alt}
+          class="absolute top-0 left-0 h-full w-full rounded-2xl bg-cover object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-80"
+        />
+      </div>
+    </div>
+  </Section>
+</div>
+
+<style>
+  .rich-text-about :global(a) {
+    text-decoration: underline;
+  }
+  .rich-text-about :global(a:hover) {
+    color: var(--color-grayscale-100);
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import Navbar from './Navbar.astro';
+import Container from './Container.astro';
+import Socials from './Socials.astro';
+
+interface Props {
+  logo: string;
+  sections: { _id: string; name: string }[];
+  socials: { title: string; url: string; icon: string }[];
+}
+
+const { logo, sections, socials } = Astro.props;
+---
+
+<header
+  id="site-header"
+  class="pointer-events-auto sticky top-0 left-0 z-10 w-full translate-y-0 opacity-100 backdrop-blur-[10px] transition-all duration-300 before:absolute before:bottom-0 before:h-px before:w-full before:bg-header before:content-[''] after:pointer-events-none after:absolute after:top-0 after:left-0 after:-z-[1] after:h-full after:w-full after:bg-blue-400 after:opacity-75 after:content-['']"
+>
+  <Container>
+    <div class="flex w-full items-center justify-between py-[18px] text-grayscale-100">
+      <div class="flex flex-none justify-start lg:flex-1">
+        <a href="/" class="flex h-8">
+          <img src={logo} alt="Logo" />
+        </a>
+      </div>
+      <div class="hidden lg:flex">
+        <Navbar {sections} />
+      </div>
+      <div class="flex flex-none justify-end lg:flex-1">
+        <Socials {socials} />
+      </div>
+    </div>
+  </Container>
+  <div class="relative flex w-full justify-center overflow-hidden before:absolute before:top-0 before:h-px before:w-full before:bg-header before:content-[''] lg:hidden">
+    <Navbar {sections} class="w-10/12 overflow-scroll py-[14px] sm:justify-center" />
+  </div>
+</header>
+
+<style>
+  .headerHidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  if (header) {
+    let lastY = 0;
+    let isVisible = true;
+
+    function checkVisibility(y: number): boolean {
+      const TOLERANCE = 0;
+      const dy = lastY - y;
+      lastY = y;
+      if (lastY <= 0) return true;
+      if (Math.abs(dy) <= TOLERANCE) return isVisible;
+      return dy > TOLERANCE;
+    }
+
+    window.addEventListener('scroll', () => {
+      const newVisible = checkVisibility(window.scrollY);
+      if (newVisible !== isVisible) {
+        isVisible = newVisible;
+        if (isVisible) {
+          header.classList.remove('headerHidden');
+        } else {
+          header.classList.add('headerHidden');
+        }
+      }
+    });
+  }
+</script>

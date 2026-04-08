@@ -1,0 +1,38 @@
+---
+import { cva } from 'class-variance-authority';
+
+interface Props {
+  text: string;
+  selected?: boolean;
+  disabled?: boolean;
+}
+
+const { text, selected = false, disabled = false } = Astro.props;
+
+const pill = cva(
+  [
+    'p5-semibold', 'bg-turquoise-100/10', 'text-turquoise-200',
+    'py-2', 'px-5', 'rounded-3xl', 'select-none',
+    'disabled:text-blue-200', 'disabled:bg-turquoise-100/10',
+    'disabled:cursor-not-allowed',
+    'hover:cursor-pointer', 'hover:text-turquoise-100',
+    'focus:outline', 'focus:outline-2', 'focus:outline-turquoise-100/20',
+    'pill-transition',
+  ],
+  {
+    variants: {
+      selected: { true: 'shadow-secondary-btn-focus' },
+      disabled: { true: '' },
+    },
+  }
+);
+---
+
+<p
+  class={pill({ selected, disabled })}
+  data-label={text}
+  role="button"
+  tabindex="0"
+>
+  {text}
+</p>

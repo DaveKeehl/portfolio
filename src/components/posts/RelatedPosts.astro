@@ -1,0 +1,25 @@
+---
+import BlogCards from '@components/BlogCards.astro';
+
+interface PostPreview {
+  _type: string;
+  title: string;
+  slug: string;
+  image: { url: string; alt?: string };
+  excerpt: string;
+}
+
+interface Props {
+  posts: PostPreview[];
+  maxWidth: number;
+}
+
+const { posts, maxWidth } = Astro.props;
+---
+
+{posts.length > 0 && (
+  <div class="my-0 mx-auto mb-40 w-10/12" style={`max-width: ${maxWidth}px`}>
+    <h2 class="h2-bold mb-14">Related posts.</h2>
+    <BlogCards posts={posts} relatedPosts />
+  </div>
+)}

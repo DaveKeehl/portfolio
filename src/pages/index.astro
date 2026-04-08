@@ -1,0 +1,68 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import Hero from '@components/sections/Hero.astro';
+import About from '@components/sections/About.astro';
+import Projects from '@components/sections/Projects.astro';
+import Blog from '@components/sections/Blog.astro';
+import Contact from '@components/sections/Contact.astro';
+import Footer from '@components/sections/Footer.astro';
+import Container from '@components/Container.astro';
+
+import { siteSettings } from '@data/site';
+import { header } from '@data/header';
+import { hero } from '@data/hero';
+import { about } from '@data/about';
+import { projectsSection } from '@data/projects';
+import { blogSection } from '@data/blog';
+import { contact } from '@data/contact';
+import { footer } from '@data/footer';
+---
+
+<BaseLayout
+  title={siteSettings.brandName}
+  description={siteSettings.tagline}
+  openGraph={siteSettings.openGraph}
+>
+  <Header logo={siteSettings.logo} sections={header.sections} socials={header.socials} />
+  <Hero
+    greetings={hero.greetings}
+    heading={hero.heading}
+    description={hero.description}
+    buttons={hero.buttons}
+  />
+  <div class="flex flex-col gap-32 lg:gap-40">
+    <About
+      heading={about.heading}
+      image={about.image}
+      button={about.button}
+      content={about.content}
+    />
+    <Projects heading={projectsSection.heading} projects={projectsSection.projects} />
+    <Blog heading={blogSection.heading} labels={blogSection.labels} posts={blogSection.posts} />
+    <Contact heading={contact.heading} content={contact.content} />
+    <Container class="md:pl-20">
+      <Footer content={footer.content} />
+    </Container>
+  </div>
+</BaseLayout>
+
+<script>
+  // Global IntersectionObserver for section tracking
+  const sections = document.querySelectorAll<HTMLElement>('[data-section]');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionName = (entry.target as HTMLElement).dataset.section;
+          if (sectionName) {
+            document.documentElement.dataset.activeSection = sectionName;
+          }
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+</script>

@@ -1,0 +1,30 @@
+---
+import ProjectCard from '@components/ProjectCard.astro';
+import Section from '@components/Section.astro';
+
+interface Project {
+  title: string;
+  slug: string;
+  image: { url: string; alt?: string };
+  liveButton?: { text: string; url: string } | null;
+  excerpt: string;
+  type: string;
+}
+
+interface Props {
+  heading: string;
+  projects: Project[];
+}
+
+const { heading, projects } = Astro.props;
+---
+
+<div data-section="projects">
+  <Section id="projects" heading={heading} headingGap="large" icon="Fire" class="scroll-pt-8">
+    <div class="grid gap-14">
+      {projects.map((project, idx) => (
+        <ProjectCard project={project} reversed={idx % 2 !== 0} />
+      ))}
+    </div>
+  </Section>
+</div>

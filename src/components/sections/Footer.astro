@@ -1,0 +1,41 @@
+---
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<footer class="relative pt-10 pb-14 before:absolute before:top-0 before:h-px before:w-[50px] before:bg-blue-200 before:content-[''] md:pb-20">
+  <div class="rich-text rich-text-footer text-left text-blue-100">
+    <Fragment set:html={content} />
+  </div>
+</footer>
+
+<style>
+  .rich-text-footer :global(> *:not(:last-child)) {
+    margin-bottom: 0 !important;
+  }
+  .rich-text-footer :global(p) {
+    font-family: var(--font-body);
+    font-size: var(--text-p5);
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.02em;
+  }
+  .rich-text-footer :global(p:last-child) {
+    line-height: 20px;
+  }
+  @media (min-width: 531px) {
+    .rich-text-footer :global(p:last-child) {
+      line-height: 10px;
+    }
+  }
+  .rich-text-footer :global(a) {
+    font-family: var(--font-body);
+    font-size: var(--text-p5);
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: 0.02em;
+  }
+</style>

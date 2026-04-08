@@ -1,0 +1,62 @@
+---
+import BlogCard from './BlogCard.astro';
+import Button from './Button.astro';
+
+interface PostPreview {
+  _type: string;
+  title: string;
+  slug: string;
+  image: { url: string; alt?: string };
+  excerpt: string;
+}
+
+interface Props {
+  posts: PostPreview[];
+  relatedPosts?: boolean;
+  chunkSize?: number;
+}
+
+const { posts, relatedPosts = false, chunkSize = 4 } = Astro.props;
+
+const gridLayout = relatedPosts
+  ? 'lg:grid-cols-relatedBlogPosts'
+  : 'lg:grid-cols-blogPosts';
+---
+
+<div class={`grid grid-cols-1 ${gridLayout} gap-x-5 gap-y-14`} data-blog-cards>
+  {posts.map((card, idx) => (
+    <div data-card-index={idx} class={idx >= chunkSize ? 'hidden' : ''}>
+      <BlogCard {...card} />
+    </div>
+  ))}
+</div>
+
+{posts.length > chunkSize && (
+  <div class="mt-20 grid place-items-center" data-load-more-container>
+    <Button data-action="load-more">Load more posts</Button>
+  </div>
+)}
+
+<script define:vars={{ chunkSize, totalPosts: posts.length }}>
+  const container = document.querySelector('[data-blog-cards]');
+  const loadMoreBtn = document.querySelector('[data-action="load-more"]');
+  const loadMoreContainer = document.querySelector('[data-load-more-container]');
+
+  if (container && loadMoreBtn) {
+    let cursor = chunkSize;
+
+    loadMoreBtn.addEventListener('click', () => {
+      cursor += chunkSize;
+      const cards = container.querySelectorAll('[data-card-index]');
+      cards.forEach((card) => {
+        const index = parseInt(card.getAttribute('data-card-index') || '0');
+        if (index < cursor) {
+          card.classList.remove('hidden');
+        }
+      });
+      if (cursor >= totalPosts && loadMoreContainer) {
+        loadMoreContainer.classList.add('hidden');
+      }
+    });
+  }
+</script>

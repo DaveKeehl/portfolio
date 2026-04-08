@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteSettings } from '@data/site';
+---
+
+<BaseLayout title="404 | Davide Ciulla" description="Page not found" openGraph={siteSettings.openGraph}>
+  <div class="flex min-h-screen items-center justify-center">
+    <h1 class="h1-bold">404 : Page not found</h1>
+  </div>
+</BaseLayout>

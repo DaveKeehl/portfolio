@@ -1,0 +1,79 @@
+---
+import { cva } from 'class-variance-authority';
+
+interface Props {
+  href?: string;
+  external?: boolean;
+  variant?: 'primary' | 'secondary';
+  size?: 'small' | 'large';
+  disabled?: boolean;
+  class?: string;
+  style?: string;
+  'data-action'?: string;
+}
+
+const {
+  href,
+  external = false,
+  variant = 'primary',
+  size = 'small',
+  disabled = false,
+  class: className = '',
+  style = '',
+  'data-action': dataAction,
+} = Astro.props;
+
+const button = cva(
+  [
+    'flex', 'justify-center', 'items-center', 'gap-2.5',
+    'rounded-[10px]', 'h-fit', 'text-center', 'w-full',
+    'border', 'border-turquoise-200/5', 'transition',
+    'md:w-max', 'outline-none',
+  ],
+  {
+    variants: {
+      intent: {
+        primary: [
+          'bg-turquoise-200', 'text-blue-300',
+          'hover:bg-turquoise-100', 'active:bg-turquoise-200',
+          'disabled:bg-grayscale-100', 'disabled:text-blue-200',
+        ],
+        secondary: [
+          'bg-turquoise-100/10', 'backdrop-blur-2xl', 'text-turquoise-200',
+          'hover:text-turquoise-100', 'active:bg-turquoise-100/20',
+          'active:text-turquoise-100',
+          'disabled:bg-grayscale-100', 'disabled:text-blue-200',
+        ],
+      },
+      size: {
+        small: 'text-[18px] font-semibold leading-[27px] py-2.5 px-5',
+        large: 'text-[20px] font-bold leading-[30px] py-3 px-5',
+      },
+    },
+  }
+);
+
+const classes = `${className} button ${button({ intent: variant, size })}`.trim();
+---
+
+{href ? (
+  <a
+    {href}
+    rel={external ? 'noopener noreferrer' : undefined}
+    target={external ? '_blank' : undefined}
+    class={classes}
+    {style}
+    data-action={dataAction}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    class={classes}
+    {style}
+    {disabled}
+    data-action={dataAction}
+  >
+    <slot />
+  </button>
+)}

@@ -1,0 +1,94 @@
+---
+import Pill from '@components/Pill.astro';
+import Section from '@components/Section.astro';
+import BlogCards from '@components/BlogCards.astro';
+import { deCamelCase } from '@utils/functions';
+
+interface PostPreview {
+  _type: string;
+  title: string;
+  slug: string;
+  image: { url: string; alt?: string };
+  excerpt: string;
+}
+
+interface Props {
+  heading: string;
+  labels: string[];
+  posts: PostPreview[];
+}
+
+const { heading, labels, posts } = Astro.props;
+const cleanLabels = labels.map((label) => deCamelCase(label));
+---
+
+<div data-section="blog">
+  <Section id="blog" heading={heading} headingGap="small" icon="Quotes" class="scroll-pt-8">
+    <div class="mb-16 flex flex-wrap items-center gap-3" data-pill-container>
+      {cleanLabels.map((label) => (
+        <Pill text={label} />
+      ))}
+    </div>
+    <BlogCards posts={posts} />
+  </Section>
+</div>
+
+<script>
+  const pillContainer = document.querySelector('[data-pill-container]');
+  const selectedLabels = new Set<string>();
+
+  if (pillContainer) {
+    pillContainer.querySelectorAll<HTMLElement>('[data-label]').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const label = pill.dataset.label!;
+
+        if (selectedLabels.has(label)) {
+          selectedLabels.delete(label);
+          pill.classList.remove('shadow-secondary-btn-focus');
+        } else {
+          selectedLabels.add(label);
+          pill.classList.add('shadow-secondary-btn-focus');
+        }
+
+        // Filter cards
+        const cards = document.querySelectorAll<HTMLElement>('[data-card-index]');
+        const blogCards = document.querySelector('[data-blog-cards]');
+        if (!blogCards) return;
+
+        // Get all card containers and check their data-type (from the inner BlogCard)
+        cards.forEach((card) => {
+          const typeEl = card.querySelector('[data-type]');
+          if (!typeEl) return;
+          const type = (typeEl as HTMLElement).dataset.type;
+
+          if (selectedLabels.size === 0 || (type && selectedLabels.has(type))) {
+            card.classList.remove('filter-hidden');
+          } else {
+            card.classList.add('filter-hidden');
+          }
+        });
+
+        // Reset load more cursor when filtering
+        updateLoadMore();
+      });
+    });
+  }
+
+  function updateLoadMore() {
+    const loadMoreContainer = document.querySelector('[data-load-more-container]');
+    const visibleCards = document.querySelectorAll('[data-card-index]:not(.filter-hidden)');
+    if (loadMoreContainer) {
+      if (visibleCards.length <= 4) {
+        loadMoreContainer.classList.add('hidden');
+      } else {
+        loadMoreContainer.classList.remove('hidden');
+      }
+    }
+  }
+</script>
+
+<style>
+  :global(.filter-hidden) {
+    display: none !important;
+  }
+</style>

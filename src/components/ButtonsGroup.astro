@@ -1,0 +1,28 @@
+---
+import Button from './Button.astro';
+
+interface ButtonConfig {
+  text: string;
+  href: string;
+  external: boolean;
+}
+
+interface Props {
+  primary: ButtonConfig;
+  secondary: ButtonConfig;
+  size: 'small' | 'large';
+}
+
+const { primary, secondary, size } = Astro.props;
+---
+
+<div class="button-group">
+  <div class="grid grid-cols-1 gap-4 md:flex">
+    <Button variant="primary" {size} href={primary.href} external={primary.external}>
+      {primary.text}
+    </Button>
+    <Button variant="secondary" {size} href={secondary.href} external={secondary.external}>
+      {secondary.text}
+    </Button>
+  </div>
+</div>

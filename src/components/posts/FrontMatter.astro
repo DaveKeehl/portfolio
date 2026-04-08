@@ -1,0 +1,32 @@
+---
+import BlurredCircle from '@components/BlurredCircle.astro';
+import Label from '@components/Label.astro';
+import readTime from '@utils/readTimeEstimate';
+
+interface Props {
+  updatedAt: string;
+  content: string;
+  title: string;
+  label: string;
+}
+
+const { updatedAt, content, title, label } = Astro.props;
+
+const date = new Date(updatedAt);
+const day = date.getDate();
+const month = date.toLocaleString('default', { month: 'short' });
+const formattedDate = `${day} ${month} ${date.getFullYear()}`;
+
+const estimatedReadDuration = readTime(content);
+---
+
+<div class="relative flex w-full flex-col border-b-[1px] border-b-blue-100/[4%]">
+  <div class="flex w-full flex-col items-center gap-4 px-10 pt-16 pb-36 xs:pb-48 sm:pb-60 md:pt-24 md:pb-64 lg:pt-32 lg:pb-64">
+    <Label>{label}</Label>
+    <h1 class="h2-bold md:h1-bold text-center">{title}</h1>
+    <p class="p5-regular uppercase text-blue-100">
+      {formattedDate} • {Math.ceil(estimatedReadDuration.duration)} MIN READ
+    </p>
+  </div>
+  <BlurredCircle class="max-w-full" />
+</div>

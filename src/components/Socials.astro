@@ -1,0 +1,26 @@
+---
+interface Social {
+  title: string;
+  url: string;
+  icon: string;
+}
+
+interface Props {
+  socials: Social[];
+}
+
+const { socials } = Astro.props;
+---
+
+<div class="flex gap-3">
+  {socials.map((social) => (
+    <a
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex transition-opacity hover:opacity-80"
+    >
+      <img src={social.icon} alt={`${social.title} logo`} />
+    </a>
+  ))}
+</div>
