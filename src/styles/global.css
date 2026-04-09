@@ -444,7 +444,15 @@
 .rich-text pre {
   border-radius: 1rem;
   padding: 1.5rem !important;
+  overflow-x: auto;
   border: 1px solid hsl(207deg 45% 13%);
+}
+
+.rich-text pre code {
+  display: block;
+  padding: 0 !important;
+  border-radius: 0;
+  border: none;
 }
 
 .post .rich-text a {
