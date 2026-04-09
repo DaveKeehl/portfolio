@@ -17,7 +17,7 @@ nutshell: "<p>F1 Insight is a visual analytics web application, where you can se
 
 I’ve always been a Formula 1 fan, but in 2018 something clicked, and I became very geeky about it, never missing a qualifying session or a Sunday race. One of my favorite things is to look at the updated driver and constructor standings after each race, to see any changes from weekend to weekend.
 
-However, trying to find trends and possible soon-to-happen rank swaps is tedious when looking at tables on the [official Formula 1 website](undefined), and at some point I began fantasizing about creating a platform that would make it easy for me (and other people) to geek out about this sport.
+However, trying to find trends and possible soon-to-happen rank swaps is tedious when looking at tables on the [official Formula 1 website](https://www.formula1.com/), and at some point I began fantasizing about creating a platform that would make it easy for me (and other people) to geek out about this sport.
 
 My idea was simple, I wanted to make it super easy for people to quickly get access to at least the following information:
 
@@ -45,13 +45,18 @@ The race results page (see Figure 1) would have had the qualifying and race resu
 
 With all that, I created mockups for each page and I moved to the development phase.
 
+<figure><img src="/images/a61c7b69bd330da03fd0fe4c1241d500823c73e6-2880x2048.jpg" alt="Race results page of F1 Insights, with a sidebar on the left containing the list of races and a table on the right with the results of the selected race"><figcaption>Figure 1. Race results page</figcaption></figure>
 
+<figure><img src="/images/1033a2c27a52f3e9d36f6c502d2cec059725c11e-2880x2048.jpg" alt="Drives page of F1 Insights, with a sidebar on the left containing the list of drivers and on the right with the image of the selected driver with the corresponding data"><figcaption>Figure 2. Drivers page</figcaption></figure>
 
+<figure><img src="/images/d66eb278eaa11ead545ebad970bfd0d8ca039e41-2880x2048.jpg" alt="Teams page of F1 Insights, with a sidebar on the left containing the list of teams and on the right the image of the team drivers, along with the team data"><figcaption>Figure 3. Teams page</figcaption></figure>
+
+<figure><img src="/images/ebea882406aad8d731adb077ef872429a8e62434-2880x2048.jpg" alt="Standings page of F1 Insights, with a large table showing the driver standings"><figcaption>Figure 4. Standings page</figcaption></figure>
 
 
 ## The development journey
 
-The development of F1 Insight actually didn’t start in 2022, but rather in 2020 right after I got my Computer Science bachelor’s degree. At the time, I knew [React](undefined) well, but I felt behind in terms of tooling. I was still using plain JavaScript and [Create React App](undefined), and I wanted to learn something new, so I decided to use this project as an opportunity to learn [TypeScript](undefined). I absolutely loved how easy it was to find errors early, and how convenient it was to use types to specify components props. That summer I went as far as creating almost all pages, but then September came, I started a master’s degree at uni and I had to stop the development for lack of time.
+The development of F1 Insight actually didn’t start in 2022, but rather in 2020 right after I got my Computer Science bachelor’s degree. At the time, I knew [React](https://reactjs.org/) well, but I felt behind in terms of tooling. I was still using plain JavaScript and [Create React App](https://create-react-app.dev/), and I wanted to learn something new, so I decided to use this project as an opportunity to learn [TypeScript](https://www.typescriptlang.org/). I absolutely loved how easy it was to find errors early, and how convenient it was to use types to specify components props. That summer I went as far as creating almost all pages, but then September came, I started a master’s degree at uni and I had to stop the development for lack of time.
 
 Between 2020 and 2022 many things have changed in the JavaScript ecosystem, such that when I was about to get my master’s degree, I took a look at the F1 Insight codebase and I just knew that I had to start over. Not because the code was necessarily bad, but because too many libraries, as well as the React world itself had changed too much and there were now just better options in general.
 
@@ -59,17 +64,17 @@ So I decided to start the development phase from scratch, and to pick a better s
 
 - TypeScript: the main high-level programming language
 
-- [Next.js](undefined) (NEW - replaced Create React App): the rendering framework
+- [Next.js](https://nextjs.org/) (NEW - replaced Create React App): the rendering framework
 
-- [Tailwind](undefined) (NEW - replaced [styled-components](undefined)): for styling
+- [Tailwind](https://tailwindcss.com/) (NEW - replaced [styled-components](https://styled-components.com/)): for styling
 
-- [nivo](undefined): to create the graphs
+- [nivo](https://nivo.rocks/): to create the graphs
 
-- [Ergast API](undefined): to fetch the Formula 1 data
+- [Ergast API](https://ergast.com/mrd/): to fetch the Formula 1 data
 
-- [cheerio](undefined) (NEW): to scrape data from the web
+- [cheerio](https://cheerio.js.org/) (NEW): to scrape data from the web
 
-The biggest changes between the 2020 and the 2022 versions are Next.js and Tailwind. Next.js is arguably a better choice than Create React App, because of its compilation speed ([Rust](undefined) to the rescue), built-in router, multiple rendering strategies, API routes and other smaller (but very appreciated) features like built-in optimizations for images, fonts and scripts. On the other hand, Tailwind replaced styled-components (which I still like), because in the last year I have been preferring other options that make it easier to create variants and multiple themes, like [cva](undefined).
+The biggest changes between the 2020 and the 2022 versions are Next.js and Tailwind. Next.js is arguably a better choice than Create React App, because of its compilation speed ([Rust](https://www.rust-lang.org/) to the rescue), built-in router, multiple rendering strategies, API routes and other smaller (but very appreciated) features like built-in optimizations for images, fonts and scripts. On the other hand, Tailwind replaced styled-components (which I still like), because in the last year I have been preferring other options that make it easier to create variants and multiple themes, like [cva](https://github.com/joe-bell/cva).
 
 ## Scraping the web
 

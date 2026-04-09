@@ -21,21 +21,21 @@ That was exactly what I wanted to have on my portfolio, when I started developin
 
 ## The problem
 
-Around the time when I was designing the latest version of my portfolio website in mid-2021, I discovered [Svelte](undefined) and I was completely blown away. I had always been a huge [React](undefined) fan, but I very much enjoyed the minimal approach that Svelte had, because it made me remember how it was like developing for the web in 2014 when I first learned how to use HTML, CSS and JavaScript. Back in the day, working with web technologies was not necessarily easier, but those where for sure simpler times, as the web-space was not as saturated as it is today.
+Around the time when I was designing the latest version of my portfolio website in mid-2021, I discovered [Svelte](https://svelte.dev/) and I was completely blown away. I had always been a huge [React](https://reactjs.org/) fan, but I very much enjoyed the minimal approach that Svelte had, because it made me remember how it was like developing for the web in 2014 when I first learned how to use HTML, CSS and JavaScript. Back in the day, working with web technologies was not necessarily easier, but those where for sure simpler times, as the web-space was not as saturated as it is today.
 
 So I decided to make a commitment and code the new version of my portfolio with Svelte. However, I had not considered the fact that the ecosystem was not as massive as it is with React, and when I looked around to find libraries that would allow me to add the reveal on scroll effect… I was underwhelmed.
 
-Don’t get me wrong, I found results, but they were not quite what I had in mind, both in terms of developer experience, and of the underlying reveal process. In fact, I noticed that other authors had decided to create their own library using Svelte [slots](undefined) (similar to [React children](undefined)). There is nothing wrong with that approach, but in my opinion it goes a bit against one of Svelte's core purpose: writing more concise code. Having to wrap every to-be-transitioned component adds at least 2 extra lines of code each time, making your files unnecessarily bloated for such a simple add-on.
+Don’t get me wrong, I found results, but they were not quite what I had in mind, both in terms of developer experience, and of the underlying reveal process. In fact, I noticed that other authors had decided to create their own library using Svelte [slots](https://svelte.dev/docs#template-syntax-slot) (similar to [React children](https://reactjs.org/docs/composition-vs-inheritance.html)). There is nothing wrong with that approach, but in my opinion it goes a bit against one of Svelte's core purpose: writing more concise code. Having to wrap every to-be-transitioned component adds at least 2 extra lines of code each time, making your files unnecessarily bloated for such a simple add-on.
 
-Some other people also managed to pull that effect off, by attaching event listeners to the window object in order to transition the elements, but in terms of performance this approach [does not scale very well](undefined).
+Some other people also managed to pull that effect off, by attaching event listeners to the window object in order to transition the elements, but in terms of performance this approach [does not scale very well](https://itnext.io/1v1-scroll-listener-vs-intersection-observers-469a26ab9eb6).
 
 ## The solution
 
-My idea was to use Svelte [actions](undefined) instead of slots, which are functions you can attach to a DOM element and that allow you to get access to that particular element, and hook into its lifecycle. All you have to do to use an action is to write use:<action_name> (e.g. use:reveal) in an HTML tag and you are good to go.
+My idea was to use Svelte [actions](https://svelte.dev/docs#template-syntax-element-directives-use-action) instead of slots, which are functions you can attach to a DOM element and that allow you to get access to that particular element, and hook into its lifecycle. All you have to do to use an action is to write use:<action_name> (e.g. use:reveal) in an HTML tag and you are good to go.
 
 The biggest advantage of Svelte actions, is that they take up considerably fewer lines of code, and since I started working on this project in 2021 I haven’t encountered any obstacle.
 
-I also wanted Svelte Reveal to not degrade the performance of the website or web application where it is used on, so I decided to leverage the [Intersection Observer](undefined), which is not only very flexible in its API, but is first and foremost great for performance.
+I also wanted Svelte Reveal to not degrade the performance of the website or web application where it is used on, so I decided to leverage the [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API), which is not only very flexible in its API, but is first and foremost great for performance.
 
 ```html
 <!-- Code Figure 1. A code snippet showing a basic Svelte Reveal example -->
@@ -63,13 +63,13 @@ I also wanted Svelte Reveal to not degrade the performance of the website or web
 </Saos>
 ```
 
-Code figures 1 and 2 show the same reveal on scroll example written with Svelte Reveal and [Saos](undefined) (another reveal on scroll library for Svelte, which uses slots instead). In this short and contrived example, the Svelte Reveal code snippet is only 2 LOCs shorter, but it’s fairly easy to imagine how that number could grow in a large-scale project with tons of animations.
+Code figures 1 and 2 show the same reveal on scroll example written with Svelte Reveal and [Saos](https://github.com/shiryel/saos) (another reveal on scroll library for Svelte, which uses slots instead). In this short and contrived example, the Svelte Reveal code snippet is only 2 LOCs shorter, but it’s fairly easy to imagine how that number could grow in a large-scale project with tons of animations.
 
 ## The development process
 
 Svelte Reveal is an open-source project, but it wasn’t always like that. When I first started playing with Svelte actions and reveal on scroll animations in my portfolio, Svelte Reveal was just a file living inside the portfolio repository (it didn’t even have a proper name, it was just called reveal). However, after using it on more and more elements, I began adding more and more options, and I realized that that file had become too big, and it was time to transfer it to its own repository.
 
-After detaching it from my portfolio’s repository, I worked on it for roughly 4 extra months, before I was ready to make the project open-source and publish it on [NPM](undefined), so that other people could make use of it too.
+After detaching it from my portfolio’s repository, I worked on it for roughly 4 extra months, before I was ready to make the project open-source and publish it on [NPM](https://www.npmjs.com/package/svelte-reveal), so that other people could make use of it too.
 
 The development of Svelte Reveal is always a little slow, because it started as a side-project while studying at university, where spare time isn’t really a thing. However, every now and then I manage to do some bit of work and eventually when I have enough changes to justify a new release, I push it to the NPM registry.
 
@@ -129,21 +129,21 @@ All these properties can be passed to the Svelte Reveal action via an object, as
 
 As explained in the previous section, Svelte Reveal is at its core just a DOM manipulation library, and it doesn’t need any particular tools and technologies to achieve its goal. In fact, I only use the following ones:
 
-- [TypeScript](undefined): the high-level programming language used in this project
+- [TypeScript](https://www.typescriptlang.org/): the high-level programming language used in this project
 
 - HTML: to create the little markup that I inject in the page
 
 - CSS: to style the injected markup
 
-- [Jest](undefined): testing framework to make sure that the functions I create do what I expect them to do
+- [Jest](https://jestjs.io/): testing framework to make sure that the functions I create do what I expect them to do
 
-- [SonarCloud](undefined): for code quality checks
+- [SonarCloud](https://www.sonarsource.com/products/sonarcloud/): for code quality checks
 
-- [esbuild](undefined): to transpile the TypeScript files into JavaScript, and to create the final bundle
+- [esbuild](https://esbuild.github.io/): to transpile the TypeScript files into JavaScript, and to create the final bundle
 
-- [Docker](undefined): to create an image that can be used to develop Svelte Reveal both from macOS and Windows, without having to worry about missing dependencies
+- [Docker](https://www.docker.com/): to create an image that can be used to develop Svelte Reveal both from macOS and Windows, without having to worry about missing dependencies
 
-- [GitHub Actions](undefined): for Continuous Integration (CI) and Continuous Delivery (CD)
+- [GitHub Actions](https://github.com/features/actions): for Continuous Integration (CI) and Continuous Delivery (CD)
 
 ## Learning from your mistakes
 

@@ -83,15 +83,15 @@ At the end of this preliminary design analysis, I had collected enough feedback 
 
 On the development side of things, the 2020 version was very simple and it comprised of the following few technologies:
 
-- [Gatsby](undefined): to compose the user interface with [React](undefined) components
+- [Gatsby](https://www.gatsbyjs.com/): to compose the user interface with [React](https://reactjs.org/) components
 
-- [SCSS](undefined): for styling
+- [SCSS](https://sass-lang.com/): for styling
 
-In 2020, when I chose Gatsby and SCSS, I was using [Wordpress](undefined) for some projects, and Gatsby was very appealing to me because it had lots and lots of plugins that were easy to add and required little configuration. I also liked SCSS quite a bit, because it allowed me to nest selectors and get access to a wide range of built-in modules - such as sass:colors - that were very handy to mix and adjust colors.
+In 2020, when I chose Gatsby and SCSS, I was using [Wordpress](https://wordpress.org/) for some projects, and Gatsby was very appealing to me because it had lots and lots of plugins that were easy to add and required little configuration. I also liked SCSS quite a bit, because it allowed me to nest selectors and get access to a wide range of built-in modules - such as sass:colors - that were very handy to mix and adjust colors.
 
-Despite its positives, I wouldn’t pick Gatsby again because it forces you to use [GraphQL](undefined) for pretty much anything related to data. I don’t mind GraphQL and I think it’s an amazing query language, but I felt uncomfortable using it for everything, and at some point it just became a burden.
+Despite its positives, I wouldn’t pick Gatsby again because it forces you to use [GraphQL](https://graphql.org/) for pretty much anything related to data. I don’t mind GraphQL and I think it’s an amazing query language, but I felt uncomfortable using it for everything, and at some point it just became a burden.
 
-Regarding SCSS, I would pick it anytime over vanilla CSS, but I currently enjoy CSS-in-JS and utility classes frameworks like [Tailwind](undefined) more, because it’s easier to encode certain behaviors when the bridge between JS and CSS is very thin, they have a really good optimization layer and they avoid ending up with colliding CSS class names.
+Regarding SCSS, I would pick it anytime over vanilla CSS, but I currently enjoy CSS-in-JS and utility classes frameworks like [Tailwind](https://tailwindcss.com/) more, because it’s easier to encode certain behaviors when the bridge between JS and CSS is very thin, they have a really good optimization layer and they avoid ending up with colliding CSS class names.
 
 Hence, yet again, it was clear I was also feeling the need to change the technologies I was using.
 
@@ -143,8 +143,10 @@ During the design phase I often referenced the feedback notes (both positive and
 
 In addition to all that I also decided to add a dedicated blog section for case studies and articles, as well as a footer.
 
+<figure><img src="/images/63377f79b252b21325eb18f823a061f43075f991-800x413.gif" alt="GIF of the 2020 portfolio website"><figcaption>Previous portfolio version (2020)</figcaption></figure>
 
+<figure><img src="/images/27595e7a00f1f8f5fda3e60c8af0bae4ced73eae-800x413.gif" alt="GIF of the 2022 portfolio website"><figcaption>Current portfolio version (2022)</figcaption></figure>
 
 ### Technologies
 
-For the 2022 version, I decided to switch from Gatsby to [SvelteKit](undefined) since in the past 2 years I’ve become a huge Svelte fan. I still like React a lot, but now I cherry pick the right framework/UI library for the type of project I’m about to work on. For styling, I moved from SCSS to Tailwind, which I enjoy a lot. I also moved all my content from being hard-coded in the codebase to [Sanity](undefined), a headless CMS that allows me to edit and add content with a lot more ease.
+For the 2022 version, I decided to switch from Gatsby to [SvelteKit](https://kit.svelte.dev/) since in the past 2 years I’ve become a huge Svelte fan. I still like React a lot, but now I cherry pick the right framework/UI library for the type of project I’m about to work on. For styling, I moved from SCSS to Tailwind, which I enjoy a lot. I also moved all my content from being hard-coded in the codebase to [Sanity](https://www.sanity.io/), a headless CMS that allows me to edit and add content with a lot more ease.
