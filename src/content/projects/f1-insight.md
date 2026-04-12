@@ -13,7 +13,7 @@ technologies:
     { "title": "cheerio", "url": "https://cheerio.js.org/" },
     { "title": "Figma", "url": "https://www.figma.com/" },
   ]
-image: "/images/f1-insight-90e8ba60ea966599f5ef55cd051eae8b23fb2a1a-1441x720.png"
+image: "/images/f1-insight.png"
 imageAlt: "F1 Insight logo"
 liveButton: { "text": "Visit application", "url": "https://f1-insight.com" }
 repositoryButton:
@@ -58,13 +58,13 @@ The race results page (see Figure 1) would have had the qualifying and race resu
 
 With all that, I created mockups for each page and I moved to the development phase.
 
-<figure><img src="/images/a61c7b69bd330da03fd0fe4c1241d500823c73e6-2880x2048.jpg" alt="Race results page of F1 Insights, with a sidebar on the left containing the list of races and a table on the right with the results of the selected race"><figcaption>Figure 1. Race results page</figcaption></figure>
+<figure><img src="/images/f1-insight-race.jpg" alt="Race results page of F1 Insights, with a sidebar on the left containing the list of races and a table on the right with the results of the selected race"><figcaption>Figure 1. Race results page</figcaption></figure>
 
-<figure><img src="/images/1033a2c27a52f3e9d36f6c502d2cec059725c11e-2880x2048.jpg" alt="Drives page of F1 Insights, with a sidebar on the left containing the list of drivers and on the right with the image of the selected driver with the corresponding data"><figcaption>Figure 2. Drivers page</figcaption></figure>
+<figure><img src="/images/f1-insight-driver.jpg" alt="Drives page of F1 Insights, with a sidebar on the left containing the list of drivers and on the right with the image of the selected driver with the corresponding data"><figcaption>Figure 2. Drivers page</figcaption></figure>
 
-<figure><img src="/images/d66eb278eaa11ead545ebad970bfd0d8ca039e41-2880x2048.jpg" alt="Teams page of F1 Insights, with a sidebar on the left containing the list of teams and on the right the image of the team drivers, along with the team data"><figcaption>Figure 3. Teams page</figcaption></figure>
+<figure><img src="/images/f1-insight-team.jpg" alt="Teams page of F1 Insights, with a sidebar on the left containing the list of teams and on the right the image of the team drivers, along with the team data"><figcaption>Figure 3. Teams page</figcaption></figure>
 
-<figure><img src="/images/ebea882406aad8d731adb077ef872429a8e62434-2880x2048.jpg" alt="Standings page of F1 Insights, with a large table showing the driver standings"><figcaption>Figure 4. Standings page</figcaption></figure>
+<figure><img src="/images/f1-insight-standings.jpg" alt="Standings page of F1 Insights, with a large table showing the driver standings"><figcaption>Figure 4. Standings page</figcaption></figure>
 
 ## The development journey
 

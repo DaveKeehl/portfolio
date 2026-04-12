@@ -1,7 +1,7 @@
 ---
 title: "Launching my new portfolio!"
 excerpt: "It's been a long road, but I'm so excited to finally be able to share the latest (2022) version of my portfolio with the world!"
-image: "/images/launching-my-new-portfolio-cd59b2d21dfe7ff917a765e8b5114856f68b0f22-1200x800.png"
+image: "/images/launching-my-new-portfolio.png"
 imageAlt: "Rocket ship launching"
 updatedAt: "2023-02-21T10:38:39Z"
 ---

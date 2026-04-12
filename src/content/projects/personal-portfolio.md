@@ -154,9 +154,9 @@ During the design phase I often referenced the feedback notes (both positive and
 
 In addition to all that I also decided to add a dedicated blog section for case studies and articles, as well as a footer.
 
-<figure><img src="/images/63377f79b252b21325eb18f823a061f43075f991-800x413.gif" alt="GIF of the 2020 portfolio website"><figcaption>Previous portfolio version (2020)</figcaption></figure>
+<figure><img src="/images/portfolio-old.gif" alt="GIF of the 2020 portfolio website"><figcaption>Previous portfolio version (2020)</figcaption></figure>
 
-<figure><img src="/images/27595e7a00f1f8f5fda3e60c8af0bae4ced73eae-800x413.gif" alt="GIF of the 2022 portfolio website"><figcaption>Current portfolio version (2022)</figcaption></figure>
+<figure><img src="/images/portfolio-new.gif" alt="GIF of the 2022 portfolio website"><figcaption>Current portfolio version (2022)</figcaption></figure>
 
 ### Technologies
 

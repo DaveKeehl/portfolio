@@ -9,7 +9,7 @@ technologies:
     { "title": "Sass", "url": "https://sass-lang.com/" },
     { "title": "Figma", "url": "https://www.figma.com/" },
   ]
-image: "/images/stack-and-heap-diagram-98d19b344d06d1a39c38a90ea9d7bf2ed3097907-1920x930.png"
+image: "/images/stack-and-heap-diagram.png"
 imageAlt: "Stack and Heap Diagram logo"
 liveButton:
   { "text": "Visit application", "url": "https://stackandheap.netlify.app/" }

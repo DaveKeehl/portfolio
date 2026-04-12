@@ -13,7 +13,7 @@ technologies:
     { "title": "GitHub Actions", "url": "https://github.com/features/actions" },
     { "title": "Figma", "url": "https://www.figma.com/" },
   ]
-image: "/images/fonts-jar-89e03436efd62c453c1ca6ec730405743b190ddd-1920x960.png"
+image: "/images/fonts-jar.png"
 imageAlt: "Fonts Jar logo"
 liveButton:
   {
@@ -66,15 +66,15 @@ When I started to think about the extension's name and logo, the first thing tha
 
 The background colors are shamelessly taken from the Google Fonts logo, but are used in a 4-point gradient that looks very colorful, fresh and modern.
 
-<figure><img src="/images/1c871f3c77344e06f259b0198a75a92d59648f56-512x512.png" alt="Fonts Jar logo" style="max-width: 128px"><figcaption>Figure 1. The Fonts Jar logo</figcaption></figure>
+<figure><img src="/images/fonts-jar-logo.png" alt="Fonts Jar logo" style="max-width: 128px"><figcaption>Figure 1. The Fonts Jar logo</figcaption></figure>
 
 ### Injected button
 
 Since I wanted the button to integrate well in the pages where it's injected, its design process was fairly easy. All I had to was to replicate the style of other buttons in the page (or in the website), and to come up with a style variant for the button in its toggled state (when the user clicks on it, and the text changes from "add to favorites" to "remove from favorites"). Figures 2 and 3 show the Roboto page on Google Fonts, with the Fonts Jar button injected next to the native "Download family" button.
 
-<figure><img src="/images/9d2b5604354b6428c739c025554f8643e70bbc07-2620x1808.png" alt="The Roboto page on Google Fonts"><figcaption>Figure 2. The Roboto page on Google Fonts, with the injected button in its default state ("Add to favorites")</figcaption></figure>
+<figure><img src="/images/fonts-jar-injected-button-inactive.png" alt="The Roboto page on Google Fonts"><figcaption>Figure 2. The Roboto page on Google Fonts, with the injected button in its default state ("Add to favorites")</figcaption></figure>
 
-<figure><img src="/images/30228011374f1a46e4720af92fa58918aa53d888-2620x1808.png" alt="The Roboto page on Google Fonts"><figcaption>Figure 3. The Roboto page on Google Fonts, with the injected button in its toggled state ("Remove from favorites")</figcaption></figure>
+<figure><img src="/images/fonts-jar-injected-button.png" alt="The Roboto page on Google Fonts"><figcaption>Figure 3. The Roboto page on Google Fonts, with the injected button in its toggled state ("Remove from favorites")</figcaption></figure>
 
 ### Extension popup
 
@@ -90,13 +90,13 @@ The header is a simple brand component that contains the logo, the extension's n
 
 As shown in Figure 4, hovering on a font reveals 2 buttons: one to assign the selected font to an already created collection, and another one to remove the selected font from the favorites list.
 
-<figure><img src="/images/89a788621bc30718f3fdf58171b01ec4d60fc81f-1436x1204.png" alt="Fonts Jar's popup"><figcaption>Figure 4. The extension popup, annotated with the name of each main part of its UI.</figcaption></figure>
+<figure><img src="/images/fonts-jar-popup.png" alt="Fonts Jar's popup"><figcaption>Figure 4. The extension popup, annotated with the name of each main part of its UI.</figcaption></figure>
 
-<figure><img src="/images/ab5695420e88a390d8249f715a095fdbb17017dd-1246x1204.png" alt="Fonts Jar's popup, with the assign to collection modal open"><figcaption>Figure 5. The popup's collection assignment modal.</figcaption></figure>
+<figure><img src="/images/fonts-jar-assign-collection.png" alt="Fonts Jar's popup, with the assign to collection modal open"><figcaption>Figure 5. The popup's collection assignment modal.</figcaption></figure>
 
-<figure><img src="/images/b58ce866302c9c22bc82e55b2605c51437e2cfa2-1246x1204.png" alt="Fonts Jar's popup, with the collections modal open"><figcaption>Figure 6. The popup's collection manager modal.</figcaption></figure>
+<figure><img src="/images/fonts-jar-browse-collections.png" alt="Fonts Jar's popup, with the collections modal open"><figcaption>Figure 6. The popup's collection manager modal.</figcaption></figure>
 
-<figure><img src="/images/2af78139dfbed8beb931c4141797fe4b9d1e9034-1246x1204.png" alt="Fonts Jar's popup, with the origin websites modal open"><figcaption>Figure 7. The popup's origin websites modal.</figcaption></figure>
+<figure><img src="/images/fonts-jar-origin-websites.png" alt="Fonts Jar's popup, with the origin websites modal open"><figcaption>Figure 7. The popup's origin websites modal.</figcaption></figure>
 
 ## Chrome extensions
 

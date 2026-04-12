@@ -23,7 +23,7 @@ technologies:
       "url": "https://www.sonarsource.com/products/sonarcloud/",
     },
   ]
-image: "/images/svelte-reveal-a94a03dd4c9667986c34f066556ff61cca3d87ac-1665x833.png"
+image: "/images/svelte-reveal.png"
 imageAlt: "Svelte Reveal logo"
 liveButton:
   {
