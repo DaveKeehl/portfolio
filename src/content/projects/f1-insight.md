@@ -2,12 +2,25 @@
 title: "F1 Insight"
 type: "Web Application"
 year: 2022
-roles: ["Designer","Developer"]
-technologies: [{"title":"Next.js","url":"https://nextjs.org/"},{"title":"TypeScript","url":"https://www.typescriptlang.org/"},{"title":"Tailwind","url":"https://tailwindcss.com/"},{"title":"nivo","url":"https://nivo.rocks/"},{"title":"Ergast API","url":"http://ergast.com/mrd/"},{"title":"cheerio","url":"https://cheerio.js.org/"},{"title":"Figma","url":"https://www.figma.com/"}]
+roles: ["Designer", "Developer"]
+technologies:
+  [
+    { "title": "Next.js", "url": "https://nextjs.org/" },
+    { "title": "TypeScript", "url": "https://www.typescriptlang.org/" },
+    { "title": "Tailwind", "url": "https://tailwindcss.com/" },
+    { "title": "nivo", "url": "https://nivo.rocks/" },
+    { "title": "Ergast API", "url": "http://ergast.com/mrd/" },
+    { "title": "cheerio", "url": "https://cheerio.js.org/" },
+    { "title": "Figma", "url": "https://www.figma.com/" },
+  ]
 image: "/images/f1-insight-90e8ba60ea966599f5ef55cd051eae8b23fb2a1a-1441x720.png"
 imageAlt: "F1 Insight logo"
-liveButton: {"text":"Visit application","url":"https://f1-insight.com"}
-repositoryButton: {"text":"GitHub repository","url":"https://github.com/DaveKeehl/f1-insight"}
+liveButton: { "text": "Visit application", "url": "https://f1-insight.com" }
+repositoryButton:
+  {
+    "text": "GitHub repository",
+    "url": "https://github.com/DaveKeehl/f1-insight",
+  }
 excerpt: "A visual analytics web application to easily gain insight into the current Formula 1 season, and spot trends that would otherwise be difficult to notice."
 updatedAt: "2023-03-05T22:28:35Z"
 nutshell: "<p>F1 Insight is a visual analytics web application, where you can see race results, driver results, team results, and driver/teams standings of the current Formula 1 season. By showing the results of all races using graphs, F1 Insight makes it easy to find trends in the data, something that would be very tedious and non-trivial otherwise by inspecting isolated race results.</p>"
@@ -52,7 +65,6 @@ With all that, I created mockups for each page and I moved to the development ph
 <figure><img src="/images/d66eb278eaa11ead545ebad970bfd0d8ca039e41-2880x2048.jpg" alt="Teams page of F1 Insights, with a sidebar on the left containing the list of teams and on the right the image of the team drivers, along with the team data"><figcaption>Figure 3. Teams page</figcaption></figure>
 
 <figure><img src="/images/ebea882406aad8d731adb077ef872429a8e62434-2880x2048.jpg" alt="Standings page of F1 Insights, with a large table showing the driver standings"><figcaption>Figure 4. Standings page</figcaption></figure>
-
 
 ## The development journey
 

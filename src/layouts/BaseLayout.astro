@@ -1,6 +1,6 @@
 ---
-import SEO from '@components/SEO.astro';
-import '@styles/global.css';
+import SEO from "@components/SEO.astro";
+import "@styles/global.css";
 
 interface Props {
   title: string;
@@ -16,7 +16,10 @@ const { title, description, openGraph } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <SEO {title} {description} {openGraph} />
   </head>
   <body>

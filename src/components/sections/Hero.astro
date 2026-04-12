@@ -1,45 +1,48 @@
 ---
-import BlurredCircle from '@components/BlurredCircle.astro';
-import ButtonsGroup from '@components/ButtonsGroup.astro';
-import Container from '@components/Container.astro';
-
-interface Props {
-  greetings: string;
-  heading: string;
-  description: string;
-  buttons: { primary: string; secondary: string };
-}
-
-const { greetings, heading, description, buttons } = Astro.props;
-
-const words = heading.split(' ');
-const firstWord = words[0];
-const secondWord = words[1];
-const rest = words.slice(2).join(' ');
+import BlurredCircle from "@components/BlurredCircle.astro";
+import ButtonsGroup from "@components/ButtonsGroup.astro";
+import Container from "@components/Container.astro";
 ---
 
-<section class="relative overflow-hidden py-20 md:py-32 lg:py-[200px]" id="welcome" data-section="welcome">
+<section
+  class="relative overflow-hidden py-20 md:py-32 lg:py-[200px]"
+  id="welcome"
+  data-section="welcome"
+>
   <Container class="flex flex-col gap-12">
     <div class="flex flex-col gap-4">
-      <p class="p1-semibold w-fit bg-hero text-turquoise-200 [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
-        {greetings}
+      <p
+        class="p1-semibold bg-hero text-turquoise-200 w-fit [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
+      >
+        Hi, my name is Davide!
       </p>
       <h1 class="h1-bold text-shadow">
-        {firstWord}{' '}<span class="stroke relative">{secondWord}<img
-          src="/stroke.svg"
-          alt="Turquoise colored paint stroke"
-          class="absolute top-1/2 left-0 -z-[1] origin-left -translate-y-1/2 scale-[1.7] select-none"
-        /></span>{' '}{rest}
+        Building{" "}<span class="stroke relative"
+          >modern<img
+            src="/stroke.svg"
+            alt="Turquoise colored paint stroke"
+            class="absolute top-1/2 left-0 -z-[1] origin-left -translate-y-1/2 scale-[1.7] select-none"
+          /></span
+        >{" "}web experiences.
       </h1>
     </div>
     <p class="p3-regular max-w-[600px] text-blue-100">
-      {description}
+      I'm a software engineer based in southern Switzerland with a passion for
+      the web, frontend engineering and UI/UX design.
     </p>
     <div class="button" id="hero-buttons">
       <ButtonsGroup
         size="large"
-        primary={{ text: buttons.primary, href: '#projects', external: false }}
-        secondary={{ text: buttons.secondary, href: '#contact', external: false }}
+        primary={{
+          text: "Check out my projects",
+          href: "#projects",
+          external: false,
+        }}
+        secondary={{
+          text: "Get in touch with me",
+          href: "#contact",
+          external: false,
+        }}
       />
     </div>
   </Container>
@@ -48,14 +51,14 @@ const rest = words.slice(2).join(' ');
 
 <script>
   // Smooth scroll for hero buttons
-  document.querySelectorAll('#hero-buttons a').forEach((link) => {
-    link.addEventListener('click', (e) => {
+  document.querySelectorAll("#hero-buttons a").forEach((link) => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
-      const href = (link as HTMLAnchorElement).getAttribute('href');
+      const href = (link as HTMLAnchorElement).getAttribute("href");
       if (href) {
-        const sectionName = href.replace('#', '');
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState({ section: sectionName }, '', href);
+        const sectionName = href.replace("#", "");
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState({ section: sectionName }, "", href);
       }
     });
   });

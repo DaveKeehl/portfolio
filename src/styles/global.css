@@ -9,7 +9,7 @@
   --breakpoint-xs: 500px;
 
   /* Colors - Grayscale */
-  --color-grayscale-100: #EEF2F6;
+  --color-grayscale-100: #eef2f6;
   --color-grayscale-300: hsl(212deg 90% 6%);
 
   /* Colors - Turquoise */
@@ -19,10 +19,10 @@
   --color-turquoise-300: hsl(182deg 88% 39%);
 
   /* Colors - Blue */
-  --color-blue-100: #B7CDE5;
+  --color-blue-100: #b7cde5;
   --color-blue-200: #476485;
   --color-blue-200-25: hsl(212deg 30% 40% / 25%);
-  --color-blue-300: #031F40;
+  --color-blue-300: #031f40;
   --color-blue-400: hsl(215deg 89% 8%);
 
   /* Blur */
@@ -33,9 +33,9 @@
   --shadow-secondary-btn-focus: 0 0 0 2px hsl(182deg 88% 49%);
 
   /* Font Families */
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-code: 'Menlo', sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-code: "Menlo", sans-serif;
 
   /* Font Sizes */
   --text-h1: 48px;
@@ -51,17 +51,49 @@
   --text-p6: 14px;
 
   /* Grid Template Columns */
-  --grid-template-columns-blogPosts: repeat(auto-fill, minmax(350px, 1fr));
-  --grid-template-columns-relatedBlogPosts: repeat(auto-fill, minmax(260px, 1fr));
+  --grid-template-columns-blog-posts: repeat(auto-fill, minmax(350px, 1fr));
+  --grid-template-columns-related-blog-posts: repeat(
+    auto-fill,
+    minmax(260px, 1fr)
+  );
 
   /* Background Images (Gradients) */
-  --background-image-hero: linear-gradient(to right, hsl(182deg 88% 79%) 0%, hsl(182deg 88% 39%) 100%);
-  --background-image-header: linear-gradient(to right, transparent, hsl(212deg 30% 40% / 25%), transparent);
-  --background-image-about: linear-gradient(to bottom, hsl(212deg 90% 6%) 31.25%, hsl(215deg 89% 8%) 100%);
-  --background-image-about-img: linear-gradient(52.82deg, rgba(2, 19, 39, 0.8) 18.42%, rgba(2, 19, 39, 0) 107.21%);
-  --background-image-post: linear-gradient(to bottom, hsl(212deg 90% 6%) 150px, hsl(215deg 89% 8%) 550px);
-  --background-image-project-card: linear-gradient(to right, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.15) 73%);
-  --background-image-project-card-reversed: linear-gradient(to left, rgba(2, 19, 38, 0.9) 10%, rgba(2, 21, 43, 0.15) 73%);
+  --background-image-hero: linear-gradient(
+    to right,
+    hsl(182deg 88% 79%) 0%,
+    hsl(182deg 88% 39%) 100%
+  );
+  --background-image-header: linear-gradient(
+    to right,
+    transparent,
+    hsl(212deg 30% 40% / 25%),
+    transparent
+  );
+  --background-image-about: linear-gradient(
+    to bottom,
+    hsl(212deg 90% 6%) 31.25%,
+    hsl(215deg 89% 8%) 100%
+  );
+  --background-image-about-img: linear-gradient(
+    52.82deg,
+    rgba(2, 19, 39, 0.8) 18.42%,
+    rgba(2, 19, 39, 0) 107.21%
+  );
+  --background-image-post: linear-gradient(
+    to bottom,
+    hsl(212deg 90% 6%) 150px,
+    hsl(215deg 89% 8%) 550px
+  );
+  --background-image-project-card: linear-gradient(
+    to right,
+    rgba(2, 19, 38, 0.9) 10%,
+    rgba(2, 21, 43, 0.15) 73%
+  );
+  --background-image-project-card-reversed: linear-gradient(
+    to left,
+    rgba(2, 19, 38, 0.9) 10%,
+    rgba(2, 21, 43, 0.15) 73%
+  );
 }
 
 /* ============================================
@@ -114,7 +146,7 @@
     color: var(--color-grayscale-100);
     font-size: var(--text-p5);
     font-family: var(--font-body);
-    font-feature-settings: 'salt' on;
+    font-feature-settings: "salt" on;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     cursor: url(/cursor.svg), default;
@@ -274,7 +306,9 @@
 }
 
 @utility pill-transition {
-  transition: color 0.2s, outline 0.1s;
+  transition:
+    color 0.2s,
+    outline 0.1s;
 }
 
 @utility no-scrollbar {

@@ -1,9 +1,11 @@
 ---
+import { cn } from "@utils/cn";
+
 interface Props {
   class?: string;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<div class={`block h-px w-full bg-blue-100 opacity-10 ${className}`} />
+<div class={cn("block h-px w-full bg-blue-100 opacity-10", className)}></div>

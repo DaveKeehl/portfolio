@@ -1,9 +1,12 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import { siteSettings } from '@data/site';
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="404 | Davide Wölckner" description="Page not found" openGraph={siteSettings.openGraph}>
+<BaseLayout
+  title="404 | Davide Wölckner"
+  description="Page not found"
+  openGraph={{ image: "/og_image.png" }}
+>
   <div class="flex min-h-screen items-center justify-center">
     <h1 class="h1-bold">404 : Page not found</h1>
   </div>

@@ -1,14 +1,29 @@
 ---
-interface Props {
-  content: string;
-}
 
-const { content } = Astro.props;
 ---
 
-<footer class="relative pt-10 pb-14 before:absolute before:top-0 before:h-px before:w-[50px] before:bg-blue-200 before:content-[''] md:pb-20">
+<footer
+  class="relative pt-10 pb-14 before:absolute before:top-0 before:h-px before:w-12.5 before:bg-blue-200 before:content-[''] md:pb-20"
+>
   <div class="rich-text rich-text-footer text-left text-blue-100">
-    <Fragment set:html={content} />
+    <p>
+      PORTFOLIO CREATED WITH <a
+        href="https://astro.build/"
+        target="_blank"
+        rel="noopener noreferrer">ASTRO</a
+      >,
+      <a
+        href="https://www.typescriptlang.org/"
+        target="_blank"
+        rel="noopener noreferrer">TYPESCRIPT</a
+      > AND
+      <a
+        href="https://tailwindcss.com/"
+        target="_blank"
+        rel="noopener noreferrer">TAILWIND</a
+      >.
+    </p>
+    <p>READ THE <a href="/project/personal-portfolio">CASE STUDY</a>.</p>
   </div>
 </footer>
 

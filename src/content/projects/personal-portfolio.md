@@ -9,12 +9,16 @@ technologies:
     { "title": "TypeScript", "url": "https://www.typescriptlang.org/" },
     { "title": "Tailwind", "url": "https://tailwindcss.com/" },
     { "title": "Sanity", "url": "https://www.sanity.io/" },
-    { "title": "Figma", "url": "https://www.figma.com/" }
+    { "title": "Figma", "url": "https://www.figma.com/" },
   ]
 image: "/og_image.png"
 imageAlt: "Personal portfolio socials card"
 liveButton: null
-repositoryButton: { "text": "GitHub Repository", "url": "https://github.com/DaveKeehl/portfolio" }
+repositoryButton:
+  {
+    "text": "GitHub Repository",
+    "url": "https://github.com/DaveKeehl/portfolio",
+  }
 excerpt: "The latest version (2022) of my personal portfolio website, where you can find some information about myself, my latest and most representative projects and some blog articles."
 updatedAt: "2024-02-22T05:42:31Z"
 nutshell: "<p>This is the case study of the 2022 version of my personal portfolio website. On my portfolio, people can find links to my social profiles, read some information about myself, take a look at my latest and most representative projects, read case studies and blog articles, and get in touch with me.</p>"

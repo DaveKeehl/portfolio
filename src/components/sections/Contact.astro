@@ -1,18 +1,21 @@
 ---
-import Section from '@components/Section.astro';
-
-interface Props {
-  heading: string;
-  content: string;
-}
-
-const { heading, content } = Astro.props;
+import Section from "@components/Section.astro";
 ---
 
 <div data-section="contact">
-  <Section id="contact" heading={heading} headingGap="small" icon="ChatTeardropDots">
+  <Section
+    id="contact"
+    heading="Let's talk!"
+    headingGap="small"
+    icon="ChatTeardropDots"
+  >
     <div class="rich-text rich-text-contact text-left text-blue-100">
-      <Fragment set:html={content} />
+      <p>
+        If you have questions, you want to talk business or you simply want to
+        say hi, feel free to reach me out at <a
+          href="mailto:davide.woelckner@gmail.com">davide.woelckner@gmail.com</a
+        >
+      </p>
     </div>
   </Section>
 </div>

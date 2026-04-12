@@ -1,22 +1,27 @@
 ---
-import Container from './Container.astro';
-import Icon from './Icon.astro';
+import Container from "./Container.astro";
+import Icon from "./Icon.astro";
+import { cn } from "@utils/cn";
 
 interface Props {
   heading: string;
-  headingGap: 'small' | 'large';
+  headingGap: "small" | "large";
   id?: string;
-  icon: 'Fire' | 'HandWaving' | 'Quotes' | 'ChatTeardropDots';
+  icon: "Fire" | "HandWaving" | "Quotes" | "ChatTeardropDots";
   class?: string;
 }
 
-const { heading, headingGap, id = '', icon, class: className = '' } = Astro.props;
-const marginBottom = headingGap === 'small' ? 'mb-10' : 'mb-20';
+const { heading, headingGap, id = "", icon, class: className } = Astro.props;
 ---
 
 <section {id} class={className}>
   <Container>
-    <div class={`flex flex-col items-start gap-5 ${marginBottom} md:flex-row md:items-center md:gap-8`}>
+    <div
+      class={cn(
+        "flex flex-col items-start gap-5 md:flex-row md:items-center md:gap-8",
+        headingGap === "small" ? "mb-10" : "mb-20",
+      )}
+    >
       <Icon name={icon} size={48} color="#EEF2F6" />
       <h2 class="h2-bold">{heading}</h2>
     </div>

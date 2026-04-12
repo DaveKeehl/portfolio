@@ -1,26 +1,16 @@
 ---
-interface Social {
-  title: string;
-  url: string;
-  icon: string;
-}
-
-interface Props {
-  socials: Social[];
-}
-
-const { socials } = Astro.props;
+import SocialItem from "./SocialItem.astro";
 ---
 
 <div class="flex gap-3">
-  {socials.map((social) => (
-    <a
-      href={social.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex transition-opacity hover:opacity-80"
-    >
-      <img src={social.icon} alt={`${social.title} logo`} />
-    </a>
-  ))}
+  <SocialItem
+    title="GitHub"
+    url="https://github.com/DaveKeehl"
+    icon="/images/social-github.svg"
+  />
+  <SocialItem
+    title="Linkedin"
+    url="https://www.linkedin.com/in/davide-ciulla/"
+    icon="/images/social-linkedin.svg"
+  />
 </div>

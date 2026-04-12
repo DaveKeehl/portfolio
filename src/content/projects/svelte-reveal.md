@@ -3,11 +3,38 @@ title: "Svelte Reveal"
 type: "NPM Package"
 year: 2021
 roles: ["Developer"]
-technologies: [{"title":"HTML","url":"https://developer.mozilla.org/en-US/docs/Web/HTML"},{"title":"CSS","url":"https://developer.mozilla.org/en-US/docs/Web/CSS"},{"title":"TypeScript","url":"https://www.typescriptlang.org/"},{"title":"Jest","url":"https://jestjs.io/"},{"title":"esbuild","url":"https://esbuild.github.io/"},{"title":"Docker","url":"https://www.docker.com/"},{"title":"GitHub Actions","url":"https://github.com/features/actions"},{"title":"SonarCloud","url":"https://www.sonarsource.com/products/sonarcloud/"}]
+technologies:
+  [
+    {
+      "title": "HTML",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    },
+    {
+      "title": "CSS",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    },
+    { "title": "TypeScript", "url": "https://www.typescriptlang.org/" },
+    { "title": "Jest", "url": "https://jestjs.io/" },
+    { "title": "esbuild", "url": "https://esbuild.github.io/" },
+    { "title": "Docker", "url": "https://www.docker.com/" },
+    { "title": "GitHub Actions", "url": "https://github.com/features/actions" },
+    {
+      "title": "SonarCloud",
+      "url": "https://www.sonarsource.com/products/sonarcloud/",
+    },
+  ]
 image: "/images/svelte-reveal-a94a03dd4c9667986c34f066556ff61cca3d87ac-1665x833.png"
 imageAlt: "Svelte Reveal logo"
-liveButton: {"text":"Open playground","url":"https://svelte.dev/repl/1cf37b0947ac46b8ae9cc791abda7159?version=3.44.1"}
-repositoryButton: {"text":"GitHub repository","url":"https://github.com/DaveKeehl/svelte-reveal"}
+liveButton:
+  {
+    "text": "Open playground",
+    "url": "https://svelte.dev/repl/1cf37b0947ac46b8ae9cc791abda7159?version=3.44.1",
+  }
+repositoryButton:
+  {
+    "text": "GitHub repository",
+    "url": "https://github.com/DaveKeehl/svelte-reveal",
+  }
 excerpt: "An open-source NPM package to easily create reveal on scroll animations in Svelte with first-class TypeScript support and near zero configuration."
 updatedAt: "2023-02-21T10:50:37Z"
 nutshell: "<p>Svelte Reveal is an NPM package created with the purpose of helping Svelte users add reveal on scroll animations to their web applications in the easiest way possible. This library leverages the Intersection Observer API in order to know when to trigger the animations, which is great for performance.</p>"
@@ -15,7 +42,7 @@ nutshell: "<p>Svelte Reveal is an NPM package created with the purpose of helpin
 
 ## Introduction
 
-When we create software that lives on the web (i.e. a website or a web application) we often strive to add that last bit of magic, the cherry on the cake, that small *oomph* to make the end-users go wow. However, that’s never easy and it requires good taste and experience. One could pull it off with sublime design skills, while others resort to post-design phase effects, such as the reveal on scroll effect, which - as the name suggests - reveals the elements as the user scrolls down on the page.
+When we create software that lives on the web (i.e. a website or a web application) we often strive to add that last bit of magic, the cherry on the cake, that small _oomph_ to make the end-users go wow. However, that’s never easy and it requires good taste and experience. One could pull it off with sublime design skills, while others resort to post-design phase effects, such as the reveal on scroll effect, which - as the name suggests - reveals the elements as the user scrolls down on the page.
 
 That was exactly what I wanted to have on my portfolio, when I started developing the latest version in 2021, and in this case study I will go in detail about how I created this library and the choices I made.
 

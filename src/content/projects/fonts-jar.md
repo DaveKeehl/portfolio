@@ -2,12 +2,29 @@
 title: "Fonts Jar"
 type: "Chrome Extension"
 year: 2022
-roles: ["Developer","Designer"]
-technologies: [{"title":"React","url":"https://reactjs.org/"},{"title":"TypeScript","url":"https://www.typescriptlang.org/"},{"title":"Plasmo","url":"https://github.com/PlasmoHQ/plasmo"},{"title":"Tailwind","url":"https://tailwindcss.com/"},{"title":"Docker","url":"https://www.docker.com/"},{"title":"GitHub Actions","url":"https://github.com/features/actions"},{"title":"Figma","url":"https://www.figma.com/"}]
+roles: ["Developer", "Designer"]
+technologies:
+  [
+    { "title": "React", "url": "https://reactjs.org/" },
+    { "title": "TypeScript", "url": "https://www.typescriptlang.org/" },
+    { "title": "Plasmo", "url": "https://github.com/PlasmoHQ/plasmo" },
+    { "title": "Tailwind", "url": "https://tailwindcss.com/" },
+    { "title": "Docker", "url": "https://www.docker.com/" },
+    { "title": "GitHub Actions", "url": "https://github.com/features/actions" },
+    { "title": "Figma", "url": "https://www.figma.com/" },
+  ]
 image: "/images/fonts-jar-89e03436efd62c453c1ca6ec730405743b190ddd-1920x960.png"
 imageAlt: "Fonts Jar logo"
-liveButton: {"text":"Visit store listing","url":"https://chrome.google.com/webstore/detail/fonts-jar/hkkhacceelmpcaiegjpijfpgaefokagj"}
-repositoryButton: {"text":"Visit repository","url":"https://github.com/DaveKeehl/fonts-jar"}
+liveButton:
+  {
+    "text": "Visit store listing",
+    "url": "https://chrome.google.com/webstore/detail/fonts-jar/hkkhacceelmpcaiegjpijfpgaefokagj",
+  }
+repositoryButton:
+  {
+    "text": "Visit repository",
+    "url": "https://github.com/DaveKeehl/fonts-jar",
+  }
 excerpt: "An open-source Chrome extension to save your favorite fonts from a list of supported websites (including Google Fonts and Adobe Fonts), so you never forget they exist."
 updatedAt: "2023-03-30T15:14:41Z"
 nutshell: "<p>Fonts Jar is a Chrome extension that allows users to save their favorite fonts from an always growing list of supported websites. The fonts that are added to the favorites list are always available in the extension popup, ready to be removed, searched, filtered and grouped in collections.</p>"

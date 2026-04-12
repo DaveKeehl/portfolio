@@ -1,5 +1,5 @@
 ---
-import Button from './Button.astro';
+import Button from "./Button.astro";
 
 interface ButtonConfig {
   text: string;
@@ -10,7 +10,7 @@ interface ButtonConfig {
 interface Props {
   primary: ButtonConfig;
   secondary: ButtonConfig;
-  size: 'small' | 'large';
+  size: "small" | "large";
 }
 
 const { primary, secondary, size } = Astro.props;
@@ -18,10 +18,20 @@ const { primary, secondary, size } = Astro.props;
 
 <div class="button-group">
   <div class="grid grid-cols-1 gap-4 md:flex">
-    <Button variant="primary" {size} href={primary.href} external={primary.external}>
+    <Button
+      variant="primary"
+      {size}
+      href={primary.href}
+      external={primary.external}
+    >
       {primary.text}
     </Button>
-    <Button variant="secondary" {size} href={secondary.href} external={secondary.external}>
+    <Button
+      variant="secondary"
+      {size}
+      href={secondary.href}
+      external={secondary.external}
+    >
       {secondary.text}
     </Button>
   </div>

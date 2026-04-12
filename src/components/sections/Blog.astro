@@ -1,89 +1,189 @@
 ---
-import Pill from '@components/Pill.astro';
-import Section from '@components/Section.astro';
-import BlogCards from '@components/BlogCards.astro';
-import { deCamelCase } from '@utils/functions';
-
-interface PostPreview {
-  _type: string;
-  title: string;
-  slug: string;
-  image: { url: string; alt?: string };
-  excerpt: string;
-}
-
-interface Props {
-  heading: string;
-  labels: string[];
-  posts: PostPreview[];
-}
-
-const { heading, labels, posts } = Astro.props;
-const cleanLabels = labels.map((label) => deCamelCase(label));
+import Pill from "@components/Pill.astro";
+import Section from "@components/Section.astro";
+import BlogCard from "@components/BlogCard.astro";
+import Button from "@components/Button.astro";
 ---
 
 <div data-section="blog">
-  <Section id="blog" heading={heading} headingGap="small" icon="Quotes" class="scroll-pt-8">
+  <Section
+    id="blog"
+    heading="Blog."
+    headingGap="small"
+    icon="Quotes"
+    class="scroll-pt-8"
+  >
     <div class="mb-16 flex flex-wrap items-center gap-3" data-pill-container>
-      {cleanLabels.map((label) => (
-        <Pill text={label} />
-      ))}
+      <Pill text="case study" />
+      <Pill text="article" />
     </div>
-    <BlogCards posts={posts} />
+
+    <div
+      class="lg:grid-cols-blog-posts grid grid-cols-1 gap-x-5 gap-y-14"
+      data-blog-cards
+    >
+      <div data-card-index="0">
+        <BlogCard
+          _type="article"
+          title="Launching my new portfolio!"
+          slug="launching-my-new-portfolio"
+          excerpt="It's been a long road, but I'm so excited to finally be able to share the latest (2022) version of my portfolio with the world!"
+          image={{
+            url: "/images/launching-my-new-portfolio-cd59b2d21dfe7ff917a765e8b5114856f68b0f22-1200x800.png",
+            alt: "Rocket ship launching",
+          }}
+        />
+      </div>
+      <div data-card-index="1">
+        <BlogCard
+          _type="caseStudy"
+          title="Svelte Reveal"
+          slug="svelte-reveal"
+          excerpt="An open-source NPM package to easily create reveal on scroll animations in Svelte with first-class TypeScript support and near zero configuration."
+          image={{
+            url: "/images/svelte-reveal-a94a03dd4c9667986c34f066556ff61cca3d87ac-1665x833.png",
+            alt: "Svelte Reveal logo",
+          }}
+        />
+      </div>
+      <div data-card-index="2">
+        <BlogCard
+          _type="caseStudy"
+          title="F1 Insight"
+          slug="f1-insight"
+          excerpt="A visual analytics web application to easily gain insight into the current Formula 1 season, and spot trends that would otherwise be difficult to notice."
+          image={{
+            url: "/images/f1-insight-90e8ba60ea966599f5ef55cd051eae8b23fb2a1a-1441x720.png",
+            alt: "F1 Insight logo",
+          }}
+        />
+      </div>
+      <div data-card-index="3">
+        <BlogCard
+          _type="caseStudy"
+          title="Stack and Heap Diagram"
+          slug="stack-and-heap-diagram"
+          excerpt="An interactive web application to easily create and manipulate stack and heap diagrams in the context of a university programming fundamentals course."
+          image={{
+            url: "/images/stack-and-heap-diagram-98d19b344d06d1a39c38a90ea9d7bf2ed3097907-1920x930.png",
+            alt: "Stack and Heap Diagram logo",
+          }}
+        />
+      </div>
+      <div data-card-index="4" class="hidden">
+        <BlogCard
+          _type="caseStudy"
+          title="Fonts Jar"
+          slug="fonts-jar"
+          excerpt="An open-source Chrome extension to save your favorite fonts from a list of supported websites (including Google Fonts and Adobe Fonts), so you never forget they exist."
+          image={{
+            url: "/images/fonts-jar-89e03436efd62c453c1ca6ec730405743b190ddd-1920x960.png",
+            alt: "Fonts Jar logo",
+          }}
+        />
+      </div>
+      <div data-card-index="5" class="hidden">
+        <BlogCard
+          _type="caseStudy"
+          title="Portfolio Website (2022)"
+          slug="personal-portfolio"
+          excerpt="The latest version (2022) of my personal portfolio website, where you can find some information about myself, my latest and most representative projects and some blog articles."
+          image={{
+            url: "/images/personal-portfolio-f434b47055964016bcd60b0be9770a3372a1f7e1-1200x600.png",
+            alt: "Personal portfolio socials card",
+          }}
+        />
+      </div>
+    </div>
+
+    <div class="mt-20 grid place-items-center" data-load-more-container>
+      <Button data-action="load-more">Load more posts</Button>
+    </div>
   </Section>
 </div>
 
 <script>
-  const pillContainer = document.querySelector('[data-pill-container]');
+  const pillContainer = document.querySelector("[data-pill-container]");
   const selectedLabels = new Set<string>();
 
   if (pillContainer) {
-    pillContainer.querySelectorAll<HTMLElement>('[data-label]').forEach((pill) => {
-      pill.addEventListener('click', () => {
-        const label = pill.dataset.label!;
+    pillContainer
+      .querySelectorAll<HTMLElement>("[data-label]")
+      .forEach((pill) => {
+        pill.addEventListener("click", () => {
+          const label = pill.dataset.label!;
 
-        if (selectedLabels.has(label)) {
-          selectedLabels.delete(label);
-          pill.classList.remove('shadow-secondary-btn-focus');
-        } else {
-          selectedLabels.add(label);
-          pill.classList.add('shadow-secondary-btn-focus');
-        }
-
-        // Filter cards
-        const cards = document.querySelectorAll<HTMLElement>('[data-card-index]');
-        const blogCards = document.querySelector('[data-blog-cards]');
-        if (!blogCards) return;
-
-        // Get all card containers and check their data-type (from the inner BlogCard)
-        cards.forEach((card) => {
-          const typeEl = card.querySelector('[data-type]');
-          if (!typeEl) return;
-          const type = (typeEl as HTMLElement).dataset.type;
-
-          if (selectedLabels.size === 0 || (type && selectedLabels.has(type))) {
-            card.classList.remove('filter-hidden');
+          if (selectedLabels.has(label)) {
+            selectedLabels.delete(label);
+            pill.classList.remove("shadow-secondary-btn-focus");
           } else {
-            card.classList.add('filter-hidden');
+            selectedLabels.add(label);
+            pill.classList.add("shadow-secondary-btn-focus");
           }
-        });
 
-        // Reset load more cursor when filtering
-        updateLoadMore();
+          const cards =
+            document.querySelectorAll<HTMLElement>("[data-card-index]");
+          const blogCards = document.querySelector("[data-blog-cards]");
+          if (!blogCards) return;
+
+          cards.forEach((card) => {
+            const typeEl = card.querySelector("[data-type]");
+            if (!typeEl) return;
+            const type = (typeEl as HTMLElement).dataset.type;
+
+            if (
+              selectedLabels.size === 0 ||
+              (type && selectedLabels.has(type))
+            ) {
+              card.classList.remove("filter-hidden");
+            } else {
+              card.classList.add("filter-hidden");
+            }
+          });
+
+          updateLoadMore();
+        });
       });
-    });
   }
 
   function updateLoadMore() {
-    const loadMoreContainer = document.querySelector('[data-load-more-container]');
-    const visibleCards = document.querySelectorAll('[data-card-index]:not(.filter-hidden)');
+    const loadMoreContainer = document.querySelector(
+      "[data-load-more-container]",
+    );
+    const visibleCards = document.querySelectorAll(
+      "[data-card-index]:not(.filter-hidden)",
+    );
     if (loadMoreContainer) {
       if (visibleCards.length <= 4) {
-        loadMoreContainer.classList.add('hidden');
+        loadMoreContainer.classList.add("hidden");
       } else {
-        loadMoreContainer.classList.remove('hidden');
+        loadMoreContainer.classList.remove("hidden");
       }
     }
+  }
+
+  const container = document.querySelector("[data-blog-cards]");
+  const loadMoreBtn = document.querySelector('[data-action="load-more"]');
+  const loadMoreContainer = document.querySelector(
+    "[data-load-more-container]",
+  );
+
+  if (container && loadMoreBtn) {
+    let cursor = 4;
+
+    loadMoreBtn.addEventListener("click", () => {
+      cursor += 4;
+      const cards = container.querySelectorAll("[data-card-index]");
+      cards.forEach((card) => {
+        const index = parseInt(card.getAttribute("data-card-index") || "0");
+        if (index < cursor) {
+          card.classList.remove("hidden");
+        }
+      });
+      if (cursor >= 6 && loadMoreContainer) {
+        loadMoreContainer.classList.add("hidden");
+      }
+    });
   }
 </script>
 

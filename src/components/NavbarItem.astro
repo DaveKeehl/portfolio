@@ -1,0 +1,16 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const slug = name.toLowerCase();
+---
+
+<a
+  href={`/#${slug}`}
+  class="text-p5 hover:text-grayscale-100 flex leading-6 font-semibold tracking-[2%] text-blue-200 uppercase transition-colors"
+  data-nav-section={slug}
+>
+  {name}
+</a>

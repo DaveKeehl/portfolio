@@ -1,59 +1,62 @@
 ---
-interface Section {
-  _id: string;
-  name: string;
-}
+import NavbarItem from "./NavbarItem.astro";
+import { cn } from "@utils/cn";
 
 interface Props {
-  sections: Section[];
   class?: string;
 }
 
-const { sections, class: className = '' } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<nav class={`no-scrollbar flex gap-6 ${className}`} data-navbar>
-  {sections.map((section) => (
-    <a
-      href={`/#${section.name.toLowerCase()}`}
-      class="flex text-p5 font-semibold uppercase leading-6 tracking-[2%] text-blue-200 transition-colors hover:text-grayscale-100"
-      data-nav-section={section.name.toLowerCase()}
-    >
-      {section.name}
-    </a>
-  ))}
+<nav class={cn("no-scrollbar flex gap-6", className)} data-navbar>
+  <NavbarItem name="Welcome" />
+  <NavbarItem name="About" />
+  <NavbarItem name="Projects" />
+  <NavbarItem name="Blog" />
+  <NavbarItem name="Contact" />
 </nav>
 
 <script>
-  document.querySelectorAll<HTMLAnchorElement>('[data-nav-section]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      if (window.location.pathname === '/') {
-        e.preventDefault();
-        const sectionName = link.dataset.navSection;
-        if (sectionName) {
-          document.querySelector(`#${sectionName}`)?.scrollIntoView({ behavior: 'smooth' });
-          window.history.pushState({ section: sectionName }, '', `#${sectionName}`);
+  document
+    .querySelectorAll<HTMLAnchorElement>("[data-nav-section]")
+    .forEach((link) => {
+      link.addEventListener("click", (e) => {
+        if (window.location.pathname === "/") {
+          e.preventDefault();
+          const sectionName = link.dataset.navSection;
+          if (sectionName) {
+            document
+              .querySelector(`#${sectionName}`)
+              ?.scrollIntoView({ behavior: "smooth" });
+            window.history.pushState(
+              { section: sectionName },
+              "",
+              `#${sectionName}`,
+            );
+          }
         }
-      }
+      });
     });
-  });
 
   // Highlight active section
   const observer = new MutationObserver(() => {
     const activeSection = document.documentElement.dataset.activeSection;
-    document.querySelectorAll<HTMLAnchorElement>('[data-nav-section]').forEach((link) => {
-      if (link.dataset.navSection === activeSection) {
-        link.classList.add('text-grayscale-100');
-        link.classList.remove('text-blue-200');
-      } else {
-        link.classList.remove('text-grayscale-100');
-        link.classList.add('text-blue-200');
-      }
-    });
+    document
+      .querySelectorAll<HTMLAnchorElement>("[data-nav-section]")
+      .forEach((link) => {
+        if (link.dataset.navSection === activeSection) {
+          link.classList.add("text-grayscale-100");
+          link.classList.remove("text-blue-200");
+        } else {
+          link.classList.remove("text-grayscale-100");
+          link.classList.add("text-blue-200");
+        }
+      });
   });
 
   observer.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ['data-active-section'],
+    attributeFilter: ["data-active-section"],
   });
 </script>
