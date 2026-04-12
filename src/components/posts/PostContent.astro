@@ -10,7 +10,7 @@ const { maxWidth, image } = Astro.props;
 <div class="post bg-post relative flex w-full justify-center">
   <div class="w-10/12" style={`max-width: ${maxWidth}px`}>
     <div
-      class="border-turquoise-200/5 absolute top-0 left-1/2 flex w-10/12 max-w-[700px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[20px] border lg:max-w-[700px]"
+      class="border-turquoise-200/5 absolute top-0 left-1/2 flex w-10/12 max-w-175 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[20px] border lg:max-w-175"
     >
       <img
         src={image.url}
@@ -18,9 +18,7 @@ const { maxWidth, image } = Astro.props;
         class="aspect-video object-cover transition-transform hover:scale-[1.02]"
       />
     </div>
-    <div
-      class="xs:mt-[200px] mt-[150px] mb-16 sm:mt-60 md:mt-64 md:mb-[104px] lg:mt-64"
-    >
+    <div class="xs:mt-50 mt-37.5 mb-16 sm:mt-60 md:mt-64 md:mb-26 lg:mt-64">
       <slot />
     </div>
   </div>
