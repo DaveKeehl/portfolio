@@ -2,12 +2,19 @@
 title: "Portfolio Website (2022)"
 type: "Website"
 year: 2022
-roles: ["Developer","Designer"]
-technologies: [{"title":"SvelteKit","url":"https://kit.svelte.dev/"},{"title":"TypeScript","url":"https://www.typescriptlang.org/"},{"title":"Tailwind","url":"https://tailwindcss.com/"},{"title":"Sanity","url":"https://www.sanity.io/"},{"title":"Figma","url":"https://www.figma.com/"}]
-image: "/images/personal-portfolio-f434b47055964016bcd60b0be9770a3372a1f7e1-1200x600.png"
+roles: ["Developer", "Designer"]
+technologies:
+  [
+    { "title": "SvelteKit", "url": "https://kit.svelte.dev/" },
+    { "title": "TypeScript", "url": "https://www.typescriptlang.org/" },
+    { "title": "Tailwind", "url": "https://tailwindcss.com/" },
+    { "title": "Sanity", "url": "https://www.sanity.io/" },
+    { "title": "Figma", "url": "https://www.figma.com/" }
+  ]
+image: "/og_image.png"
 imageAlt: "Personal portfolio socials card"
 liveButton: null
-repositoryButton: {"text":"GitHub Repository","url":"https://github.com/DaveKeehl/portfolio"}
+repositoryButton: { "text": "GitHub Repository", "url": "https://github.com/DaveKeehl/portfolio" }
 excerpt: "The latest version (2022) of my personal portfolio website, where you can find some information about myself, my latest and most representative projects and some blog articles."
 updatedAt: "2024-02-22T05:42:31Z"
 nutshell: "<p>This is the case study of the 2022 version of my personal portfolio website. On my portfolio, people can find links to my social profiles, read some information about myself, take a look at my latest and most representative projects, read case studies and blog articles, and get in touch with me.</p>"
@@ -27,7 +34,7 @@ When doing a redesign it’s very important to perform a thorough design analysi
 
 By analyzing the 2020 version of my portfolio, I took the following negative notes:
 
-- Colors: generally too light and I don’t like the light *greyish* color that I used for the background
+- Colors: generally too light and I don’t like the light _greyish_ color that I used for the background
 
 - Colors: too few colors (literally 3 brand colors in the entire website)
 
