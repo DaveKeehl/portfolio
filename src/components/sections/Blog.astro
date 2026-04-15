@@ -1,5 +1,4 @@
 ---
-import Pill from "@components/Pill.astro";
 import Section from "@components/Section.astro";
 import BlogCard from "@components/BlogCard.astro";
 import Button from "@components/Button.astro";
@@ -8,33 +7,16 @@ import Button from "@components/Button.astro";
 <div data-section="blog">
   <Section
     id="blog"
-    heading="Blog."
+    heading="Blog"
     headingGap="small"
     icon="Quotes"
     class="scroll-pt-8"
   >
-    <div class="mb-16 flex flex-wrap items-center gap-3" data-pill-container>
-      <Pill text="case study" />
-      <Pill text="article" />
-    </div>
-
     <div
       class="lg:grid-cols-blog-posts grid grid-cols-1 gap-x-5 gap-y-14"
       data-blog-cards
     >
       <div data-card-index="0">
-        <BlogCard
-          _type="article"
-          title="Launching my new portfolio!"
-          slug="launching-my-new-portfolio"
-          excerpt="It's been a long road, but I'm so excited to finally be able to share the latest (2022) version of my portfolio with the world!"
-          image={{
-            url: "/images/launching-my-new-portfolio.png",
-            alt: "Rocket ship launching",
-          }}
-        />
-      </div>
-      <div data-card-index="1">
         <BlogCard
           _type="caseStudy"
           title="Svelte Reveal"
@@ -46,7 +28,7 @@ import Button from "@components/Button.astro";
           }}
         />
       </div>
-      <div data-card-index="2">
+      <div data-card-index="1">
         <BlogCard
           _type="caseStudy"
           title="F1 Insight"
@@ -58,7 +40,7 @@ import Button from "@components/Button.astro";
           }}
         />
       </div>
-      <div data-card-index="3">
+      <div data-card-index="2">
         <BlogCard
           _type="caseStudy"
           title="Stack and Heap Diagram"
@@ -70,7 +52,7 @@ import Button from "@components/Button.astro";
           }}
         />
       </div>
-      <div data-card-index="4" class="hidden">
+      <div data-card-index="3">
         <BlogCard
           _type="caseStudy"
           title="Fonts Jar"
@@ -82,12 +64,12 @@ import Button from "@components/Button.astro";
           }}
         />
       </div>
-      <div data-card-index="5" class="hidden">
+      <div data-card-index="4" class="hidden">
         <BlogCard
           _type="caseStudy"
           title="Portfolio Website (2022)"
           slug="personal-portfolio"
-          excerpt="The latest version (2022) of my personal portfolio website, where you can find some information about myself, my latest and most representative projects and some blog articles."
+          excerpt="The latest version (2022) of my personal portfolio website, where you can find some information about myself, my latest and most representative projects."
           image={{
             url: "/og_image.png",
             alt: "Personal portfolio socials card",
@@ -180,7 +162,7 @@ import Button from "@components/Button.astro";
           card.classList.remove("hidden");
         }
       });
-      if (cursor >= 6 && loadMoreContainer) {
+      if (cursor >= 5 && loadMoreContainer) {
         loadMoreContainer.classList.add("hidden");
       }
     });

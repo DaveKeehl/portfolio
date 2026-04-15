@@ -6,44 +6,12 @@ import Section from "@components/Section.astro";
 <div data-section="projects">
   <Section
     id="projects"
-    heading="Featured projects."
+    heading="Featured projects"
     headingGap="large"
     icon="Fire"
     class="scroll-pt-8"
   >
     <div class="grid gap-14">
-      <ProjectCard
-        project={{
-          title: "Portfolio Website (2022)",
-          slug: "personal-portfolio",
-          excerpt:
-            "The latest version (2022) of my personal portfolio website, where you can find some information about myself, my latest and most representative projects and some blog articles.",
-          image: {
-            url: "/og_image.png",
-            alt: "Personal portfolio socials card",
-          },
-          type: "Website",
-          liveButton: null,
-        }}
-      />
-      <ProjectCard
-        reversed
-        project={{
-          title: "Stack and Heap Diagram",
-          slug: "stack-and-heap-diagram",
-          excerpt:
-            "An interactive web application to easily create and manipulate stack and heap diagrams in the context of a university programming fundamentals course.",
-          image: {
-            url: "/images/stack-and-heap-diagram.png",
-            alt: "Stack and Heap Diagram logo",
-          },
-          type: "Web Application",
-          liveButton: {
-            text: "Visit application",
-            url: "https://stackandheap.netlify.app/",
-          },
-        }}
-      />
       <ProjectCard
         project={{
           title: "Fonts Jar",
@@ -58,6 +26,10 @@ import Section from "@components/Section.astro";
           liveButton: {
             text: "Visit store listing",
             url: "https://chrome.google.com/webstore/detail/fonts-jar/hkkhacceelmpcaiegjpijfpgaefokagj",
+          },
+          repositoryButton: {
+            text: "View on GitHub",
+            url: "https://github.com/DaveKeehl/fonts-jar",
           },
         }}
       />
@@ -77,22 +49,9 @@ import Section from "@components/Section.astro";
             text: "Open playground",
             url: "https://svelte.dev/repl/1cf37b0947ac46b8ae9cc791abda7159?version=3.44.1",
           },
-        }}
-      />
-      <ProjectCard
-        project={{
-          title: "F1 Insight",
-          slug: "f1-insight",
-          excerpt:
-            "A visual analytics web application to easily gain insight into the current Formula 1 season, and spot trends that would otherwise be difficult to notice.",
-          image: {
-            url: "/images/f1-insight.png",
-            alt: "F1 Insight logo",
-          },
-          type: "Web Application",
-          liveButton: {
-            text: "Visit application",
-            url: "https://f1-insight.com",
+          repositoryButton: {
+            text: "View on GitHub",
+            url: "https://github.com/DaveKeehl/svelte-reveal",
           },
         }}
       />

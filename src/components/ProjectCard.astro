@@ -7,9 +7,9 @@ import Label from "./Label.astro";
 
 interface Project {
   title: string;
-  slug: string;
   image: { url: string; alt?: string };
   liveButton?: { text: string; url: string } | null;
+  repositoryButton?: { text: string; url: string } | null;
   excerpt: string;
   type: string;
 }
@@ -20,8 +20,7 @@ interface Props {
 }
 
 const { project, reversed = false } = Astro.props;
-const { title, slug, image, liveButton, excerpt, type } = project;
-const href = `/project/${slug}`;
+const { title, image, liveButton, repositoryButton, excerpt, type } = project;
 
 const imageContainerStyles = cva(
   [
@@ -69,40 +68,36 @@ const contentStyles = cva(["z-[5]", "col-[1/6]", "row-[1/2]"], {
 <div
   class="flex flex-col lg:grid lg:grid-cols-10 lg:grid-rows-1 lg:items-center"
 >
-  <a {href} class={cn(imageContainerStyles({ reversed }))}>
+  <div class={cn(imageContainerStyles({ reversed }))}>
     <img
       src={image.url}
       alt={title}
-      class="aspect-16/10 h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+      class="aspect-16/10 h-full w-full object-cover"
       loading="lazy"
     />
-  </a>
+  </div>
 
   <div class={cn(contentStyles({ reversed }))}>
     <Label>{type}</Label>
-    <a {href} class="h3-bold mt-5 mb-4 block w-fit">{title}</a>
+    <p class="h3-bold mt-5 mb-4">{title}</p>
     <p class="p5-regular mb-9 text-blue-100 opacity-90">{excerpt}</p>
 
     {
-      liveButton ? (
+      liveButton && repositoryButton ? (
         <ButtonsGroup
           size="small"
-          primary={{
-            text: liveButton.text,
-            href: liveButton.url,
-            external: true,
-          }}
-          secondary={{
-            text: "Go to case study",
-            href: `/project/${slug}`,
-            external: false,
-          }}
+          primary={{ text: liveButton.text, href: liveButton.url, external: true }}
+          secondary={{ text: repositoryButton.text, href: repositoryButton.url, external: true }}
         />
-      ) : (
-        <Button size="small" variant="primary" href={`/project/${slug}`}>
-          Go to case study
+      ) : liveButton ? (
+        <Button size="small" variant="primary" href={liveButton.url} external>
+          {liveButton.text}
         </Button>
-      )
+      ) : repositoryButton ? (
+        <Button size="small" variant="secondary" href={repositoryButton.url} external>
+          {repositoryButton.text}
+        </Button>
+      ) : null
     }
   </div>
 </div>
