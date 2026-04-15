@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import Button from "@components/Button.astro";
 ---
@@ -46,9 +47,11 @@ import Button from "@components/Button.astro";
           class="bg-about-img absolute top-0 left-0 z-10 h-full w-full transition-opacity duration-300 group-hover:opacity-80"
         >
         </div>
-        <img
+        <Image
           src="/images/about.png"
           alt="Davide Wölckner"
+          width={295}
+          height={420}
           class="absolute top-0 left-0 h-full w-full rounded-2xl bg-cover object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-80"
         />
       </div>
