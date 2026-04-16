@@ -27,21 +27,34 @@ import Container from "@components/Container.astro";
 </BaseLayout>
 
 <script>
-  // Global IntersectionObserver for section tracking
-  const sections = document.querySelectorAll<HTMLElement>("[data-section]");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionName = (entry.target as HTMLElement).dataset.section;
-          if (sectionName) {
-            document.documentElement.dataset.activeSection = sectionName;
-          }
-        }
-      });
-    },
-    { threshold: 0.2 },
+  // Global scroll spy: activate the last section whose top has crossed the
+  // threshold line, falling back to the last section when near the bottom.
+  const sections = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-section]"),
   );
+  const OFFSET = 100; // px from viewport top (accounts for sticky header)
 
-  sections.forEach((section) => observer.observe(section));
+  function updateActiveSection() {
+    const nearBottom =
+      window.scrollY + window.innerHeight >=
+      document.documentElement.scrollHeight - 10;
+
+    if (nearBottom) {
+      const last = sections.at(-1);
+      if (last?.dataset.section)
+        document.documentElement.dataset.activeSection = last.dataset.section;
+      return;
+    }
+
+    let best = sections[0];
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= OFFSET) best = section;
+    }
+
+    if (best?.dataset.section)
+      document.documentElement.dataset.activeSection = best.dataset.section;
+  }
+
+  window.addEventListener("scroll", updateActiveSection, { passive: true });
+  updateActiveSection();
 </script>
