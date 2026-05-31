@@ -8,6 +8,7 @@ import Label from "./Label.astro";
 
 interface Project {
   title: string;
+  slug?: string;
   image: { url: string; alt?: string };
   liveButton?: { text: string; url: string } | null;
   repositoryButton?: { text: string; url: string } | null;
