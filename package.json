@@ -13,21 +13,21 @@
     "vite": "7.3.2"
   },
   "dependencies": {
-    "@astrojs/mdx": "5.0.3",
-    "@astrojs/sitemap": "3.7.2",
-    "@astrojs/vercel": "10.0.4",
-    "@tailwindcss/vite": "4.2.2",
-    "astro": "6.1.5",
+    "@astrojs/mdx": "6.0.1",
+    "@astrojs/sitemap": "3.7.3",
+    "@astrojs/vercel": "10.0.8",
+    "@tailwindcss/vite": "4.3.0",
+    "astro": "6.4.2",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "tailwind-merge": "3.5.0",
-    "tailwindcss": "4.2.2"
+    "tailwind-merge": "3.6.0",
+    "tailwindcss": "4.3.0"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.8",
-    "prettier": "3.8.2",
+    "@astrojs/check": "0.9.9",
+    "prettier": "3.8.3",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "0.7.2",
-    "typescript": "5.9.3"
+    "prettier-plugin-tailwindcss": "0.8.0",
+    "typescript": "6.0.3"
   }
 }
