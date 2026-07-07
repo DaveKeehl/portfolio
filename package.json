@@ -13,7 +13,7 @@
     "vite": "7.3.2"
   },
   "dependencies": {
-    "@astrojs/mdx": "6.0.3",
+    "@astrojs/mdx": "7.0.2",
     "@astrojs/sitemap": "3.7.3",
     "@astrojs/vercel": "10.0.8",
     "@tailwindcss/vite": "4.3.1",
