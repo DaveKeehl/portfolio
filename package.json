@@ -13,6 +13,9 @@
     "vite": "8.3.5",
     "@vercel/routing-utils": {
       "path-to-regexp": "6.3.0"
+    },
+    "@vercel/cli-config": {
+      "zod": "4.6.7"
     }
   },
   "dependencies": {
