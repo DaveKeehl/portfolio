@@ -10,14 +10,17 @@
     "format": "prettier --write ."
   },
   "overrides": {
-    "vite": "7.3.7"
+    "vite": "8.3.5",
+    "@vercel/routing-utils": {
+      "path-to-regexp": "6.3.0"
+    }
   },
   "dependencies": {
-    "@astrojs/mdx": "6.0.3",
+    "@astrojs/mdx": "8.0.3",
     "@astrojs/sitemap": "3.7.4",
-    "@astrojs/vercel": "10.0.8",
+    "@astrojs/vercel": "11.0.16",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "6.4.8",
+    "astro": "7.3.8",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "tailwind-merge": "3.7.0",
